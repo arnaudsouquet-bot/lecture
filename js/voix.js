@@ -4,17 +4,28 @@ import { REGLAGES_DEFAUT } from "./config.js";
 
 const synthese = window.speechSynthesis;
 
+// qualité estimée d'une voix d'après son nom : les voix premium / améliorées (iPad) et naturelles (Edge)
+// sont bien meilleures que les anciennes voix de bureau de Windows (Hortense, Julie, Paul)
+function qualite(v) {
+  const n = v.name.toLowerCase();
+  let q = 0;
+  if (/premium/.test(n)) q = 6;
+  else if (/enhanced|amélioré|natural|neural/.test(n)) q = 5;
+  else if (/google/.test(n)) q = 3;
+  else if (!/microsoft/.test(n)) q = 2; // voix Apple standard (Amélie, Thomas…)
+  if (v.lang === "fr-FR") q += 0.5;
+  return q;
+}
+
+// voix françaises, de la meilleure à la moins bonne
 export function voixFrancaises() {
   if (!synthese) return [];
-  return synthese.getVoices().filter(v => v.lang && v.lang.toLowerCase().startsWith("fr"));
+  return synthese.getVoices().filter(v => v.lang && v.lang.toLowerCase().startsWith("fr")).sort((a, b) => qualite(b) - qualite(a));
 }
 
 function voixChoisie() {
   const voix = voixFrancaises(), nom = lire("reglages", REGLAGES_DEFAUT).voix;
-  return voix.find(v => v.name === nom)
-    || voix.find(v => /premium|enhanced|amélioré/i.test(v.name) && v.lang === "fr-FR")
-    || voix.find(v => v.lang === "fr-FR")
-    || voix[0] || null;
+  return voix.find(v => v.name === nom) || voix[0] || null;
 }
 export const nomVoix = () => (voixChoisie() || {}).name || "";
 

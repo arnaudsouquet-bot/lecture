@@ -1,6 +1,6 @@
 // Service worker : garde l'app et les articles sur l'iPad pour qu'elle marche sans Internet.
 // Changer VERSION à chaque mise à jour de l'app : l'iPad la télécharge au lancement suivant (avec Internet).
-const VERSION = "lecture-v4";
+const VERSION = "lecture-v5";
 
 const FICHIERS = [
   "./", "index.html", "manifest.webmanifest", "css/app.css",
