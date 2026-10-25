@@ -110,7 +110,7 @@ button { font-family: inherit; color: inherit; -webkit-user-select: none; user-s
 .lancer { flex: 1; display: flex; flex-direction: column; gap: 18px; align-items: center; justify-content: center; text-align: center; }
 .lancer .bouton { font-size: 34px; padding: 28px 46px; }
 .lancer p { font-size: 22px; margin: 0; }
-.engrenage { position: absolute; right: 18px; bottom: max(14px, env(safe-area-inset-bottom)); font-size: 28px; opacity: .45; background: none; border: none; padding: 10px; cursor: pointer; }
+.engrenage { position: absolute; right: 8px; bottom: max(6px, env(safe-area-inset-bottom)); font-size: 30px; opacity: .45; background: none; border: none; padding: 18px; cursor: pointer; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; touch-action: none; }
 .engrenage.appui { opacity: 1; animation: pulse .6s infinite; }
 .astuce { position: absolute; right: 70px; bottom: 26px; font-size: 16px; color: var(--doux); }
 

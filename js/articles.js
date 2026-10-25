@@ -1,7 +1,7 @@
 // Articles (fiches JSON) : celles livrées dans fiches/, et celles importées par un parent.
 // L'IA propose, le parent valide : l'enfant ne voit que les articles validés sur cet iPad.
 import { lire, ecrire } from "./store.js";
-import { THEMES, ANIMATIONS } from "./config.js";
+import { THEMES, ANIMATIONS, ANCIENS_THEMES } from "./config.js";
 import { esc, jour } from "./outils.js";
 
 let livres = [];
@@ -18,7 +18,7 @@ export async function chargerArticlesLivres() {
 }
 
 export function tousLesArticles() {
-  const importes = lire("importes", []).map(a => ({ ...a, source: "importé" }));
+  const importes = lire("importes", []).map(a => ({ ...a, theme: ANCIENS_THEMES[a.theme] || a.theme, source: "importé" }));
   const ids = new Set(importes.map(a => a.id));
   return [...livres.filter(a => !ids.has(a.id)), ...importes];
 }
@@ -71,7 +71,7 @@ export function verifier(a) {
   if (!a || typeof a !== "object") return ["Ce n'est pas un objet JSON."];
   if (!a.id || !/^[a-z0-9_-]+$/i.test(a.id)) pb.push("« id » manquant ou invalide (lettres, chiffres, - et _).");
   if (!a.titre) pb.push("« titre » manquant.");
-  if (!THEMES.some(t => t.cle === a.theme)) pb.push(`« theme » doit être l'un de : ${THEMES.map(t => t.cle).join(", ")}.`);
+  if (!THEMES.some(t => t.cle === (ANCIENS_THEMES[a.theme] || a.theme))) pb.push(`« theme » doit être l'un de : ${THEMES.map(t => t.cle).join(", ")}.`);
   if (!Array.isArray(a.pages) || a.pages.length < 3) pb.push("« pages » doit contenir au moins 3 pages.");
   else a.pages.forEach((p, i) => {
     if (!p.texte) pb.push(`Page ${i + 1} : « texte » manquant.`);

@@ -1,6 +1,6 @@
 // Service worker : garde l'app et les articles sur l'iPad pour qu'elle marche sans Internet.
 // Changer VERSION à chaque mise à jour de l'app : l'iPad la télécharge au lancement suivant (avec Internet).
-const VERSION = "lecture-v7";
+const VERSION = "lecture-v8";
 // les enregistrements audio ont des noms uniques (calculés d'après leur contenu) : leur cache survit aux mises à jour
 const AUDIO = "lecture-audio";
 

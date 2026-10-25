@@ -21,36 +21,38 @@ export const REGLAGES_DEFAUT = {
 export const FONDS = ["#f7f1e3", "#fbf3c8", "#e3eef8", "#e6f2e3"];
 
 // Thèmes des articles, et questionnaire « J'ai envie d'autre chose » (étape 1 puis étape 2)
-// HYPOTHÈSE : liste à compléter.
+// Thèmes décidés par Arnaud le 2026-10-25 ; HYPOTHÈSE : les 6 sujets de chaque thème, à ajuster avec l'enfant.
 export const THEMES = [
   { cle: "animaux", nom: "Animaux", emoji: "🐾", sujets: [
     ["Les requins", "🦈"], ["Les félins", "🐆"], ["Les insectes", "🐜"],
     ["Les oiseaux", "🦅"], ["Les serpents", "🐍"], ["Les animaux de la ferme", "🐄"]] },
-  { cle: "univers", nom: "Univers", emoji: "🪐", sujets: [
-    ["Les planètes", "🪐"], ["Les astronautes", "👩‍🚀"], ["Les étoiles", "⭐"],
-    ["Les fusées", "🚀"], ["Les trous noirs", "🕳️"], ["La Lune", "🌙"]] },
   { cle: "sciences", nom: "Sciences", emoji: "🔬", sujets: [
     ["Les expériences", "🧪"], ["L'électricité", "⚡"], ["Les aimants", "🧲"],
     ["L'eau", "💧"], ["La lumière et les couleurs", "🌈"], ["Les microbes", "🦠"]] },
-  { cle: "corps", nom: "Corps humain", emoji: "🫀", sujets: [
-    ["Le cœur", "❤️"], ["Le cerveau", "🧠"], ["Le squelette", "🦴"],
-    ["Les dents", "🦷"], ["Les muscles", "💪"], ["Le sommeil", "😴"]] },
-  { cle: "dinosaures", nom: "Dinosaures", emoji: "🦖", sujets: [
-    ["Le T-Rex", "🦖"], ["Les géants à long cou", "🦕"], ["Les reptiles volants", "🦅"],
-    ["La fin des dinosaures", "☄️"], ["Les fossiles", "🦴"], ["Les monstres marins", "🌊"]] },
+  { cle: "espace", nom: "Espace", emoji: "🪐", sujets: [
+    ["Les planètes", "🪐"], ["Les astronautes", "👩‍🚀"], ["Les étoiles", "⭐"],
+    ["Les fusées", "🚀"], ["Les trous noirs", "🕳️"], ["La Lune", "🌙"]] },
   { cle: "nature", nom: "Nature et Terre", emoji: "🌋", sujets: [
     ["Les volcans", "🌋"], ["Les orages", "⛈️"], ["Les océans", "🌊"],
     ["Les forêts", "🌳"], ["Les déserts", "🏜️"], ["Les tremblements de terre", "🌍"]] },
-  { cle: "machines", nom: "Machines", emoji: "⚙️", sujets: [
-    ["Les voitures de course", "🏎️"], ["Les trains", "🚄"], ["Les avions", "✈️"],
-    ["Les robots", "🤖"], ["Les sous-marins", "🚢"], ["Les ordinateurs", "💻"]] },
   { cle: "histoire", nom: "Histoire", emoji: "🏰", sujets: [
     ["Les chevaliers", "⚔️"], ["Les pyramides", "🏺"], ["Les pirates", "🏴‍☠️"],
     ["Les Vikings", "🛡️"], ["La préhistoire", "🔥"], ["Les Romains", "🏛️"]] },
-  { cle: "sport", nom: "Sport", emoji: "⚽", sujets: [
-    ["Le football", "⚽"], ["Les Jeux olympiques", "🏅"], ["Le vélo", "🚴"],
-    ["La natation", "🏊"], ["Le basket", "🏀"], ["Les records du monde", "🏆"]] }
+  { cle: "geographie", nom: "Géographie", emoji: "🗺️", sujets: [
+    ["Les pays du monde", "🌍"], ["Les montagnes", "⛰️"], ["Les fleuves", "🏞️"],
+    ["Les capitales", "🏙️"], ["Les drapeaux", "🚩"], ["Les îles", "🏝️"]] },
+  { cle: "corps", nom: "Corps humain", emoji: "🫀", sujets: [
+    ["Le cœur", "❤️"], ["Le cerveau", "🧠"], ["Le squelette", "🦴"],
+    ["Les dents", "🦷"], ["Les muscles", "💪"], ["Le sommeil", "😴"]] },
+  { cle: "futur", nom: "Le futur", emoji: "🔮", sujets: [
+    ["Les robots", "🤖"], ["Les voitures du futur", "🚗"], ["Vivre sur Mars", "🔴"],
+    ["Les villes du futur", "🏙️"], ["Les métiers du futur", "👩‍🔬"], ["L'énergie de demain", "☀️"]] },
+  { cle: "inventions", nom: "Les inventions", emoji: "🛠️", sujets: [
+    ["La roue", "⚙️"], ["L'avion", "✈️"], ["Le téléphone", "📱"],
+    ["L'ordinateur", "💻"], ["Le train", "🚂"], ["Les inventions d'enfants", "🧒"]] }
 ];
+// anciens noms de thèmes, pour les articles déjà importés
+export const ANCIENS_THEMES = { univers: "espace", machines: "inventions" };
 
 // Étape 3 du questionnaire : ce qui l'intéresse dans le sujet (jusqu'à 2 choix)
 export const ANGLES = [

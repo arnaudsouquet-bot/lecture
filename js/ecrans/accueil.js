@@ -41,20 +41,26 @@ export default function accueil(ecran) {
         <div class="lancer">${lancer}</div>
       </div>
     </div>
-    <button class="engrenage" id="engrenage" aria-label="Espace parent (appui long)">⚙️</button>`;
+    <button class="engrenage" id="engrenage" aria-label="Espace parent (3 appuis rapides)">⚙️</button>`;
 
   $("#go", ecran).onclick = () => aller(s && ETAPES[s.etape] ? s.etape : "envies");
   compter($("#montant", ecran), 0, cagnotte, 1400, euros);
   requestAnimationFrame(() => requestAnimationFrame(() => { $("#jauge", ecran).style.width = (cagnotte / PLAFOND_EUROS * 100) + "%"; }));
 
-  // espace parent : appui long d'une seconde et demie sur ⚙️
+  // espace parent : 3 appuis rapides sur ⚙️, ou un appui long d'une seconde
+  // (sur iPad, l'appui long peut être interrompu par le système : les 3 appuis marchent toujours)
   const g = $("#engrenage", ecran);
-  let minuteur = null;
-  const lacher = () => { clearTimeout(minuteur); g.classList.remove("appui"); };
-  g.addEventListener("pointerdown", () => {
+  let minuteur = null, appuis = [];
+  const ouvrir = () => { clearTimeout(minuteur); g.classList.remove("appui"); aller("parent"); };
+  g.addEventListener("pointerdown", e => {
+    e.preventDefault();
     g.classList.add("appui");
-    minuteur = setTimeout(() => { lacher(); aller("parent"); }, 1500);
+    clearTimeout(minuteur);
+    minuteur = setTimeout(ouvrir, 1000);
+    const t = Date.now();
+    appuis = [...appuis.filter(x => t - x < 1500), t];
+    if (appuis.length >= 3) ouvrir();
   });
-  ["pointerup", "pointerleave", "pointercancel"].forEach(t => g.addEventListener(t, lacher));
+  ["pointerup", "pointercancel"].forEach(t => g.addEventListener(t, () => { clearTimeout(minuteur); g.classList.remove("appui"); }));
   g.addEventListener("contextmenu", e => e.preventDefault());
 }
