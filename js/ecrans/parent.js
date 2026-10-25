@@ -64,14 +64,17 @@ function afficherParent(ecran) {
       </div>
 
       <div class="carte">
-        <h2>📚 Articles</h2>
-        ${articles.map(x => `
+        <h2>📚 Articles (${articles.filter(x => estValide(x.id)).length} validés sur ${articles.length})</h2>
+        ${articles.some(x => !estValide(x.id)) ? `<div class="actions" style="margin:0 0 10px"><button class="mini plein" id="tout-valider">✔ Tout valider (${articles.filter(x => !estValide(x.id)).length})</button></div>` : ""}
+        <div style="max-height:420px;overflow-y:auto">
+        ${[...articles].sort((x, y) => estValide(x.id) - estValide(y.id) || theme(x.theme).localeCompare(theme(y.theme))).map(x => `
           <div class="ligne">
             <span>${x.emoji || "📄"} ${esc(x.titre)}<br><span class="petit-gris">${theme(x.theme)} · ${nombreDeMots(x)} mots · ${x.source}${estEnregistre(x.id) ? " · 🔊 voix enregistrée" : ""}${dejaLu(x.id) ? " · lu" : ""}</span></span>
             <span>${estValide(x.id) ? `<span class="statut ok">Validé</span>` : `<span class="statut att">À relire</span>`}
               <button class="mini" data-apercu="${esc(x.id)}">Aperçu</button></span>
           </div>`).join("") || `<p class="petit-gris">Aucun article.</p>`}
-        <p class="petit-gris">L'IA propose, vous validez : l'enfant ne voit que les articles validés. Relisez les faits avant de valider.</p>
+        </div>
+        <p class="petit-gris">Les articles livrés avec l'app sont lisibles tout de suite ; ceux importés depuis Claude sont à valider. Relisez les faits quand vous pouvez (voir RELECTURE.md) : « Aperçu » permet de retirer un article.</p>
       </div>
 
       <div class="carte">
@@ -145,6 +148,15 @@ function afficherParent(ecran) {
   const recharger = () => afficherParent(ecran);
   $("#retour", ecran).onclick = () => aller("accueil");
   $("#payer", ecran).onclick = async () => { await marquerPaye(semaine); message("Versement noté ✔"); recharger(); };
+  const toutValider = $("#tout-valider", ecran);
+  if (toutValider) toutValider.onclick = async () => {
+    const aValider = articles.filter(x => !estValide(x.id));
+    if (!confirm(`Valider les ${aValider.length} articles ? L'enfant pourra tous les lire. Vous pourrez en retirer un depuis son aperçu.`)) return;
+    for (const x of aValider) await valider(x.id, true);
+    mettreHorsLigne(aValider.map(x => x.id)); // leurs enregistrements se téléchargent pour le hors ligne
+    message(`${aValider.length} articles validés ✔`);
+    recharger();
+  };
 
   // articles : aperçu et validation
   $$("[data-apercu]", ecran).forEach(btn => btn.onclick = () => apercu(ecran, articles.find(x => x.id === btn.dataset.apercu), recharger));

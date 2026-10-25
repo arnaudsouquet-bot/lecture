@@ -1,0 +1,207 @@
+{
+  "format": 1,
+  "id": "2026-10-26_sommeil",
+  "theme": "corps",
+  "titre": "Le sommeil",
+  "emoji": "😴",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "ferment",
+    "travaillent",
+    "bougent",
+    "peuvent",
+    "réveillent",
+    "aident",
+    "hibernent",
+    "dorment"
+  ],
+  "mots": [
+    {
+      "mot": "cycle",
+      "syllabes": [
+        "cy",
+        "cle"
+      ],
+      "emoji": "🔄",
+      "definition": "Une suite d'étapes qui recommence plusieurs fois.",
+      "exemple": "Le jour et la nuit forment un cycle."
+    },
+    {
+      "mot": "cauchemar",
+      "syllabes": [
+        "cau",
+        "che",
+        "mar"
+      ],
+      "emoji": "👻",
+      "definition": "Un rêve qui fait peur.",
+      "exemple": "Après un cauchemar, la petite fille a allumé sa veilleuse."
+    },
+    {
+      "mot": "hiberner",
+      "syllabes": [
+        "hi",
+        "ber",
+        "ner"
+      ],
+      "emoji": "🐻",
+      "definition": "Passer l'hiver dans un très long sommeil, comme certains animaux.",
+      "exemple": "Le hérisson aime hiberner sous un tas de feuilles."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Bonne nuit !",
+      "emoji": "🌙",
+      "anim": "flotte",
+      "texte": "Chaque soir, tes yeux se ferment et tu t'endors. Sur {{24|vingt-quatre}} heures, un enfant de ton âge dort environ {{10|dix}} heures. Pourtant, dormir n'est pas du temps perdu. Pendant ton sommeil, ton corps et ton cerveau travaillent beaucoup ! Voyons ce qui se passe la nuit."
+    },
+    {
+      "titre": "Pourquoi on dort ?",
+      "emoji": "🔋",
+      "anim": "rebond",
+      "texte": "Dormir, c'est comme recharger une batterie. Le corps se repose et répare ses petites blessures. Le cerveau range ce que tu as appris dans la journée. Chez les enfants, le corps fabrique aussi une substance qui aide à grandir. On grandit en dormant !"
+    },
+    {
+      "titre": "Combien d'heures ?",
+      "emoji": "⏰",
+      "anim": "zoom",
+      "texte": "À {{8|huit}} ans, il faut dormir environ {{9|neuf}} à {{12|douze}} heures par nuit. Un bébé dort encore plus : souvent {{14|quatorze}} heures ou plus par jour ! Un adulte a besoin d'environ {{7|sept}} à {{9|neuf}} heures. Plus on est jeune, plus on a besoin de sommeil."
+    },
+    {
+      "titre": "Les cycles du sommeil",
+      "emoji": "🔄",
+      "anim": "tourne",
+      "texte": "Le sommeil est fait de plusieurs [[cycle|cycles]], comme les wagons d'un train. Chez l'adulte, chaque cycle dure environ {{90|quatre-vingt-dix}} minutes. On en fait souvent {{4|quatre}} à {{6|six}} par nuit. Entre deux cycles, on se réveille parfois un tout petit peu."
+    },
+    {
+      "titre": "Le sommeil profond",
+      "emoji": "😴",
+      "anim": "balance",
+      "texte": "Dans chaque cycle, il y a un moment de sommeil très profond. Le corps est tout mou et on respire lentement. À ce moment-là, c'est difficile de se réveiller. C'est surtout pendant ce sommeil que le corps se répare."
+    },
+    {
+      "titre": "Le temps des rêves",
+      "emoji": "💭",
+      "anim": "flotte",
+      "texte": "Dans chaque cycle, il y a aussi un moment où l'on rêve beaucoup. Tes yeux bougent très vite sous tes paupières ! Mais ton corps reste presque immobile. Comme ça, tu ne fais pas les gestes de tes rêves. Chaque nuit, on rêve plusieurs fois."
+    },
+    {
+      "titre": "Les cauchemars",
+      "emoji": "👻",
+      "anim": "balance",
+      "texte": "Parfois, un rêve fait peur : c'est un [[cauchemar]]. Tous les enfants en font, et les adultes aussi. Un cauchemar n'est pas réel, c'est un film dans ta tête. Quand tu te réveilles, il s'arrête. Un câlin ou une veilleuse peuvent aider à se rendormir."
+    },
+    {
+      "titre": "Bien s'endormir",
+      "emoji": "🛏️",
+      "anim": "rebond",
+      "texte": "Pour bien dormir, on se couche à peu près à la même heure chaque soir. Les écrans réveillent le cerveau, alors on les éteint avant d'aller au lit. Une histoire ou une musique douce aident à se calmer. Une chambre calme et sombre, c'est encore mieux."
+    },
+    {
+      "titre": "Les animaux dorment aussi",
+      "emoji": "🐨",
+      "anim": "zoom",
+      "texte": "Le koala dort environ {{20|vingt}} heures par jour, accroché à son arbre ! La girafe, elle, dort très peu : souvent moins de {{5|cinq}} heures. Le dauphin dort avec une moitié du cerveau à la fois. L'autre moitié reste éveillée pour respirer et surveiller."
+    },
+    {
+      "titre": "Dormir tout l'hiver",
+      "emoji": "🐿️",
+      "anim": "flotte",
+      "texte": "Certains animaux font un très long sommeil en hiver : ils [[hiberner|hibernent]] ! La marmotte peut dormir environ {{6|six}} mois, bien cachée dans son terrier. Son cœur bat alors très lentement. Au printemps, elle se réveille, toute maigre et affamée !"
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "À 8 ans, on dort entre 9 et 12 heures par nuit. Combien d'heures de différence entre 9 et 12 ?",
+      "aide": "12 − 9 = ?",
+      "choix": [
+        "3",
+        "21",
+        "4"
+      ],
+      "reponse": 0,
+      "explication": "12 moins 9, ça fait 3."
+    },
+    {
+      "type": "calcul",
+      "question": "Le koala dort 20 heures par jour. La girafe dort 5 heures. Combien d'heures de plus pour le koala ?",
+      "aide": "20 − 5 = ?",
+      "choix": [
+        "25",
+        "15",
+        "10"
+      ],
+      "reponse": 1,
+      "explication": "20 moins 5, ça fait 15."
+    },
+    {
+      "type": "calcul",
+      "question": "Une nuit, tu fais 4 cycles de sommeil. La nuit suivante, tu en fais 6. Combien en tout ?",
+      "aide": "4 + 6 = ?",
+      "choix": [
+        "8",
+        "46",
+        "10"
+      ],
+      "reponse": 2,
+      "explication": "4 plus 6, ça fait 10."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que fait ton corps quand tu rêves ?",
+      "choix": [
+        "Il bouge beaucoup",
+        "Il reste presque immobile",
+        "Il se lève"
+      ],
+      "reponse": 1,
+      "explication": "Seuls les yeux bougent très vite."
+    },
+    {
+      "type": "comprehension",
+      "question": "Pourquoi le dauphin garde-t-il une moitié du cerveau éveillée ?",
+      "choix": [
+        "Pour respirer et surveiller",
+        "Pour rêver deux fois plus",
+        "Pour chanter la nuit"
+      ],
+      "reponse": 0,
+      "explication": "L'autre moitié peut dormir."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que range le cerveau pendant la nuit ?",
+      "choix": [
+        "Tes jouets",
+        "Tes cauchemars",
+        "Ce que tu as appris dans la journée"
+      ],
+      "reponse": 2,
+      "explication": "Dormir aide à se souvenir."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qui a besoin de dormir le plus longtemps ?",
+      "choix": [
+        "Un bébé",
+        "Un adulte",
+        "Un enfant de 8 ans"
+      ],
+      "reponse": 0,
+      "explication": "Plus on est jeune, plus on a besoin de sommeil."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « hiberner » ?",
+      "choix": [
+        "Faire un cauchemar",
+        "Se réveiller la nuit",
+        "Passer l'hiver dans un très long sommeil"
+      ],
+      "reponse": 2,
+      "explication": "La marmotte hiberne environ 6 mois."
+    }
+  ]
+}

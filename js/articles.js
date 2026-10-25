@@ -24,11 +24,15 @@ export function tousLesArticles() {
 }
 export const article = id => tousLesArticles().find(a => a.id === id);
 
-export const estValide = id => !!lire("statuts", {})[id];
+// [Arnaud 2026-10-25] les articles livrés avec l'app sont lisibles d'office (un parent peut en retirer un) ;
+// ceux importés depuis Claude restent à valider
+const estLivre = id => livres.some(a => a.id === id) && !lire("importes", []).some(a => a.id === id);
+export function estValide(id) {
+  const s = lire("statuts", {})[id];
+  return s ? s.statut === "valide" : estLivre(id);
+}
 export function valider(id, oui) {
-  const s = { ...lire("statuts", {}) };
-  if (oui) s[id] = { statut: "valide", le: jour() }; else delete s[id];
-  return ecrire("statuts", s);
+  return ecrire("statuts", { ...lire("statuts", {}), [id]: { statut: oui ? "valide" : "retire", le: jour() } });
 }
 
 export const dejaLu = id => lire("journal", []).some(j => j.article === id);

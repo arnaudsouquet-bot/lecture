@@ -1,6 +1,7 @@
-// Questionnaire « J'ai envie d'autre chose » : en 3 ou 4 étapes, l'enfant dit sur quoi il voudrait lire.
-// Son envie est envoyée à l'espace parent, qui peut demander l'article à Claude.
-import { THEMES, ANGLES, ANGLES_PAR_SUJET, UN_PEU_DE_TOUT } from "../config.js";
+// Questionnaire « J'ai envie d'autre chose » : l'enfant choisit un thème puis un sujet, et c'est envoyé aux parents.
+// [Arnaud] pas de question de précision ; l'idée à taper ne sert que pour « Autre chose ».
+// L'envie arrive dans l'espace parent, qui peut demander l'article à Claude.
+import { THEMES } from "../config.js";
 import { lire, ecrire } from "../store.js";
 import { articlesDisponibles, dejaLu } from "../articles.js";
 import { aller, nommer } from "../session.js";
@@ -12,25 +13,25 @@ import { $, $$, esc, jour, etapes } from "../outils.js";
 const AUTRE = "autre";
 
 export default function questionnaire(ecran) {
-  const r = { theme: null, sujet: null, emoji: "💡", angles: [], idee: "" };
-  let etape = 1;
+  const r = { theme: null, sujet: null, emoji: "💡", idee: "" };
+  let etape = 1; // 1 thème · 2 sujet · 3 idée libre (« Autre chose ») · 4 résumé
 
-  function rendre(titre, contenu, { suite = "", retour = true } = {}) {
+  function rendre(titre, contenu, { suite = "" } = {}) {
     ecran.innerHTML = `
       <div class="entete">
         <button class="hp" id="dire-titre" aria-label="Écouter">🔊</button>
         <h1>${titre}</h1>
-        <div class="droite"><div class="points-etapes">${etapes(4, etape - 1)}</div></div>
+        <div class="droite"><div class="points-etapes">${etapes(2, etape === 1 ? 0 : 1)}</div></div>
       </div>
       ${contenu}
       <div class="bas">
-        <button class="bouton clair petit" id="retour">◀ ${retour && etape > 1 ? "Retour" : "Mes envies"}</button>
+        <button class="bouton clair petit" id="retour">◀ ${etape > 1 ? "Retour" : "Mes envies"}</button>
         <span class="fin">${suite}</span>
       </div>`;
     $("#dire-titre", ecran).onclick = e => dire(titre.replace(/<[^>]+>/g, ""), { bouton: e.currentTarget });
     $("#retour", ecran).onclick = () => {
-      if (etape === 1 || !retour) return aller("envies");
-      etape = etape === 4 && !r.sujet ? (r.theme && r.theme !== AUTRE ? 2 : 1) : etape - 1;
+      if (etape === 1) return aller("envies");
+      etape = etape === 3 && r.theme !== AUTRE ? 2 : 1;
       afficherEtape();
     };
   }
@@ -46,7 +47,7 @@ export default function questionnaire(ecran) {
         const t = THEMES.find(x => x.cle === b.dataset.cle);
         r.theme = b.dataset.cle; r.sujet = null; r.emoji = t ? t.emoji : "💡";
         dire(t ? t.nom : "Autre chose");
-        etape = t ? 2 : 4;
+        etape = t ? 2 : 3;
         setTimeout(afficherEtape, 250);
       });
     } else if (etape === 2) {
@@ -55,70 +56,44 @@ export default function questionnaire(ecran) {
         `<div class="tuiles">${t.sujets.map(([nom, emo]) => tuile(nom, nom, emo)).join("")}${tuile(AUTRE, "Autre chose", "✏️", "idee")}</div>`);
       $$("[data-cle]", ecran).forEach(b => b.onclick = () => {
         const s = t.sujets.find(([nom]) => nom === b.dataset.cle);
-        const nouveau = s ? s[0] : null;
-        if (nouveau !== r.sujet) r.angles = []; // les choix de l'étape 3 dépendent du sujet
-        r.sujet = nouveau; if (s) r.emoji = s[1];
+        r.sujet = s ? s[0] : null; if (s) r.emoji = s[1];
         dire(s ? s[0] : "Autre chose");
-        etape = s ? 3 : 4;
+        etape = s ? 4 : 3;
         setTimeout(afficherEtape, 250);
       });
     } else if (etape === 3) {
-      // choix propres au sujet (requins → leurs dents, comment ils chassent…), plus « Un peu de tout »
-      const choix = [...(ANGLES_PAR_SUJET[r.sujet] || ANGLES), UN_PEU_DE_TOUT];
-      const tout = UN_PEU_DE_TOUT[0];
-      rendre(`${r.emoji} Qu'est-ce qui t'intéresse le plus ?`,
-        `<p style="font-size:22px;margin:0 0 16px">${esc(r.sujet)} : choisis 1 ou 2 réponses.</p>
-         <div class="tuiles deux">${choix.map(([nom, emo]) => tuile(nom, nom, emo, "large" + (r.angles.includes(nom) ? " choisie" : ""))).join("")}</div>`,
-        { suite: `<button class="bouton" id="suite">Continuer ▶</button>` });
-      const maj = () => { $("#suite", ecran).disabled = !r.angles.length; };
-      $$("[data-cle]", ecran).forEach(b => b.onclick = () => {
-        const nom = b.dataset.cle;
-        if (r.angles.includes(nom)) r.angles = r.angles.filter(x => x !== nom);
-        else if (nom === tout) { r.angles = [tout]; dire(nom); }
-        else { r.angles = r.angles.filter(x => x !== tout); r.angles.push(nom); if (r.angles.length > 2) r.angles.shift(); dire(nom); }
-        $$("[data-cle]", ecran).forEach(x => x.classList.toggle("choisie", r.angles.includes(x.dataset.cle)));
-        maj();
-      });
-      $("#suite", ecran).onclick = () => { etape = 4; afficherEtape(); };
-      maj();
-    } else if (etape === 4) {
-      const obligatoire = !r.sujet;
-      rendre(obligatoire ? "✏️ Sur quoi aimerais-tu lire ?" : "✏️ Tu veux ajouter une idée ?",
+      rendre("✏️ Sur quoi aimerais-tu lire ?",
         `<div class="carte" style="display:flex;flex-direction:column;gap:16px">
-           <input class="champ-libre" id="idee" placeholder="${obligatoire ? "les pompiers, les chats…" : "par exemple : le requin le plus grand"}" value="${esc(r.idee)}" autocomplete="off" autocapitalize="off">
+           <input class="champ-libre" id="idee" placeholder="les pompiers, les chats…" value="${esc(r.idee)}" autocomplete="off" autocapitalize="off">
            <p class="petit-gris" style="font-size:20px;margin:0">🎤 Tu peux appuyer sur le micro du clavier et le dire à voix haute.</p>
          </div>`,
-        { suite: `${obligatoire ? "" : `<button class="bouton clair petit" id="passer">Passer</button> `}<button class="bouton" id="suite">Continuer ▶</button>` });
+        { suite: `<button class="bouton" id="suite">Continuer ▶</button>` });
       const champ = $("#idee", ecran);
-      const maj = () => { $("#suite", ecran).disabled = obligatoire && !champ.value.trim(); };
+      const maj = () => { $("#suite", ecran).disabled = !champ.value.trim(); };
       champ.oninput = maj; maj();
-      $("#suite", ecran).onclick = () => { r.idee = champ.value.trim(); etape = 5; afficherEtape(); };
-      if (!obligatoire) $("#passer", ecran).onclick = () => { r.idee = ""; etape = 5; afficherEtape(); };
+      $("#suite", ecran).onclick = () => { r.idee = champ.value.trim(); etape = 4; afficherEtape(); };
     } else {
       const theme = THEMES.find(x => x.cle === r.theme);
       const sujet = r.sujet || r.idee;
       // résumé dit en morceaux déjà enregistrés ; seule l'idée tapée par l'enfant passe par la voix de l'appareil
-      const resume = [PHRASES.resumeSujet, sujet,
-        ...(r.angles.length ? [PHRASES.resumeAngles, ...r.angles.flatMap((x, i) => (i ? [PHRASES.et, x] : [x]))] : []),
-        ...(r.sujet && r.idee ? [PHRASES.resumeIdee, r.idee] : [])].map(texte => ({ texte }));
+      const resume = [PHRASES.resumeSujet, sujet].map(texte => ({ texte }));
       ecran.innerHTML = `
         <div class="entete"><h1>C'est bien ça ?</h1></div>
         <div class="carte resume-envie lisible" style="flex:1;display:flex;flex-direction:column;justify-content:center">
           <span class="grosse anim-rebond">${r.emoji}</span>
           <div>Tu aimerais lire sur : <b>${esc(sujet)}</b></div>
-          ${r.angles.length ? `<div>Ce qui t'intéresse : <b>${r.angles.map(esc).join(" et ")}</b></div>` : ""}
-          ${r.sujet && r.idee ? `<div>Ton idée : <b>${esc(r.idee)}</b></div>` : ""}
         </div>
         <div class="bas">
           <button class="hp large" id="ecouter">🔊 Écouter</button>
           <button class="bouton clair petit" id="changer">✏️ Changer</button>
           <button class="bouton vert fin" id="envoyer">Envoyer à mes parents ✉️</button>
         </div>`;
+      direSuite(resume);
       $("#ecouter", ecran).onclick = e => direSuite(resume, { bouton: e.currentTarget });
       $("#changer", ecran).onclick = () => { etape = 1; afficherEtape(); };
       $("#envoyer", ecran).onclick = async () => {
         await ecrire("envies", [...lire("envies", []), {
-          date: jour(), theme: theme ? theme.cle : null, sujet: r.sujet, angles: r.angles, idee: r.idee, faite: false
+          date: jour(), theme: theme ? theme.cle : null, sujet: r.sujet, idee: r.sujet ? "" : r.idee, faite: false
         }]);
         merci(theme);
       };

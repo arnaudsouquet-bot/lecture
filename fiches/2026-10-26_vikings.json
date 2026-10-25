@@ -1,0 +1,223 @@
+{
+  "format": 1,
+  "id": "2026-10-26_vikings",
+  "theme": "histoire",
+  "titre": "Les Vikings",
+  "emoji": "⛵",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "vivaient",
+    "venaient",
+    "étaient",
+    "partaient",
+    "portent",
+    "avaient",
+    "portaient",
+    "disaient",
+    "appelaient",
+    "dormaient",
+    "cultivaient",
+    "chassaient",
+    "tissaient",
+    "dirigeaient",
+    "occupaient",
+    "fabriquaient",
+    "aidaient",
+    "croyaient",
+    "allaient",
+    "racontaient",
+    "écrivaient",
+    "pêchaient"
+  ],
+  "mots": [
+    {
+      "mot": "Scandinavie",
+      "syllabes": [
+        "Scan",
+        "di",
+        "na",
+        "vie"
+      ],
+      "emoji": "🗺️",
+      "definition": "Une région tout au nord de l'Europe : la Norvège, la Suède et le Danemark.",
+      "exemple": "En hiver, il fait très froid en Scandinavie."
+    },
+    {
+      "mot": "navigateur",
+      "syllabes": [
+        "na",
+        "vi",
+        "ga",
+        "teur"
+      ],
+      "emoji": "🧭",
+      "definition": "Une personne qui sait conduire un bateau sur la mer.",
+      "exemple": "Le navigateur regarde les étoiles pour trouver sa route."
+    },
+    {
+      "mot": "rune",
+      "syllabes": [
+        "ru",
+        "ne"
+      ],
+      "emoji": "🪨",
+      "definition": "Une lettre de l'alphabet des Vikings, faite de traits droits.",
+      "exemple": "Sur cette pierre, on voit une rune gravée."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Qui étaient les Vikings ?",
+      "emoji": "🛡️",
+      "anim": "balance",
+      "texte": "Les Vikings vivaient il y a plus de {{1000|mille}} ans. Ils venaient de [[Scandinavie]], tout au nord de l'Europe. Aujourd'hui, ce sont la Norvège, la Suède et le Danemark. La plupart étaient des paysans et des pêcheurs. Certains partaient en mer pour piller, faire du commerce ou explorer."
+    },
+    {
+      "titre": "Pas de cornes !",
+      "emoji": "⛑️",
+      "anim": "rebond",
+      "texte": "Sur les dessins, les Vikings portent souvent un casque à cornes. C'est une légende ! On n'a jamais retrouvé de casque viking à cornes. Leurs casques étaient ronds, en fer ou en cuir. Les cornes ont été inventées il y a environ {{150|cent cinquante}} ans, pour un opéra."
+    },
+    {
+      "titre": "Les bateaux vikings",
+      "emoji": "⛵",
+      "anim": "flotte",
+      "texte": "Les Vikings étaient de très bons [[navigateur|navigateurs]]. Leurs bateaux étaient longs, fins et légers. Ils avaient une grande voile carrée et des rames. Un bateau de guerre pouvait mesurer environ {{30|trente}} mètres. Il emportait jusqu'à {{60|soixante}} rameurs ! Comme il était léger, il pouvait remonter les rivières."
+    },
+    {
+      "titre": "Une tête de dragon",
+      "emoji": "🐉",
+      "anim": "zoom",
+      "texte": "À l'avant, certains bateaux portaient une tête sculptée, parfois un dragon. Elle servait à faire peur. En France, on appelle souvent ces bateaux des drakkars. Mais les Vikings ne disaient pas ce mot ! Ils les appelaient plutôt des « longs bateaux »."
+    },
+    {
+      "titre": "De grands voyages",
+      "emoji": "🧭",
+      "anim": "tourne",
+      "texte": "Les Vikings sont allés très loin. Ils ont voyagé jusqu'en France, en Angleterre et en Russie. Ils ont découvert l'Islande et le Groenland. Vers l'an {{1000|mille}}, Leif Erikson est arrivé en Amérique ! C'était environ {{500|cinq cents}} ans avant Christophe Colomb."
+    },
+    {
+      "titre": "La Normandie",
+      "emoji": "🏰",
+      "anim": "balance",
+      "texte": "En France, des Vikings se sont installés près de la mer. En {{911|neuf cent onze}}, le roi de France a donné une région à leur chef, Rollon. Cette région est devenue la Normandie. Ce nom veut dire « le pays des hommes du Nord »."
+    },
+    {
+      "titre": "Le village",
+      "emoji": "🏠",
+      "anim": "flotte",
+      "texte": "Dans un village viking, les familles vivaient dans de longues maisons en bois. Une maison mesurait souvent plus de {{20|vingt}} mètres de long. Au milieu, un feu brûlait toute la journée. Il servait à cuisiner et à se chauffer. L'hiver, les animaux dormaient parfois au bout de la maison."
+    },
+    {
+      "titre": "Le travail de chacun",
+      "emoji": "🐑",
+      "anim": "rebond",
+      "texte": "Les hommes cultivaient les champs, pêchaient et chassaient. Les femmes tissaient la laine et dirigeaient la ferme. Quand les hommes partaient en voyage, elles s'occupaient de tout ! Les forgerons fabriquaient des outils et des épées. Les enfants aidaient aux travaux."
+    },
+    {
+      "titre": "Les dieux vikings",
+      "emoji": "⚡",
+      "anim": "zoom",
+      "texte": "Les Vikings croyaient en plusieurs dieux. Odin était le chef des dieux. Il n'avait qu'un œil. Il avait {{2|deux}} corbeaux qui lui racontaient tout ce qui se passait. Thor était le dieu du tonnerre, avec son marteau magique. Selon les légendes, les guerriers courageux allaient au Valhalla après leur mort."
+    },
+    {
+      "titre": "Les runes",
+      "emoji": "🪨",
+      "anim": "tourne",
+      "texte": "Les Vikings écrivaient avec des [[rune|runes]]. Ce sont des lettres faites de traits droits, faciles à graver. Leur alphabet avait {{16|seize}} runes. En Scandinavie, on trouve encore des pierres gravées de runes. Il en existe environ {{3000|trois mille}} !"
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Sur un bateau, il y a 30 rameurs de chaque côté. Combien de rameurs en tout ?",
+      "aide": "30 + 30 = ?",
+      "choix": [
+        "60",
+        "33",
+        "50"
+      ],
+      "reponse": 0,
+      "explication": "30 plus 30, ça fait 60."
+    },
+    {
+      "type": "calcul",
+      "question": "Un bateau mesure 30 mètres. Une maison viking mesure 20 mètres. Quelle est la différence ?",
+      "aide": "30 − 20 = ?",
+      "choix": [
+        "50 mètres",
+        "10 mètres",
+        "20 mètres"
+      ],
+      "reponse": 1,
+      "explication": "30 moins 20, ça fait 10."
+    },
+    {
+      "type": "calcul",
+      "question": "L'alphabet viking a 16 runes. Tu en connais déjà 8. Combien t'en reste-t-il à apprendre ?",
+      "aide": "16 − 8 = ?",
+      "choix": [
+        "24",
+        "6",
+        "8"
+      ],
+      "reponse": 2,
+      "explication": "16 moins 8, ça fait 8."
+    },
+    {
+      "type": "comprehension",
+      "question": "Les Vikings portaient-ils des casques à cornes ?",
+      "choix": [
+        "Oui, toujours",
+        "Non, c'est une légende",
+        "Seulement les chefs"
+      ],
+      "reponse": 1,
+      "explication": "Leurs casques étaient ronds, sans cornes."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qui est arrivé en Amérique vers l'an 1000 ?",
+      "choix": [
+        "Christophe Colomb",
+        "Rollon",
+        "Leif Erikson"
+      ],
+      "reponse": 2,
+      "explication": "Leif Erikson, environ 500 ans avant Colomb."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qui était Thor ?",
+      "choix": [
+        "Le dieu du tonnerre",
+        "Le chef des Vikings de Normandie",
+        "Le chef de tous les dieux"
+      ],
+      "reponse": 0,
+      "explication": "Thor avait un marteau magique. Le chef des dieux, c'était Odin."
+    },
+    {
+      "type": "comprehension",
+      "question": "Pourquoi le bateau viking pouvait-il remonter les rivières ?",
+      "choix": [
+        "Parce qu'il avait beaucoup de voiles",
+        "Parce qu'il était léger",
+        "Parce qu'il avait une tête de dragon"
+      ],
+      "reponse": 1,
+      "explication": "Il était long, fin et léger."
+    },
+    {
+      "type": "mot",
+      "question": "Que sont les runes ?",
+      "choix": [
+        "Des bateaux vikings",
+        "Des dieux vikings",
+        "Des lettres vikings"
+      ],
+      "reponse": 2,
+      "explication": "Les runes sont les lettres de l'alphabet viking."
+    }
+  ]
+}

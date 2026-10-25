@@ -1,0 +1,212 @@
+{
+  "format": 1,
+  "id": "2026-10-26_volcans",
+  "theme": "nature",
+  "titre": "Les volcans",
+  "emoji": "🌋",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "fondent",
+    "deviennent",
+    "poussent",
+    "entrent",
+    "grandissent",
+    "sortent",
+    "voient",
+    "vivent",
+    "appellent",
+    "étudient",
+    "surveillent",
+    "peuvent",
+    "dorment"
+  ],
+  "mots": [
+    {
+      "mot": "magma",
+      "syllabes": [
+        "mag",
+        "ma"
+      ],
+      "emoji": "🔥",
+      "definition": "De la roche fondue, très chaude, sous la terre.",
+      "exemple": "Le magma est si chaud qu'il est liquide."
+    },
+    {
+      "mot": "cratère",
+      "syllabes": [
+        "cra",
+        "tè",
+        "re"
+      ],
+      "emoji": "🕳️",
+      "definition": "Le grand trou en haut d'un volcan.",
+      "exemple": "De la fumée sort du cratère."
+    },
+    {
+      "mot": "éruption",
+      "syllabes": [
+        "é",
+        "rup",
+        "tion"
+      ],
+      "emoji": "💥",
+      "definition": "Quand un volcan se réveille et crache de la lave, des gaz ou des cendres.",
+      "exemple": "Les gens regardent l'éruption de loin, en sécurité."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Une montagne de feu",
+      "emoji": "🌋",
+      "anim": "rebond",
+      "texte": "Un volcan est une montagne pas comme les autres. Tout au fond, sous la terre, il fait très chaud. Les roches y fondent et deviennent liquides. Cette roche fondue s'appelle le [[magma]]. Parfois, le magma remonte jusqu'en haut du volcan. Alors, le volcan se réveille !"
+    },
+    {
+      "titre": "Pourquoi ça explose ?",
+      "emoji": "💥",
+      "anim": "zoom",
+      "texte": "Le magma contient beaucoup de gaz, comme une bouteille de soda. Quand on secoue le soda, les bulles poussent et ça déborde. Dans le volcan, c'est pareil ! Les gaz poussent le magma vers le haut. Il sort par un trou au sommet : le [[cratère]]. C'est une [[éruption]] !"
+    },
+    {
+      "titre": "La lave brûlante",
+      "emoji": "🔥",
+      "anim": "flotte",
+      "texte": "Quand le magma sort du volcan, on l'appelle la lave. Elle est très chaude : entre {{700|sept cents}} et {{1200|mille deux cents}} degrés ! C'est bien plus chaud qu'un four de cuisine. La lave coule comme une rivière orange. En refroidissant, elle devient noire et dure comme de la pierre."
+    },
+    {
+      "titre": "Combien de volcans ?",
+      "emoji": "🌍",
+      "anim": "tourne",
+      "texte": "Sur la terre ferme, il y a plus de {{1000|mille}} volcans actifs. Actif veut dire qu'il peut encore se réveiller. Beaucoup dorment pendant très longtemps. Chaque année, entre {{50|cinquante}} et {{70|soixante-dix}} volcans entrent en éruption."
+    },
+    {
+      "titre": "Le plus grand volcan",
+      "emoji": "🏔️",
+      "anim": "zoom",
+      "texte": "Le plus grand volcan actif du monde s'appelle le Mauna Loa. Il se trouve à Hawaï, au milieu de l'océan Pacifique. Il est si large qu'il forme la moitié de son île ! Au-dessus de l'eau, il mesure plus de {{4000|quatre mille}} mètres. Mesuré depuis le fond de la mer, il est plus haut que l'Everest !"
+    },
+    {
+      "titre": "Un géant sur Mars",
+      "emoji": "🪐",
+      "anim": "tourne",
+      "texte": "Il existe aussi des volcans sur d'autres planètes ! Sur Mars, il y a l'Olympus Mons. C'est le plus grand volcan connu du système solaire. Il mesure plus de {{20|vingt}} kilomètres de haut. C'est plus de {{2|deux}} fois la hauteur de l'Everest ! Heureusement, il ne crache plus de lave depuis très longtemps."
+    },
+    {
+      "titre": "Des volcans sous la mer",
+      "emoji": "🌊",
+      "anim": "flotte",
+      "texte": "La plupart des volcans sont cachés sous la mer ! On ne les voit pas, mais ils sont très nombreux. Sous l'eau, la lave refroidit très vite. Elle forme des boules arrondies, comme des coussins. Certains volcans grandissent tellement qu'ils sortent de l'eau."
+    },
+    {
+      "titre": "Une île qui naît",
+      "emoji": "🏝️",
+      "anim": "rebond",
+      "texte": "En {{1963|mille neuf cent soixante-trois}}, des pêcheurs voient de la fumée sur la mer. C'est près de l'Islande. Un volcan sous la mer est en éruption ! Très vite, une nouvelle île apparaît : Surtsey. L'éruption dure presque {{4|quatre}} ans. Aujourd'hui, des plantes et des oiseaux vivent sur cette île."
+    },
+    {
+      "titre": "Des volcans en France",
+      "emoji": "🇫🇷",
+      "anim": "balance",
+      "texte": "Il y a aussi des volcans en France ! Le Piton de la Fournaise est sur l'île de La Réunion. C'est l'un des volcans les plus actifs du monde. En Auvergne, il y a environ {{80|quatre-vingts}} volcans. Ils sont endormis depuis des milliers d'années. On peut même se promener dessus !"
+    },
+    {
+      "titre": "Surveiller les volcans",
+      "emoji": "🔭",
+      "anim": "flotte",
+      "texte": "Les scientifiques qui étudient les volcans s'appellent des volcanologues. Ils surveillent les volcans avec des appareils. Comme ça, ils peuvent souvent prévenir les habitants avant une éruption. Les volcans sont aussi utiles : la terre autour est très riche. Les plantes y poussent très bien !"
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Chaque année, entre 50 et 70 volcans entrent en éruption. Quelle est la différence entre 70 et 50 ?",
+      "aide": "70 − 50 = ?",
+      "choix": [
+        "20",
+        "120",
+        "30"
+      ],
+      "reponse": 0,
+      "explication": "70 moins 50, ça fait 20."
+    },
+    {
+      "type": "calcul",
+      "question": "Olympus Mons mesure 20 km. Si on posait deux volcans comme lui l'un sur l'autre, combien mesureraient-ils ?",
+      "aide": "20 + 20 = ?",
+      "choix": [
+        "22 km",
+        "40 km",
+        "200 km"
+      ],
+      "reponse": 1,
+      "explication": "20 plus 20, ça fait 40."
+    },
+    {
+      "type": "calcul",
+      "question": "En Auvergne, il y a environ 80 volcans. Une famille en a déjà visité 6. Combien en reste-t-il à visiter ?",
+      "aide": "80 − 6 = ?",
+      "choix": [
+        "86",
+        "76",
+        "74"
+      ],
+      "reponse": 2,
+      "explication": "80 moins 6, ça fait 74."
+    },
+    {
+      "type": "comprehension",
+      "question": "Pourquoi le magma remonte-t-il dans le volcan ?",
+      "choix": [
+        "Parce que le vent le pousse",
+        "Parce que les gaz le poussent",
+        "Parce que la pluie le chauffe"
+      ],
+      "reponse": 1,
+      "explication": "Les gaz poussent le magma, comme les bulles d'un soda."
+    },
+    {
+      "type": "comprehension",
+      "question": "Où se trouve le Mauna Loa ?",
+      "choix": [
+        "En Islande",
+        "À Hawaï",
+        "En Auvergne"
+      ],
+      "reponse": 1,
+      "explication": "Il est à Hawaï, au milieu de l'océan Pacifique."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que devient la lave en refroidissant ?",
+      "choix": [
+        "Noire et dure comme de la pierre",
+        "Bleue et liquide",
+        "Blanche comme de la neige"
+      ],
+      "reponse": 0,
+      "explication": "La lave froide devient de la roche noire."
+    },
+    {
+      "type": "comprehension",
+      "question": "Où sont cachés la plupart des volcans ?",
+      "choix": [
+        "Sous la glace",
+        "Dans les forêts",
+        "Sous la mer"
+      ],
+      "reponse": 2,
+      "explication": "La plupart des volcans sont sous la mer."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « cratère » ?",
+      "choix": [
+        "Le grand trou en haut du volcan",
+        "De la lave froide",
+        "Un savant qui étudie les volcans"
+      ],
+      "reponse": 0,
+      "explication": "Le cratère, c'est le trou au sommet du volcan."
+    }
+  ]
+}

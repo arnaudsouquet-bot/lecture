@@ -1,0 +1,206 @@
+{
+  "format": 1,
+  "id": "2026-10-26_chevaliers",
+  "theme": "histoire",
+  "titre": "Les chevaliers",
+  "emoji": "🛡️",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "mesuraient",
+    "vivaient",
+    "jouaient",
+    "étaient",
+    "participaient",
+    "galopaient",
+    "servaient"
+  ],
+  "mots": [
+    {
+      "mot": "armure",
+      "syllabes": [
+        "ar",
+        "mu",
+        "re"
+      ],
+      "emoji": "🛡️",
+      "definition": "Un habit en métal qui protège le corps pendant les combats.",
+      "exemple": "Au musée, on peut voir une vieille armure toute brillante."
+    },
+    {
+      "mot": "écuyer",
+      "syllabes": [
+        "é",
+        "cu",
+        "yer"
+      ],
+      "emoji": "🐴",
+      "definition": "Un jeune homme qui aide un chevalier et apprend à le devenir.",
+      "exemple": "L'écuyer brosse le cheval de son maître."
+    },
+    {
+      "mot": "tournoi",
+      "syllabes": [
+        "tour",
+        "noi"
+      ],
+      "emoji": "🏇",
+      "definition": "Une grande fête où des chevaliers s'affrontent pour montrer leur force.",
+      "exemple": "Le roi regarde le tournoi depuis sa tribune."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Au temps des chevaliers",
+      "emoji": "🏰",
+      "anim": "flotte",
+      "texte": "Les chevaliers ont vécu au Moyen Âge. Cette période a duré environ {{1000|mille}} ans. Elle s'est terminée il y a environ {{500|cinq cents}} ans. Un chevalier était un guerrier à cheval. Il servait un seigneur ou un roi. En échange, il recevait souvent des terres."
+    },
+    {
+      "titre": "Le château fort",
+      "emoji": "🏰",
+      "anim": "zoom",
+      "texte": "Le seigneur habitait dans un château fort en pierre. Certains murs mesuraient plus de {{3|trois}} mètres d'épaisseur ! Autour, il y avait souvent un fossé rempli d'eau. Pour entrer, on baissait le pont-levis. La plus haute tour s'appelait le donjon."
+    },
+    {
+      "titre": "La vie au château",
+      "emoji": "🍗",
+      "anim": "balance",
+      "texte": "Dans le château vivaient beaucoup de gens. Il y avait des soldats, des cuisiniers et des servantes. Le soir, on mangeait tous ensemble dans la grande salle. Pendant les fêtes, des musiciens jouaient. Il faisait souvent froid, car les fenêtres étaient petites."
+    },
+    {
+      "titre": "L'armure",
+      "emoji": "🛡️",
+      "anim": "rebond",
+      "texte": "Pour se protéger, le chevalier portait une [[armure]]. Au début, c'était une cotte de mailles. Elle était faite de milliers de petits anneaux de fer. Plus tard, on a fabriqué des armures en plaques de métal. Une armure complète pesait environ {{25|vingt-cinq}} kilos. C'est à peu près le poids d'un enfant de {{8|huit}} ans !"
+    },
+    {
+      "titre": "Le blason",
+      "emoji": "🦁",
+      "anim": "tourne",
+      "texte": "Avec son casque fermé, on ne voyait pas le visage du chevalier. Comment le reconnaître ? Grâce à son blason ! C'était un dessin avec des couleurs et parfois des animaux. On le peignait sur le bouclier. Le lion et l'aigle étaient très appréciés."
+    },
+    {
+      "titre": "D'abord, être page",
+      "emoji": "👦",
+      "anim": "balance",
+      "texte": "Devenir chevalier prenait de longues années. Vers {{7|sept}} ans, un garçon noble partait chez un seigneur. Il devenait page. Il apprenait à servir à table et à monter à cheval. Il apprenait aussi les bonnes manières."
+    },
+    {
+      "titre": "Ensuite, être écuyer",
+      "emoji": "🐴",
+      "anim": "rebond",
+      "texte": "Vers {{14|quatorze}} ans, le page devenait [[écuyer]]. L'écuyer aidait un chevalier. Il soignait ses chevaux et nettoyait son armure. Il l'aidait à s'habiller avant les combats. Chaque jour, il s'entraînait avec l'épée et la lance."
+    },
+    {
+      "titre": "Enfin, chevalier !",
+      "emoji": "⚔️",
+      "anim": "zoom",
+      "texte": "Vers {{20|vingt}} ans, l'écuyer pouvait enfin devenir chevalier. C'était une grande fête, appelée l'adoubement. Le seigneur lui donnait une épée. Parfois, il lui touchait l'épaule avec son épée. Le nouveau chevalier promettait d'être courageux et loyal."
+    },
+    {
+      "titre": "Les tournois",
+      "emoji": "🏇",
+      "anim": "flotte",
+      "texte": "Pour s'entraîner, les chevaliers participaient à des [[tournoi|tournois]]. C'étaient de grandes fêtes, avec du public. Dans une joute, {{2|deux}} chevaliers galopaient l'un vers l'autre. Chacun tenait une longue lance en bois. Le but : faire tomber l'autre de son cheval ! Une lance mesurait souvent plus de {{3|trois}} mètres."
+    },
+    {
+      "titre": "La fin des chevaliers",
+      "emoji": "🏯",
+      "anim": "balance",
+      "texte": "Peu à peu, les armes à feu ont changé la guerre. Les armures ne servaient plus à grand-chose. Les chevaliers en armure ont donc disparu. Mais en France, il reste des centaines de châteaux forts. On peut les visiter ! Les chevaliers font encore rêver petits et grands."
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Un garçon devient page à 7 ans et écuyer à 14 ans. Combien d'années reste-t-il page ?",
+      "aide": "14 − 7 = ?",
+      "choix": [
+        "7 ans",
+        "21 ans",
+        "6 ans"
+      ],
+      "reponse": 0,
+      "explication": "14 moins 7, ça fait 7."
+    },
+    {
+      "type": "calcul",
+      "question": "Il y a 3 joutes. Dans chaque joute, il y a 2 chevaliers. Combien de chevaliers en tout ?",
+      "aide": "🏇🏇 + 🏇🏇 + 🏇🏇",
+      "choix": [
+        "5",
+        "6",
+        "8"
+      ],
+      "reponse": 1,
+      "explication": "2 plus 2 plus 2, ça fait 6."
+    },
+    {
+      "type": "calcul",
+      "question": "Une armure pèse 25 kilos. Combien pèsent 2 armures ?",
+      "aide": "25 + 25 = ?",
+      "choix": [
+        "45 kilos",
+        "27 kilos",
+        "50 kilos"
+      ],
+      "reponse": 2,
+      "explication": "25 plus 25, ça fait 50."
+    },
+    {
+      "type": "comprehension",
+      "question": "Comment s'appelait la plus haute tour du château ?",
+      "choix": [
+        "Le pont-levis",
+        "Le donjon",
+        "Le blason"
+      ],
+      "reponse": 1,
+      "explication": "Le donjon est la plus haute tour."
+    },
+    {
+      "type": "comprehension",
+      "question": "À quoi servait le blason ?",
+      "choix": [
+        "À reconnaître le chevalier",
+        "À ouvrir le pont-levis",
+        "À protéger la tête"
+      ],
+      "reponse": 0,
+      "explication": "Avec le casque fermé, le blason disait qui était dessous."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que faisait l'écuyer ?",
+      "choix": [
+        "Il cuisinait pour le roi",
+        "Il peignait les boucliers",
+        "Il aidait un chevalier"
+      ],
+      "reponse": 2,
+      "explication": "Il soignait ses chevaux et nettoyait son armure."
+    },
+    {
+      "type": "comprehension",
+      "question": "Dans une joute, quel était le but ?",
+      "choix": [
+        "Faire tomber l'autre de son cheval",
+        "Arriver le premier au château",
+        "Lancer sa lance le plus loin"
+      ],
+      "reponse": 0,
+      "explication": "Les deux chevaliers galopaient l'un vers l'autre avec une lance."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « écuyer » ?",
+      "choix": [
+        "Un roi très riche",
+        "Un jeune qui aide un chevalier",
+        "Un cheval de course"
+      ],
+      "reponse": 1,
+      "explication": "L'écuyer aide un chevalier et apprend à le devenir."
+    }
+  ]
+}

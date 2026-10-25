@@ -5,7 +5,7 @@
   "titre": "Le cœur",
   "emoji": "❤️",
   "auteur": "Claude (exemple, à relire)",
-  "verbes_ent": ["partent", "feraient", "ferment", "laissent"],
+  "verbes_ent": ["partent", "feraient", "ferment", "laissent", "appellent"],
   "mots": [
     { "mot": "muscle", "syllabes": ["mus", "cle"], "emoji": "💪",
       "definition": "Une partie du corps qui se serre et se relâche pour faire bouger.",

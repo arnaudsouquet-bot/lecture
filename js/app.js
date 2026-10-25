@@ -6,7 +6,7 @@ import { brancherPanneauAa, session } from "./session.js";
 import { taire } from "./voix.js";
 import { $ } from "./outils.js";
 import accueil from "./ecrans/accueil.js";
-import envies from "./ecrans/envies.js";
+import envies, { articlesDuTheme } from "./ecrans/envies.js";
 import questionnaire from "./ecrans/questionnaire.js";
 import lecture from "./ecrans/lecture.js";
 import mots from "./ecrans/mots.js";
@@ -18,7 +18,7 @@ import { maths, calcul, problemes, lireNombres } from "./ecrans/maths.js";
 import bravo from "./ecrans/bravo.js";
 
 const ECRANS = {
-  accueil, envies, questionnaire, lecture, mots, nombres, questions, recompense, parent,
+  accueil, envies, articles: articlesDuTheme, questionnaire, lecture, mots, nombres, questions, recompense, parent,
   memoire, reviser: reviserMots, paires, retiens, maths, calcul, problemes, "lire-nombres": lireNombres, bravo
 };
 // écrans qui demandent une lecture en cours

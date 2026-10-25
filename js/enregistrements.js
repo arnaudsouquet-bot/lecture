@@ -4,7 +4,7 @@ import { ajouterEnregistrements } from "./voix.js";
 const fichiers = {}; // dossier (« commun » ou id d'article) → adresses des fichiers audio
 
 export async function chargerEnregistrements(dossiers) {
-  await Promise.all(["commun", ...dossiers].map(async d => {
+  await Promise.all(["commun", "mots", ...dossiers].map(async d => {
     const base = `fiches/audio/${d}/`;
     try {
       const r = await fetch(base + "index.json");
@@ -21,7 +21,7 @@ export const estEnregistre = id => !!fichiers[id];
 // télécharge les fichiers manquants : le service worker les garde (cache « lecture-audio »)
 export async function mettreHorsLigne(dossiers) {
   if (!("caches" in window)) return;
-  const urls = ["commun", ...dossiers].flatMap(d => fichiers[d] || []);
+  const urls = ["commun", "mots", ...dossiers].flatMap(d => fichiers[d] || []);
   const manquants = [];
   for (const u of urls) if (!(await caches.match(new URL(u, location.href).href))) manquants.push(u);
   let i = 0;

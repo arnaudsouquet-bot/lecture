@@ -1,0 +1,208 @@
+{
+  "format": 1,
+  "id": "2026-10-26_electricite",
+  "theme": "sciences",
+  "titre": "L'électricité",
+  "emoji": "⚡",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "marchent",
+    "tournent",
+    "produisent",
+    "mesurent",
+    "changent",
+    "chargent",
+    "transforment",
+    "fabriquent",
+    "étaient"
+  ],
+  "mots": [
+    {
+      "mot": "énergie",
+      "syllabes": [
+        "é",
+        "ner",
+        "gie"
+      ],
+      "emoji": "🔋",
+      "definition": "Ce qui permet de bouger, de chauffer, d'éclairer ou de faire marcher les machines.",
+      "exemple": "Après le goûter, j'ai plein d'énergie pour courir."
+    },
+    {
+      "mot": "centrale",
+      "syllabes": [
+        "cen",
+        "tra",
+        "le"
+      ],
+      "emoji": "🏭",
+      "definition": "Une très grande usine qui fabrique de l'électricité.",
+      "exemple": "La centrale est construite au bord du fleuve."
+    },
+    {
+      "mot": "éclair",
+      "syllabes": [
+        "é",
+        "clair"
+      ],
+      "emoji": "🌩️",
+      "definition": "Une grande lumière qui traverse le ciel pendant un orage.",
+      "exemple": "Un éclair a illuminé toute la montagne."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Une énergie précieuse",
+      "emoji": "💡",
+      "anim": "zoom",
+      "texte": "Tu allumes la lumière, tu regardes un dessin animé, tu charges une tablette. Tout cela marche grâce à l'électricité ! L'électricité est une [[énergie]]. Elle donne de la force aux machines. Sans elle, les lampes, les frigos et les ordinateurs ne marchent pas."
+    },
+    {
+      "titre": "D'où vient l'électricité ?",
+      "emoji": "🏭",
+      "anim": "tourne",
+      "texte": "L'électricité est fabriquée dans une [[centrale]]. C'est une très grande usine. Là-bas, de grosses roues tournent très vite. En tournant, elles produisent du courant électrique. Ce courant voyage ensuite dans des câbles, jusqu'à ta maison."
+    },
+    {
+      "titre": "Le vent, l'eau et le soleil",
+      "emoji": "🌬️",
+      "anim": "tourne",
+      "texte": "Pour faire tourner les roues, on peut utiliser l'eau, le vent ou la chaleur. Une éolienne a de grandes pales qui tournent avec le vent. Certaines pales mesurent plus de {{50|cinquante}} mètres ! Les panneaux solaires, eux, changent la lumière du soleil en électricité."
+    },
+    {
+      "titre": "Dans les murs",
+      "emoji": "🔌",
+      "anim": "balance",
+      "texte": "Le courant arrive chez toi par des fils cachés dans les murs. Il sort par les prises. Dans une prise en France, il y a {{230|deux cent trente}} volts. C'est beaucoup trop fort pour notre corps ! Autour des fils, il y a du plastique. Le plastique bloque le courant et nous protège."
+    },
+    {
+      "titre": "Les éclairs",
+      "emoji": "🌩️",
+      "anim": "zoom",
+      "texte": "Un [[éclair]], c'est de l'électricité dans le ciel ! Pendant un orage, les nuages se chargent d'électricité. Puis, d'un coup, une énorme étincelle jaillit. L'éclair est très chaud : environ {{30 000|trente mille}} degrés. C'est plus chaud que la surface du Soleil !"
+    },
+    {
+      "titre": "Le tonnerre",
+      "emoji": "🔊",
+      "anim": "rebond",
+      "texte": "L'éclair chauffe l'air si fort que l'air gonfle d'un coup. Boum ! C'est le tonnerre. On voit l'éclair avant d'entendre le tonnerre, car la lumière va plus vite que le son. Compte les secondes entre les deux. Pour {{3|trois}} secondes, l'orage est à environ {{1|un}} kilomètre."
+    },
+    {
+      "titre": "Comment marche une pile ?",
+      "emoji": "🔋",
+      "anim": "tourne",
+      "texte": "Une pile garde de l'électricité en réserve. À l'intérieur, il y a des produits chimiques. Quand on l'utilise, ces produits se transforment et fabriquent du courant. Une pile a {{2|deux}} bouts : le plus et le moins. Attention : on ne met jamais une pile dans la bouche !"
+    },
+    {
+      "titre": "La toute première pile",
+      "emoji": "🥞",
+      "anim": "flotte",
+      "texte": "La première pile a été inventée en {{1800|mille huit cents}}. Son inventeur était un savant italien, Alessandro Volta. Sa pile était faite de petits disques de métal, posés les uns sur les autres. Ils étaient empilés, comme des crêpes ! C'est pour ça qu'on l'appelle une pile."
+    },
+    {
+      "titre": "Attention, danger !",
+      "emoji": "⚠️",
+      "anim": "balance",
+      "texte": "L'électricité est très utile, mais elle peut être dangereuse. Ne mets jamais les doigts ou un objet dans une prise. Ne touche jamais un appareil électrique avec les mains mouillées. Ne t'approche jamais d'un fil tombé par terre. Si un câble est abîmé, préviens tout de suite un adulte."
+    },
+    {
+      "titre": "Pendant l'orage",
+      "emoji": "⛈️",
+      "anim": "flotte",
+      "texte": "Pendant un orage, le plus sûr est de rester dans une maison. Ne t'abrite pas sous un grand arbre. La foudre tombe souvent sur ce qui est haut. Si tu te baignes, sors vite de l'eau. Une voiture bien fermée protège aussi. Après {{30|trente}} minutes sans tonnerre, l'orage est parti."
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Pour 3 secondes, l'orage est à 1 kilomètre. Tu comptes 6 secondes. À combien de kilomètres est l'orage ?",
+      "aide": "3 + 3 = 6 secondes, alors 1 + 1 = ? kilomètres",
+      "choix": [
+        "2 km",
+        "3 km",
+        "6 km"
+      ],
+      "reponse": 0,
+      "explication": "6 secondes, c'est 2 fois 3 secondes : 2 kilomètres."
+    },
+    {
+      "type": "calcul",
+      "question": "Une lampe de poche a besoin de 2 piles. Combien de piles pour 3 lampes ?",
+      "aide": "🔋🔋 + 🔋🔋 + 🔋🔋",
+      "choix": [
+        "5",
+        "8",
+        "6"
+      ],
+      "reponse": 2,
+      "explication": "2 plus 2 plus 2, ça fait 6."
+    },
+    {
+      "type": "calcul",
+      "question": "Il faut attendre 30 minutes sans tonnerre. Tu as déjà attendu 20 minutes. Combien de minutes encore ?",
+      "aide": "30 − 20 = ?",
+      "choix": [
+        "50 minutes",
+        "10 minutes",
+        "20 minutes"
+      ],
+      "reponse": 1,
+      "explication": "30 moins 20, ça fait 10."
+    },
+    {
+      "type": "comprehension",
+      "question": "Où l'électricité est-elle fabriquée ?",
+      "choix": [
+        "Dans les prises",
+        "Dans une centrale",
+        "Dans les murs"
+      ],
+      "reponse": 1,
+      "explication": "Une centrale est une très grande usine à électricité."
+    },
+    {
+      "type": "comprehension",
+      "question": "Pourquoi voit-on l'éclair avant d'entendre le tonnerre ?",
+      "choix": [
+        "Parce que le tonnerre fait moins de bruit",
+        "Parce que l'éclair arrive en premier dans le ciel",
+        "Parce que la lumière va plus vite que le son"
+      ],
+      "reponse": 2,
+      "explication": "La lumière arrive presque tout de suite, le son met plus de temps."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que faut-il faire si un câble est abîmé ?",
+      "choix": [
+        "Prévenir tout de suite un adulte",
+        "Le réparer tout seul",
+        "Le cacher sous un tapis"
+      ],
+      "reponse": 0,
+      "explication": "On ne touche pas : on prévient un adulte."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qui a inventé la première pile ?",
+      "choix": [
+        "Archimède",
+        "Louis Pasteur",
+        "Alessandro Volta"
+      ],
+      "reponse": 2,
+      "explication": "Alessandro Volta, un savant italien, en 1800."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « centrale » ?",
+      "choix": [
+        "Une très grande usine qui fabrique l'électricité",
+        "Un fil caché dans le mur",
+        "Un gros nuage d'orage"
+      ],
+      "reponse": 0,
+      "explication": "La centrale fabrique l'électricité."
+    }
+  ]
+}

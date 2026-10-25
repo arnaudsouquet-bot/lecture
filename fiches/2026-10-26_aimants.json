@@ -1,0 +1,212 @@
+{
+  "format": 1,
+  "id": "2026-10-26_aimants",
+  "theme": "sciences",
+  "titre": "Les aimants",
+  "emoji": "🧲",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "attirent",
+    "collent",
+    "repoussent",
+    "regardent",
+    "additionnent",
+    "servent",
+    "flottent",
+    "soulèvent",
+    "frottent",
+    "glissent",
+    "tiennent",
+    "ferment",
+    "utilisaient"
+  ],
+  "mots": [
+    {
+      "mot": "attirer",
+      "syllabes": [
+        "at",
+        "ti",
+        "rer"
+      ],
+      "emoji": "🫴",
+      "definition": "Tirer quelque chose vers soi.",
+      "exemple": "L'odeur du gâteau attire toute la famille dans la cuisine."
+    },
+    {
+      "mot": "pôle",
+      "syllabes": [
+        "pô",
+        "le"
+      ],
+      "emoji": "🔴",
+      "definition": "Un des deux bouts d'un aimant.",
+      "exemple": "Sur mon aimant, le pôle nord est peint en rouge."
+    },
+    {
+      "mot": "boussole",
+      "syllabes": [
+        "bous",
+        "so",
+        "le"
+      ],
+      "emoji": "🧭",
+      "definition": "Un petit objet avec une aiguille qui montre toujours le nord.",
+      "exemple": "En randonnée, nous avons pris une carte et une boussole."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Une force invisible",
+      "emoji": "🧲",
+      "anim": "zoom",
+      "texte": "Approche un aimant d'un trombone. Hop ! Le trombone saute et se colle à l'aimant. Un aimant peut [[attirer]] certains objets sans les toucher. C'est une force invisible, qu'on appelle le magnétisme. On ne la voit pas, mais on sent qu'elle tire !"
+    },
+    {
+      "titre": "Qu'est-ce qu'il attire ?",
+      "emoji": "📎",
+      "anim": "balance",
+      "texte": "Un aimant n'attire pas tout. Il attire surtout le fer, et l'acier, qui contient du fer. Il attire aussi deux autres métaux : le nickel et le cobalt. Mais il n'attire pas le bois, le plastique, le papier ou le verre. Même certaines pièces de monnaie ne collent pas !"
+    },
+    {
+      "titre": "Deux pôles",
+      "emoji": "🔴",
+      "anim": "rebond",
+      "texte": "Chaque aimant a {{2|deux}} bouts, appelés les [[pôle|pôles]] : le pôle nord et le pôle sud. Approche deux pôles différents : ils s'attirent et se collent. Approche deux pôles pareils : ils se repoussent ! Tu sens alors l'aimant qui pousse, comme un ressort invisible."
+    },
+    {
+      "titre": "Pourquoi ça marche ?",
+      "emoji": "✨",
+      "anim": "tourne",
+      "texte": "Dans le fer, il y a des milliards de minuscules morceaux. Chacun est comme un tout petit aimant. Dans un aimant, ils regardent tous dans la même direction. Leurs forces s'additionnent, et l'aimant devient puissant. Dans un clou ordinaire, ils sont en désordre."
+    },
+    {
+      "titre": "La Terre est un aimant",
+      "emoji": "🌍",
+      "anim": "tourne",
+      "texte": "Notre planète aussi est un aimant géant ! Au cœur de la Terre, il y a beaucoup de fer très chaud qui bouge. Ce fer crée une force magnétique tout autour de la planète. Le centre de la Terre est à plus de {{6000|six mille}} kilomètres sous nos pieds."
+    },
+    {
+      "titre": "La boussole",
+      "emoji": "🧭",
+      "anim": "balance",
+      "texte": "Une [[boussole]] a une aiguille aimantée qui peut tourner. Grâce à l'aimant de la Terre, l'aiguille montre toujours le nord. Les marins s'en servent pour trouver leur chemin en mer. Les Chinois l'utilisaient déjà pour naviguer il y a environ {{900|neuf cents}} ans."
+    },
+    {
+      "titre": "Les trains qui flottent",
+      "emoji": "🚄",
+      "anim": "flotte",
+      "texte": "Il existe des trains qui flottent au-dessus de la voie ! On les appelle des trains Maglev. De puissants aimants les soulèvent. Au Japon, un train d'essai flotte à environ {{10|dix}} centimètres de la voie. Comme ces trains ne frottent pas, ils glissent très vite."
+    },
+    {
+      "titre": "Un record de vitesse",
+      "emoji": "🏁",
+      "anim": "zoom",
+      "texte": "En {{2015|deux mille quinze}}, ce train japonais a battu un record. Il a roulé à {{603|six cent trois}} kilomètres par heure ! Aucun train n'est jamais allé aussi vite. C'est plus de {{4|quatre}} fois plus rapide qu'une voiture sur l'autoroute."
+    },
+    {
+      "titre": "Des aimants dans la maison",
+      "emoji": "🏠",
+      "anim": "rebond",
+      "texte": "Il y a des aimants partout chez toi ! Ils tiennent les dessins sur la porte du frigo. Ils ferment aussi cette porte, grâce à un joint aimanté. On en trouve dans les haut-parleurs, les écouteurs et beaucoup de moteurs. Même ta tablette en cache quelques-uns !"
+    },
+    {
+      "titre": "Attention aux aimants",
+      "emoji": "⚠️",
+      "anim": "balance",
+      "texte": "Les aimants sont amusants, mais il faut faire attention. Un aimant ne va jamais dans la bouche : c'est très dangereux si on l'avale. Garde les petits aimants loin des plus petits enfants. Ne les pose pas sur une carte bancaire. Avec {{2|deux}} aimants et un adulte, tu peux faire plein de jeux !"
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Un aimant a 2 pôles. Combien de pôles ont 4 aimants ?",
+      "aide": "🧲🧲🧲🧲 : 2 + 2 + 2 + 2 = ?",
+      "choix": [
+        "6",
+        "8",
+        "4"
+      ],
+      "reponse": 1,
+      "explication": "2 plus 2 plus 2 plus 2, ça fait 8."
+    },
+    {
+      "type": "calcul",
+      "question": "Le train flotte à 10 centimètres de la voie. S'il montait encore de 10 centimètres, à quelle hauteur serait-il ?",
+      "aide": "10 + 10 = ?",
+      "choix": [
+        "20 cm",
+        "11 cm",
+        "100 cm"
+      ],
+      "reponse": 0,
+      "explication": "10 plus 10, ça fait 20."
+    },
+    {
+      "type": "calcul",
+      "question": "Tu as 2 aimants. Ton ami en a 5 de plus que toi. Combien d'aimants a ton ami ?",
+      "aide": "2 + 5 = ?",
+      "choix": [
+        "3",
+        "10",
+        "7"
+      ],
+      "reponse": 2,
+      "explication": "2 plus 5, ça fait 7."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que font deux pôles pareils quand on les approche ?",
+      "choix": [
+        "Ils se repoussent",
+        "Ils s'attirent",
+        "Ils se collent"
+      ],
+      "reponse": 0,
+      "explication": "Deux pôles pareils se repoussent."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que montre toujours l'aiguille d'une boussole ?",
+      "choix": [
+        "Le sud",
+        "La mer",
+        "Le nord"
+      ],
+      "reponse": 2,
+      "explication": "Grâce à l'aimant de la Terre, elle montre le nord."
+    },
+    {
+      "type": "comprehension",
+      "question": "Quel matériau un aimant attire-t-il ?",
+      "choix": [
+        "Le bois",
+        "Le fer",
+        "Le plastique"
+      ],
+      "reponse": 1,
+      "explication": "Il attire le fer, et l'acier qui contient du fer."
+    },
+    {
+      "type": "comprehension",
+      "question": "Pourquoi le train Maglev glisse-t-il très vite ?",
+      "choix": [
+        "Il a de très grandes roues",
+        "Il roule sur de la glace",
+        "Il ne frotte pas sur la voie"
+      ],
+      "reponse": 2,
+      "explication": "Il flotte grâce aux aimants, donc il ne frotte pas."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « attirer » ?",
+      "choix": [
+        "Pousser loin de soi",
+        "Tirer vers soi",
+        "Casser en morceaux"
+      ],
+      "reponse": 1,
+      "explication": "Attirer, c'est tirer vers soi."
+    }
+  ]
+}
