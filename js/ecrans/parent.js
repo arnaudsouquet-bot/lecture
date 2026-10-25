@@ -58,7 +58,7 @@ function afficherParent(ecran) {
         <div class="ligne"><span>Reste à verser</span><b>${euros(resteAVerser(semaine))}</b></div>
         ${versements.map(v => `<div class="ligne petit-gris"><span>Versé le ${dateCourte(v.date)}</span><span>${euros(v.montant)}</span></div>`).join("")}
         <div class="actions"><button class="mini plein" id="payer" ${resteAVerser(semaine) ? "" : "disabled"}>Marquer ${euros(resteAVerser(semaine))} comme payé</button></div>
-        <p class="petit-gris">Règle (hypothèse, à confirmer) : ${POINTS_PREMIER_ESSAI} points par bonne réponse du 1er coup, ${POINTS_DEUXIEME_ESSAI} au 2ᵉ ;
+        <p class="petit-gris">Règle : ${POINTS_PREMIER_ESSAI} points par bonne réponse du 1er coup, ${POINTS_DEUXIEME_ESSAI} au 2ᵉ ;
           1 point = ${euros(EUROS_PAR_POINT)} ; maximum ${PLAFOND_EUROS} € par semaine ; seul le 1er article du jour rapporte. Modifiable dans <code>js/config.js</code>.</p>
       </div>
 

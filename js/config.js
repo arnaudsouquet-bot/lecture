@@ -1,12 +1,12 @@
-// Réglages de l'app. Les valeurs marquées HYPOTHÈSE sont des propositions à valider par les parents.
+// Réglages de l'app. Les valeurs marquées HYPOTHÈSE sont des propositions ; les autres ont été décidées par les parents.
 
-// argent de poche, maximum 5 €
-export const PLAFOND_EUROS = 5;            // HYPOTHÈSE : par semaine (lundi → dimanche)
-export const EUROS_PAR_POINT = 0.05;       // HYPOTHÈSE : 1 point = 0,05 €
-export const POINTS_PREMIER_ESSAI = 2;     // HYPOTHÈSE
-export const POINTS_DEUXIEME_ESSAI = 1;    // HYPOTHÈSE
-export const ESSAIS_PAR_QUESTION = 2;      // HYPOTHÈSE : ensuite la réponse est montrée et expliquée
-export const UN_SEUL_ARTICLE_PAYE_PAR_JOUR = true; // HYPOTHÈSE
+// argent de poche (décidé le 2026-10-25)
+export const PLAFOND_EUROS = 5;            // maximum par semaine (lundi → dimanche)
+export const EUROS_PAR_POINT = 0.05;       // 1 point = 0,05 €
+export const POINTS_PREMIER_ESSAI = 2;     // bonne réponse du 1er coup
+export const POINTS_DEUXIEME_ESSAI = 1;    // bonne réponse au 2e essai
+export const ESSAIS_PAR_QUESTION = 2;      // ensuite la réponse est montrée et expliquée
+export const UN_SEUL_ARTICLE_PAYE_PAR_JOUR = true; // les articles suivants se lisent pour le plaisir
 
 // Répétition espacée (boîtes de Leitner) : jours avant la prochaine révision, par boîte
 export const INTERVALLES_JOURS = [1, 2, 4, 7, 14]; // HYPOTHÈSE
