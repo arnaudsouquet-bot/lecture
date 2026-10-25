@@ -1,0 +1,17 @@
+{
+  "name": "Lecture du jour",
+  "short_name": "Lecture",
+  "description": "Un article par jour sur ce qu'il aime, 3 mots, des nombres et une récompense.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f1e3",
+  "theme_color": "#f7f1e3",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

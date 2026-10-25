@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lecture du jour</title>
+<meta name="description" content="Lecture du jour : un article sur ce qu'il aime, 3 mots, des nombres et une récompense.">
+<meta name="theme-color" content="#f7f1e3">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lecture">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<main id="app"><div class="vide">Chargement…</div></main>
+
+<!-- Panneau « Aa » : réglages de lecture que l'enfant choisit lui-même -->
+<div class="voile" id="voile-aa">
+  <div class="carte aa">
+    <h2>Aa · Mes réglages de lecture</h2>
+    <div class="reglage"><span>Syllabes en couleur <span class="exemple"><span class="sa">ca</span><span class="sb">mé</span><span class="sa">lé</span><span class="sb">on</span></span></span><button class="inter" data-r="syl" aria-label="Syllabes en couleur"></button></div>
+    <div class="reglage"><span>Lettres muettes en gris <span class="exemple">peti<span class="mu">t</span>, gran<span class="mu">d</span></span></span><button class="inter" data-r="muet" aria-label="Lettres muettes en gris"></button></div>
+    <div class="reglage"><span>b d p q en couleur <span class="exemple"><b style="color:#c0392b">b</b> <b style="color:#1e8449">d</b> <b style="color:#7d3c98">p</b> <b style="color:#d35400">q</b></span></span><button class="inter" data-r="bdpq" aria-label="b d p q en couleur"></button></div>
+    <div class="reglage"><span>Règle : une phrase à la fois</span><button class="inter" data-r="regle" aria-label="Règle de lecture"></button></div>
+    <div class="reglage"><span>Lettres plus espacées</span><button class="inter" data-r="large" aria-label="Lettres plus espacées"></button></div>
+    <div class="reglage"><span>Taille du texte</span><span style="display:flex;gap:10px;align-items:center"><button class="bouton clair petit" id="taille-moins">A−</button><b id="taille-val">28</b><button class="bouton clair petit" id="taille-plus">A+</button></span></div>
+    <div class="reglage" style="border:none"><span>Couleur du fond</span><span style="display:flex;gap:12px" id="pastilles"></span></div>
+    <div style="text-align:right;margin-top:14px"><button class="bouton petit" id="fermer-aa">C'est bon ✔</button></div>
+  </div>
+</div>
+
+<div class="bulle" id="bulle"></div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
