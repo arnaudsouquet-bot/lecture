@@ -4,7 +4,8 @@ import { THEMES, ANGLES } from "../config.js";
 import { lire, ecrire } from "../store.js";
 import { articlesDisponibles, dejaLu } from "../articles.js";
 import { aller, nommer } from "../session.js";
-import { dire } from "../voix.js";
+import { dire, direSuite } from "../voix.js";
+import { PHRASES } from "../phrases.js";
 import { commencerArticle } from "./envies.js";
 import { $, $$, esc, jour, etapes } from "../outils.js";
 
@@ -90,9 +91,10 @@ export default function questionnaire(ecran) {
     } else {
       const theme = THEMES.find(x => x.cle === r.theme);
       const sujet = r.sujet || r.idee;
-      const phrase = `Tu aimerais lire sur : ${sujet}.`
-        + (r.angles.length ? ` Ce qui t'intéresse : ${r.angles.join(", et ")}.` : "")
-        + (r.sujet && r.idee ? ` Ton idée : ${r.idee}.` : "");
+      // résumé dit en morceaux déjà enregistrés ; seule l'idée tapée par l'enfant passe par la voix de l'appareil
+      const resume = [PHRASES.resumeSujet, sujet,
+        ...(r.angles.length ? [PHRASES.resumeAngles, ...r.angles.flatMap((x, i) => (i ? [PHRASES.et, x] : [x]))] : []),
+        ...(r.sujet && r.idee ? [PHRASES.resumeIdee, r.idee] : [])].map(texte => ({ texte }));
       ecran.innerHTML = `
         <div class="entete"><h1>C'est bien ça ?</h1></div>
         <div class="carte resume-envie lisible" style="flex:1;display:flex;flex-direction:column;justify-content:center">
@@ -106,7 +108,7 @@ export default function questionnaire(ecran) {
           <button class="bouton clair petit" id="changer">✏️ Changer</button>
           <button class="bouton vert fin" id="envoyer">Envoyer à mes parents ✉️</button>
         </div>`;
-      $("#ecouter", ecran).onclick = e => dire(phrase, { bouton: e.currentTarget });
+      $("#ecouter", ecran).onclick = e => direSuite(resume, { bouton: e.currentTarget });
       $("#changer", ecran).onclick = () => { etape = 1; afficherEtape(); };
       $("#envoyer", ecran).onclick = async () => {
         await ecrire("envies", [...lire("envies", []), {
@@ -130,7 +132,7 @@ export default function questionnaire(ecran) {
           <button class="bouton clair" id="autres">Voir les articles</button>
         </div>
       </div>`;
-    dire(`${nommer("Merci")} ! Tes parents vont te préparer un article.`);
+    dire(PHRASES.merci);
     if (a) $("#lire", ecran).onclick = () => commencerArticle(a);
     $("#autres", ecran).onclick = () => aller("envies");
   }

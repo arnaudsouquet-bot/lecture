@@ -4,6 +4,7 @@ import { articlesDisponibles, dejaLu } from "../articles.js";
 import { articlePayeAujourdhui } from "../progres.js";
 import { aller, majSession } from "../session.js";
 import { dire } from "../voix.js";
+import { PHRASES, remplir } from "../phrases.js";
 import { $, $$, esc } from "../outils.js";
 
 export async function commencerArticle(a) {
@@ -36,12 +37,12 @@ export default function envies(ecran) {
       <button class="tuile idee" id="idee"><span class="emo">💡</span><span class="nom">J'ai envie d'autre chose</span><span class="sous">Dis-nous ce que tu aimes</span></button>
     </div>`;
 
-  $("#dire-titre", ecran).onclick = e => dire("Qu'est-ce qui te fait envie aujourd'hui ?", { bouton: e.currentTarget });
+  $("#dire-titre", ecran).onclick = e => dire(PHRASES.envie, { bouton: e.currentTarget });
   $("#retour", ecran).onclick = () => aller("accueil");
-  $("#idee", ecran).onclick = () => { dire("J'ai envie d'autre chose"); aller("questionnaire"); };
+  $("#idee", ecran).onclick = () => { dire(PHRASES.autreChose); aller("questionnaire"); };
   $$("[data-theme]", ecran).forEach(b => b.onclick = () => {
     const t = THEMES.find(x => x.cle === b.dataset.theme), a = articlesDisponibles(t.cle)[0];
     if (a) commencerArticle(a);
-    else dire(`Pas encore d'article sur ${t.nom}. Appuie sur : j'ai envie d'autre chose, pour le demander !`);
+    else dire(remplir(PHRASES.pasEncore, t.nom));
   });
 }

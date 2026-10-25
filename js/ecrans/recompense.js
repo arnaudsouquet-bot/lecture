@@ -4,14 +4,8 @@ import { article } from "../articles.js";
 import { cagnotteSemaine, noterLecture } from "../progres.js";
 import { session, finirSession, aller, nommer } from "../session.js";
 import { dire } from "../voix.js";
+import { PHRASES } from "../phrases.js";
 import { $, esc, euros, compter, confettis, jour, pluriel } from "../outils.js";
-
-// 0,70 → « 70 centimes » ; 1,20 → « 1 euro 20 »
-function montantParle(v) {
-  const e = Math.floor(v + 1e-9), c = Math.round((v - e) * 100);
-  if (!e) return `${c} centimes`;
-  return `${e} ${e > 1 ? "euros" : "euro"}${c ? " " + c : ""}`;
-}
 
 export default function recompense(ecran) {
   const s = session(), a = article(s.article);
@@ -62,10 +56,8 @@ export default function recompense(ecran) {
         }
       }
     }, 1300);
-    const parole = s.paye && gagne > 0
-      ? `${nommer("Bravo")} ! Tu as gagné ${s.points} points. Ça fait ${montantParle(gagne)} pour ta cagnotte.`
-      : `${nommer("Bravo")} ! Tu as gagné ${s.points} points.`;
-    dire(parole);
+    // phrase fixe, enregistrée avec la voix naturelle : les points et les euros sont affichés en grand
+    dire(s.paye && gagne > 0 ? PHRASES.recompense : PHRASES.recompensePlaisir);
   });
 
   compter($("#pts", ecran), 0, s.points, 1200, v => Math.round(v));

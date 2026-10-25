@@ -4,6 +4,7 @@ import { article } from "../articles.js";
 import { session, majSession, aller } from "../session.js";
 import { decorer } from "../dyslexie.js";
 import { dire } from "../voix.js";
+import { PHRASES } from "../phrases.js";
 import { $, $$, esc, etapes } from "../outils.js";
 
 function quiz(ecran, cle) {
@@ -53,11 +54,11 @@ function quiz(ecran, cle) {
         r.className = "retour lisible ok";
         r.innerHTML = `🎉 Bravo ! +${gain} ⭐ <span style="font-weight:normal">${esc(q.explication || "")}</span>`;
         const pts = $("#pts", ecran); pts.textContent = "⭐ " + session().points; pts.classList.remove("pop"); void pts.offsetWidth; pts.classList.add("pop");
-        dire("Bravo ! " + (q.explication || ""));
+        dire(`${PHRASES.bravo} ${q.explication || ""}`);
       } else if (essais < ESSAIS_PAR_QUESTION) {
         b.classList.add("faux");
         r.className = "retour lisible encore"; r.textContent = "Presque ! Essaie encore 💪";
-        dire("Presque ! Essaie encore.");
+        dire(PHRASES.presque);
       } else {
         fini = true;
         const t = session();

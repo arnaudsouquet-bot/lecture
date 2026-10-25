@@ -6,7 +6,9 @@ import { cagnotteSemaine, verseSemaine, resteAVerser, marquerPaye, motsAppris } 
 import { aller, message, ouvrirAa, reglages, changerReglage, prenom, nommer } from "../session.js";
 import { exporter, importerSauvegarde } from "../export.js";
 import { promptClaude } from "../prompt.js";
-import { voixFrancaises, nomVoix, dire } from "../voix.js";
+import { voixFrancaises, nomVoix, nomVoixEnregistree, dire } from "../voix.js";
+import { PHRASES } from "../phrases.js";
+import { estEnregistre, mettreHorsLigne } from "../enregistrements.js";
 import { $, $$, esc, euros, dateCourte, lundi } from "../outils.js";
 
 export default function parent(ecran) {
@@ -64,7 +66,7 @@ function afficherParent(ecran) {
         <h2>📚 Articles</h2>
         ${articles.map(x => `
           <div class="ligne">
-            <span>${x.emoji || "📄"} ${esc(x.titre)}<br><span class="petit-gris">${theme(x.theme)} · ${nombreDeMots(x)} mots · ${x.source}${dejaLu(x.id) ? " · lu" : ""}</span></span>
+            <span>${x.emoji || "📄"} ${esc(x.titre)}<br><span class="petit-gris">${theme(x.theme)} · ${nombreDeMots(x)} mots · ${x.source}${estEnregistre(x.id) ? " · 🔊 voix enregistrée" : ""}${dejaLu(x.id) ? " · lu" : ""}</span></span>
             <span>${estValide(x.id) ? `<span class="statut ok">Validé</span>` : `<span class="statut att">À relire</span>`}
               <button class="mini" data-apercu="${esc(x.id)}">Aperçu</button></span>
           </div>`).join("") || `<p class="petit-gris">Aucun article.</p>`}
@@ -109,11 +111,12 @@ function afficherParent(ecran) {
       <div class="carte">
         <h2>🔧 Enfant, voix et lecture</h2>
         <div class="ligne"><span>Prénom</span><input id="prenom" value="${esc(prenom())}" placeholder="pour « Bonjour … ! »" autocomplete="off" style="font:inherit;font-size:16px;padding:6px 10px;border-radius:8px;border:1px solid #b9b2a4;width:200px"></div>
-        <div class="ligne"><span>Voix</span><select id="voix"><option value="">Automatique (${esc(nomVoix() || "aucune voix française")})</option>
+        <div class="ligne"><span>Voix des articles</span><b>${esc(nomVoixEnregistree() || "aucun enregistrement")}</b></div>
+        <div class="ligne"><span>Voix de secours</span><select id="voix"><option value="">Automatique (${esc(nomVoix() || "aucune voix française")})</option>
           ${voixFrancaises().map(v => `<option ${v.name === reglages().voix ? "selected" : ""}>${esc(v.name)}</option>`).join("")}</select></div>
         <div class="ligne"><span>Vitesse <b id="vitesse-val">${reglages().vitesse}</b></span><input type="range" id="vitesse" min="0.6" max="1.1" step="0.05" value="${reglages().vitesse}"></div>
         <div class="actions"><button class="mini" id="tester">🔊 Tester la voix</button><button class="mini" id="aa">Réglages « Aa »</button></div>
-        <p class="petit-gris">Pour une voix plus naturelle : Réglages de l'iPad → Accessibilité → Contenu énoncé → Voix → Français, téléchargez une voix « améliorée ».</p>
+        <p class="petit-gris">Les articles enregistrés (outils/voix.py) sont lus avec la voix naturelle. La voix de secours, celle de l'iPad, ne sert que pour ce qui n'est pas enregistré : article importé sur l'iPad, idée tapée par l'enfant.</p>
       </div>
 
       <div class="carte">
@@ -164,7 +167,7 @@ function afficherParent(ecran) {
   $("#prenom", ecran).onchange = e => { changerReglage("prenom", e.target.value.trim()); message("Prénom enregistré ✔"); };
   $("#voix", ecran).onchange = e => changerReglage("voix", e.target.value);
   $("#vitesse", ecran).oninput = e => { changerReglage("vitesse", +e.target.value); $("#vitesse-val", ecran).textContent = e.target.value; };
-  $("#tester", ecran).onclick = e => dire(`${nommer("Bonjour")} ! Le caméléon change de couleur.`, { bouton: e.currentTarget });
+  $("#tester", ecran).onclick = e => dire(PHRASES.test, { bouton: e.currentTarget });
   $("#aa", ecran).onclick = ouvrirAa;
 
   // sauvegarde
@@ -193,7 +196,11 @@ function apercu(ecran, a, recharger) {
     </div>`;
   voile.classList.add("visible");
   $("#fermer", ecran).onclick = () => voile.classList.remove("visible");
-  $("#basculer", ecran).onclick = async () => { await valider(a.id, !valide); message(valide ? "Validation retirée" : "Article validé ✔"); recharger(); };
+  $("#basculer", ecran).onclick = async () => {
+    await valider(a.id, !valide);
+    if (!valide) mettreHorsLigne([a.id]); // son enregistrement est gardé sur l'iPad
+    message(valide ? "Validation retirée" : "Article validé ✔"); recharger();
+  };
   if (importe) $("#supprimer", ecran).onclick = async () => {
     if (!confirm(`Supprimer « ${a.titre} » de cet iPad ?`)) return;
     await ecrire("importes", lire("importes", []).filter(x => x.id !== a.id));

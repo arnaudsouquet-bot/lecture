@@ -2,7 +2,7 @@
 import { article, pageHTML } from "../articles.js";
 import { session, majSession, aller, ouvrirAa, reglages, quandReglagesChangent } from "../session.js";
 import { decorer, decouperMots } from "../dyslexie.js";
-import { dire, taire } from "../voix.js";
+import { dire, direSuite, taire } from "../voix.js";
 import { $, esc, etapes, syllabesHTML } from "../outils.js";
 
 export default function lecture(ecran) {
@@ -67,12 +67,22 @@ export default function lecture(ecran) {
     else { await majSession({ etape: "mots", motIndex: 0 }); aller("mots"); }
   };
   $("#phrase-suiv", ecran).onclick = () => { if (phrase < nbPhrases - 1) { phrase++; majPhrase(); } };
-  $("#lis-moi", ecran).onclick = e => {
-    if (!reglages().regle) return dire(texte.textContent, { bouton: e.currentTarget, mots });
-    let pos = 0;
-    const ceux = mots.filter(m => +m.el.dataset.ph === phrase).map(m => { const o = { el: m.el, debut: pos }; pos += m.el.textContent.length + 1; return o; });
-    dire(ceux.map(m => m.el.textContent).join(" "), { bouton: e.currentTarget, mots: ceux });
-  };
+  // la page (ou la phrase en cours, avec la règle) est dite titre puis phrase par phrase :
+  // chaque phrase a son enregistrement, retrouvé d'après son texte
+  function morceauxALire(seule) {
+    const plein = texte.textContent, groupes = new Map();
+    mots.forEach(m => {
+      const ph = +m.el.dataset.ph;
+      if (seule !== null && ph !== seule) return;
+      if (!groupes.has(ph)) groupes.set(ph, []);
+      groupes.get(ph).push(m);
+    });
+    return [...groupes.values()].map(liste => {
+      const debut = liste[0].debut, dernier = liste[liste.length - 1];
+      return { texte: plein.slice(debut, dernier.debut + dernier.el.textContent.length), mots: liste.map(m => ({ el: m.el, debut: m.debut - debut })) };
+    });
+  }
+  $("#lis-moi", ecran).onclick = e => direSuite(morceauxALire(reglages().regle ? phrase : null), { bouton: e.currentTarget });
 
   texte.addEventListener("click", e => {
     const cible = e.target.closest(".motdujour, .nb"), w = e.target.closest(".w");

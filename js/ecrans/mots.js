@@ -3,6 +3,7 @@ import { article, phraseDuTexte } from "../articles.js";
 import { apprendre, reviser, motsAReviser } from "../progres.js";
 import { session, majSession, aller } from "../session.js";
 import { dire } from "../voix.js";
+import { PHRASES } from "../phrases.js";
 import { $, $$, esc, etapes, syllabesHTML } from "../outils.js";
 
 export default function mots(ecran) {
@@ -52,7 +53,7 @@ export default function mots(ecran) {
     const suiv = $("#suiv", ecran); if (suiv) suiv.onclick = avancer;
     $$("[data-rev]", ecran).forEach(b => b.onclick = async () => {
       await reviser(m.mot, b.dataset.rev === "1");
-      dire(b.dataset.rev === "1" ? "Bravo !" : "Pas grave, on le reverra.");
+      dire(b.dataset.rev === "1" ? PHRASES.bravo : PHRASES.pasGrave);
       avancer();
     });
   }

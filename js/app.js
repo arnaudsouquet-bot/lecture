@@ -1,6 +1,7 @@
 // Démarrage de l'app et navigation entre les écrans (#accueil, #lecture…).
 import { charger } from "./store.js";
-import { chargerArticlesLivres } from "./articles.js";
+import { chargerArticlesLivres, tousLesArticles, estValide } from "./articles.js";
+import { chargerEnregistrements, mettreHorsLigne } from "./enregistrements.js";
 import { brancherPanneauAa, session } from "./session.js";
 import { taire } from "./voix.js";
 import { $ } from "./outils.js";
@@ -41,10 +42,18 @@ async function demarrer() {
     return;
   }
   await chargerArticlesLivres();
+  await chargerEnregistrements(tousLesArticles().map(a => a.id));
   brancherPanneauAa();
   window.addEventListener("hashchange", afficher);
   afficher();
-  if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(e => console.warn("Hors ligne indisponible", e));
+  if ("serviceWorker" in navigator) {
+    try {
+      await navigator.serviceWorker.register("sw.js");
+      await navigator.serviceWorker.ready;
+      // enregistrements des articles validés gardés sur l'iPad, en arrière-plan
+      mettreHorsLigne(tousLesArticles().filter(a => estValide(a.id)).map(a => a.id));
+    } catch (e) { console.warn("Hors ligne indisponible", e); }
+  }
 }
 
 demarrer();
