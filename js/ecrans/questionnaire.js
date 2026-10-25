@@ -1,6 +1,6 @@
 // Questionnaire « J'ai envie d'autre chose » : en 3 ou 4 étapes, l'enfant dit sur quoi il voudrait lire.
 // Son envie est envoyée à l'espace parent, qui peut demander l'article à Claude.
-import { THEMES, ANGLES } from "../config.js";
+import { THEMES, ANGLES, ANGLES_PAR_SUJET, UN_PEU_DE_TOUT } from "../config.js";
 import { lire, ecrire } from "../store.js";
 import { articlesDisponibles, dejaLu } from "../articles.js";
 import { aller, nommer } from "../session.js";
@@ -55,21 +55,27 @@ export default function questionnaire(ecran) {
         `<div class="tuiles">${t.sujets.map(([nom, emo]) => tuile(nom, nom, emo)).join("")}${tuile(AUTRE, "Autre chose", "✏️", "idee")}</div>`);
       $$("[data-cle]", ecran).forEach(b => b.onclick = () => {
         const s = t.sujets.find(([nom]) => nom === b.dataset.cle);
-        r.sujet = s ? s[0] : null; if (s) r.emoji = s[1];
+        const nouveau = s ? s[0] : null;
+        if (nouveau !== r.sujet) r.angles = []; // les choix de l'étape 3 dépendent du sujet
+        r.sujet = nouveau; if (s) r.emoji = s[1];
         dire(s ? s[0] : "Autre chose");
         etape = s ? 3 : 4;
         setTimeout(afficherEtape, 250);
       });
     } else if (etape === 3) {
+      // choix propres au sujet (requins → leurs dents, comment ils chassent…), plus « Un peu de tout »
+      const choix = [...(ANGLES_PAR_SUJET[r.sujet] || ANGLES), UN_PEU_DE_TOUT];
+      const tout = UN_PEU_DE_TOUT[0];
       rendre(`${r.emoji} Qu'est-ce qui t'intéresse le plus ?`,
-        `<p style="font-size:22px;margin:0 0 16px">Choisis 1 ou 2 réponses.</p>
-         <div class="tuiles deux">${ANGLES.map(([nom, emo]) => tuile(nom, nom, emo, "large" + (r.angles.includes(nom) ? " choisie" : ""))).join("")}</div>`,
+        `<p style="font-size:22px;margin:0 0 16px">${esc(r.sujet)} : choisis 1 ou 2 réponses.</p>
+         <div class="tuiles deux">${choix.map(([nom, emo]) => tuile(nom, nom, emo, "large" + (r.angles.includes(nom) ? " choisie" : ""))).join("")}</div>`,
         { suite: `<button class="bouton" id="suite">Continuer ▶</button>` });
       const maj = () => { $("#suite", ecran).disabled = !r.angles.length; };
       $$("[data-cle]", ecran).forEach(b => b.onclick = () => {
         const nom = b.dataset.cle;
         if (r.angles.includes(nom)) r.angles = r.angles.filter(x => x !== nom);
-        else { r.angles.push(nom); if (r.angles.length > 2) r.angles.shift(); dire(nom); }
+        else if (nom === tout) { r.angles = [tout]; dire(nom); }
+        else { r.angles = r.angles.filter(x => x !== tout); r.angles.push(nom); if (r.angles.length > 2) r.angles.shift(); dire(nom); }
         $$("[data-cle]", ecran).forEach(x => x.classList.toggle("choisie", r.angles.includes(x.dataset.cle)));
         maj();
       });

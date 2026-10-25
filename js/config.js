@@ -54,7 +54,77 @@ export const THEMES = [
 // anciens noms de thèmes, pour les articles déjà importés
 export const ANCIENS_THEMES = { univers: "espace", machines: "inventions" };
 
-// Étape 3 du questionnaire : ce qui l'intéresse dans le sujet (jusqu'à 2 choix)
+// Étape 3 du questionnaire : ce qui l'intéresse dans le sujet choisi (jusqu'à 2 choix).
+// [Arnaud 2026-10-25] les choix doivent parler du sujet (requins → leurs dents, comment ils chassent…).
+// HYPOTHÈSE : 4 choix par sujet, à ajuster avec l'enfant ; « Un peu de tout » est ajouté à chaque liste.
+export const UN_PEU_DE_TOUT = ["Un peu de tout", "🎲"];
+export const ANGLES_PAR_SUJET = {
+  // Animaux
+  "Les requins": [["Le requin le plus grand", "🐋"], ["Comment ils chassent", "🎯"], ["Leurs dents", "🦷"], ["Sont-ils dangereux ?", "⚠️"]],
+  "Les félins": [["Le guépard, le plus rapide", "🐆"], ["Comment ils chassent", "🎯"], ["Les bébés félins", "🐾"], ["Le chat de la maison", "🐈"]],
+  "Les insectes": [["Les fourmis et leur colonie", "🐜"], ["Les abeilles et le miel", "🐝"], ["Les papillons", "🦋"], ["Les insectes les plus forts", "💪"]],
+  "Les oiseaux": [["Comment ils volent", "🪶"], ["Les oiseaux qui ne volent pas", "🐧"], ["Les nids et les œufs", "🥚"], ["Les oiseaux les plus rapides", "🦅"]],
+  "Les serpents": [["Les serpents venimeux", "⚠️"], ["Comment ils mangent", "🐭"], ["Le serpent le plus long", "📏"], ["Pourquoi ils changent de peau", "🔄"]],
+  "Les animaux de la ferme": [["Les vaches et le lait", "🐄"], ["Les poules et les œufs", "🐔"], ["Les cochons", "🐷"], ["Les chevaux", "🐴"]],
+  // Sciences
+  "Les expériences": [["Des expériences à la maison", "🏠"], ["Le volcan qui mousse", "🌋"], ["Ce qui flotte et ce qui coule", "⛵"], ["Mélanger les couleurs", "🎨"]],
+  "L'électricité": [["D'où vient l'électricité", "⚡"], ["Les éclairs", "🌩️"], ["Comment marche une pile", "🔋"], ["Être prudent avec l'électricité", "⚠️"]],
+  "Les aimants": [["Pourquoi ils s'attirent", "🧲"], ["La boussole", "🧭"], ["Les trains qui flottent", "🚄"], ["Les aimants dans la maison", "🏠"]],
+  "L'eau": [["Le voyage de l'eau", "🌧️"], ["La glace et la vapeur", "🧊"], ["Pourquoi la mer est salée", "🌊"], ["L'eau dans notre corps", "💧"]],
+  "La lumière et les couleurs": [["L'arc-en-ciel", "🌈"], ["Pourquoi le ciel est bleu", "🌤️"], ["Les ombres", "👤"], ["Comment on voit les couleurs", "👁️"]],
+  "Les microbes": [["Les microbes qui rendent malade", "🤒"], ["Les microbes utiles", "🧀"], ["Pourquoi se laver les mains", "🧼"], ["Les vaccins", "💉"]],
+  // Espace
+  "Les planètes": [["Jupiter, la plus grande", "🪐"], ["Mars, la planète rouge", "🔴"], ["Les anneaux de Saturne", "💍"], ["Combien il y a de planètes", "🔢"]],
+  "Les astronautes": [["La vie dans l'espace", "🚀"], ["Manger et dormir dans l'espace", "🍽️"], ["La station spatiale", "🛰️"], ["Devenir astronaute", "👩‍🚀"]],
+  "Les étoiles": [["Le Soleil, notre étoile", "☀️"], ["Les constellations", "✨"], ["Pourquoi elles brillent", "💡"], ["Les étoiles filantes", "🌠"]],
+  "Les fusées": [["Comment une fusée décolle", "🔥"], ["La plus grande fusée", "📏"], ["Aller sur la Lune", "🌙"], ["Les fusées qui reviennent", "🔄"]],
+  "Les trous noirs": [["C'est quoi, un trou noir ?", "🕳️"], ["Pourquoi rien ne s'échappe", "🧲"], ["Le plus grand trou noir", "📏"], ["Comment on les voit", "🔭"]],
+  "La Lune": [["Les premiers pas sur la Lune", "👣"], ["Pourquoi elle change de forme", "🌗"], ["La Lune et les marées", "🌊"], ["Retourner sur la Lune", "🚀"]],
+  // Nature et Terre
+  "Les volcans": [["Pourquoi ils explosent", "💥"], ["La lave", "🔥"], ["Le plus grand volcan", "📏"], ["Les volcans sous la mer", "🌊"]],
+  "Les orages": [["Les éclairs", "⚡"], ["Le tonnerre", "🔊"], ["Les tornades", "🌪️"], ["Se protéger de l'orage", "🏠"]],
+  "Les océans": [["Les animaux des grands fonds", "🐙"], ["L'endroit le plus profond", "📏"], ["Les vagues", "🌊"], ["Protéger les océans", "♻️"]],
+  "Les forêts": [["La forêt tropicale", "🌴"], ["Les plus vieux arbres", "🌳"], ["Les animaux de la forêt", "🦊"], ["Pourquoi les feuilles tombent", "🍂"]],
+  "Les déserts": [["Le plus grand désert", "🏜️"], ["Les animaux du désert", "🐪"], ["Trouver de l'eau dans le désert", "💧"], ["Les déserts de glace", "🧊"]],
+  "Les tremblements de terre": [["Pourquoi la terre tremble", "🌍"], ["Les tsunamis", "🌊"], ["Les maisons qui résistent", "🏠"], ["Que faire pendant un séisme", "⚠️"]],
+  // Histoire
+  "Les chevaliers": [["Les châteaux forts", "🏰"], ["Les armures", "🛡️"], ["Les tournois", "🐴"], ["Devenir chevalier", "⚔️"]],
+  "Les pyramides": [["Comment on les a construites", "🧱"], ["Les pharaons", "👑"], ["Les momies", "🏺"], ["Les hiéroglyphes", "📜"]],
+  "Les pirates": [["Les bateaux pirates", "⛵"], ["Les trésors", "💰"], ["Les pirates célèbres", "🏴‍☠️"], ["La vie à bord", "🧭"]],
+  "Les Vikings": [["Les bateaux vikings", "🚢"], ["Les voyages des Vikings", "🗺️"], ["La vie dans un village viking", "🏡"], ["Les dieux vikings", "⚡"]],
+  "La préhistoire": [["Les hommes des cavernes", "🔥"], ["Les peintures dans les grottes", "🎨"], ["Les mammouths", "🦣"], ["Les premiers outils", "🪓"]],
+  "Les Romains": [["Les gladiateurs", "⚔️"], ["Les routes romaines", "🛣️"], ["La ville de Rome", "🏛️"], ["L'armée romaine", "🛡️"]],
+  // Géographie
+  "Les pays du monde": [["Le plus grand pays", "🌍"], ["Le plus petit pays", "📍"], ["Les langues du monde", "🗣️"], ["Les enfants du monde", "🧒"]],
+  "Les montagnes": [["La plus haute montagne", "⛰️"], ["Comment naissent les montagnes", "🌍"], ["Les animaux de montagne", "🐐"], ["Grimper l'Everest", "🧗"]],
+  "Les fleuves": [["Le fleuve le plus long", "📏"], ["D'où vient l'eau des fleuves", "💧"], ["Les fleuves de France", "🇫🇷"], ["Les barrages", "🏗️"]],
+  "Les capitales": [["Paris", "🗼"], ["Les capitales d'Europe", "🇪🇺"], ["Les plus grandes villes", "🏙️"], ["Les monuments célèbres", "🗽"]],
+  "Les drapeaux": [["Le drapeau de la France", "🇫🇷"], ["Pourquoi ces couleurs ?", "🎨"], ["Les drapeaux étonnants", "🤯"], ["Les drapeaux d'Europe", "🇪🇺"]],
+  "Les îles": [["Les îles volcaniques", "🌋"], ["La plus grande île", "📏"], ["Les îles françaises", "🏝️"], ["Vivre sur une île", "🏠"]],
+  // Corps humain
+  "Le cœur": [["Comment il bat", "❤️"], ["Le voyage du sang", "🩸"], ["Garder un cœur en forme", "🏃"], ["Le cœur des animaux", "🐋"]],
+  "Le cerveau": [["Comment on se souvient", "🧠"], ["Pourquoi on rêve", "💭"], ["Les cinq sens", "👀"], ["Apprendre à lire", "📖"]],
+  "Le squelette": [["Combien on a d'os", "🔢"], ["Le plus petit os", "🔍"], ["Comment un os se répare", "🩹"], ["Les articulations", "🦵"]],
+  "Les dents": [["Les dents de lait", "🦷"], ["Pourquoi se brosser les dents", "🪥"], ["Les dents des animaux", "🦈"], ["Chez le dentiste", "👩‍⚕️"]],
+  "Les muscles": [["Le muscle le plus fort", "💪"], ["Comment on bouge", "🏃"], ["Les muscles du visage", "😀"], ["Devenir plus fort", "🏋️"]],
+  "Le sommeil": [["Pourquoi on dort", "😴"], ["Les rêves", "💭"], ["Combien de temps dormir", "⏰"], ["Le sommeil des animaux", "🦉"]],
+  // Le futur
+  "Les robots": [["Les robots qui aident", "🤖"], ["Les robots dans l'espace", "🚀"], ["Les robots qui parlent", "💬"], ["Construire un robot", "🔧"]],
+  "Les voitures du futur": [["Les voitures sans conducteur", "🚗"], ["Les voitures électriques", "🔋"], ["Les voitures volantes", "✈️"], ["Les voitures les plus rapides", "🏎️"]],
+  "Vivre sur Mars": [["Le voyage jusqu'à Mars", "🚀"], ["Respirer sur Mars", "💨"], ["Une maison sur Mars", "🏠"], ["Les robots sur Mars", "🤖"]],
+  "Les villes du futur": [["Les tours géantes", "🏙️"], ["Les villes sous la mer", "🌊"], ["Les villes pleines d'arbres", "🌳"], ["Les transports du futur", "🚄"]],
+  "Les métiers du futur": [["Inventeur", "💡"], ["Astronaute", "👩‍🚀"], ["Soigner les animaux", "🐾"], ["Protéger la planète", "🌍"]],
+  "L'énergie de demain": [["L'énergie du soleil", "☀️"], ["Les éoliennes", "🌬️"], ["L'énergie de l'eau", "💧"], ["Économiser l'énergie", "💡"]],
+  // Les inventions
+  "La roue": [["Qui a inventé la roue", "⚙️"], ["Les premiers chariots", "🐴"], ["Le vélo", "🚲"], ["Les roues autour de nous", "🔄"]],
+  "L'avion": [["Les premiers avions", "🛩️"], ["Comment un avion vole", "✈️"], ["Le plus grand avion", "📏"], ["Le métier de pilote", "👨‍✈️"]],
+  "Le téléphone": [["Le premier téléphone", "☎️"], ["Comment la voix voyage", "📡"], ["Les téléphones portables", "📱"], ["Parler avec le monde entier", "🌍"]],
+  "L'ordinateur": [["Le premier ordinateur", "💻"], ["Comment il calcule", "🔢"], ["Internet", "🌐"], ["Les jeux vidéo", "🎮"]],
+  "Le train": [["La locomotive à vapeur", "🚂"], ["Le TGV", "🚄"], ["Les trains les plus rapides", "⚡"], ["Le tunnel sous la mer", "🌊"]],
+  "Les inventions d'enfants": [["Des enfants inventeurs", "🧒"], ["Les inventions faites par hasard", "🍀"], ["Inventer à la maison", "🏠"], ["Les objets de tous les jours", "🧷"]]
+};
+
+// choix généraux, si un sujet n'a pas encore de liste à lui
 export const ANGLES = [
   ["Les records : le plus grand, le plus rapide", "🏆"],
   ["Comment ça marche", "⚙️"],
