@@ -1,20 +1,18 @@
-// 1 · Accueil : bonjour, cagnotte de la semaine, bouton pour lire.
-import { PLAFOND_EUROS } from "../config.js";
-import { lire } from "../store.js";
-import { cagnotteSemaine, serie, luAujourdhui, motsAppris } from "../progres.js";
+// Accueil : bonjour, cagnotte de la semaine, étoiles, et les trois entrées Lecture · Mémoire · Mathématique.
+import { PLAFOND_EUROS, NIVEAUX_CALCUL } from "../config.js";
+import { cagnotteSemaine, serie, luAujourdhui, motsAReviser } from "../progres.js";
+import { etat, niveauCalcul, badgesGagnes } from "../jeux.js";
 import { session, aller, nommer } from "../session.js";
 import { $, esc, euros, compter, dateLongue, pluriel } from "../outils.js";
 
-export default function accueil(ecran) {
-  const cagnotte = cagnotteSemaine(), reste = Math.max(0, PLAFOND_EUROS - cagnotte);
-  const s = session(), jours = serie(), lus = lire("journal", []).length;
-  const ETAPES = { lecture: "lecture", mots: "mots", nombres: "nombres", questions: "questions", recompense: "recompense" };
+const ETAPES_LECTURE = ["lecture", "mots", "nombres", "questions", "recompense"];
 
-  let lancer;
-  if (s && ETAPES[s.etape]) lancer = `<button class="bouton vert" id="go">📖 Continuer ma lecture</button><p>${s.titre || ""}</p>`;
-  else if (luAujourdhui()) lancer = `<p style="font-size:30px">Bravo, tu as lu aujourd'hui ! 🎉</p>
-    <button class="bouton clair" id="go">📚 Lire encore</button><p class="petit-gris" style="font-size:18px">pour le plaisir</p>`;
-  else lancer = `<button class="bouton vert" id="go">📖 Lire aujourd'hui</button>`;
+export default function accueil(ecran) {
+  const cagnotte = cagnotteSemaine(), s = session(), jours = serie();
+  const enCours = s && ETAPES_LECTURE.includes(s.etape);
+  const etatLecture = enCours ? "Continue ta lecture" : luAujourdhui() ? "✅ Lu aujourd'hui" : "Ton article t'attend";
+  const aRevoir = motsAReviser([], Infinity).length;
+  const badges = badgesGagnes().slice(-3).map(b => b.emoji).join(" ");
 
   ecran.innerHTML = `
     <div class="entete">
@@ -24,26 +22,38 @@ export default function accueil(ecran) {
         <span class="puce">${dateLongue()}</span>
       </div>
     </div>
-    <div class="accueil-grille">
-      <div class="carte cagnotte">
-        <div class="cochon anim-rebond">🐷</div>
-        <div style="font-size:24px">Ta cagnotte de la semaine</div>
-        <div class="montant" id="montant">0,00 €</div>
+    <div class="bandeau">
+      <div class="carte bandeau-cagnotte">
+        <span style="font-size:48px">🐷</span>
+        <div><div class="leg">Cagnotte de la semaine</div><div class="montant-mini" id="montant">0,00 €</div></div>
         <div class="jauge"><div id="jauge"></div></div>
-        <div class="jauge-legende"><span>0 €</span><span>maximum ${PLAFOND_EUROS} €</span></div>
-        <div style="font-size:20px">${reste > 0 ? `Encore <b>${euros(reste)}</b> pour remplir la cagnotte` : "Ta cagnotte est pleine ! 🎉"}</div>
+        <span class="leg">${PLAFOND_EUROS} €</span>
       </div>
-      <div class="accueil-droite">
-        <div class="stats">
-          <div class="carte stat"><div class="gros">${motsAppris().length}</div><div class="leg">mots appris</div></div>
-          <div class="carte stat"><div class="gros">${lus}</div><div class="leg">${lus > 1 ? "articles lus" : "article lu"}</div></div>
-        </div>
-        <div class="lancer">${lancer}</div>
+      <div class="carte bandeau-etoiles">
+        <span style="font-size:44px">⭐</span>
+        <div><div class="leg">Mes étoiles</div><div class="nb-etoiles">${etat().etoiles}</div></div>
+        <div class="badges-mini" title="Mes badges">${badges}</div>
       </div>
+    </div>
+    <div class="trois">
+      <button class="grande lecture" id="lecture">
+        <span class="emo anim-rebond">📖</span><span class="nom">Lecture</span>
+        <span class="etat">${etatLecture}</span><span class="gain">🐷 argent de poche</span>
+      </button>
+      <button class="grande memoire" id="memoire">
+        <span class="emo">🧠</span><span class="nom">Mémoire</span>
+        <span class="etat">${aRevoir ? pluriel(aRevoir, "mot") + " à revoir" : "Joue avec tes mots"}</span><span class="gain">⭐ étoiles</span>
+      </button>
+      <button class="grande maths" id="maths">
+        <span class="emo">🔢</span><span class="nom">Mathématique</span>
+        <span class="etat">Niveau ${niveauCalcul()} sur ${NIVEAUX_CALCUL.length}</span><span class="gain">⭐ étoiles</span>
+      </button>
     </div>
     <button class="engrenage" id="engrenage" aria-label="Espace parent (3 appuis rapides)">⚙️</button>`;
 
-  $("#go", ecran).onclick = () => aller(s && ETAPES[s.etape] ? s.etape : "envies");
+  $("#lecture", ecran).onclick = () => aller(enCours ? s.etape : "envies");
+  $("#memoire", ecran).onclick = () => aller("memoire");
+  $("#maths", ecran).onclick = () => aller("maths");
   compter($("#montant", ecran), 0, cagnotte, 1400, euros);
   requestAnimationFrame(() => requestAnimationFrame(() => { $("#jauge", ecran).style.width = (cagnotte / PLAFOND_EUROS * 100) + "%"; }));
 

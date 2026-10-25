@@ -64,4 +64,46 @@ export const ANGLES = [
   ["Les chiffres et les calculs", "🔢"]
 ];
 
-export const ANIMATIONS = ["flotte", "rebond", "tourne", "zoom", "balance", "aucune"];
+/* ---------- Mémoire et Mathématique : des étoiles, pas d'argent de poche [Arnaud] ---------- */
+
+export const ETOILES_PAR_REPONSE = 1;  // HYPOTHÈSE : bonne réponse en calcul, nombres, problèmes ; mot révisé ; paire trouvée
+export const ETOILES_RETIENS = 2;      // HYPOTHÈSE : suite retrouvée sans erreur (1 avec des erreurs)
+
+// HYPOTHÈSE : niveaux de calcul mental ; série de 10 calculs, 8 justes du premier coup → niveau suivant
+export const NIVEAU_CALCUL_DEPART = 1;
+export const CALCULS_PAR_SERIE = 10;
+export const REUSSITES_POUR_MONTER = 8;
+export const NIVEAUX_CALCUL = [
+  { titre: "Additions jusqu'à 10", op: "+", max: 10 },
+  { titre: "Soustractions jusqu'à 10", op: "-", max: 10 },
+  { titre: "Additions jusqu'à 20", op: "+", max: 20 },
+  { titre: "Soustractions jusqu'à 20", op: "-", max: 20 },
+  { titre: "Doubles et moitiés", op: "double" },
+  { titre: "Tables de 2, 5 et 10", op: "x", tables: [2, 5, 10] },
+  { titre: "Additions jusqu'à 100", op: "+", max: 100 },
+  { titre: "Tables de 3 et 4", op: "x", tables: [3, 4] },
+  { titre: "Toutes les tables", op: "x", tables: [2, 3, 4, 5, 6, 7, 8, 9] }
+];
+
+// Retiens et retrouve : images dites à voix haute. HYPOTHÈSE : 3 images au départ (max 7),
+// +1 après 3 suites réussies d'affilée, −1 après 2 suites ratées ; 4 secondes pour 3 images, +1 s par image en plus
+export const IMAGES_MEMOIRE = [
+  ["caméléon", "🦎"], ["lune", "🌙"], ["cœur", "❤️"], ["fusée", "🚀"], ["serpent", "🐍"],
+  ["volcan", "🌋"], ["requin", "🦈"], ["étoile", "⭐"], ["arbre", "🌳"], ["pomme", "🍎"]
+];
+export const RETIENS_DEPART = 3, RETIENS_MAX = 7;
+
+// Lire les nombres : HYPOTHÈSE nombres jusqu'à 100, séries de 8
+export const NOMBRES_MAX = 100, NOMBRES_PAR_SERIE = 8;
+
+// HYPOTHÈSE : badges
+export const BADGES = [
+  { id: "lecteur", emoji: "📚", titre: "Premier article", desc: "Lire un premier article" },
+  { id: "calculateur", emoji: "🧮", titre: "Calculateur", desc: "Finir 10 séries de calcul" },
+  { id: "elephant", emoji: "🐘", titre: "Mémoire d'éléphant", desc: "Gagner 5 jeux de paires" },
+  { id: "hibou", emoji: "🦉", titre: "Hibou savant", desc: "Réviser 50 mots" },
+  { id: "fusee", emoji: "🚀", titre: "Fusée du calcul", desc: "Atteindre le niveau 6 de calcul" },
+  { id: "champion", emoji: "🏆", titre: "Champion", desc: "Lire 7 jours de suite" }
+];
+
+export const ANIMATIONS =["flotte", "rebond", "tourne", "zoom", "balance", "aucune"];

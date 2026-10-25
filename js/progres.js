@@ -56,10 +56,10 @@ export function reviser(mot, reussi) {
   e.prochaine = e.boite > INTERVALLES_JOURS.length ? null : plusJours(jour(), INTERVALLES_JOURS[e.boite - 1]);
   return ecrire("progression", p);
 }
-export function motsAReviser(sauf = []) {
+export function motsAReviser(sauf = [], limite = REVISIONS_PAR_JOUR) {
   return Object.values(lire("progression", {}))
     .filter(e => e.prochaine && e.prochaine <= jour() && !sauf.includes(e.mot))
     .sort((a, b) => a.prochaine.localeCompare(b.prochaine))
-    .slice(0, REVISIONS_PAR_JOUR);
+    .slice(0, limite);
 }
 export const motsAppris = () => Object.values(lire("progression", {}));

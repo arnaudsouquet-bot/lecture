@@ -13,8 +13,14 @@ import mots from "./ecrans/mots.js";
 import { nombres, questions } from "./ecrans/quiz.js";
 import recompense from "./ecrans/recompense.js";
 import parent from "./ecrans/parent.js";
+import { memoire, reviserMots, paires, retiens } from "./ecrans/memoire.js";
+import { maths, calcul, problemes, lireNombres } from "./ecrans/maths.js";
+import bravo from "./ecrans/bravo.js";
 
-const ECRANS = { accueil, envies, questionnaire, lecture, mots, nombres, questions, recompense, parent };
+const ECRANS = {
+  accueil, envies, questionnaire, lecture, mots, nombres, questions, recompense, parent,
+  memoire, reviser: reviserMots, paires, retiens, maths, calcul, problemes, "lire-nombres": lireNombres, bravo
+};
 // écrans qui demandent une lecture en cours
 const AVEC_SESSION = ["lecture", "mots", "nombres", "questions", "recompense"];
 

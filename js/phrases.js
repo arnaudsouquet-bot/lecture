@@ -21,7 +21,31 @@ export const PHRASES = {
   presque: "Presque ! Essaie encore.",
   recompense: "Bravo ! Tu as bien travaillé. Regarde ta cagnotte !",
   recompensePlaisir: "Bravo ! Tu as bien travaillé !",
-  test: "Bonjour ! Le caméléon change de couleur."
+  test: "Bonjour ! Le caméléon change de couleur.",
+  memoireTitre: "Mémoire. Choisis un jeu.",
+  mathsTitre: "Mathématique. Choisis un jeu.",
+  reviserConsigne: "Tu te souviens de ce mot ?",
+  rienAReviser: "Bravo, tu n'as aucun mot à revoir aujourd'hui !",
+  lisUnArticle: "Lis d'abord un article pour jouer ici !",
+  pairesConsigne: "Retourne deux cartes. Trouve chaque mot avec son image.",
+  retiensRegarde: "Regarde bien ces images.",
+  retiensRetrouve: "Retrouve-les dans le même ordre !",
+  retiensBravo: "Bravo ! Tout est dans le bon ordre.",
+  retiensRate: "Ce n'est pas grave. Voici la bonne suite.",
+  essaieEncore: "Essaie encore.",
+  plus: "plus",
+  moins: "moins",
+  fois: "fois",
+  moitieDe: "la moitié de",
+  egaleCombien: "égale combien ?",
+  bonneReponse: "La bonne réponse est",
+  niveauSuivant: "Bravo ! Tu passes au niveau suivant !",
+  nombreQuel: "Écoute ou lis : quel nombre est-ce ?",
+  nombreEcrit: "Comment s'écrit ce nombre ?",
+  plusGrand: "Lequel est le plus grand ?",
+  ou: "ou",
+  gagneEtoiles: "Bravo ! Tu as gagné des étoiles !",
+  nouveauBadge: "Et tu as un nouveau badge !"
 };
 
 export const remplir = (phrase, nom) => phrase.replace("{nom}", nom);

@@ -1,5 +1,6 @@
 // Espace parent : argent de poche, validation des articles, envies de l'enfant, prompt pour Claude, réglages, sauvegarde.
-import { PLAFOND_EUROS, EUROS_PAR_POINT, POINTS_PREMIER_ESSAI, POINTS_DEUXIEME_ESSAI, THEMES } from "../config.js";
+import { PLAFOND_EUROS, EUROS_PAR_POINT, POINTS_PREMIER_ESSAI, POINTS_DEUXIEME_ESSAI, THEMES, BADGES, NIVEAUX_CALCUL } from "../config.js";
+import { etat as etatJeux, niveauCalcul, changerNiveauCalcul } from "../jeux.js";
 import { lire, ecrire } from "../store.js";
 import { tousLesArticles, estValide, valider, verifier, nombreDeMots, dejaLu, texteBrut } from "../articles.js";
 import { cagnotteSemaine, verseSemaine, resteAVerser, marquerPaye, motsAppris } from "../progres.js";
@@ -36,7 +37,7 @@ export default function parent(ecran) {
 }
 
 function afficherParent(ecran) {
-  const semaine = lundi(), articles = tousLesArticles();
+  const semaine = lundi(), articles = tousLesArticles(), jeux = etatJeux();
   const envies = lire("envies", []), journal = lire("journal", []).slice(-12).reverse();
   const versements = lire("versements", []).slice(-4).reverse();
   const mots = motsAppris().sort((x, y) => (y.appris || "").localeCompare(x.appris || ""));
@@ -109,6 +110,16 @@ function afficherParent(ecran) {
       </div>
 
       <div class="carte">
+        <h2>⭐ Mémoire et maths</h2>
+        <div class="ligne"><span>Étoiles</span><b>${jeux.etoiles}</b></div>
+        <div class="ligne"><span>Badges</span><span>${BADGES.map(b => `<span title="${esc(b.titre)} : ${esc(b.desc)}" style="${jeux.badges.includes(b.id) ? "" : "filter:grayscale(1);opacity:.3"}">${b.emoji}</span>`).join(" ")}</span></div>
+        <div class="ligne"><span>Niveau de calcul</span><select id="niveau-calcul">${NIVEAUX_CALCUL.map((n, k) => `<option value="${k + 1}" ${k + 1 === niveauCalcul() ? "selected" : ""}>${k + 1}. ${esc(n.titre)}</option>`).join("")}</select></div>
+        <div class="ligne"><span>Retiens et retrouve</span><span>${jeux.niveauRetiens} images</span></div>
+        <div class="ligne petit-gris"><span>Séries de calcul · paires gagnées · mots révisés</span><span>${jeux.compteurs.seriesCalcul || 0} · ${jeux.compteurs.pairesGagnees || 0} · ${jeux.compteurs.motsRevises || 0}</span></div>
+        <p class="petit-gris">Les étoiles ne donnent pas d'argent de poche. Le niveau de calcul monte tout seul (8 sur 10 du premier coup) ; vous pouvez le changer ici.</p>
+      </div>
+
+      <div class="carte">
         <h2>🔧 Enfant, voix et lecture</h2>
         <div class="ligne"><span>Prénom</span><input id="prenom" value="${esc(prenom())}" placeholder="pour « Bonjour … ! »" autocomplete="off" style="font:inherit;font-size:16px;padding:6px 10px;border-radius:8px;border:1px solid #b9b2a4;width:200px"></div>
         <div class="ligne"><span>Voix des articles</span><b>${esc(nomVoixEnregistree() || "aucun enregistrement")}</b></div>
@@ -162,6 +173,8 @@ function afficherParent(ecran) {
   };
   $("#importer", ecran).onclick = () => importer($("#json", ecran).value);
   $("#fichier-article", ecran).onchange = async e => { const f = e.target.files[0]; if (f) importer(await f.text()); };
+
+  $("#niveau-calcul", ecran).onchange = async e => { await changerNiveauCalcul(+e.target.value); message("Niveau de calcul changé ✔"); };
 
   // prénom (gardé seulement sur l'iPad) et voix
   $("#prenom", ecran).onchange = e => { changerReglage("prenom", e.target.value.trim()); message("Prénom enregistré ✔"); };
