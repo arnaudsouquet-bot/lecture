@@ -45,7 +45,30 @@ export const PHRASES = {
   plusGrand: "Lequel est le plus grand ?",
   ou: "ou",
   gagneEtoiles: "Bravo ! Tu as gagné des étoiles !",
-  nouveauBadge: "Et tu as un nouveau badge !"
+  nouveauBadge: "Et tu as un nouveau badge !",
+  niveauPareil: "Tu restes à ce niveau. Continue comme ça !",
+  niveauDescend: "On s'entraîne encore un peu au niveau d'avant.",
+  nouveauJeu: "Tu as débloqué un nouveau jeu !",
+  jeuVerrouille: "Ce jeu est encore fermé. Gagne des étoiles pour l'ouvrir !",
+  ecouteConsigne: "Écoute bien, sans regarder.",
+  changeRegarde: "Regarde bien tous les objets.",
+  changeQuestion: "Quel objet a disparu ?",
+  simonRegarde: "Regarde et écoute bien.",
+  simonATon: "À toi !",
+  simonOups: "Oups ! Regarde encore une fois.",
+  simonFin: "Bien joué ! C'est fini.",
+  definitionsConsigne: "Retrouve chaque mot avec ce qu'il veut dire.",
+  rangerCroissant: "Touche les nombres du plus petit au plus grand.",
+  rangerDecroissant: "Touche les nombres du plus grand au plus petit.",
+  suiteQuestion: "Quel nombre vient ensuite ?",
+  formeTouche: "Touche la forme :",
+  formeCotes: "Combien de côtés a cette forme ?",
+  formeCoins: "Combien de coins a cette forme ?",
+  formeQuelle: "Quelle forme a",
+  cotesFin: "côtés ?",
+  formeCompte: "Combien vois-tu de formes comme celle-ci ?",
+  logiqueSuite: "Qu'est-ce qui vient ensuite ?",
+  logiqueIntrus: "Lequel n'est pas comme les autres ?"
 };
 
 export const remplir = (phrase, nom) => phrase.replace("{nom}", nom);

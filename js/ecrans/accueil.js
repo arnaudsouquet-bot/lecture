@@ -1,7 +1,7 @@
 // Accueil : bonjour, cagnotte de la semaine, étoiles, et les trois entrées Lecture · Mémoire · Mathématique.
-import { PLAFOND_EUROS, NIVEAUX_CALCUL } from "../config.js";
+import { PLAFOND_EUROS } from "../config.js";
 import { cagnotteSemaine, serie, luAujourdhui, motsAReviser } from "../progres.js";
-import { etat, niveauCalcul, badgesGagnes } from "../jeux.js";
+import { etat, badgesGagnes, prochainJeu } from "../jeux.js";
 import { session, aller, nommer } from "../session.js";
 import { $, esc, euros, compter, dateLongue, pluriel } from "../outils.js";
 
@@ -13,6 +13,8 @@ export default function accueil(ecran) {
   const etatLecture = enCours ? "Continue ta lecture" : luAujourdhui() ? "✅ Lu aujourd'hui" : "Ton article t'attend";
   const aRevoir = motsAReviser([], Infinity).length;
   const badges = badgesGagnes().slice(-3).map(b => b.emoji).join(" ");
+  // prochain jeu à débloquer dans la section, ou un texte si tout est ouvert
+  const prochain = (section, sinon) => { const j = prochainJeu(section); return j ? `🔓 ${j.emoji} dans ${j.manque} ⭐` : sinon; };
 
   ecran.innerHTML = `
     <div class="entete">
@@ -42,11 +44,11 @@ export default function accueil(ecran) {
       </button>
       <button class="grande memoire" id="memoire">
         <span class="emo">🧠</span><span class="nom">Mémoire</span>
-        <span class="etat">${aRevoir ? pluriel(aRevoir, "mot") + " à revoir" : "Joue avec tes mots"}</span><span class="gain">⭐ étoiles</span>
+        <span class="etat">${aRevoir ? pluriel(aRevoir, "mot") + " à revoir" : prochain("memoire", "Joue avec tes mots")}</span><span class="gain">⭐ étoiles</span>
       </button>
       <button class="grande maths" id="maths">
         <span class="emo">🔢</span><span class="nom">Mathématique</span>
-        <span class="etat">Niveau ${niveauCalcul()} sur ${NIVEAUX_CALCUL.length}</span><span class="gain">⭐ étoiles</span>
+        <span class="etat">${prochain("maths", "Tous les jeux sont ouverts")}</span><span class="gain">⭐ étoiles</span>
       </button>
     </div>
     <button class="engrenage" id="engrenage" aria-label="Espace parent (3 appuis rapides)">⚙️</button>`;

@@ -1,6 +1,6 @@
 // Espace parent : argent de poche, validation des articles, envies de l'enfant, prompt pour Claude, réglages, sauvegarde.
-import { PLAFOND_EUROS, EUROS_PAR_POINT, POINTS_PREMIER_ESSAI, POINTS_DEUXIEME_ESSAI, THEMES, BADGES, NIVEAUX_CALCUL } from "../config.js";
-import { etat as etatJeux, niveauCalcul, changerNiveauCalcul } from "../jeux.js";
+import { PLAFOND_EUROS, EUROS_PAR_POINT, POINTS_PREMIER_ESSAI, POINTS_DEUXIEME_ESSAI, THEMES, BADGES, NIVEAUX_CALCUL, JEUX } from "../config.js";
+import { etat as etatJeux, niveauDe, changerNiveau, estDebloque, toutDebloquer } from "../jeux.js";
 import { lire, ecrire } from "../store.js";
 import { tousLesArticles, estValide, valider, verifier, nombreDeMots, dejaLu, texteBrut } from "../articles.js";
 import { cagnotteSemaine, verseSemaine, resteAVerser, marquerPaye, motsAppris } from "../progres.js";
@@ -116,10 +116,11 @@ function afficherParent(ecran) {
         <h2>⭐ Mémoire et maths</h2>
         <div class="ligne"><span>Étoiles</span><b>${jeux.etoiles}</b></div>
         <div class="ligne"><span>Badges</span><span>${BADGES.map(b => `<span title="${esc(b.titre)} : ${esc(b.desc)}" style="${jeux.badges.includes(b.id) ? "" : "filter:grayscale(1);opacity:.3"}">${b.emoji}</span>`).join(" ")}</span></div>
-        <div class="ligne"><span>Niveau de calcul</span><select id="niveau-calcul">${NIVEAUX_CALCUL.map((n, k) => `<option value="${k + 1}" ${k + 1 === niveauCalcul() ? "selected" : ""}>${k + 1}. ${esc(n.titre)}</option>`).join("")}</select></div>
-        <div class="ligne"><span>Retiens et retrouve</span><span>${jeux.niveauRetiens} images</span></div>
+        ${JEUX.map(j => `<div class="ligne"><span>${j.emoji} ${esc(j.titre)}${estDebloque(j.id) ? "" : ` <span class="statut att">🔒 ${j.etoiles} ⭐</span>`}</span>
+          ${j.niveaux ? `<select data-niveau="${j.id}">${Array.from({ length: j.niveaux }, (_, k) => `<option value="${k + 1}" ${k + 1 === niveauDe(j.id) ? "selected" : ""}>Niveau ${k + 1}${j.id === "calcul" ? " : " + esc(NIVEAUX_CALCUL[k].titre) : ""}</option>`).join("")}</select>` : `<span class="petit-gris">sans niveau</span>`}</div>`).join("")}
+        <div class="ligne"><span>Débloquer tous les jeux (sans attendre les étoiles)</span><input type="checkbox" id="tout-debloquer" ${jeux.toutDebloque ? "checked" : ""}></div>
         <div class="ligne petit-gris"><span>Séries de calcul · paires gagnées · mots révisés</span><span>${jeux.compteurs.seriesCalcul || 0} · ${jeux.compteurs.pairesGagnees || 0} · ${jeux.compteurs.motsRevises || 0}</span></div>
-        <p class="petit-gris">Les étoiles ne donnent pas d'argent de poche. Le niveau de calcul monte tout seul (8 sur 10 du premier coup) ; vous pouvez le changer ici.</p>
+        <p class="petit-gris">Les étoiles ne donnent pas d'argent de poche ; elles débloquent les jeux. Le niveau de chaque jeu monte après une série réussie à 80 % et redescend après deux séries sous 50 % ; vous pouvez le changer ici.</p>
       </div>
 
       <div class="carte">
@@ -186,7 +187,8 @@ function afficherParent(ecran) {
   $("#importer", ecran).onclick = () => importer($("#json", ecran).value);
   $("#fichier-article", ecran).onchange = async e => { const f = e.target.files[0]; if (f) importer(await f.text()); };
 
-  $("#niveau-calcul", ecran).onchange = async e => { await changerNiveauCalcul(+e.target.value); message("Niveau de calcul changé ✔"); };
+  $$("[data-niveau]", ecran).forEach(s => s.onchange = async () => { await changerNiveau(s.dataset.niveau, +s.value); message("Niveau changé ✔"); });
+  $("#tout-debloquer", ecran).onchange = async e => { await toutDebloquer(e.target.checked); message(e.target.checked ? "Tous les jeux sont ouverts ✔" : "Les jeux se débloquent avec les étoiles ✔"); recharger(); };
 
   // prénom (gardé seulement sur l'iPad) et voix
   $("#prenom", ecran).onchange = e => { changerReglage("prenom", e.target.value.trim()); message("Prénom enregistré ✔"); };

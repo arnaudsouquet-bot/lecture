@@ -1,6 +1,6 @@
 // Service worker : garde l'app et les articles sur l'iPad pour qu'elle marche sans Internet.
 // Changer VERSION à chaque mise à jour de l'app : l'iPad la télécharge au lancement suivant (avec Internet).
-const VERSION = "lecture-v12";
+const VERSION = "lecture-v13";
 // les enregistrements audio ont des noms uniques (calculés d'après leur contenu) : leur cache survit aux mises à jour
 const AUDIO = "lecture-audio";
 
@@ -11,7 +11,7 @@ const FICHIERS = [
   "js/phrases.js", "js/enregistrements.js", "js/jeux.js",
   "js/ecrans/accueil.js", "js/ecrans/envies.js", "js/ecrans/questionnaire.js", "js/ecrans/lecture.js",
   "js/ecrans/mots.js", "js/ecrans/quiz.js", "js/ecrans/recompense.js", "js/ecrans/parent.js",
-  "js/ecrans/memoire.js", "js/ecrans/maths.js", "js/ecrans/bravo.js",
+  "js/ecrans/memoire.js", "js/ecrans/maths.js", "js/ecrans/bravo.js", "js/ecrans/jeux-commun.js",
   "icons/icon-180.png", "icons/icon-192.png", "icons/icon-512.png",
   "fiches/index.json"
 ];

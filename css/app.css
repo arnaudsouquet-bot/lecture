@@ -346,3 +346,60 @@ button { font-family: inherit; color: inherit; -webkit-user-select: none; user-s
   .operation { font-size: 80px; }
   .plateau { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* ---------- jeux : déblocage, niveaux ---------- */
+.activites { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); align-content: start; }
+.activite { min-height: 230px; }
+.activite.ferme { opacity: .55; border-style: dashed; }
+.activite.ferme .emo { filter: grayscale(1); }
+.prochain { background: var(--jaune-clair); border-radius: 16px; padding: 12px 18px; font-size: 20px; margin-bottom: 16px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.prochain .jauge { flex: 1; min-width: 160px; height: 16px; }
+.annonce { display: flex; align-items: center; gap: 18px; font-size: 24px; padding: 16px 26px; text-align: left; }
+.annonce .emo { font-size: 60px; }
+.annonce.monte { border-color: var(--vert); background: var(--vert-clair); }
+.annonce.debloque { border-color: var(--jaune); background: var(--jaune-clair); }
+
+/* paires mot et définition */
+.plateau-definitions .devant.definition { font-size: 17px; font-weight: normal; line-height: 1.4; letter-spacing: .02em; padding: 10px; }
+
+/* écoute et retrouve */
+.oreille { font-size: 110px; }
+
+/* qu'est-ce qui a changé ? */
+.table-objets { display: grid; gap: 14px; justify-items: center; max-width: 760px; margin: 0 auto; }
+.objet { width: 104px; height: 104px; border-radius: 20px; background: #fff; border: 3px solid var(--bord); display: flex; align-items: center; justify-content: center; font-size: 62px; }
+.rideau { font-size: 120px; text-align: center; padding: 30px; }
+
+/* Simon */
+.simon-zone { flex: 1; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.simon { display: grid; grid-template-columns: repeat(2, 170px); gap: 18px; }
+.pad { width: 170px; height: 170px; border-radius: 30px; border: none; background: var(--c); opacity: .45; cursor: pointer; box-shadow: 0 6px 0 rgba(0,0,0,.2); transition: opacity .1s, transform .1s; }
+.pad.allume { opacity: 1; transform: scale(1.06); box-shadow: 0 0 30px var(--c); }
+.simon-cote { display: flex; flex-direction: column; gap: 18px; align-items: center; min-width: 260px; text-align: center; }
+.simon-cote .consigne { font-size: 30px; }
+
+/* ranger les nombres, suites */
+.rangee, .etiquettes { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin: 18px 0; }
+.case-nb { min-width: 120px; height: 90px; padding: 0 12px; border-radius: 18px; border: 3px dashed var(--bord); display: flex; align-items: center; justify-content: center; font-size: 38px; font-weight: bold; color: var(--doux); }
+.case-nb.juste { border-style: solid; border-color: var(--vert); background: var(--vert-clair); color: var(--texte); }
+.etiquette-nb { min-width: 120px; height: 90px; padding: 0 14px; border-radius: 18px; border: 3px solid var(--bord); background: var(--carte); font-size: 38px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 0 var(--bord); }
+.etiquette-nb:disabled { opacity: .25; }
+.etiquette-nb.faux { animation: secoue .5s; border-color: var(--brique); }
+.grand-jeu { display: flex; justify-content: center; align-items: center; gap: 24px; margin: 14px 0; flex-wrap: wrap; }
+.suite-nb, .suite-emo { display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap; font-size: 46px; font-weight: bold; }
+.suite-nb span, .suite-emo span { background: #fff; border: 3px solid var(--bord); border-radius: 16px; padding: 8px 18px; }
+.suite-nb .trou, .suite-emo .trou { border-style: dashed; color: var(--violet); }
+.emo-choix { font-size: 54px; }
+.emo-petit { font-size: 30px; letter-spacing: .05em; }
+.suite-emo .emo-petit { font-size: 30px; }
+
+/* les formes */
+.modele { padding: 10px; border: 3px dashed var(--violet); border-radius: 16px; background: #fff; }
+.dessin { display: flex; flex-wrap: wrap; gap: 10px; max-width: 760px; justify-content: center; background: #fff; border-radius: 18px; padding: 12px; border: 2px solid var(--bord); }
+.choix button svg { display: block; margin: 0 auto; }
+
+@media (max-width: 900px) {
+  .simon { grid-template-columns: repeat(2, 140px); }
+  .pad { width: 140px; height: 140px; }
+  .objet { width: 84px; height: 84px; font-size: 50px; }
+}

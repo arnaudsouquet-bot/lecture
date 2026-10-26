@@ -1,60 +1,30 @@
-// Mathématique : choix du jeu, calcul mental par niveaux, problèmes des articles lus, lire les nombres. Des étoiles.
-import { ETOILES_PAR_REPONSE, NIVEAUX_CALCUL, CALCULS_PAR_SERIE, REUSSITES_POUR_MONTER, NOMBRES_MAX, NOMBRES_PAR_SERIE } from "../config.js";
+// Mathématique : calcul mental, problèmes des articles, lire les nombres, ranger les nombres, les formes, logique.
+// Des étoiles, pas d'argent de poche. Chaque jeu a ses niveaux, qui suivent la réussite.
+import { ETOILES_PAR_REPONSE, NIVEAUX_CALCUL, CALCULS_PAR_SERIE, NOMBRES_PAR_NIVEAU, QUESTIONS_PAR_SERIE, FORMES } from "../config.js";
 import { lire } from "../store.js";
 import { article } from "../articles.js";
-import { decorer } from "../dyslexie.js";
-import { etat, compter, terminer, niveauCalcul, changerNiveauCalcul } from "../jeux.js";
-import { aller } from "../session.js";
+import { compter, niveauDe, finDeSerie } from "../jeux.js";
 import { dire, direSuite } from "../voix.js";
 import { PHRASES } from "../phrases.js";
+import { entete, brancherRetour, etoile, finir, rienAJouer, hub, serieDeQuestions, parolesNombre, direNombre } from "./jeux-commun.js";
 import { $, $$, esc, etapes, melanger, hasard, enLettres } from "../outils.js";
 
-const entete = (titre, droite = "") => `
-  <div class="entete">
-    <h1>${titre}</h1>
-    <div class="droite">${droite}<span class="points-coin" id="etoiles">⭐ ${etat().etoiles}</span>
-      <button class="bouton clair petit" id="retour">◀ Mathématique</button></div>
-  </div>`;
-
-function etoile(ecran, gagnees) {
-  const el = $("#etoiles", ecran);
-  el.textContent = `⭐ ${etat().etoiles + gagnees}`;
-  el.classList.remove("pop"); void el.offsetWidth; el.classList.add("pop");
-}
-const finir = async etoiles => { await terminer(etoiles, "maths"); aller("bravo"); };
 const articlesLus = () => [...new Set(lire("journal", []).map(j => j.article))].map(article).filter(Boolean);
 
 /* ---------- choix du jeu ---------- */
 
 export function maths(ecran) {
-  const niv = niveauCalcul(), lus = articlesLus().length;
-  ecran.classList.add("hub-maths");
-  ecran.innerHTML = `
-    <div class="entete">
-      <button class="hp" id="dire-titre" aria-label="Écouter">🔊</button>
-      <h1>🔢 Mathématique</h1>
-      <div class="droite"><span class="points-coin">⭐ ${etat().etoiles}</span><button class="bouton clair petit" id="accueil">◀ Accueil</button></div>
-    </div>
-    <div class="activites">
-      <button class="activite" data-aller="calcul"><span class="emo">⚡</span><span class="nom">Calcul mental</span>
-        <span class="desc">Additions, soustractions, doubles et tables. Le niveau monte quand tu réussis.</span>
-        <span class="badge">Niveau ${niv} : ${esc(NIVEAUX_CALCUL[niv - 1].titre)}</span></button>
-      <button class="activite" data-aller="problemes"><span class="emo">📰</span><span class="nom">Problèmes de mes articles</span>
-        <span class="desc">Des petits problèmes avec les nombres des articles que tu as lus.</span>
-        <span class="badge">${lus ? `${lus} article${lus > 1 ? "s" : ""} lu${lus > 1 ? "s" : ""}` : "Lis d'abord un article"}</span></button>
-      <button class="activite" data-aller="lire-nombres"><span class="emo">🔢</span><span class="nom">Lire les nombres</span>
-        <span class="desc">Écoute ou lis un nombre, et trouve comment il s'écrit.</span>
-        <span class="badge">Jusqu'à ${NOMBRES_MAX}</span></button>
-    </div>`;
-  $("#dire-titre", ecran).onclick = e => dire(PHRASES.mathsTitre, { bouton: e.currentTarget });
-  $("#accueil", ecran).onclick = () => aller("accueil");
-  $$("[data-aller]", ecran).forEach(b => b.onclick = () => aller(b.dataset.aller));
+  const niv = niveauDe("calcul"), lus = articlesLus().length;
+  hub(ecran, "maths", {
+    calcul: `Niveau ${niv} : ${NIVEAUX_CALCUL[niv - 1].titre}`,
+    problemes: lus ? `${lus} article${lus > 1 ? "s" : ""} lu${lus > 1 ? "s" : ""}` : "Lis d'abord un article"
+  });
 }
 
 /* ---------- calcul mental ---------- */
 
 const pommes = n => "🍎".repeat(n);
-// un calcul du niveau : texte affiché, morceaux à dire (enregistrés : nombres 0 à 100 et mots du calcul), résultat, aide
+// un calcul du niveau : texte affiché, morceaux à dire (enregistrés), résultat, aide
 function calculDuNiveau(niv) {
   const n = NIVEAUX_CALCUL[niv - 1];
   const dit = (a, mot, b) => [String(a), mot, String(b), PHRASES.egaleCombien];
@@ -78,9 +48,9 @@ function calculDuNiveau(niv) {
 }
 
 export function calcul(ecran) {
-  const niv = niveauCalcul(), niveau = NIVEAUX_CALCUL[niv - 1];
+  const niv = niveauDe("calcul"), niveau = NIVEAUX_CALCUL[niv - 1];
   let i = 0, premierCoup = 0, etoiles = 0, c = null, saisie = "", essais = 0, bloque = false;
-  ecran.innerHTML = entete("⚡ Calcul mental", `<span class="niveau">Niveau ${niv}</span><div class="points-etapes" id="avance"></div>`) + `
+  ecran.innerHTML = entete("calcul", `<div class="points-etapes" id="avance"></div>`) + `
     <div class="calcul">
       <div>
         <div class="sous-titre">${esc(niveau.titre)} · ${CALCULS_PAR_SERIE} calculs</div>
@@ -92,7 +62,7 @@ export function calcul(ecran) {
       </div>
       <div class="pave" id="pave">${["1", "2", "3", "4", "5", "6", "7", "8", "9", "⌫", "0", "✔"].map(t => `<button class="${t === "✔" ? "ok" : ""}" data-t="${t}">${t}</button>`).join("")}</div>
     </div>`;
-  $("#retour", ecran).onclick = () => aller("maths");
+  brancherRetour(ecran, "calcul");
 
   const afficher = () => {
     const op = $("#operation", ecran);
@@ -110,7 +80,7 @@ export function calcul(ecran) {
     afficher();
     direSuite(c.parole.map(texte => ({ texte })));
   }
-  async function valider() {
+  function valider() {
     if (!saisie || bloque) return;
     const msg = $("#msg", ecran);
     essais++;
@@ -136,11 +106,8 @@ export function calcul(ecran) {
     i++;
     if (i < CALCULS_PAR_SERIE) return suivant();
     await compter("seriesCalcul");
-    if (premierCoup >= REUSSITES_POUR_MONTER && niv < NIVEAUX_CALCUL.length) {
-      await changerNiveauCalcul(niv + 1);
-      dire(PHRASES.niveauSuivant);
-    }
-    finir(etoiles);
+    const resultat = await finDeSerie("calcul", premierCoup / CALCULS_PAR_SERIE);
+    finir("calcul", etoiles, resultat);
   }
   $$("#pave button", ecran).forEach(b => b.onclick = () => {
     if (bloque) return;
@@ -155,106 +122,254 @@ export function calcul(ecran) {
   suivant();
 }
 
-/* ---------- questions à choix (problèmes des articles, lire les nombres) ---------- */
-
-// questions : [{ question, dire, choix, choixHTML, direChoix(k), reponse, aide, source, grand, reussite, echec }]
-function serieDeQuestions(ecran, titre, questions) {
-  let i = 0, etoiles = 0;
-  function question() {
-    const q = questions[i];
-    let essais = 0, fini = false;
-    ecran.innerHTML = entete(titre, `<div class="points-etapes">${etapes(questions.length, i)}</div>`) + `
-      ${q.source ? `<div class="source">${q.source}</div>` : ""}
-      <div class="carte question lisible"><button class="hp" id="dire-q" aria-label="Écouter">🔊</button><span>${esc(q.question)}</span></div>
-      ${q.grand ? `<div class="nombre-ecrit lisible ${q.grand.chiffres ? "chiffres" : ""}" id="grand">${esc(q.grand.texte)}</div>` : ""}
-      ${q.aide ? `<div class="aide sans-deco">${esc(q.aide)}</div>` : ""}
-      <div class="choix" style="margin-top:18px">${q.choix.map((c, k) => `<button data-k="${k}"><span class="txt">${esc(c)}</span><span class="dire-choix" aria-label="Écouter">🔊</span></button>`).join("")}</div>
-      <div class="message-jeu" id="msg" style="margin-top:18px"></div>
-      <div class="bas"><button class="bouton fin" id="suiv" style="visibility:hidden">${i < questions.length - 1 ? "Suivant ▶" : "Terminer ⭐"}</button></div>`;
-    $("#retour", ecran).onclick = () => aller("maths");
-    if (q.grand && !q.grand.chiffres) decorer($("#grand", ecran));
-    decorer($(".question > span", ecran));
-    if (!q.choixChiffres) $$(".choix .txt", ecran).forEach(el => decorer(el));
-    $("#dire-q", ecran).onclick = e => direSuite(q.dire.map(texte => ({ texte })), { bouton: e.currentTarget });
-    direSuite(q.dire.map(texte => ({ texte })));
-    $$("[data-k]", ecran).forEach(b => b.onclick = e => {
-      const k = +b.dataset.k;
-      if (e.target.closest(".dire-choix")) { dire(q.direChoix(k)); return; }
-      if (fini || b.classList.contains("faux")) return;
-      essais++;
-      const msg = $("#msg", ecran);
-      if (k === q.reponse) {
-        fini = true; b.classList.add("juste");
-        etoiles += ETOILES_PAR_REPONSE; etoile(ecran, etoiles);
-        msg.className = "message-jeu ok"; msg.textContent = `Bravo ! +${ETOILES_PAR_REPONSE} ⭐`;
-        dire(q.reussite);
-      } else if (essais < 2) {
-        b.classList.add("faux");
-        msg.className = "message-jeu non"; msg.textContent = "Presque ! Essaie encore 💪";
-        dire(PHRASES.presque);
-      } else {
-        fini = true; b.classList.add("faux");
-        $(`[data-k="${q.reponse}"]`, ecran).classList.add("juste");
-        msg.className = "message-jeu non"; msg.textContent = "La bonne réponse est en vert.";
-        direSuite(q.echec.map(texte => ({ texte })));
-      }
-      if (fini) $("#suiv", ecran).style.visibility = "visible";
-    });
-    $("#suiv", ecran).onclick = () => { i++; if (i < questions.length) question(); else finir(etoiles); };
-  }
-  question();
-}
-
-/* ---------- problèmes des articles lus ---------- */
+/* ---------- problèmes des articles lus (pas de niveau) ---------- */
 
 export function problemes(ecran) {
   const liste = melanger(articlesLus().flatMap(a => a.questions.filter(q => q.type === "calcul").map(q => ({ a, q })))).slice(0, 5);
-  if (!liste.length) {
-    ecran.innerHTML = entete("📰 Problèmes de mes articles") + `<div class="vide-jeu"><div style="font-size:90px">📖</div><div class="lisible">${esc(PHRASES.lisUnArticle)}</div></div>`;
-    $("#retour", ecran).onclick = () => aller("maths");
-    dire(PHRASES.lisUnArticle);
-    return;
-  }
+  if (!liste.length) return rienAJouer(ecran, "problemes");
   // mêmes textes que le Défi des nombres de l'article : ils ont déjà leur enregistrement
-  serieDeQuestions(ecran, "📰 Problèmes de mes articles", liste.map(({ a, q }) => ({
+  serieDeQuestions(ecran, "problemes", liste.map(({ a, q }) => ({
     source: `${a.emoji || "📄"} D'après « ${esc(a.titre)} »`,
     question: q.question, aide: q.aide, choix: q.choix, reponse: q.reponse,
     dire: [`${q.question} ${q.choix.join(" ? ")} ?`],
-    direChoix: k => q.choix[k],
+    direChoix: k => [q.choix[k]],
     reussite: `${PHRASES.bravo} ${q.explication || ""}`,
     echec: [`La bonne réponse est : ${q.choix[q.reponse]}. ${q.explication || ""}`]
-  })));
+  })), etoiles => finir("problemes", etoiles));
 }
 
 /* ---------- lire les nombres ---------- */
 
-// nombre à deux chiffres différents, et ses pièges : chiffres inversés (68 / 86), zéro glissé (608)
-function nombreAvecPieges() {
-  let n;
-  do n = hasard(12, Math.min(98, NOMBRES_MAX)); while (n % 10 === 0 || Math.floor(n / 10) === n % 10);
-  const d = Math.floor(n / 10), u = n % 10, inverse = u * 10 + d;
-  return { n, pieges: [inverse, d * 100 + u] };
+// nombre du niveau et ses pièges : chiffres inversés (68 / 86), zéro glissé (608), chiffre en trop ou en moins
+function nombreAvecPieges(max) {
+  const min = max <= 20 ? 11 : Math.max(12, max / 10 + 1);
+  let n, s;
+  do { n = hasard(min, max - 1); s = String(n); } while (new Set(s).size < s.length || s.includes("0") && max <= 100);
+  const pieges = new Set();
+  for (let i = 0; i < s.length - 1; i++) pieges.add(+(s.slice(0, i) + s[i + 1] + s[i] + s.slice(i + 2)));
+  pieges.add(+(s[0] + "0" + s.slice(1)));
+  if (s.length > 2) pieges.add(+(s.slice(0, -1)));
+  pieges.add(n + (max <= 100 ? 10 : max / 10));
+  pieges.delete(n);
+  return { n, pieges: melanger([...pieges].filter(x => x > 0)).slice(0, 2) };
 }
 
 export function lireNombres(ecran) {
-  const questions = Array.from({ length: NOMBRES_PAR_SERIE }, (_, k) => {
-    const { n, pieges } = nombreAvecPieges(), sorte = k % 3;
+  const max = NOMBRES_PAR_NIVEAU[niveauDe("lire-nombres") - 1];
+  const questions = Array.from({ length: QUESTIONS_PAR_SERIE }, (_, k) => {
+    const { n, pieges } = nombreAvecPieges(max), sorte = k % 3;
     if (sorte === 0) { // lettres → chiffres
       const choix = melanger([n, ...pieges]);
       return { question: PHRASES.nombreQuel, grand: { texte: enLettres(n) }, choixChiffres: true,
-        choix: choix.map(String), reponse: choix.indexOf(n), dire: [PHRASES.nombreQuel, String(n)],
-        direChoix: k2 => String(choix[k2]), reussite: PHRASES.bravo, echec: [PHRASES.bonneReponse, String(n)] };
+        choix: choix.map(String), reponse: choix.indexOf(n), dire: [PHRASES.nombreQuel, ...parolesNombre(n)],
+        direChoix: k2 => parolesNombre(choix[k2]), echec: [PHRASES.bonneReponse, ...parolesNombre(n)] };
     }
     if (sorte === 1) { // chiffres → lettres
-      const choix = melanger([n, pieges[0], n + 10 <= 99 ? n + 10 : n - 10]);
+      const choix = melanger([n, ...pieges]).filter(x => x < 10000);
       return { question: PHRASES.nombreEcrit, grand: { texte: String(n), chiffres: true },
-        choix: choix.map(enLettres), reponse: choix.indexOf(n), dire: [PHRASES.nombreEcrit, String(n)],
-        direChoix: k2 => String(choix[k2]), reussite: PHRASES.bravo, echec: [PHRASES.bonneReponse, String(n)] };
+        choix: choix.map(enLettres), reponse: choix.indexOf(n), dire: [PHRASES.nombreEcrit, ...parolesNombre(n)],
+        direChoix: k2 => parolesNombre(choix[k2]), echec: [PHRASES.bonneReponse, ...parolesNombre(n)] };
     }
-    const choix = melanger([n, pieges[0]]), grand = Math.max(...choix); // le plus grand
+    const choix = melanger([n, pieges[0]]), grand = Math.max(...choix);
     return { question: PHRASES.plusGrand, choixChiffres: true, choix: choix.map(String), reponse: choix.indexOf(grand),
-      dire: [PHRASES.plusGrand, String(choix[0]), PHRASES.ou, String(choix[1])],
-      direChoix: k2 => String(choix[k2]), reussite: PHRASES.bravo, echec: [PHRASES.bonneReponse, String(grand)] };
+      dire: [PHRASES.plusGrand, ...parolesNombre(choix[0]), PHRASES.ou, ...parolesNombre(choix[1])],
+      direChoix: k2 => parolesNombre(choix[k2]), echec: [PHRASES.bonneReponse, ...parolesNombre(grand)] };
   });
-  serieDeQuestions(ecran, "🔢 Lire les nombres", questions);
+  serieDeQuestions(ecran, "lire-nombres", questions, async (etoiles, reussite) => {
+    finir("lire-nombres", etoiles, await finDeSerie("lire-nombres", reussite));
+  });
+}
+
+/* ---------- ranger les nombres : ranger des étiquettes, compléter une suite ---------- */
+
+const PAS_PAR_NIVEAU = [[1, 2], [2, 5, 10], [10, 25, 50, 100], [100, 250, 500, 1000]];
+
+export function ranger(ecran) {
+  const niv = niveauDe("ranger"), max = NOMBRES_PAR_NIVEAU[niv - 1];
+  let i = 0, parfaites = 0, etoiles = 0;
+
+  function etiquettes() {
+    const decroissant = niv >= 3 && i % 4 === 2, combien = niv === 1 ? 4 : 5;
+    const nombres = new Set();
+    while (nombres.size < combien) nombres.add(hasard(0, max));
+    const ordre = [...nombres].sort((a, b) => (decroissant ? b - a : a - b));
+    let attendu = 0, erreurs = 0;
+    const consigne = decroissant ? PHRASES.rangerDecroissant : PHRASES.rangerCroissant;
+    ecran.innerHTML = entete("ranger", `<div class="points-etapes">${etapes(QUESTIONS_PAR_SERIE, i)}</div>`) + `
+      <div class="carte question lisible"><button class="hp" id="dire-q" aria-label="Écouter">🔊</button><span>${esc(consigne)}</span></div>
+      <div class="rangee" id="rangee">${ordre.map(() => `<div class="case-nb vide">?</div>`).join("")}</div>
+      <div class="etiquettes" id="etiquettes">${melanger(ordre).map(x => `<button class="etiquette-nb" data-n="${x}">${x}</button>`).join("")}</div>
+      <div class="message-jeu" id="msg"></div>
+      <div class="bas"><button class="bouton fin" id="suiv" style="visibility:hidden">${i < QUESTIONS_PAR_SERIE - 1 ? "Suivant ▶" : "Terminer ⭐"}</button></div>`;
+    brancherRetour(ecran, "ranger");
+    $("#dire-q", ecran).onclick = ev => dire(consigne, { bouton: ev.currentTarget });
+    dire(consigne);
+    $$(".etiquette-nb", ecran).forEach(b => b.onclick = () => {
+      if (attendu >= ordre.length || b.disabled) return;
+      const x = +b.dataset.n;
+      if (x === ordre[attendu]) {
+        const c = $$(".case-nb", ecran)[attendu];
+        c.className = "case-nb juste"; c.textContent = x;
+        b.disabled = true; attendu++;
+        direNombre(x);
+        if (attendu === ordre.length) fin(erreurs === 0);
+      } else {
+        erreurs++;
+        b.classList.remove("faux"); void b.offsetWidth; b.classList.add("faux");
+        dire(PHRASES.essaieEncore);
+      }
+    });
+  }
+
+  function suite() {
+    const pas = melanger(PAS_PAR_NIVEAU[niv - 1])[0], decroissant = niv >= 3 && i % 4 === 3;
+    const depart = decroissant ? hasard(5 * pas, Math.max(5 * pas, max)) : hasard(0, Math.max(0, max - 5 * pas));
+    const termes = Array.from({ length: 5 }, (_, k) => depart + (decroissant ? -k : k) * pas);
+    const juste = termes[4], faux = [juste + (decroissant ? -pas : pas), juste + (juste > 1 ? -1 : 1) * (pas > 1 ? 1 : 2)].filter(x => x >= 0 && x !== juste);
+    const choix = melanger([juste, ...faux.slice(0, 2)]);
+    serieUne({
+      question: PHRASES.suiteQuestion, choixChiffres: true,
+      grandHTML: `<div class="suite-nb">${termes.slice(0, 4).map(x => `<span>${x}</span>`).join("")}<span class="trou">?</span></div>`,
+      choix: choix.map(String), reponse: choix.indexOf(juste), dire: [PHRASES.suiteQuestion],
+      direChoix: k => parolesNombre(choix[k]), echec: [PHRASES.bonneReponse, ...parolesNombre(juste)]
+    });
+  }
+
+  // une seule question à choix, dans la série « ranger »
+  function serieUne(q) {
+    let essais = 0, fini = false;
+    ecran.innerHTML = entete("ranger", `<div class="points-etapes">${etapes(QUESTIONS_PAR_SERIE, i)}</div>`) + `
+      <div class="carte question lisible"><button class="hp" id="dire-q" aria-label="Écouter">🔊</button><span>${esc(q.question)}</span></div>
+      <div class="grand-jeu">${q.grandHTML}</div>
+      <div class="choix">${q.choix.map((c, k) => `<button data-k="${k}"><span class="txt">${esc(c)}</span><span class="dire-choix" aria-label="Écouter">🔊</span></button>`).join("")}</div>
+      <div class="message-jeu" id="msg"></div>
+      <div class="bas"><button class="bouton fin" id="suiv" style="visibility:hidden">${i < QUESTIONS_PAR_SERIE - 1 ? "Suivant ▶" : "Terminer ⭐"}</button></div>`;
+    brancherRetour(ecran, "ranger");
+    $("#dire-q", ecran).onclick = ev => dire(q.question, { bouton: ev.currentTarget });
+    dire(q.question);
+    $$("[data-k]", ecran).forEach(b => b.onclick = ev => {
+      const k = +b.dataset.k;
+      if (ev.target.closest(".dire-choix")) { direSuite(q.direChoix(k).map(texte => ({ texte }))); return; }
+      if (fini || b.classList.contains("faux")) return;
+      essais++;
+      if (k === q.reponse) { fini = true; b.classList.add("juste"); fin(essais === 1); }
+      else if (essais < 2) { b.classList.add("faux"); $("#msg", ecran).className = "message-jeu non"; $("#msg", ecran).textContent = "Presque ! Essaie encore 💪"; dire(PHRASES.presque); }
+      else { fini = true; b.classList.add("faux"); $(`[data-k="${q.reponse}"]`, ecran).classList.add("juste"); fin(false, q.echec); }
+    });
+  }
+
+  function fin(parfait, echec) {
+    const msg = $("#msg", ecran);
+    if (parfait) { parfaites++; etoiles += ETOILES_PAR_REPONSE; etoile(ecran, etoiles); msg.className = "message-jeu ok"; msg.textContent = `Bravo ! +${ETOILES_PAR_REPONSE} ⭐`; dire(PHRASES.bravo); }
+    else { msg.className = "message-jeu"; msg.textContent = echec ? "La bonne réponse est en vert." : "C'est rangé !"; if (echec) direSuite(echec.map(texte => ({ texte }))); }
+    $("#suiv", ecran).style.visibility = "visible";
+    $("#suiv", ecran).onclick = async () => {
+      i++;
+      if (i < QUESTIONS_PAR_SERIE) return (i % 2 ? suite : etiquettes)();
+      finir("ranger", etoiles, await finDeSerie("ranger", parfaites / QUESTIONS_PAR_SERIE));
+    };
+  }
+
+  etiquettes();
+}
+
+/* ---------- les formes ---------- */
+
+const COULEURS = ["#5b8def", "#ef6b5b", "#4cb782", "#f2b33d", "#a77de0", "#ef8fc0"];
+const polygone = (n, r = 42, tourne = -Math.PI / 2) =>
+  Array.from({ length: n }, (_, k) => { const a = tourne + (2 * Math.PI * k) / n; return `${(50 + r * Math.cos(a)).toFixed(1)},${(50 + r * Math.sin(a)).toFixed(1)}`; }).join(" ");
+function formeSVG(nom, taille = 110, couleur = COULEURS[hasard(0, COULEURS.length - 1)]) {
+  const style = `fill="${couleur}" stroke="#2b2b33" stroke-width="3"`;
+  const corps = {
+    cercle: `<circle cx="50" cy="50" r="40" ${style}/>`,
+    ovale: `<ellipse cx="50" cy="50" rx="44" ry="27" ${style}/>`,
+    "carré": `<rect x="15" y="15" width="70" height="70" ${style}/>`,
+    rectangle: `<rect x="6" y="27" width="88" height="46" ${style}/>`,
+    triangle: `<polygon points="${polygone(3, 46, -Math.PI / 2).replace(/(\d+\.\d),(\d+\.\d)/g, (m, x, y) => `${x},${(+y + 8).toFixed(1)}`)}" ${style}/>`,
+    losange: `<polygon points="50,6 86,50 50,94 14,50" ${style}/>`,
+    pentagone: `<polygon points="${polygone(5)}" ${style}/>`,
+    hexagone: `<polygon points="${polygone(6, 42, 0)}" ${style}/>`
+  }[nom];
+  return `<svg viewBox="0 0 100 100" width="${taille}" height="${taille}" aria-label="${nom}">${corps}</svg>`;
+}
+const cotes = nom => +FORMES.find(f => f[0] === nom)[1];
+
+export function formes(ecran) {
+  const niv = niveauDe("formes");
+  const simples = ["cercle", "carré", "triangle", "rectangle"], toutes = FORMES.map(f => f[0]);
+  const polygones = toutes.filter(n => cotes(n) > 0);
+  const questions = Array.from({ length: QUESTIONS_PAR_SERIE }, (_, k) => {
+    const sorte = niv === 1 ? 0 : niv === 2 ? k % 2 : niv === 3 ? [1, 2, 3][k % 3] : [4, 1, 3, 4][k % 4];
+    if (sorte === 0) { // touche la forme
+      const liste = niv === 1 ? simples : toutes;
+      const choix = melanger(liste).slice(0, 3), cible = choix[hasard(0, 2)];
+      return { question: `${PHRASES.formeTouche} ${cible}`, dire: [PHRASES.formeTouche, cible],
+        choix, choixHTML: choix.map(n => formeSVG(n)), reponse: choix.indexOf(cible), echec: [PHRASES.bonneReponse] };
+    }
+    if (sorte === 1 || sorte === 2) { // côtés ou coins d'une forme
+      const nom = melanger(polygones)[0], n = cotes(nom), q = sorte === 1 ? PHRASES.formeCotes : PHRASES.formeCoins;
+      const choix = melanger([n, n + 1, n === 3 ? 4 : n - 1].filter((x, i, a) => a.indexOf(x) === i));
+      return { question: q, dire: [q], grandHTML: formeSVG(nom, 170), choixChiffres: true, choix: choix.map(String),
+        reponse: choix.indexOf(n), direChoix: x => [String(choix[x])], echec: [PHRASES.bonneReponse, String(n)] };
+    }
+    if (sorte === 3) { // quelle forme a n côtés ?
+      const choix = melanger(polygones.filter((x, i, a) => a.findIndex(y => cotes(y) === cotes(x)) === i)).slice(0, 3);
+      const cible = choix[hasard(0, choix.length - 1)], n = cotes(cible);
+      return { question: `${PHRASES.formeQuelle} ${n} ${PHRASES.cotesFin}`, dire: [PHRASES.formeQuelle, String(n), PHRASES.cotesFin],
+        choix, choixHTML: choix.map(x => formeSVG(x)), reponse: choix.indexOf(cible), echec: [PHRASES.bonneReponse] };
+    }
+    // compter les formes comme le modèle dans un dessin
+    const modele = melanger(toutes)[0], combien = hasard(2, 6), autres = hasard(4, 7);
+    const dessin = melanger([...Array(combien).fill(modele), ...Array.from({ length: autres }, () => melanger(toutes.filter(x => x !== modele))[0])]);
+    const choix = melanger([combien, combien + 1, combien - 1]);
+    return { question: PHRASES.formeCompte, dire: [PHRASES.formeCompte], choixChiffres: true,
+      grandHTML: `<div class="modele">${formeSVG(modele, 90)}</div><div class="dessin">${dessin.map(x => formeSVG(x, 76)).join("")}</div>`,
+      choix: choix.map(String), reponse: choix.indexOf(combien), direChoix: x => [String(choix[x])], echec: [PHRASES.bonneReponse, String(combien)] };
+  });
+  serieDeQuestions(ecran, "formes", questions, async (etoiles, reussite) => finir("formes", etoiles, await finDeSerie("formes", reussite)));
+}
+
+/* ---------- logique : suites, intrus, suites de nombres ---------- */
+
+const MOTIFS = [["🍎", "🍌", "🍇", "🍓"], ["🔴", "🔵", "🟢", "🟡"], ["⭐", "🌙", "☀️", "☁️"], ["🐶", "🐱", "🐰", "🦊"]];
+const FAMILLES = [["🍎", "🍌", "🍇", "🍓", "🍐", "🍊"], ["🐶", "🐱", "🐰", "🦊", "🐻", "🐸"],
+  ["🚗", "🚌", "🚲", "🚂", "✈️", "🚀"], ["☀️", "🌧️", "❄️", "⛈️", "🌈", "🌪️"], ["⚽", "🏀", "🎾", "🏈", "🏐", "🎱"]];
+
+export function logique(ecran) {
+  const niv = niveauDe("logique");
+  const questions = Array.from({ length: QUESTIONS_PAR_SERIE }, (_, k) => {
+    const sorte = niv === 1 ? "ab" : niv === 2 ? "abc" : niv === 3 ? (k % 2 ? "intrus" : "abc") : ["nombres", "intrus", "grandit"][k % 3];
+    if (sorte === "intrus") {
+      const [f1, f2] = melanger(FAMILLES), trois = melanger(f1).slice(0, 3), intrus = melanger(f2)[0];
+      const choix = melanger([...trois, intrus]);
+      return { question: PHRASES.logiqueIntrus, dire: [PHRASES.logiqueIntrus], choix, choixHTML: choix.map(e => `<span class="emo-choix">${e}</span>`),
+        reponse: choix.indexOf(intrus), echec: [PHRASES.bonneReponse] };
+    }
+    if (sorte === "nombres") {
+      const regle = melanger([{ pas: 2 }, { pas: 3 }, { pas: 5 }, { pas: 10 }, { fois: 2 }])[0];
+      const depart = regle.fois ? hasard(1, 3) : hasard(1, 10);
+      const termes = Array.from({ length: 5 }, (_, i) => (regle.fois ? depart * 2 ** i : depart + i * regle.pas));
+      const juste = termes[4], choix = melanger([juste, juste + (regle.pas || termes[3]), juste - 1]);
+      return { question: PHRASES.suiteQuestion, dire: [PHRASES.suiteQuestion], choixChiffres: true,
+        grandHTML: `<div class="suite-nb">${termes.slice(0, 4).map(x => `<span>${x}</span>`).join("")}<span class="trou">?</span></div>`,
+        choix: choix.map(String), reponse: choix.indexOf(juste), direChoix: x => parolesNombre(choix[x]), echec: [PHRASES.bonneReponse, ...parolesNombre(juste)] };
+    }
+    if (sorte === "grandit") {
+      const e = melanger(["🔵", "⭐", "🍎", "🟩"])[0], depart = hasard(1, 2);
+      const termes = [0, 1, 2].map(i => e.repeat(depart + i)), juste = depart + 3;
+      const choix = melanger([juste, juste + 1, juste - 1]);
+      return { question: PHRASES.logiqueSuite, dire: [PHRASES.logiqueSuite], choixHTML: choix.map(n => `<span class="emo-petit">${e.repeat(n)}</span>`),
+        choix: choix.map(String), grandHTML: `<div class="suite-emo">${termes.map(t => `<span class="emo-petit">${t}</span>`).join("")}<span class="trou">?</span></div>`,
+        reponse: choix.indexOf(juste), echec: [PHRASES.bonneReponse] };
+    }
+    // motifs qui se répètent : AB (niveau 1), puis ABC, AAB, ABB
+    const m = melanger(melanger(MOTIFS)[0]);
+    const motif = sorte === "ab" ? [m[0], m[1]] : melanger([[m[0], m[1], m[2]], [m[0], m[0], m[1]], [m[0], m[1], m[1]]])[0];
+    const longueur = sorte === "ab" ? 5 : 7, termes = Array.from({ length: longueur + 1 }, (_, i) => motif[i % motif.length]);
+    const juste = termes[longueur], choix = melanger([juste, ...melanger(m.filter(x => x !== juste)).slice(0, 2)]);
+    return { question: PHRASES.logiqueSuite, dire: [PHRASES.logiqueSuite], choix, choixHTML: choix.map(e => `<span class="emo-choix">${e}</span>`),
+      grandHTML: `<div class="suite-emo">${termes.slice(0, longueur).map(t => `<span>${t}</span>`).join("")}<span class="trou">?</span></div>`,
+      reponse: choix.indexOf(juste), echec: [PHRASES.bonneReponse] };
+  });
+  serieDeQuestions(ecran, "logique", questions, async (etoiles, reussite) => finir("logique", etoiles, await finDeSerie("logique", reussite)));
 }

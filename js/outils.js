@@ -76,7 +76,10 @@ function sous100(n) {
 }
 export function enLettres(n) {
   if (n < 100) return sous100(n);
-  if (n === 1000) return "mille";
+  if (n >= 1000) { // jusqu'à 9999 : mille, deux mille trois cents…
+    const m = Math.floor(n / 1000), r = n % 1000;
+    return (m === 1 ? "mille" : UNITES[m] + " mille") + (r ? " " + enLettres(r) : "");
+  }
   const c = Math.floor(n / 100), r = n % 100;
   return (c === 1 ? "cent" : UNITES[c] + " cent" + (r === 0 ? "s" : "")) + (r ? " " + sous100(r) : "");
 }
