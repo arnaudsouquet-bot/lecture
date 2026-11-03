@@ -38,6 +38,9 @@ export const PHRASES = {
   fois: "fois",
   moitieDe: "la moitié de",
   egaleCombien: "égale combien ?",
+  divisePar: "divisé par",
+  egale: "égale",
+  quelNombre: "Quel nombre",
   bonneReponse: "La bonne réponse est",
   niveauSuivant: "Bravo ! Tu passes au niveau suivant !",
   nombreQuel: "Écoute ou lis : quel nombre est-ce ?",
@@ -68,7 +71,9 @@ export const PHRASES = {
   cotesFin: "côtés ?",
   formeCompte: "Combien vois-tu de formes comme celle-ci ?",
   logiqueSuite: "Qu'est-ce qui vient ensuite ?",
-  logiqueIntrus: "Lequel n'est pas comme les autres ?"
+  logiqueIntrus: "Lequel n'est pas comme les autres ?",
+  logiqueGrille: "Chaque image est une seule fois sur chaque ligne et dans chaque colonne. Laquelle manque ?",
+  logiquePyramide: "Chaque brique est la somme des deux briques du dessous. Quel nombre manque ?"
 };
 
 export const remplir = (phrase, nom) => phrase.replace("{nom}", nom);

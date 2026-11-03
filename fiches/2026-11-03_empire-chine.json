@@ -1,0 +1,190 @@
+{
+  "format": 1,
+  "id": "2026-11-03_empire-chine",
+  "theme": "questions",
+  "titre": "Les empires : la Chine des empereurs",
+  "emoji": "🐉",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "deviennent",
+    "vivent",
+    "attaquent",
+    "agrandissent",
+    "creusent",
+    "découvrent",
+    "savent",
+    "emportent",
+    "suivent",
+    "habitent"
+  ],
+  "mots": [
+    {
+      "mot": "muraille",
+      "syllabes": [
+        "mu",
+        "rail",
+        "le"
+      ],
+      "emoji": "🧱",
+      "definition": "Un mur très haut et très épais, pour se protéger.",
+      "exemple": "Les gardes surveillent du haut de la muraille."
+    },
+    {
+      "mot": "argile",
+      "syllabes": [
+        "ar",
+        "gi",
+        "le"
+      ],
+      "emoji": "🏺",
+      "definition": "Une terre molle qu'on peut modeler, puis cuire pour la rendre dure.",
+      "exemple": "Avec de l'argile, on fabrique des pots et des statues."
+    },
+    {
+      "mot": "soie",
+      "syllabes": [
+        "soie"
+      ],
+      "emoji": "🧣",
+      "definition": "Un tissu doux et brillant, fait avec le fil du cocon d'une chenille.",
+      "exemple": "La princesse porte une robe en soie."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Le premier empereur",
+      "emoji": "🐉",
+      "anim": "balance",
+      "texte": "Autrefois, la Chine était coupée en {{7|sept}} royaumes en guerre. Le roi de Qin conquiert les six autres. En {{221|deux cent vingt et un}} avant Jésus-Christ, il réunit tout le pays. Il devient Qin Shi Huang, le premier empereur. Qin se dit « tchine ». Le nom « Chine » vient peut-être de là !"
+    },
+    {
+      "titre": "Tout pareil partout",
+      "emoji": "📏",
+      "anim": "zoom",
+      "texte": "Le premier empereur veut un pays bien uni. Partout, on doit écrire les signes de la même façon. Il crée les mêmes pièces de monnaie pour tout l'empire. Elles sont rondes, avec un trou carré au milieu. Les mesures et les poids deviennent aussi les mêmes partout."
+    },
+    {
+      "titre": "La Grande Muraille",
+      "emoji": "🧱",
+      "anim": "rebond",
+      "texte": "Au nord vivent des peuples de cavaliers qui attaquent la Chine. Qin Shi Huang relie de vieux murs. Puis d'autres empereurs les agrandissent. Avec toutes ses parties, la Grande [[muraille|Muraille]] mesure environ {{21 000|vingt et un mille}} kilomètres ! La partie qu'on visite aujourd'hui a environ {{500|cinq cents}} ans."
+    },
+    {
+      "titre": "Une armée d'argile",
+      "emoji": "🗿",
+      "anim": "zoom",
+      "texte": "Près de son tombeau, Qin Shi Huang fait enterrer des soldats en [[argile]] ! Il y en a environ {{8000|huit mille}}. Chaque soldat a un visage différent. En {{1974|mille neuf cent soixante-quatorze}}, des paysans creusent un puits. Ils découvrent par hasard cette armée cachée !"
+    },
+    {
+      "titre": "La route de la soie",
+      "emoji": "🐫",
+      "anim": "flotte",
+      "texte": "Les Chinois savent fabriquer la [[soie]], un tissu doux et brillant. Son fil vient du cocon d'une chenille, le ver à soie. Pendant longtemps, c'est un grand secret ! Des marchands avec des chameaux l'emportent très loin vers l'ouest. Ce long chemin s'appelle la route de la soie."
+    },
+    {
+      "titre": "Des inventions chinoises",
+      "emoji": "💡",
+      "anim": "tourne",
+      "texte": "Le papier existe en Chine depuis plus de {{2000|deux mille}} ans. Les Chinois ont aussi inventé la boussole, dont l'aiguille montre le nord et le sud. Il y a aussi la poudre, qui sert pour les feux d'artifice. Et les premiers livres imprimés !"
+    },
+    {
+      "titre": "Le dernier empereur",
+      "emoji": "🏯",
+      "anim": "balance",
+      "texte": "Après Qin Shi Huang, beaucoup d'empereurs se suivent. Ils habitent la Cité interdite, un palais géant à Pékin. En {{1908|mille neuf cent huit}}, un petit garçon de {{2|deux}} ans devient empereur : Puyi. En {{1912|mille neuf cent douze}}, à {{6|six}} ans, il doit quitter son trône. C'est la fin des empereurs en Chine !"
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "L'armée d'argile compte environ 8000 soldats. Si on les range en 4 groupes égaux, combien de soldats y a-t-il dans chaque groupe ?",
+      "aide": "8000 : 4 = ? (8 : 4 = 2)",
+      "choix": [
+        "4000",
+        "2000",
+        "200"
+      ],
+      "reponse": 1,
+      "explication": "8000 divisé par 4, ça fait 2000."
+    },
+    {
+      "type": "calcul",
+      "question": "On range les 8000 soldats d'argile en 2 groupes égaux. Combien de soldats dans chaque groupe ?",
+      "aide": "8 ÷ 2 = 4, donc 8000 ÷ 2 = ?",
+      "choix": [
+        "4000",
+        "6000",
+        "16 000"
+      ],
+      "reponse": 0,
+      "explication": "La moitié de 8000, c'est 4000."
+    },
+    {
+      "type": "calcul",
+      "question": "Puyi devient empereur en 1908 et quitte son trône en 1912. Combien de temps a-t-il été empereur ?",
+      "aide": "1912 − 1908 = ?",
+      "choix": [
+        "2 ans",
+        "6 ans",
+        "4 ans"
+      ],
+      "reponse": 2,
+      "explication": "1912 moins 1908, ça fait 4 ans."
+    },
+    {
+      "type": "comprehension",
+      "question": "Comment sont les pièces de monnaie du premier empereur ?",
+      "choix": [
+        "Rondes, avec un trou carré",
+        "Carrées, avec un trou rond",
+        "En forme d'étoile"
+      ],
+      "reponse": 0,
+      "explication": "Elles sont rondes, avec un trou carré au milieu."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qui a découvert l'armée d'argile ?",
+      "choix": [
+        "L'empereur Puyi",
+        "Des paysans qui creusaient un puits",
+        "Des marchands de soie"
+      ],
+      "reponse": 1,
+      "explication": "En 1974, des paysans l'ont trouvée par hasard en creusant un puits."
+    },
+    {
+      "type": "comprehension",
+      "question": "D'où vient le fil de la soie ?",
+      "choix": [
+        "De la laine des moutons",
+        "D'une plante du désert",
+        "Du cocon d'une chenille"
+      ],
+      "reponse": 2,
+      "explication": "La soie vient du cocon du ver à soie, une chenille."
+    },
+    {
+      "type": "comprehension",
+      "question": "Pourquoi construit-on la Grande Muraille ?",
+      "choix": [
+        "Pour se protéger des peuples du nord",
+        "Pour faire passer les chameaux",
+        "Pour garder la soie"
+      ],
+      "reponse": 0,
+      "explication": "Elle protège la Chine des cavaliers venus du nord."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « argile » ?",
+      "choix": [
+        "Un tissu brillant",
+        "Une terre molle qu'on peut modeler",
+        "Un mur très épais"
+      ],
+      "reponse": 1,
+      "explication": "L'argile est une terre qu'on modèle, puis qu'on cuit."
+    }
+  ]
+}

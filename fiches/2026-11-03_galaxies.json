@@ -1,0 +1,195 @@
+{
+  "format": 1,
+  "id": "2026-11-03_galaxies",
+  "theme": "questions",
+  "titre": "Comment les galaxies sont-elles nées ?",
+  "emoji": "🌀",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "tournent",
+    "allument",
+    "grossissent",
+    "deviennent",
+    "collent",
+    "forment",
+    "apparaissaient",
+    "rapprochent",
+    "pourraient",
+    "cogneraient",
+    "pensent",
+    "mélangeraient",
+    "formeraient"
+  ],
+  "mots": [
+    {
+      "mot": "tourbillon",
+      "syllabes": [
+        "tour",
+        "bil",
+        "lon"
+      ],
+      "emoji": "🌪️",
+      "definition": "Quelque chose qui tourne très fort sur lui-même, en rond.",
+      "exemple": "Le vent fait un tourbillon de feuilles."
+    },
+    {
+      "mot": "spirale",
+      "syllabes": [
+        "spi",
+        "ra",
+        "le"
+      ],
+      "emoji": "🐌",
+      "definition": "Une ligne qui tourne autour d'un centre en s'éloignant, comme la coquille d'un escargot.",
+      "exemple": "Je dessine une spirale sur ma feuille."
+    },
+    {
+      "mot": "collision",
+      "syllabes": [
+        "col",
+        "li",
+        "sion"
+      ],
+      "emoji": "💥",
+      "definition": "Quand deux choses se rentrent dedans.",
+      "exemple": "Les deux voitures tamponneuses font une collision."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Des villes d'étoiles",
+      "emoji": "🏙️",
+      "anim": "zoom",
+      "texte": "Une galaxie, c'est comme une immense ville d'étoiles. Elle contient aussi du gaz et de la poussière. Toutes ses étoiles tournent ensemble autour du centre. Notre galaxie s'appelle la Voie lactée. Elle contient environ {{200|deux cents}} milliards d'étoiles !"
+    },
+    {
+      "titre": "Des nuages de gaz",
+      "emoji": "☁️",
+      "anim": "flotte",
+      "texte": "Après le Big Bang, l'Univers est rempli de gaz. Ce gaz n'est pas réparti pareil partout. Là où il y en a un peu plus, il attire le gaz voisin. Les nuages grossissent et deviennent énormes. Dedans, les premières étoiles s'allument."
+    },
+    {
+      "titre": "La force qui attire",
+      "emoji": "🍎",
+      "anim": "rebond",
+      "texte": "Une force invisible attire toutes les choses entre elles. C'est elle qui fait tomber ta balle par terre ! Dans l'espace, elle rassemble les étoiles en groupes. Les petits groupes se collent les uns aux autres et forment de grandes galaxies. Les plus vieilles sont nées il y a plus de {{13|treize}} milliards d'années."
+    },
+    {
+      "titre": "Notre Voie lactée",
+      "emoji": "🥛",
+      "anim": "tourne",
+      "texte": "La Voie lactée ressemble à un immense [[tourbillon]] plat. Vue de la Terre, elle forme une traînée blanche dans le ciel, comme du lait. Le Soleil fait le tour de la galaxie en environ {{230|deux cent trente}} millions d'années. La dernière fois qu'il était à cet endroit, les premiers dinosaures apparaissaient !"
+    },
+    {
+      "titre": "Toutes sortes de formes",
+      "emoji": "🥚",
+      "anim": "balance",
+      "texte": "Les galaxies n'ont pas toutes la même forme. Certaines ont de longs bras courbés : ce sont des galaxies en [[spirale]]. La Voie lactée en fait partie ! D'autres sont ovales, comme un ballon de rugby. D'autres encore n'ont pas de forme précise, comme une tache."
+    },
+    {
+      "titre": "Notre voisine Andromède",
+      "emoji": "🔭",
+      "anim": "zoom",
+      "texte": "La grande galaxie la plus proche de nous s'appelle Andromède. Sa lumière voyage pendant environ {{2|deux}} millions et demi d'années pour venir jusqu'à nous. Par une nuit bien noire, on peut pourtant la voir sans télescope. Elle ressemble à une petite tache floue."
+    },
+    {
+      "titre": "Une collision géante",
+      "emoji": "💥",
+      "anim": "rebond",
+      "texte": "Andromède et la Voie lactée se rapprochent ! Elles pourraient se rencontrer dans environ {{5|cinq}} milliards d'années. Ce serait une [[collision]] géante ! Mais les étoiles sont si éloignées qu'elles ne se cogneraient presque pas. Les savants pensent que les {{2|deux}} galaxies se mélangeraient. Elles en formeraient une seule, encore plus grande."
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Le Soleil fait le tour de la galaxie en environ 230 millions d'années. Combien de millions d'années pour faire deux tours ?",
+      "aide": "230 + 230 = ?",
+      "choix": [
+        "460",
+        "430",
+        "260"
+      ],
+      "reponse": 0,
+      "explication": "230 plus 230, ça fait 460."
+    },
+    {
+      "type": "calcul",
+      "question": "Un tour dure environ 230 millions d'années. Combien de millions manque-t-il pour arriver à 300 ?",
+      "aide": "300 − 230 = ?",
+      "choix": [
+        "130",
+        "530",
+        "70"
+      ],
+      "reponse": 2,
+      "explication": "300 moins 230, ça fait 70."
+    },
+    {
+      "type": "calcul",
+      "question": "Les plus vieilles galaxies sont nées il y a 13 milliards d'années. La collision pourrait arriver dans 5 milliards d'années. Combien de milliards d'années entre les deux ?",
+      "aide": "13 + 5 = ?",
+      "choix": [
+        "8",
+        "18",
+        "135"
+      ],
+      "reponse": 1,
+      "explication": "13 plus 5, ça fait 18."
+    },
+    {
+      "type": "comprehension",
+      "question": "Comment s'appelle notre galaxie ?",
+      "choix": [
+        "Andromède",
+        "La Grande Ourse",
+        "La Voie lactée"
+      ],
+      "reponse": 2,
+      "explication": "Notre galaxie, c'est la Voie lactée."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qu'est-ce qui rassemble les étoiles en galaxies ?",
+      "choix": [
+        "Une force invisible qui attire tout",
+        "Le vent de l'espace",
+        "Les astronautes"
+      ],
+      "reponse": 0,
+      "explication": "C'est la même force qui fait tomber ta balle par terre."
+    },
+    {
+      "type": "comprehension",
+      "question": "Pourquoi la Voie lactée s'appelle-t-elle « lactée » ?",
+      "choix": [
+        "Parce qu'elle sent le lait",
+        "Parce qu'elle ressemble à une traînée de lait",
+        "Parce que les vaches l'aiment"
+      ],
+      "reponse": 1,
+      "explication": "Dans le ciel, elle forme une traînée blanche, comme du lait."
+    },
+    {
+      "type": "comprehension",
+      "question": "Si Andromède et la Voie lactée se rencontrent, que se passerait-il ?",
+      "choix": [
+        "Toutes les étoiles exploseraient",
+        "Les deux galaxies disparaîtraient",
+        "Elles se mélangeraient en une seule galaxie"
+      ],
+      "reponse": 2,
+      "explication": "Les étoiles ne se cogneraient presque pas : les galaxies se mélangeraient."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « spirale » ?",
+      "choix": [
+        "Une ligne qui tourne autour d'un centre, comme une coquille d'escargot",
+        "Une ligne toute droite",
+        "Un carré"
+      ],
+      "reponse": 0,
+      "explication": "Une spirale tourne autour d'un centre, comme la coquille d'un escargot."
+    }
+  ]
+}

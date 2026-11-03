@@ -7,6 +7,8 @@ export const POINTS_PREMIER_ESSAI = 2;     // bonne réponse du 1er coup
 export const POINTS_DEUXIEME_ESSAI = 1;    // bonne réponse au 2e essai
 export const ESSAIS_PAR_QUESTION = 2;      // ensuite la réponse est montrée et expliquée
 export const UN_SEUL_ARTICLE_PAYE_PAR_JOUR = true; // les articles suivants se lisent pour le plaisir
+// [Arnaud 2026-11-03] cadeau unique de la mise à jour : 1 € ajouté une seule fois à la cagnotte de la semaine, en plus du plafond
+export const BONUS_MISE_A_JOUR = { id: "maj-2026-11", montant: 1, motif: "Cadeau de la mise à jour" };
 
 // Répétition espacée (boîtes de Leitner) : jours avant la prochaine révision, par boîte
 export const INTERVALLES_JOURS = [1, 2, 4, 7, 14]; // HYPOTHÈSE
@@ -23,6 +25,11 @@ export const FONDS = ["#f7f1e3", "#fbf3c8", "#e3eef8", "#e6f2e3"];
 // Thèmes des articles, et questionnaire « J'ai envie d'autre chose » (étape 1 puis étape 2)
 // Thèmes décidés par Arnaud le 2026-10-25 ; HYPOTHÈSE : les 6 sujets de chaque thème, à ajuster avec l'enfant.
 export const THEMES = [
+  // [Arnaud 2026-11-03] les grandes questions de Sacha, un article de 7 pages par question (6 pour les empires)
+  { cle: "questions", nom: "Grandes questions", emoji: "🤔", sujets: [
+    ["La naissance de la Terre", "🌍"], ["La naissance des volcans", "🌋"], ["La naissance de l'Univers", "💥"],
+    ["La naissance du Soleil", "☀️"], ["Les galaxies", "🌌"], ["Les atomes", "⚛️"],
+    ["Le tableau de Mendeleïev", "🧪"], ["Les grands empires", "👑"], ["La vie sur Terre", "🦠"], ["L'évolution de l'homme", "🦍"]] },
   { cle: "animaux", nom: "Animaux", emoji: "🐾", sujets: [
     ["Les requins", "🦈"], ["Les félins", "🐆"], ["Les insectes", "🐜"],
     ["Les oiseaux", "🦅"], ["Les serpents", "🐍"], ["Les animaux de la ferme", "🐄"]] },
@@ -79,8 +86,8 @@ export const JEUX = [
     desc: "Retrouve chaque mot avec ce qu'il veut dire." },
   { id: "simon", section: "memoire", titre: "Simon des couleurs", emoji: "🌈", etoiles: 140, niveaux: 6,
     desc: "Regarde et écoute la suite de couleurs, puis refais-la." },
-  { id: "calcul", section: "maths", titre: "Calcul mental", emoji: "⚡", etoiles: 0, niveaux: 9,
-    desc: "Additions, soustractions, doubles et tables." },
+  { id: "calcul", section: "maths", titre: "Calcul mental", emoji: "⚡", etoiles: 0, niveaux: 12,
+    desc: "Additions, soustractions, tables et divisions." },
   { id: "problemes", section: "maths", titre: "Problèmes de mes articles", emoji: "📰", etoiles: 0, niveaux: 0,
     desc: "Des petits problèmes avec les nombres de tes articles." },
   { id: "lire-nombres", section: "maths", titre: "Lire les nombres", emoji: "🔢", etoiles: 0, niveaux: 4,
@@ -89,22 +96,27 @@ export const JEUX = [
     desc: "Du plus petit au plus grand, et les suites de nombres." },
   { id: "formes", section: "maths", titre: "Les formes", emoji: "🔷", etoiles: 70, niveaux: 4,
     desc: "Reconnaître les formes, compter leurs côtés et leurs coins." },
-  { id: "logique", section: "maths", titre: "Logique", emoji: "🧠", etoiles: 120, niveaux: 4,
-    desc: "Trouve ce qui vient ensuite, ou l'intrus." }
+  { id: "logique", section: "maths", titre: "Logique", emoji: "🧠", etoiles: 120, niveaux: 6,
+    desc: "Suites, intrus, grilles et pyramides de nombres." }
 ];
 
 // Calcul mental : série de 10 calculs ; niveaux (HYPOTHÈSE)
 export const CALCULS_PAR_SERIE = 10;
+// [Arnaud 2026-11-03] trop facile : on démarre à 20, avec des retenues, des divisions et des calculs en deux étapes
+const TOUTES_LES_TABLES = [2, 3, 4, 5, 6, 7, 8, 9];
 export const NIVEAUX_CALCUL = [
-  { titre: "Additions jusqu'à 10", op: "+", max: 10 },
-  { titre: "Soustractions jusqu'à 10", op: "-", max: 10 },
-  { titre: "Additions jusqu'à 20", op: "+", max: 20 },
-  { titre: "Soustractions jusqu'à 20", op: "-", max: 20 },
-  { titre: "Doubles et moitiés", op: "double" },
-  { titre: "Tables de 2, 5 et 10", op: "x", tables: [2, 5, 10] },
-  { titre: "Additions jusqu'à 100", op: "+", max: 100 },
-  { titre: "Tables de 3 et 4", op: "x", tables: [3, 4] },
-  { titre: "Toutes les tables", op: "x", tables: [2, 3, 4, 5, 6, 7, 8, 9] }
+  { titre: "Additions et soustractions jusqu'à 20", op: "+-", max: 20 },
+  { titre: "Additions avec retenue jusqu'à 100", op: "+", max: 100 },
+  { titre: "Soustractions avec retenue jusqu'à 100", op: "-", max: 100 },
+  { titre: "Doubles et moitiés jusqu'à 100", op: "double", max: 50 },
+  { titre: "Tables de 2, 3, 4 et 5", op: "x", tables: [2, 3, 4, 5] },
+  { titre: "Toutes les tables", op: "x", tables: TOUTES_LES_TABLES },
+  { titre: "Divisions : tables de 2, 5 et 10", op: ":", tables: [2, 5, 10] },
+  { titre: "Divisions : toutes les tables", op: ":", tables: TOUTES_LES_TABLES },
+  { titre: "Le nombre qui manque", op: "?", tables: TOUTES_LES_TABLES, max: 100 },
+  { titre: "Additions et soustractions jusqu'à 1000", op: "+-", max: 1000 },
+  { titre: "Multiplier un grand nombre", op: "x2", tables: TOUTES_LES_TABLES },
+  { titre: "Calculs en deux étapes", op: "2etapes", tables: TOUTES_LES_TABLES }
 ];
 
 // Lire et ranger les nombres : plus grand nombre par niveau (HYPOTHÈSE)

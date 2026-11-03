@@ -24,27 +24,65 @@ export function maths(ecran) {
 /* ---------- calcul mental ---------- */
 
 const pommes = n => "🍎".repeat(n);
-// un calcul du niveau : texte affiché, morceaux à dire (enregistrés), résultat, aide
+const auHasard = liste => liste[hasard(0, liste.length - 1)];
+// un calcul du niveau : texte affiché, morceaux à dire (enregistrés), résultat, aide.
+// « trou » : le « ? » du texte est la case à remplir (le nombre qui manque)
 function calculDuNiveau(niv) {
-  const n = NIVEAUX_CALCUL[niv - 1];
-  const dit = (a, mot, b) => [String(a), mot, String(b), PHRASES.egaleCombien];
-  if (n.op === "+") {
-    const a = n.max > 20 ? hasard(10, n.max - 15) : hasard(1, n.max - 1), b = n.max > 20 ? hasard(5, n.max - a) : hasard(1, n.max - a);
-    const aide = a + b <= 20 ? `${pommes(a)} + ${pommes(b)}` : `${a} + ${b} = ${a} + ${b - (b % 10)} + ${b % 10}`;
-    return { texte: `${a} + ${b}`, parole: dit(a, PHRASES.plus, b), res: a + b, aide };
+  const n = NIVEAUX_CALCUL[niv - 1], N = parolesNombre;
+  const dit = (a, mot, b) => [...N(a), mot, ...N(b), PHRASES.egaleCombien];
+  const decompose = (a, signe, b) => `${a} ${signe} ${b} = ${a} ${signe} ${b - (b % 10)} ${signe} ${b % 10}`;
+  const op = n.op === "+-" ? auHasard(["+", "-"]) : n.op;
+  if (op === "+") {
+    let a, b;
+    if (n.max <= 20) { a = hasard(3, n.max - 2); b = hasard(2, n.max - a); }
+    else if (n.max <= 100) do { a = hasard(11, 79); b = hasard(11, n.max - a); } while (a % 10 + b % 10 < 10); // avec retenue
+    else { a = hasard(120, 700); b = hasard(110, n.max - a); }
+    return { texte: `${a} + ${b}`, parole: dit(a, PHRASES.plus, b), res: a + b, aide: a + b <= 20 ? `${pommes(a)} + ${pommes(b)}` : decompose(a, "+", b) };
   }
-  if (n.op === "-") {
-    const a = hasard(2, n.max), b = hasard(1, a - 1);
-    const aide = a <= 20 ? `${pommes(a - b)}<span class="barre">${pommes(b)}</span>` : `${a} − ${b} = ${a} − ${b - (b % 10)} − ${b % 10}`;
+  if (op === "-") {
+    let a, b;
+    if (n.max <= 20) { a = hasard(8, n.max); b = hasard(2, a - 1); }
+    else if (n.max <= 100) do { a = hasard(31, 99); b = hasard(12, a - 5); } while (a % 10 >= b % 10); // avec retenue
+    else { a = hasard(300, n.max); b = hasard(110, a - 50); }
+    const aide = a <= 20 ? `${pommes(a - b)}<span class="barre">${pommes(b)}</span>` : decompose(a, "−", b);
     return { texte: `${a} − ${b}`, parole: dit(a, PHRASES.moins, b), res: a - b, aide };
   }
-  if (n.op === "double") {
-    if (Math.random() < 0.5) { const a = hasard(2, 15); return { texte: `${a} + ${a}`, parole: dit(a, PHRASES.plus, a), res: 2 * a, aide: a <= 10 ? `${pommes(a)} + ${pommes(a)}` : `${a} + ${a} = ${a - (a % 10)} + ${a - (a % 10)} + ${a % 10} + ${a % 10}` }; }
-    const m = 2 * hasard(1, 10);
-    return { texte: `la moitié de ${m}`, parole: [PHRASES.moitieDe, String(m), PHRASES.egaleCombien], res: m / 2, aide: `${pommes(m)} → 2 parts égales` };
+  if (op === "double") {
+    if (Math.random() < 0.5) { const a = hasard(11, n.max); return { texte: `${a} + ${a}`, parole: dit(a, PHRASES.plus, a), res: 2 * a, aide: `${a} + ${a} = ${a - (a % 10)} + ${a - (a % 10)} + ${a % 10} + ${a % 10}` }; }
+    const m = 2 * hasard(6, n.max), gros = m - (m % 20), reste = m % 20;
+    return { texte: `la moitié de ${m}`, parole: [PHRASES.moitieDe, ...N(m), PHRASES.egaleCombien], res: m / 2,
+      aide: gros ? `${m} = ${gros} + ${reste} → moitié de ${gros} = ${gros / 2}, puis moitié de ${reste}` : `${pommes(m)} → 2 parts égales` };
   }
-  const t = n.tables[hasard(0, n.tables.length - 1)], b = hasard(1, 10);
-  return { texte: `${b} × ${t}`, parole: dit(b, PHRASES.fois, t), res: b * t, aide: `${b} × ${t} = ${Array(b).fill(t).join(" + ")}` };
+  const t = auHasard(n.tables || [2]);
+  if (op === "x") { const b = hasard(2, 10); return { texte: `${b} × ${t}`, parole: dit(b, PHRASES.fois, t), res: b * t, aide: `${b} × ${t} = ${Array(b).fill(t).join(" + ")}` }; }
+  if (op === ":") {
+    const q = hasard(2, 10), a = t * q;
+    return { texte: `${a} : ${t}`, parole: dit(a, PHRASES.divisePar, t), res: q, aide: `Pense à la table de ${t} : ${t} × ? = ${a}` };
+  }
+  if (op === "?") {
+    const sorte = hasard(0, 2);
+    if (sorte === 0) { const q = hasard(2, 10); return { texte: `? × ${t} = ${t * q}`, trou: true, res: q, aide: `${t * q} : ${t} = ?`,
+      parole: [PHRASES.quelNombre, PHRASES.fois, ...N(t), PHRASES.egale, ...N(t * q)] }; }
+    if (sorte === 1) { const a = hasard(12, 60), b = hasard(12, n.max - a); return { texte: `? + ${b} = ${a + b}`, trou: true, res: a, aide: `${a + b} − ${b} = ?`,
+      parole: [PHRASES.quelNombre, PHRASES.plus, ...N(b), PHRASES.egale, ...N(a + b)] }; }
+    const a = hasard(30, 99), b = hasard(11, a - 5);
+    return { texte: `${a} − ? = ${a - b}`, trou: true, res: b, aide: `${a} − ${a - b} = ?`,
+      parole: [...N(a), PHRASES.moins, PHRASES.quelNombre, PHRASES.egale, ...N(a - b)] };
+  }
+  if (op === "x2") {
+    if (Math.random() < 0.25) { const a = hasard(3, 99), fois = a < 10 ? 100 : 10; return { texte: `${a} × ${fois}`, parole: dit(a, PHRASES.fois, fois), res: a * fois, aide: `× ${fois} : on ajoute ${fois === 10 ? "un zéro" : "deux zéros"}` }; }
+    const a = hasard(12, 49);
+    return { texte: `${a} × ${t}`, parole: dit(a, PHRASES.fois, t), res: a * t, aide: `${a} × ${t} = ${a - (a % 10)} × ${t} + ${a % 10} × ${t}` };
+  }
+  // deux étapes, de gauche à droite (la multiplication vient toujours en premier)
+  const sorte = hasard(0, 2), b = hasard(2, 9);
+  if (sorte === 0) { const c = hasard(2, 30); return { texte: `${t} × ${b} + ${c}`, res: t * b + c, aide: `D'abord ${t} × ${b}, puis + ${c}`,
+    parole: [...N(t), PHRASES.fois, ...N(b), PHRASES.plus, ...N(c), PHRASES.egaleCombien] }; }
+  if (sorte === 1) { const c = hasard(1, t * b - 1); return { texte: `${t} × ${b} − ${c}`, res: t * b - c, aide: `D'abord ${t} × ${b}, puis − ${c}`,
+    parole: [...N(t), PHRASES.fois, ...N(b), PHRASES.moins, ...N(c), PHRASES.egaleCombien] }; }
+  const a = hasard(20, 80), d = hasard(11, 50), c = hasard(11, a + d - 5);
+  return { texte: `${a} + ${d} − ${c}`, res: a + d - c, aide: `D'abord ${a} + ${d}, puis − ${c}`,
+    parole: [...N(a), PHRASES.plus, ...N(d), PHRASES.moins, ...N(c), PHRASES.egaleCombien] };
 }
 
 export function calcul(ecran) {
@@ -67,7 +105,8 @@ export function calcul(ecran) {
   const afficher = () => {
     const op = $("#operation", ecran);
     op.classList.toggle("long", c.texte.length > 9);
-    op.innerHTML = `${esc(c.texte)} = <span class="rep">${saisie || "&nbsp;"}</span>`;
+    const rep = `<span class="rep">${saisie || "&nbsp;"}</span>`;
+    op.innerHTML = c.trou ? esc(c.texte).replace("?", rep) : `${esc(c.texte)} = ${rep}`;
   };
   const dejaVus = new Set();
   function suivant() {
@@ -98,7 +137,7 @@ export function calcul(ecran) {
       bloque = true;
       msg.className = "message-jeu non"; msg.textContent = `La bonne réponse est ${c.res}.`;
       saisie = String(c.res); afficher();
-      direSuite([{ texte: PHRASES.bonneReponse }, { texte: String(c.res) }]);
+      direSuite([PHRASES.bonneReponse, ...parolesNombre(c.res)].map(texte => ({ texte })));
       setTimeout(prochain, 2600);
     }
   }
@@ -114,7 +153,7 @@ export function calcul(ecran) {
     const t = b.dataset.t;
     if (t === "✔") return valider();
     if (t === "⌫") saisie = saisie.slice(0, -1);
-    else if (saisie.length < 3) saisie += t;
+    else if (saisie.length < 4) saisie += t;
     afficher();
   });
   $("#montrer-aide", ecran).onclick = () => { $("#aide", ecran).innerHTML = c.aide; };
@@ -329,44 +368,105 @@ export function formes(ecran) {
   serieDeQuestions(ecran, "formes", questions, async (etoiles, reussite) => finir("formes", etoiles, await finDeSerie("formes", reussite)));
 }
 
-/* ---------- logique : suites, intrus, suites de nombres ---------- */
+/* ---------- logique : motifs, intrus, suites de nombres, grilles, pyramides ---------- */
 
 const MOTIFS = [["🍎", "🍌", "🍇", "🍓"], ["🔴", "🔵", "🟢", "🟡"], ["⭐", "🌙", "☀️", "☁️"], ["🐶", "🐱", "🐰", "🦊"]];
 const FAMILLES = [["🍎", "🍌", "🍇", "🍓", "🍐", "🍊"], ["🐶", "🐱", "🐰", "🦊", "🐻", "🐸"],
   ["🚗", "🚌", "🚲", "🚂", "✈️", "🚀"], ["☀️", "🌧️", "❄️", "⛈️", "🌈", "🌪️"], ["⚽", "🏀", "🎾", "🏈", "🏐", "🎱"]];
+// [Arnaud 2026-11-03] trop facile : chaque niveau mélange plusieurs sortes de questions, de plus en plus dures (HYPOTHÈSE)
+const LOGIQUE_PAR_NIVEAU = [
+  ["motif", "intrus", "motif", "nombres"],
+  ["nombres", "motif", "intrus", "grandit"],
+  ["nombres", "grille", "nombres", "grandit"],
+  ["deuxRegles", "grille", "pyramide", "nombres"],
+  ["deuxRegles", "pyramide", "grille", "deuxRegles"],
+  ["difficile", "pyramide", "grille", "deuxRegles"]
+];
+
+// suite de nombres du niveau (le dernier terme est la réponse)
+function suiteDuNiveau(niv, sorte) {
+  if (sorte === "nombres") {
+    const r = auHasard(niv === 1 ? [2, 3, 5, 10] : niv === 2 ? [3, 4, 5, -2, -10, "x2"] : [4, 6, 7, 9, 11, -3, -5, -9, "x2", "x3"]);
+    if (r === "x2" || r === "x3") { const f = r === "x2" ? 2 : 3, d = hasard(1, f === 2 ? 5 : 2); return Array.from({ length: 5 }, (_, i) => d * f ** i); }
+    const d = r < 0 ? hasard(-r * 5 + 1, 99) : hasard(1, niv === 1 ? 20 : 60);
+    return Array.from({ length: 5 }, (_, i) => d + i * r);
+  }
+  if (sorte === "deuxRegles") {
+    const d = hasard(1, 20), k = hasard(0, 2);
+    if (k === 0) { const a = hasard(3, 6), b = hasard(1, a - 1); return Array.from({ length: 6 }, (_, i) => d + Math.ceil(i / 2) * a - Math.floor(i / 2) * b); } // +a, −b, +a…
+    if (k === 1) return Array.from({ length: 6 }, (_, i) => d + (i * (i + 1)) / 2); // +1, +2, +3…
+    const pas = hasard(2, 3); return Array.from({ length: 6 }, (_, i) => d + pas * (i * (i + 1)) / 2); // +2, +4, +6… ou +3, +6, +9…
+  }
+  // les plus dures : ×2 puis +1, les carrés, de 7 à 12 en descendant, ×2 et ×3 qui alternent
+  const k = hasard(0, 3);
+  if (k === 0) { let x = hasard(1, 3); return Array.from({ length: 5 }, () => { const v = x; x = 2 * x + 1; return v; }); }
+  if (k === 1) { const d = hasard(1, 3); return Array.from({ length: 5 }, (_, i) => (d + i) ** 2); }
+  if (k === 2) { const pas = auHasard([7, 8, 9, 11, 12]), d = hasard(90, 150); return Array.from({ length: 6 }, (_, i) => d - i * pas); }
+  let x = hasard(1, 2); return Array.from({ length: 6 }, (_, i) => { const v = x; x *= i % 2 ? 3 : 2; return v; });
+}
+
+// pièges proches de la bonne réponse : ±1, un pas de trop, +10
+function nombresProches(juste, dernier, combien) {
+  const ecart = juste - dernier;
+  const faux = [juste + 1, juste - 1, juste + ecart, juste + 10, juste - 2, juste + 2].filter((x, i, a) => x > 0 && x !== juste && a.indexOf(x) === i);
+  return melanger([juste, ...melanger(faux).slice(0, combien - 1)]);
+}
+
+// carré latin : chaque image une seule fois par ligne et par colonne
+function grilleLatine(n) {
+  const images = melanger(melanger(MOTIFS)[0]).slice(0, n), lignes = melanger([...Array(n).keys()]), colonnes = melanger([...Array(n).keys()]);
+  return lignes.map(l => colonnes.map(c => images[(l + c) % n]));
+}
 
 export function logique(ecran) {
-  const niv = niveauDe("logique");
+  const niv = niveauDe("logique"), sortes = LOGIQUE_PAR_NIVEAU[niv - 1], nbChoix = niv >= 3 ? 4 : 3;
   const questions = Array.from({ length: QUESTIONS_PAR_SERIE }, (_, k) => {
-    const sorte = niv === 1 ? "ab" : niv === 2 ? "abc" : niv === 3 ? (k % 2 ? "intrus" : "abc") : ["nombres", "intrus", "grandit"][k % 3];
+    const sorte = sortes[k % sortes.length];
     if (sorte === "intrus") {
-      const [f1, f2] = melanger(FAMILLES), trois = melanger(f1).slice(0, 3), intrus = melanger(f2)[0];
-      const choix = melanger([...trois, intrus]);
+      const [f1, f2] = melanger(FAMILLES), intrus = melanger(f2)[0];
+      const choix = melanger([...melanger(f1).slice(0, nbChoix - 1), intrus]);
       return { question: PHRASES.logiqueIntrus, dire: [PHRASES.logiqueIntrus], choix, choixHTML: choix.map(e => `<span class="emo-choix">${e}</span>`),
         reponse: choix.indexOf(intrus), echec: [PHRASES.bonneReponse] };
     }
-    if (sorte === "nombres") {
-      const regle = melanger([{ pas: 2 }, { pas: 3 }, { pas: 5 }, { pas: 10 }, { fois: 2 }])[0];
-      const depart = regle.fois ? hasard(1, 3) : hasard(1, 10);
-      const termes = Array.from({ length: 5 }, (_, i) => (regle.fois ? depart * 2 ** i : depart + i * regle.pas));
-      const juste = termes[4], choix = melanger([juste, juste + (regle.pas || termes[3]), juste - 1]);
+    if (sorte === "nombres" || sorte === "deuxRegles" || sorte === "difficile") {
+      const termes = suiteDuNiveau(niv, sorte), vus = termes.slice(0, -1), juste = termes[termes.length - 1];
+      const choix = nombresProches(juste, vus[vus.length - 1], nbChoix);
       return { question: PHRASES.suiteQuestion, dire: [PHRASES.suiteQuestion], choixChiffres: true,
-        grandHTML: `<div class="suite-nb">${termes.slice(0, 4).map(x => `<span>${x}</span>`).join("")}<span class="trou">?</span></div>`,
+        grandHTML: `<div class="suite-nb">${vus.map(x => `<span>${x}</span>`).join("")}<span class="trou">?</span></div>`,
         choix: choix.map(String), reponse: choix.indexOf(juste), direChoix: x => parolesNombre(choix[x]), echec: [PHRASES.bonneReponse, ...parolesNombre(juste)] };
     }
-    if (sorte === "grandit") {
-      const e = melanger(["🔵", "⭐", "🍎", "🟩"])[0], depart = hasard(1, 2);
-      const termes = [0, 1, 2].map(i => e.repeat(depart + i)), juste = depart + 3;
-      const choix = melanger([juste, juste + 1, juste - 1]);
+    if (sorte === "grandit") { // la figure grandit de 2 (puis de 3) à chaque fois
+      const e = melanger(["🔵", "⭐", "🍎", "🟩"])[0], depart = hasard(1, 2), pas = niv >= 3 ? 3 : 2;
+      const termes = [0, 1, 2].map(i => e.repeat(depart + i * pas)), juste = depart + 3 * pas;
+      const choix = melanger([juste, juste + 1, juste - 1, juste - pas].slice(0, nbChoix));
       return { question: PHRASES.logiqueSuite, dire: [PHRASES.logiqueSuite], choixHTML: choix.map(n => `<span class="emo-petit">${e.repeat(n)}</span>`),
         choix: choix.map(String), grandHTML: `<div class="suite-emo">${termes.map(t => `<span class="emo-petit">${t}</span>`).join("")}<span class="trou">?</span></div>`,
         reponse: choix.indexOf(juste), echec: [PHRASES.bonneReponse] };
     }
-    // motifs qui se répètent : AB (niveau 1), puis ABC, AAB, ABB
+    if (sorte === "grille") { // une case vide dans un carré latin (3 × 3, puis 4 × 4)
+      const n = niv >= 5 ? 4 : 3, g = grilleLatine(n), l = hasard(0, n - 1), c = hasard(0, n - 1), juste = g[l][c];
+      const choix = melanger([...g[0]]).slice(0, nbChoix);
+      if (!choix.includes(juste)) choix[0] = juste;
+      const cases = g.map((ligne, i) => ligne.map((x, j) => i === l && j === c ? `<span class="trou">?</span>` : `<span>${x}</span>`).join("")).join("");
+      return { question: PHRASES.logiqueGrille, dire: [PHRASES.logiqueGrille], choix, choixHTML: choix.map(e => `<span class="emo-choix">${e}</span>`),
+        grandHTML: `<div class="grille-logique" style="grid-template-columns:repeat(${n}, 1fr)">${cases}</div>`,
+        reponse: choix.indexOf(juste), echec: [PHRASES.bonneReponse] };
+    }
+    if (sorte === "pyramide") { // chaque brique = la somme des deux du dessous ; au niveau 6, c'est une brique du bas qui manque
+      const max = niv >= 6 ? 40 : 20, bas = [hasard(2, max), hasard(2, max), hasard(2, max)];
+      const milieu = [bas[0] + bas[1], bas[1] + bas[2]], rangs = [[milieu[0] + milieu[1]], milieu, bas];
+      const [r, c] = niv >= 6 ? [2, hasard(0, 2)] : auHasard([[0, 0], [1, 0], [1, 1]]), juste = rangs[r][c];
+      const choix = nombresProches(juste, juste - hasard(2, 9), nbChoix);
+      const html = rangs.map((rang, i) => `<div class="rang">${rang.map((x, j) => i === r && j === c ? `<span class="trou">?</span>` : `<span>${x}</span>`).join("")}</div>`).join("");
+      return { question: PHRASES.logiquePyramide, dire: [PHRASES.logiquePyramide], choixChiffres: true, grandHTML: `<div class="pyramide">${html}</div>`,
+        choix: choix.map(String), reponse: choix.indexOf(juste), direChoix: x => parolesNombre(choix[x]), echec: [PHRASES.bonneReponse, ...parolesNombre(juste)] };
+    }
+    // motifs qui se répètent : ABC, AAB, ABB, ABBC au niveau 1 ; ensuite ABCD, AABBC, ABCC, ABAC
     const m = melanger(melanger(MOTIFS)[0]);
-    const motif = sorte === "ab" ? [m[0], m[1]] : melanger([[m[0], m[1], m[2]], [m[0], m[0], m[1]], [m[0], m[1], m[1]]])[0];
-    const longueur = sorte === "ab" ? 5 : 7, termes = Array.from({ length: longueur + 1 }, (_, i) => motif[i % motif.length]);
-    const juste = termes[longueur], choix = melanger([juste, ...melanger(m.filter(x => x !== juste)).slice(0, 2)]);
+    const formes = niv === 1 ? [[0, 1, 2], [0, 0, 1], [0, 1, 1], [0, 1, 1, 2]] : [[0, 1, 2, 3], [0, 0, 1, 1, 2], [0, 1, 2, 2], [0, 1, 0, 2]];
+    const motif = auHasard(formes).map(x => m[x]), longueur = motif.length * 2 + hasard(0, motif.length - 1);
+    const termes = Array.from({ length: longueur + 1 }, (_, i) => motif[i % motif.length]);
+    const juste = termes[longueur], choix = melanger([juste, ...melanger(m.filter(x => x !== juste)).slice(0, nbChoix - 1)]);
     return { question: PHRASES.logiqueSuite, dire: [PHRASES.logiqueSuite], choix, choixHTML: choix.map(e => `<span class="emo-choix">${e}</span>`),
       grandHTML: `<div class="suite-emo">${termes.slice(0, longueur).map(t => `<span>${t}</span>`).join("")}<span class="trou">?</span></div>`,
       reponse: choix.indexOf(juste), echec: [PHRASES.bonneReponse] };

@@ -1,0 +1,191 @@
+{
+  "format": 1,
+  "id": "2026-11-03_empire-egypte",
+  "theme": "questions",
+  "titre": "Les empires : l'Égypte des pharaons",
+  "emoji": "🏺",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "croient",
+    "savent",
+    "comptent",
+    "écrivent",
+    "montent",
+    "signent",
+    "mesurent",
+    "trouvent",
+    "rapportent",
+    "conquièrent",
+    "prennent"
+  ],
+  "mots": [
+    {
+      "mot": "temple",
+      "syllabes": [
+        "tem",
+        "ple"
+      ],
+      "emoji": "🏛️",
+      "definition": "Un grand bâtiment construit pour prier un ou plusieurs dieux.",
+      "exemple": "Les prêtres entrent dans le temple."
+    },
+    {
+      "mot": "scribe",
+      "syllabes": [
+        "scri",
+        "be"
+      ],
+      "emoji": "✍️",
+      "definition": "Dans l'Égypte ancienne, une personne dont le métier est d'écrire et de compter.",
+      "exemple": "Le scribe note le nombre de sacs de blé."
+    },
+    {
+      "mot": "papyrus",
+      "syllabes": [
+        "pa",
+        "py",
+        "rus"
+      ],
+      "emoji": "📜",
+      "definition": "Une plante du Nil, et la feuille pour écrire qu'on fabrique avec elle.",
+      "exemple": "Le scribe écrit sur un rouleau de papyrus."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Un royaume sur le Nil",
+      "emoji": "🌊",
+      "anim": "flotte",
+      "texte": "L'Égypte ancienne est l'un des plus vieux empires du monde. Vers {{3100|trois mille cent}} avant Jésus-Christ, un roi réunit le Nord et le Sud. Tout le pays vit le long du Nil. Chaque été, le fleuve déborde et rend la terre fertile."
+    },
+    {
+      "titre": "Le pharaon commande tout",
+      "emoji": "👑",
+      "anim": "balance",
+      "texte": "Le pharaon est le chef de tout le pays. Il commande l'armée et les prêtres. Les Égyptiens croient qu'il parle avec les dieux. Il fait construire de grands [[temple|temples]] pour eux. Chaque paysan donne une part de son blé au pharaon. C'est l'impôt !"
+    },
+    {
+      "titre": "Les scribes",
+      "emoji": "✍️",
+      "anim": "zoom",
+      "texte": "Pour diriger un si grand pays, le pharaon a besoin des [[scribe|scribes]]. Ils savent lire, écrire et compter. C'est rare à cette époque ! Les scribes comptent les sacs de blé et les troupeaux. Ils écrivent sur du [[papyrus]], une sorte de papier fait avec une plante du Nil."
+    },
+    {
+      "titre": "Une armée puissante",
+      "emoji": "🏹",
+      "anim": "rebond",
+      "texte": "Le pharaon a aussi une grande armée. Les soldats ont des arcs, des lances et des boucliers. Les plus rapides montent sur des chars légers. Chaque char est tiré par {{2|deux}} chevaux. Grâce à son armée, l'Égypte devient un empire, du Soudan jusqu'à la Syrie."
+    },
+    {
+      "titre": "Le grand Ramsès",
+      "emoji": "🗿",
+      "anim": "zoom",
+      "texte": "Un pharaon très célèbre est le grand Ramsès. Il devient pharaon vers {{25|vingt-cinq}} ans et règne environ {{66|soixante-six}} ans ! Il combat le peuple des Hittites. Puis les deux rois signent un traité de paix, l'un des plus vieux connus. À Abou Simbel, ses statues mesurent environ {{20|vingt}} mètres de haut."
+    },
+    {
+      "titre": "Des bateaux de marchands",
+      "emoji": "⛵",
+      "anim": "flotte",
+      "texte": "En bateau, les Égyptiens vont chercher des trésors très loin. Au pays de Pount, ils trouvent de l'encens, de l'or et des singes ! La reine Hatchepsout, devenue pharaon, y envoie {{5|cinq}} grands bateaux. Du Liban, ils rapportent du bois de cèdre pour construire."
+    },
+    {
+      "titre": "La fin avec Cléopâtre",
+      "emoji": "👸",
+      "anim": "balance",
+      "texte": "Avec le temps, l'Égypte devient moins forte. D'autres peuples la conquièrent : les Perses, puis les Grecs. La dernière grande reine s'appelle Cléopâtre. Elle est très intelligente et parle plusieurs langues. En {{30|trente}} avant Jésus-Christ, les Romains prennent l'Égypte. C'est la fin des pharaons, après environ {{3000|trois mille}} ans !"
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Chaque char est tiré par 2 chevaux. Combien faut-il de chevaux pour 8 chars ?",
+      "aide": "8 + 8 = ?",
+      "choix": [
+        "10",
+        "16",
+        "28"
+      ],
+      "reponse": 1,
+      "explication": "2 chevaux fois 8 chars, ça fait 16 chevaux."
+    },
+    {
+      "type": "calcul",
+      "question": "Ramsès devient pharaon vers 25 ans et règne environ 66 ans. Quel âge a-t-il à la fin de son règne ?",
+      "aide": "25 + 66 = ?",
+      "choix": [
+        "81 ans",
+        "86 ans",
+        "91 ans"
+      ],
+      "reponse": 2,
+      "explication": "25 plus 66, ça fait 91. Il a vécu très vieux !"
+    },
+    {
+      "type": "calcul",
+      "question": "Une statue de Ramsès mesure environ 20 mètres. Combien mesureraient 3 statues posées l'une sur l'autre ?",
+      "aide": "20 + 20 + 20 = ?",
+      "choix": [
+        "60 mètres",
+        "23 mètres",
+        "40 mètres"
+      ],
+      "reponse": 0,
+      "explication": "20 plus 20 plus 20, ça fait 60 mètres."
+    },
+    {
+      "type": "comprehension",
+      "question": "Pourquoi la terre autour du Nil est-elle fertile ?",
+      "choix": [
+        "Parce qu'il pleut tous les jours",
+        "Parce que le fleuve déborde chaque été",
+        "Parce que le pharaon l'arrose"
+      ],
+      "reponse": 1,
+      "explication": "Chaque été, le Nil déborde et rend la terre fertile."
+    },
+    {
+      "type": "comprehension",
+      "question": "Avec quoi les paysans payent-ils l'impôt au pharaon ?",
+      "choix": [
+        "Avec du blé",
+        "Avec des pièces d'or",
+        "Avec des papyrus"
+      ],
+      "reponse": 0,
+      "explication": "Ils donnent une part de leur récolte de blé."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que trouvent les Égyptiens au pays de Pount ?",
+      "choix": [
+        "Du bois de cèdre",
+        "De la neige et des ours",
+        "De l'encens, de l'or et des singes"
+      ],
+      "reponse": 2,
+      "explication": "À Pount, ils trouvent de l'encens, de l'or et des singes."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qui prend l'Égypte en 30 avant Jésus-Christ ?",
+      "choix": [
+        "Les Grecs",
+        "Les Romains",
+        "Les Hittites"
+      ],
+      "reponse": 1,
+      "explication": "Les Romains prennent l'Égypte : c'est la fin des pharaons."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « scribe » ?",
+      "choix": [
+        "Un soldat sur un char",
+        "Une personne dont le métier est d'écrire",
+        "Un bateau de marchands"
+      ],
+      "reponse": 1,
+      "explication": "Le scribe sait lire, écrire et compter."
+    }
+  ]
+}

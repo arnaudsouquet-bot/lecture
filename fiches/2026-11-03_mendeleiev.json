@@ -1,0 +1,189 @@
+{
+  "format": 1,
+  "id": "2026-11-03_mendeleiev",
+  "theme": "questions",
+  "titre": "Le tableau de Mendeleïev, c'est quoi ?",
+  "emoji": "🧪",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "ressemblent",
+    "forment",
+    "comportent",
+    "restent",
+    "brûlent",
+    "existent",
+    "ressembleraient"
+  ],
+  "mots": [
+    {
+      "mot": "élément",
+      "syllabes": [
+        "é",
+        "lé",
+        "ment"
+      ],
+      "emoji": "🧩",
+      "definition": "Une sorte d'atome. L'or, le fer et l'oxygène sont des éléments.",
+      "exemple": "Le fer est un élément très solide."
+    },
+    {
+      "mot": "chimiste",
+      "syllabes": [
+        "chi",
+        "mis",
+        "te"
+      ],
+      "emoji": "👨‍🔬",
+      "definition": "Un savant qui étudie de quoi sont faites les choses.",
+      "exemple": "La chimiste mélange deux liquides dans un tube."
+    },
+    {
+      "mot": "colonne",
+      "syllabes": [
+        "co",
+        "lon",
+        "ne"
+      ],
+      "emoji": "📊",
+      "definition": "Une rangée de cases placées les unes sous les autres, de haut en bas.",
+      "exemple": "Écris les nombres dans la première colonne."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Un tableau célèbre",
+      "emoji": "🧪",
+      "anim": "zoom",
+      "texte": "Dans les classes de sciences, un grand tableau est souvent accroché au mur. Il est plein de petites cases avec des lettres. C'est le tableau de Mendeleïev ! Chaque case présente un [[élément]]. Un élément, c'est une sorte d'atome. Il y en a {{118|cent dix-huit}} en tout !"
+    },
+    {
+      "titre": "Le grand rangement",
+      "emoji": "👨‍🔬",
+      "anim": "balance",
+      "texte": "Dmitri Mendeleïev était un [[chimiste]] russe. En {{1869|mille huit cent soixante-neuf}}, il a une idée géniale. On connaissait alors environ {{63|soixante-trois}} éléments. Il les range du plus léger au plus lourd. Il remarque que certains se ressemblent beaucoup. Alors, il les place les uns sous les autres."
+    },
+    {
+      "titre": "Lignes et colonnes",
+      "emoji": "📊",
+      "anim": "rebond",
+      "texte": "Le tableau a {{7|sept}} lignes et {{18|dix-huit}} [[colonne|colonnes]]. Dans une même colonne, les éléments forment une famille. Ils se comportent un peu pareil, comme des frères et sœurs. Par exemple, l'hélium et le néon sont de la même famille. Ces gaz restent tranquilles et ne brûlent jamais."
+    },
+    {
+      "titre": "Un numéro pour chacun",
+      "emoji": "🔢",
+      "anim": "tourne",
+      "texte": "Chaque case porte un numéro. Ce numéro, c'est le nombre de protons de l'atome ! L'hydrogène porte le numéro {{1|un}}. C'est le plus léger de tous. L'hélium porte le numéro {{2|deux}}. C'est le gaz qui fait flotter les ballons de fête !"
+    },
+    {
+      "titre": "Des éléments connus",
+      "emoji": "💍",
+      "anim": "flotte",
+      "texte": "Le carbone, numéro {{6|six}}, est dans la mine de ton crayon. L'oxygène, numéro {{8|huit}}, est dans l'air que tu respires. Le fer, numéro {{26|vingt-six}}, sert à faire des clous. L'or, numéro {{79|soixante-dix-neuf}}, brille sur les bijoux. Chacun a sa case !"
+    },
+    {
+      "titre": "Des cases vides",
+      "emoji": "❓",
+      "anim": "zoom",
+      "texte": "Mendeleïev a fait une chose étonnante : il a laissé des cases vides ! Il disait que ces éléments existent, mais qu'on ne les a pas encore trouvés. Il a même deviné à quoi ils ressembleraient. {{6|six}} ans plus tard, on découvre le premier : le gallium. Il avait raison !"
+    },
+    {
+      "titre": "Un tableau qui grandit",
+      "emoji": "🧱",
+      "anim": "rebond",
+      "texte": "Depuis, les savants ont trouvé d'autres éléments. Certains n'existent pas dans la nature. On les fabrique en laboratoire, pendant un tout petit instant. Les derniers ont reçu leur nom en {{2016|deux mille seize}}. Aujourd'hui, le tableau va jusqu'à la case {{118|cent dix-huit}}. Un jour, on en ajoutera peut-être d'autres !"
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Aujourd'hui, on connaît 118 éléments. Mendeleïev en connaissait environ 63. Combien en a-t-on trouvé depuis ?",
+      "aide": "118 − 63 = ?",
+      "choix": [
+        "65",
+        "55",
+        "181"
+      ],
+      "reponse": 1,
+      "explication": "118 moins 63, ça fait 55."
+    },
+    {
+      "type": "calcul",
+      "question": "L'or porte le numéro 79 et le fer le numéro 26. Quelle est la différence entre les deux ?",
+      "aide": "79 − 26 = ?",
+      "choix": [
+        "53",
+        "105",
+        "63"
+      ],
+      "reponse": 0,
+      "explication": "79 moins 26, ça fait 53."
+    },
+    {
+      "type": "calcul",
+      "question": "Le fer a 26 protons et l'oxygène en a 8. Combien de protons ont-ils ensemble ?",
+      "aide": "26 + 8 = ?",
+      "choix": [
+        "18",
+        "33",
+        "34"
+      ],
+      "reponse": 2,
+      "explication": "26 plus 8, ça fait 34."
+    },
+    {
+      "type": "comprehension",
+      "question": "Quel gaz fait flotter les ballons de fête ?",
+      "choix": [
+        "L'oxygène",
+        "L'hélium",
+        "Le fer"
+      ],
+      "reponse": 1,
+      "explication": "C'est l'hélium, le numéro 2 du tableau."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que veut dire le numéro de chaque case ?",
+      "choix": [
+        "Le nombre de protons de l'atome",
+        "Le prix de l'élément",
+        "L'âge de l'élément"
+      ],
+      "reponse": 0,
+      "explication": "Le numéro, c'est le nombre de protons."
+    },
+    {
+      "type": "comprehension",
+      "question": "Pourquoi Mendeleïev a-t-il laissé des cases vides ?",
+      "choix": [
+        "Il n'avait plus d'encre",
+        "Il voulait faire joli",
+        "Il pensait que des éléments restaient à trouver"
+      ],
+      "reponse": 2,
+      "explication": "Il avait deviné que d'autres éléments existaient."
+    },
+    {
+      "type": "comprehension",
+      "question": "Où trouve-t-on du carbone près de toi ?",
+      "choix": [
+        "Dans la mine de ton crayon",
+        "Dans les ballons de fête",
+        "Dans les clous"
+      ],
+      "reponse": 0,
+      "explication": "La mine du crayon est faite de carbone."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « chimiste » ?",
+      "choix": [
+        "Un joueur de foot",
+        "Un savant qui étudie de quoi sont faites les choses",
+        "Un vendeur de crayons"
+      ],
+      "reponse": 1,
+      "explication": "Le chimiste étudie les éléments et les mélanges."
+    }
+  ]
+}

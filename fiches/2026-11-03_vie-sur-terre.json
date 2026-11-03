@@ -1,0 +1,194 @@
+{
+  "format": 1,
+  "id": "2026-11-03_vie-sur-terre",
+  "theme": "questions",
+  "titre": "Comment la vie est-elle arrivée sur Terre ?",
+  "emoji": "🌱",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "crachaient",
+    "pensent",
+    "continuent",
+    "vivaient",
+    "construisaient",
+    "fabriquaient",
+    "remplissent",
+    "avaient",
+    "apparaissent",
+    "marchaient",
+    "étaient"
+  ],
+  "mots": [
+    {
+      "mot": "cellule",
+      "syllabes": [
+        "cel",
+        "lu",
+        "le"
+      ],
+      "emoji": "🦠",
+      "definition": "La plus petite partie d'un être vivant. Ton corps en a des milliards.",
+      "exemple": "On voit les cellules d'une feuille avec un microscope."
+    },
+    {
+      "mot": "hypothèse",
+      "syllabes": [
+        "hy",
+        "po",
+        "thè",
+        "se"
+      ],
+      "emoji": "🤔",
+      "definition": "Une idée qu'on propose pour expliquer quelque chose, mais qui n'est pas encore prouvée.",
+      "exemple": "Mon hypothèse : le chat a mangé le gâteau."
+    },
+    {
+      "mot": "fossile",
+      "syllabes": [
+        "fos",
+        "si",
+        "le"
+      ],
+      "emoji": "🐚",
+      "definition": "Une trace d'un être vivant très ancien, gardée dans la pierre.",
+      "exemple": "Au musée, on a vu le fossile d'un poisson."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Une Terre sans vie",
+      "emoji": "🌋",
+      "anim": "balance",
+      "texte": "La Terre est née il y a environ {{4|quatre}} milliards et demi d'années. Au début, c'était une boule brûlante. Des volcans crachaient partout ! Puis la Terre a refroidi et la pluie est tombée très longtemps. Les océans se sont formés. Mais il n'y avait encore aucun être vivant."
+    },
+    {
+      "titre": "Les premières cellules",
+      "emoji": "🦠",
+      "anim": "zoom",
+      "texte": "La vie est apparue dans l'eau. D'abord, il y avait de toutes petites [[cellule|cellules]]. Une cellule, c'est la plus petite partie d'un être vivant. Ces premières cellules étaient invisibles à l'œil. Les plus vieilles traces de vie ont environ {{3|trois}} milliards et demi d'années !"
+    },
+    {
+      "titre": "Comment c'est arrivé ?",
+      "emoji": "🤔",
+      "anim": "flotte",
+      "texte": "Personne ne le sait encore avec certitude ! Les savants ont plusieurs [[hypothèse|hypothèses]]. Peut-être que la vie est née près de sources chaudes, au fond de l'océan. Ou peut-être dans de petites mares. D'autres pensent que des météorites ont apporté des ingrédients utiles. Les chercheurs continuent d'enquêter !"
+    },
+    {
+      "titre": "Les fabricants d'oxygène",
+      "emoji": "🫧",
+      "anim": "rebond",
+      "texte": "Certaines cellules, les cyanobactéries, vivaient en groupes dans la mer. Elles construisaient des sortes de cailloux, les stromatolithes. Avec la lumière du Soleil, elles fabriquaient de l'oxygène. Il y a environ {{2|deux}} milliards et demi d'années, cet oxygène a commencé à remplir l'air. Grâce à elles, les animaux pourront respirer !"
+    },
+    {
+      "titre": "Des êtres plus grands",
+      "emoji": "🪼",
+      "anim": "tourne",
+      "texte": "Plus tard, des cellules se sont assemblées pour former des êtres plus grands. Il y a environ {{540|cinq cent quarante}} millions d'années, les mers se remplissent d'animaux étranges. Certains avaient des carapaces, d'autres des yeux. Les tout premiers poissons apparaissent aussi."
+    },
+    {
+      "titre": "Sortir de l'eau",
+      "emoji": "🐸",
+      "anim": "flotte",
+      "texte": "Les plantes sont sorties de l'eau les premières. Ensuite, des petites bêtes comme les mille-pattes les ont suivies. Il y a environ {{375|trois cent soixante-quinze}} millions d'années, des poissons avaient des nageoires solides. Leurs descendants marchaient sur la terre ferme. On le sait grâce aux [[fossile|fossiles]] !"
+    },
+    {
+      "titre": "Des dinosaures à nous",
+      "emoji": "🦕",
+      "anim": "rebond",
+      "texte": "Les dinosaures sont apparus il y a environ {{230|deux cent trente}} millions d'années. Ils ont disparu il y a {{66|soixante-six}} millions d'années, sauf les oiseaux ! Les oiseaux sont leurs descendants. Ensuite, les mammifères se sont multipliés. Les humains, eux, sont arrivés il y a seulement {{300 000|trois cent mille}} ans environ."
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Les dinosaures sont apparus il y a 230 millions d'années et ont disparu il y a 66 millions d'années. Pendant combien de millions d'années ont-ils vécu ?",
+      "aide": "230 − 66 = ?",
+      "choix": [
+        "174",
+        "296",
+        "164"
+      ],
+      "reponse": 2,
+      "explication": "230 moins 66, ça fait 164 millions d'années."
+    },
+    {
+      "type": "calcul",
+      "question": "Les poissons à nageoires solides vivaient il y a 375 millions d'années. Les dinosaures sont apparus il y a 230 millions d'années. Combien de millions d'années entre les deux ?",
+      "aide": "375 − 230 = ?",
+      "choix": [
+        "145",
+        "155",
+        "605"
+      ],
+      "reponse": 0,
+      "explication": "375 moins 230, ça fait 145 millions d'années."
+    },
+    {
+      "type": "calcul",
+      "question": "Les mers se remplissent d'animaux il y a 540 millions d'années. Les dinosaures disparaissent il y a 66 millions d'années. Combien de millions d'années entre les deux ?",
+      "aide": "540 − 66 = ?",
+      "choix": [
+        "486",
+        "474",
+        "606"
+      ],
+      "reponse": 1,
+      "explication": "540 moins 66, ça fait 474 millions d'années."
+    },
+    {
+      "type": "comprehension",
+      "question": "Où la vie est-elle apparue ?",
+      "choix": [
+        "Dans le désert",
+        "Dans l'eau",
+        "Sur la Lune"
+      ],
+      "reponse": 1,
+      "explication": "Les premières cellules vivaient dans l'eau."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qu'ont fabriqué les cyanobactéries ?",
+      "choix": [
+        "De l'oxygène",
+        "Du sable",
+        "Des volcans"
+      ],
+      "reponse": 0,
+      "explication": "Avec la lumière du Soleil, elles fabriquaient de l'oxygène."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qui sont les descendants des dinosaures ?",
+      "choix": [
+        "Les poissons",
+        "Les chats",
+        "Les oiseaux"
+      ],
+      "reponse": 2,
+      "explication": "Les oiseaux descendent des dinosaures."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qui est sorti de l'eau en premier ?",
+      "choix": [
+        "Les dinosaures",
+        "Les plantes",
+        "Les humains"
+      ],
+      "reponse": 1,
+      "explication": "Les plantes sont sorties de l'eau les premières."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « fossile » ?",
+      "choix": [
+        "Une trace d'un être très ancien, gardée dans la pierre",
+        "Un petit poisson rouge",
+        "Un volcan endormi"
+      ],
+      "reponse": 0,
+      "explication": "Un fossile, c'est une trace très ancienne dans la pierre."
+    }
+  ]
+}

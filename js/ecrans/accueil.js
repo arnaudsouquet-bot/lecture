@@ -57,7 +57,7 @@ export default function accueil(ecran) {
   $("#memoire", ecran).onclick = () => aller("memoire");
   $("#maths", ecran).onclick = () => aller("maths");
   compter($("#montant", ecran), 0, cagnotte, 1400, euros);
-  requestAnimationFrame(() => requestAnimationFrame(() => { $("#jauge", ecran).style.width = (cagnotte / PLAFOND_EUROS * 100) + "%"; }));
+  requestAnimationFrame(() => requestAnimationFrame(() => { $("#jauge", ecran).style.width = Math.min(100, cagnotte / PLAFOND_EUROS * 100) + "%"; }));
 
   // espace parent : 3 appuis rapides sur ⚙️, ou un appui long d'une seconde
   // (sur iPad, l'appui long peut être interrompu par le système : les 3 appuis marchent toujours)

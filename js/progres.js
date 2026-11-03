@@ -1,15 +1,23 @@
 // Points, argent de poche, journal de lecture et répétition espacée des mots.
 import { lire, ecrire } from "./store.js";
-import { PLAFOND_EUROS, EUROS_PAR_POINT, UN_SEUL_ARTICLE_PAYE_PAR_JOUR, INTERVALLES_JOURS, REVISIONS_PAR_JOUR } from "./config.js";
+import { PLAFOND_EUROS, EUROS_PAR_POINT, BONUS_MISE_A_JOUR, UN_SEUL_ARTICLE_PAYE_PAR_JOUR, INTERVALLES_JOURS, REVISIONS_PAR_JOUR } from "./config.js";
 import { jour, lundi, plusJours } from "./outils.js";
 
 /* ---------- argent de poche ---------- */
 
-// euros gagnés pendant la semaine qui commence au lundi donné, plafonnés
+// euros gagnés pendant la semaine qui commence au lundi donné : points plafonnés, plus les cadeaux de la semaine
 export function cagnotteSemaine(debut = lundi()) {
   const fin = plusJours(debut, 7);
   const points = lire("journal", []).filter(j => j.paye && j.date >= debut && j.date < fin).reduce((n, j) => n + j.points, 0);
-  return Math.min(PLAFOND_EUROS, Math.round(points * EUROS_PAR_POINT * 100) / 100);
+  return Math.round((Math.min(PLAFOND_EUROS, points * EUROS_PAR_POINT) + bonusSemaine(debut)) * 100) / 100;
+}
+export const bonusSemaine = (debut = lundi()) => lire("bonus", []).filter(b => b.semaine === debut).reduce((n, b) => n + b.montant, 0);
+
+// cadeau de la mise à jour, offert une seule fois (la cagnotte déjà gagnée reste telle quelle)
+export function offrirBonusMiseAJour() {
+  const bonus = lire("bonus", []);
+  if (bonus.some(b => b.id === BONUS_MISE_A_JOUR.id)) return;
+  return ecrire("bonus", [...bonus, { ...BONUS_MISE_A_JOUR, semaine: lundi(), date: jour() }]);
 }
 export function verseSemaine(debut = lundi()) {
   return lire("versements", []).filter(v => v.semaine === debut).reduce((n, v) => n + v.montant, 0);

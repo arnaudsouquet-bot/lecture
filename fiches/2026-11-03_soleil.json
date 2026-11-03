@@ -1,0 +1,187 @@
+{
+  "format": 1,
+  "id": "2026-11-03_soleil",
+  "theme": "questions",
+  "titre": "Comment le Soleil est-il né ?",
+  "emoji": "☀️",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "cognent",
+    "collent",
+    "pourraient",
+    "pensent",
+    "tournent"
+  ],
+  "mots": [
+    {
+      "mot": "nébuleuse",
+      "syllabes": [
+        "né",
+        "bu",
+        "leu",
+        "se"
+      ],
+      "emoji": "☁️",
+      "definition": "Un immense nuage de gaz et de poussière dans l'espace.",
+      "exemple": "Des étoiles naissent dans cette nébuleuse."
+    },
+    {
+      "mot": "fusion",
+      "syllabes": [
+        "fu",
+        "sion"
+      ],
+      "emoji": "🔥",
+      "definition": "Quand de tout petits morceaux se collent très fort et donnent beaucoup de chaleur et de lumière.",
+      "exemple": "La fusion fait briller le Soleil."
+    },
+    {
+      "mot": "géante",
+      "syllabes": [
+        "gé",
+        "an",
+        "te"
+      ],
+      "emoji": "🔴",
+      "definition": "Une étoile qui a gonflé et qui est devenue énorme.",
+      "exemple": "Une géante rouge est bien plus grosse que le Soleil."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Une étoile tout près",
+      "emoji": "☀️",
+      "anim": "rebond",
+      "texte": "Le Soleil est une étoile, comme celles qu'on voit la nuit. Il nous paraît plus gros parce qu'il est bien plus près de nous. Il est quand même à environ {{150|cent cinquante}} millions de kilomètres ! Sa lumière met environ {{8|huit}} minutes pour arriver jusqu'à nous."
+    },
+    {
+      "titre": "Au début, un nuage",
+      "emoji": "☁️",
+      "anim": "flotte",
+      "texte": "Il y a environ {{4|quatre}} milliards et demi d'années, le Soleil n'existait pas. À sa place, il y avait un immense nuage de gaz et de poussière. Ce nuage s'appelle une [[nébuleuse]]. Il flottait tranquillement dans la Voie lactée. Puis quelque chose l'a secoué, peut-être l'explosion d'une étoile voisine."
+    },
+    {
+      "titre": "Le nuage se serre",
+      "emoji": "🌀",
+      "anim": "tourne",
+      "texte": "Le nuage commence à se serrer sur lui-même. Il tourne de plus en plus vite, comme une patineuse qui ramène ses bras. Au centre, le gaz s'entasse en une grosse boule. Plus elle se serre, plus elle chauffe. Autour, le reste du nuage forme un disque plat."
+    },
+    {
+      "titre": "Le Soleil s'allume",
+      "emoji": "🔥",
+      "anim": "zoom",
+      "texte": "Au centre de la boule, il fait de plus en plus chaud. Les atomes se cognent si fort qu'ils se collent ensemble. C'est la [[fusion]] ! Elle produit énormément de lumière et de chaleur. Le Soleil s'allume : une étoile est née ! Aujourd'hui, son cœur est à environ {{15|quinze}} millions de degrés."
+    },
+    {
+      "titre": "Un vrai géant",
+      "emoji": "📏",
+      "anim": "balance",
+      "texte": "Le Soleil est gigantesque ! On pourrait aligner {{109|cent neuf}} Terres d'un bord à l'autre du Soleil. Et plus d'un million de Terres pourraient tenir dedans ! Pourtant, c'est une étoile plutôt moyenne. Certaines étoiles sont bien plus grosses que lui."
+    },
+    {
+      "titre": "Un Soleil précieux",
+      "emoji": "🌱",
+      "anim": "flotte",
+      "texte": "Les savants pensent que les planètes sont nées dans le disque autour du jeune Soleil. Aujourd'hui, {{8|huit}} planètes tournent autour de lui. Sans le Soleil, la Terre serait toute noire et glacée. Sa lumière fait pousser les plantes. Sa chaleur nous permet de vivre."
+    },
+    {
+      "titre": "Et plus tard ?",
+      "emoji": "🔴",
+      "anim": "zoom",
+      "texte": "Le Soleil ne brillera pas toujours. Dans environ {{5|cinq}} milliards d'années, il va gonfler énormément. Il deviendra une [[géante]] rouge. Ensuite, il rétrécira et deviendra une petite étoile blanche. Mais pas d'inquiétude : c'est dans très, très longtemps !"
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "On peut aligner 109 Terres d'un bord à l'autre du Soleil. Combien de Terres faudrait-il pour deux Soleils posés côte à côte ?",
+      "aide": "109 + 109 = ?",
+      "choix": [
+        "209",
+        "218",
+        "128"
+      ],
+      "reponse": 1,
+      "explication": "109 plus 109, ça fait 218."
+    },
+    {
+      "type": "calcul",
+      "question": "Le Soleil est à 150 millions de kilomètres. Combien de millions de kilomètres pour faire l'aller et le retour ?",
+      "aide": "150 + 150 = ?",
+      "choix": [
+        "300",
+        "250",
+        "1 500"
+      ],
+      "reponse": 0,
+      "explication": "150 plus 150, ça fait 300."
+    },
+    {
+      "type": "calcul",
+      "question": "La lumière du Soleil met 8 minutes pour venir jusqu'à nous. Combien de minutes pour faire ce voyage 4 fois ?",
+      "aide": "8 + 8 + 8 + 8 = ?",
+      "choix": [
+        "12",
+        "24",
+        "32"
+      ],
+      "reponse": 2,
+      "explication": "4 fois 8, ça fait 32."
+    },
+    {
+      "type": "comprehension",
+      "question": "Avant le Soleil, qu'y avait-il à sa place ?",
+      "choix": [
+        "Une planète géante",
+        "Un immense nuage de gaz et de poussière",
+        "Rien du tout"
+      ],
+      "reponse": 1,
+      "explication": "Le Soleil est né d'un nuage : une nébuleuse."
+    },
+    {
+      "type": "comprehension",
+      "question": "Pourquoi le nuage tourne-t-il de plus en plus vite ?",
+      "choix": [
+        "Parce qu'il se serre, comme une patineuse qui ramène ses bras",
+        "Parce que le vent le pousse",
+        "Parce que la Terre le fait tourner"
+      ],
+      "reponse": 0,
+      "explication": "En se serrant, il tourne plus vite, comme la patineuse."
+    },
+    {
+      "type": "comprehension",
+      "question": "Où sont nées les planètes ?",
+      "choix": [
+        "Dans une autre galaxie",
+        "Au cœur du Soleil",
+        "Dans le disque autour du jeune Soleil"
+      ],
+      "reponse": 2,
+      "explication": "Elles sont nées dans le disque plat autour du Soleil."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que deviendra le Soleil dans environ 5 milliards d'années ?",
+      "choix": [
+        "Une planète bleue",
+        "Une géante rouge",
+        "Une comète"
+      ],
+      "reponse": 1,
+      "explication": "Il va gonfler et devenir une géante rouge."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « nébuleuse » ?",
+      "choix": [
+        "Un immense nuage de gaz et de poussière",
+        "Une étoile filante",
+        "Un télescope"
+      ],
+      "reponse": 0,
+      "explication": "Une nébuleuse est un grand nuage dans l'espace."
+    }
+  ]
+}

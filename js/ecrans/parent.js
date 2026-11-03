@@ -3,7 +3,7 @@ import { PLAFOND_EUROS, EUROS_PAR_POINT, POINTS_PREMIER_ESSAI, POINTS_DEUXIEME_E
 import { etat as etatJeux, niveauDe, changerNiveau, estDebloque, toutDebloquer } from "../jeux.js";
 import { lire, ecrire } from "../store.js";
 import { tousLesArticles, estValide, valider, verifier, nombreDeMots, dejaLu, texteBrut } from "../articles.js";
-import { cagnotteSemaine, verseSemaine, resteAVerser, marquerPaye, motsAppris } from "../progres.js";
+import { cagnotteSemaine, bonusSemaine, verseSemaine, resteAVerser, marquerPaye, motsAppris } from "../progres.js";
 import { aller, message, ouvrirAa, reglages, changerReglage, prenom, nommer } from "../session.js";
 import { exporter, importerSauvegarde } from "../export.js";
 import { promptClaude } from "../prompt.js";
@@ -55,6 +55,7 @@ function afficherParent(ecran) {
       <div class="carte">
         <h2>🐷 Argent de poche</h2>
         <div class="ligne"><span>Gagné cette semaine</span><b>${euros(cagnotteSemaine(semaine))} / ${PLAFOND_EUROS} €</b></div>
+        ${bonusSemaine(semaine) ? `<div class="ligne petit-gris"><span>dont cadeau (hors plafond)</span><span>${euros(bonusSemaine(semaine))}</span></div>` : ""}
         <div class="ligne"><span>Déjà versé</span><span>${euros(verseSemaine(semaine))}</span></div>
         <div class="ligne"><span>Reste à verser</span><b>${euros(resteAVerser(semaine))}</b></div>
         ${versements.map(v => `<div class="ligne petit-gris"><span>Versé le ${dateCourte(v.date)}</span><span>${euros(v.montant)}</span></div>`).join("")}

@@ -1,0 +1,186 @@
+{
+  "format": 1,
+  "id": "2026-11-03_volcans-naissance",
+  "theme": "questions",
+  "titre": "Comment naissent les volcans ?",
+  "emoji": "🌋",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "appellent",
+    "bougent",
+    "poussent",
+    "rapprochent",
+    "écartent",
+    "naissent"
+  ],
+  "mots": [
+    {
+      "mot": "croûte",
+      "syllabes": [
+        "croû",
+        "te"
+      ],
+      "emoji": "🥖",
+      "definition": "La couche de roche dure tout autour de la Terre, comme la croûte d'un pain.",
+      "exemple": "Nous marchons sur la croûte de la Terre."
+    },
+    {
+      "mot": "manteau",
+      "syllabes": [
+        "man",
+        "teau"
+      ],
+      "emoji": "🟠",
+      "definition": "La couche de roche très chaude, sous la croûte de la Terre.",
+      "exemple": "Le manteau de la Terre est très épais."
+    },
+    {
+      "mot": "fissure",
+      "syllabes": [
+        "fis",
+        "su",
+        "re"
+      ],
+      "emoji": "⚡",
+      "definition": "Une longue fente, une craquelure dans le sol ou dans un mur.",
+      "exemple": "Il y a une fissure dans le mur du garage."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Une Terre en morceaux",
+      "emoji": "🧩",
+      "anim": "balance",
+      "texte": "La Terre n'est pas d'un seul bloc. Sa surface est une [[croûte]] de roche cassée en morceaux, comme un puzzle. Ces morceaux s'appellent des plaques. Elles bougent de quelques centimètres par an, comme tes ongles qui poussent !"
+    },
+    {
+      "titre": "La roche qui remonte",
+      "emoji": "🔥",
+      "anim": "tourne",
+      "texte": "Sous la croûte, il y a le [[manteau]], une couche de roche très chaude. Il est épais de presque {{3000|trois mille}} kilomètres ! Par endroits, la roche fond et devient du magma. Le magma est plus léger que la roche autour. Alors il remonte, comme une bulle dans l'eau !"
+    },
+    {
+      "titre": "Quand une plaque plonge",
+      "emoji": "⬇️",
+      "anim": "zoom",
+      "texte": "Parfois, {{2|deux}} plaques se rapprochent. L'une glisse sous l'autre et s'enfonce dans le manteau. Elle emporte de l'eau, qui aide la roche à fondre. Le magma remonte et fait naître une rangée de volcans. Autour de l'océan Pacifique, il y en a environ {{450|quatre cent cinquante}} !"
+    },
+    {
+      "titre": "Quand le sol se déchire",
+      "emoji": "↔️",
+      "anim": "balance",
+      "texte": "Ailleurs, {{2|deux}} plaques s'écartent. Une longue [[fissure]] s'ouvre, et le magma remonte pour boucher le trou. Cela arrive surtout au fond des océans. Là, une chaîne de volcans fait plus de {{60 000|soixante mille}} kilomètres de long ! En Islande, elle sort même de l'eau."
+    },
+    {
+      "titre": "Les points chauds",
+      "emoji": "🏝️",
+      "anim": "flotte",
+      "texte": "Certains volcans naissent au milieu d'une plaque. Là, de la roche très chaude monte des profondeurs : c'est un point chaud. La plaque glisse lentement au-dessus, comme une feuille au-dessus d'une bougie. Un volcan naît, puis un autre, et encore un autre. C'est ainsi que sont nées les îles d'Hawaï, alignées comme des perles !"
+    },
+    {
+      "titre": "Un volcan dans un champ",
+      "emoji": "🌽",
+      "anim": "rebond",
+      "texte": "En {{1943|mille neuf cent quarante-trois}}, au Mexique, un paysan travaillait dans son champ de maïs. Soudain, le sol s'est mis à fumer et à gronder ! Des pierres brûlantes sont sorties d'une fissure. Un volcan naissait ! Le lendemain, il mesurait déjà environ {{50|cinquante}} mètres de haut."
+    },
+    {
+      "titre": "Le Paricutín grandit",
+      "emoji": "🌋",
+      "anim": "zoom",
+      "texte": "Ce volcan s'appelle le Paricutín. En un an, il a dépassé {{300|trois cents}} mètres ! Sa lave a recouvert {{2|deux}} villages, mais les habitants ont eu le temps de partir. Il s'est arrêté en {{1952|mille neuf cent cinquante-deux}}, à plus de {{400|quatre cents}} mètres de haut. Les savants l'ont vu naître et grandir !"
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Le Paricutín mesurait 50 mètres le premier jour et plus de 400 mètres à la fin. De combien de mètres a-t-il grandi ?",
+      "aide": "400 − 50 = ?",
+      "choix": [
+        "450",
+        "350",
+        "300"
+      ],
+      "reponse": 1,
+      "explication": "400 moins 50, ça fait 350."
+    },
+    {
+      "type": "calcul",
+      "question": "Le Paricutín est né en 1943 et s'est arrêté en 1952. Pendant combien d'années a-t-il été actif ?",
+      "aide": "1943 + ? = 1952",
+      "choix": [
+        "9",
+        "11",
+        "19"
+      ],
+      "reponse": 0,
+      "explication": "De 1943 à 1952, il y a 9 ans."
+    },
+    {
+      "type": "calcul",
+      "question": "Il y a environ 450 volcans autour du Pacifique. Combien en ferait le double ?",
+      "aide": "450 + 450 = ?",
+      "choix": [
+        "800",
+        "950",
+        "900"
+      ],
+      "reponse": 2,
+      "explication": "450 plus 450, ça fait 900."
+    },
+    {
+      "type": "comprehension",
+      "question": "À quelle vitesse bougent les plaques ?",
+      "choix": [
+        "Aussi vite qu'une voiture",
+        "De quelques mètres par jour",
+        "De quelques centimètres par an, comme tes ongles"
+      ],
+      "reponse": 2,
+      "explication": "Elles bougent tout doucement, comme tes ongles qui poussent."
+    },
+    {
+      "type": "comprehension",
+      "question": "Pourquoi le magma remonte-t-il vers la surface ?",
+      "choix": [
+        "Parce qu'il est plus léger que la roche autour",
+        "Parce que la pluie le pousse",
+        "Parce que le Soleil l'attire"
+      ],
+      "reponse": 0,
+      "explication": "Plus léger, il remonte comme une bulle dans l'eau."
+    },
+    {
+      "type": "comprehension",
+      "question": "Comment sont nées les îles d'Hawaï ?",
+      "choix": [
+        "Grâce à un tremblement de terre",
+        "Grâce à un point chaud, sous une plaque qui glisse",
+        "Grâce à une météorite"
+      ],
+      "reponse": 1,
+      "explication": "La plaque glisse au-dessus d'un point chaud : les volcans naissent en ligne."
+    },
+    {
+      "type": "comprehension",
+      "question": "Où est né le Paricutín ?",
+      "choix": [
+        "Dans un champ de maïs au Mexique",
+        "Au fond de l'océan",
+        "En Islande"
+      ],
+      "reponse": 0,
+      "explication": "Il est sorti d'un champ de maïs, au Mexique, en 1943."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « fissure » ?",
+      "choix": [
+        "Une montagne de glace",
+        "Une rivière de lave",
+        "Une longue fente dans le sol"
+      ],
+      "reponse": 2,
+      "explication": "Une fissure est une fente, une craquelure."
+    }
+  ]
+}

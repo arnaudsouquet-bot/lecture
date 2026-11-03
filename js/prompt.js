@@ -14,15 +14,17 @@ export function promptClaude(envie) {
   ].filter(Boolean).join("\n");
 
   // le prénom vient des réglages de l'iPad : il n'est jamais écrit dans le code publié
+  // [Arnaud 2026-11-03] les « Grandes questions » tiennent en 7 pages
+  const pages = theme && theme.cle === "questions" ? 7 : 10, mots = pages === 7 ? "310 à 350" : "450 à 500";
   const enfant = prenom() ? `${prenom()}, un enfant de 8 ans` : "un enfant de 8 ans";
   return `Écris un article de lecture pour ${enfant}, dyslexique, qui a des difficultés à lire. Il lit sur iPad, avec une voix qui peut lire pour lui.
 
 ${demande}
 
 Contraintes :
-- Environ 450 à 500 mots, répartis en 10 pages. Chaque page : un titre court, 4 à 6 phrases courtes (12 mots au plus), vocabulaire simple, ton enthousiaste.
+- Environ ${mots} mots, répartis en ${pages} pages. Chaque page : un titre court, 4 à 6 phrases courtes (12 mots au plus), vocabulaire simple, ton enthousiaste.
 - Des faits vrais et vérifiables uniquement. Pas d'à-peu-près : si un chiffre est incertain, écris « environ » ou ne le donne pas.
-- L'app est axée sur les nombres : mets des nombres concrets dans au moins 5 pages (tailles, durées, quantités, records).
+- L'app est axée sur les nombres : mets des nombres concrets dans au moins ${Math.ceil(pages / 2)} pages (tailles, durées, quantités, records).
 - 3 mots nouveaux, utiles pour comprendre le texte, qui apparaissent dans le texte.
 - 3 petits calculs tirés des nombres du texte, faisables de tête à 8 ans (additions, soustractions, doubles, résultat < 100).
 - 5 questions : 4 de compréhension du texte + 1 sur le sens d'un des 3 mots. 3 choix chacune, une seule bonne réponse, position de la bonne réponse variée.
@@ -56,5 +58,5 @@ Règles du format :
 - "anim" : flotte, rebond, tourne, zoom, balance ou aucune.
 - "reponse" : position du bon choix, 0 pour le premier.
 - "aide" (calculs seulement) : le calcul posé, ou des emojis à compter pour les petits nombres.
-- 3 objets dans "mots", 10 dans "pages", 3 questions "calcul", 4 "comprehension", 1 "mot".`;
+- 3 objets dans "mots", ${pages} dans "pages", 3 questions "calcul", 4 "comprehension", 1 "mot".`;
 }

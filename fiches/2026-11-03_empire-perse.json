@@ -1,0 +1,189 @@
+{
+  "format": 1,
+  "id": "2026-11-03_empire-perse",
+  "theme": "questions",
+  "titre": "Les empires : l'Empire perse",
+  "emoji": "🦁",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "vivaient",
+    "acceptent",
+    "voyagent",
+    "mesurent",
+    "montrent",
+    "apportent",
+    "viennent",
+    "échangent"
+  ],
+  "mots": [
+    {
+      "mot": "province",
+      "syllabes": [
+        "pro",
+        "vin",
+        "ce"
+      ],
+      "emoji": "🧩",
+      "definition": "Une partie d'un grand pays, qui a son propre chef.",
+      "exemple": "Le gouverneur dirige sa province au nom du roi."
+    },
+    {
+      "mot": "messager",
+      "syllabes": [
+        "mes",
+        "sa",
+        "ger"
+      ],
+      "emoji": "✉️",
+      "definition": "Une personne qui apporte un message à quelqu'un.",
+      "exemple": "Le messager galope pour apporter la lettre du roi."
+    },
+    {
+      "mot": "palais",
+      "syllabes": [
+        "pa",
+        "lais"
+      ],
+      "emoji": "🏰",
+      "definition": "Une très grande et belle maison où vit un roi.",
+      "exemple": "Le roi reçoit ses invités dans son palais."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Un empire géant",
+      "emoji": "🗺️",
+      "anim": "tourne",
+      "texte": "Il y a environ {{2500|deux mille cinq cents}} ans, un immense empire est né en Perse. Aujourd'hui, ce pays s'appelle l'Iran. L'Empire perse allait de l'Égypte jusqu'à l'Inde ! C'était le plus grand empire du monde à cette époque. Des dizaines de peuples différents y vivaient."
+    },
+    {
+      "titre": "Cyrus le Grand",
+      "emoji": "👑",
+      "anim": "balance",
+      "texte": "Le fondateur de l'empire s'appelle Cyrus le Grand. Vers {{550|cinq cent cinquante}} avant Jésus-Christ, il bat le roi des Mèdes, ses voisins. En {{539|cinq cent trente-neuf}} avant Jésus-Christ, il entre dans la grande ville de Babylone. Cyrus laisse les peuples garder leurs dieux et leurs langues. Ainsi, beaucoup l'acceptent comme roi."
+    },
+    {
+      "titre": "Les yeux du roi",
+      "emoji": "👀",
+      "anim": "zoom",
+      "texte": "Le roi Darius organise ce grand empire. Il le partage en environ {{20|vingt}} [[province|provinces]]. Chacune a son gouverneur, le satrape. Chaque province paie un impôt au roi : de l'or, de l'argent ou des chevaux. Des inspecteurs voyagent partout pour surveiller. On les appelle « les yeux du roi » !"
+    },
+    {
+      "titre": "La route royale",
+      "emoji": "🐎",
+      "anim": "flotte",
+      "texte": "Darius fait construire la route royale. Elle mesure environ {{2500|deux mille cinq cents}} kilomètres ! Tout le long, il y a plus de {{100|cent}} relais avec des chevaux frais. Un [[messager]] galope jusqu'au relais suivant. Là, un autre repart aussitôt avec la lettre. Elle arrive en environ {{7|sept}} jours, au lieu de {{90|quatre-vingt-dix}} à pied !"
+    },
+    {
+      "titre": "Persépolis",
+      "emoji": "🏛️",
+      "anim": "zoom",
+      "texte": "Darius fait aussi bâtir une ville de [[palais]] : Persépolis. Les colonnes de la grande salle mesurent environ {{20|vingt}} mètres de haut ! Sur les escaliers, on voit des sculptures. Elles montrent des peuples qui apportent des cadeaux au roi. On compte {{23|vingt-trois}} peuples différents !"
+    },
+    {
+      "titre": "Des pièces d'or",
+      "emoji": "🪙",
+      "anim": "rebond",
+      "texte": "Darius fait fabriquer des pièces d'or : les dariques. Sur chaque pièce, on voit le roi avec un arc. Avec la même monnaie partout, c'est plus facile d'acheter et de vendre. Les marchands viennent de tout l'empire. Ils échangent des tissus, des épices et des métaux."
+    },
+    {
+      "titre": "Alexandre le Grand",
+      "emoji": "⚔️",
+      "anim": "balance",
+      "texte": "Pendant environ {{200|deux cents}} ans, l'Empire perse reste très puissant. Puis arrive Alexandre le Grand, un jeune roi de Macédoine. Il a seulement {{22|vingt-deux}} ans quand il attaque la Perse. Il gagne plusieurs grandes batailles. En {{330|trois cent trente}} avant Jésus-Christ, l'empire perse est vaincu."
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "À pied, une lettre met 90 jours. Avec les messagers à cheval, elle met environ 7 jours. Combien de jours gagne-t-on ?",
+      "aide": "90 − 7 = ?",
+      "choix": [
+        "83 jours",
+        "97 jours",
+        "87 jours"
+      ],
+      "reponse": 0,
+      "explication": "90 moins 7, ça fait 83 jours de gagnés."
+    },
+    {
+      "type": "calcul",
+      "question": "L'empire commence vers 550 avant Jésus-Christ et finit en 330 avant Jésus-Christ. Combien de temps a-t-il duré ?",
+      "aide": "550 − 300 = 250, puis 250 − 30 = ?",
+      "choix": [
+        "880 ans",
+        "220 ans",
+        "250 ans"
+      ],
+      "reponse": 1,
+      "explication": "Avant Jésus-Christ, on compte à rebours : 550 moins 330, ça fait 220 ans."
+    },
+    {
+      "type": "calcul",
+      "question": "L'empire a 20 provinces. Si chaque province envoie 5 chevaux au roi, combien de chevaux reçoit-il ?",
+      "aide": "10 × 5 = 50, donc 20 × 5 = ?",
+      "choix": [
+        "25",
+        "50",
+        "100"
+      ],
+      "reponse": 2,
+      "explication": "20 fois 5, ça fait 100 chevaux."
+    },
+    {
+      "type": "comprehension",
+      "question": "Comment s'appelle aujourd'hui le pays de la Perse ?",
+      "choix": [
+        "L'Inde",
+        "L'Iran",
+        "L'Égypte"
+      ],
+      "reponse": 1,
+      "explication": "La Perse, c'est l'Iran d'aujourd'hui."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que laisse faire Cyrus aux peuples de son empire ?",
+      "choix": [
+        "Garder leurs dieux et leurs langues",
+        "Choisir un autre roi",
+        "Ne pas payer d'impôt"
+      ],
+      "reponse": 0,
+      "explication": "Cyrus respecte les dieux et les langues des peuples."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qui sont « les yeux du roi » ?",
+      "choix": [
+        "Des gardes du palais",
+        "Des messagers à cheval",
+        "Des inspecteurs qui surveillent l'empire"
+      ],
+      "reponse": 2,
+      "explication": "Ce sont des inspecteurs qui voyagent partout pour surveiller."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qui a vaincu l'Empire perse ?",
+      "choix": [
+        "Alexandre le Grand",
+        "Cyrus le Grand",
+        "Les Romains"
+      ],
+      "reponse": 0,
+      "explication": "Alexandre le Grand a vaincu les Perses en 330 avant Jésus-Christ."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « messager » ?",
+      "choix": [
+        "Un roi très puissant",
+        "Une personne qui apporte un message",
+        "Une pièce d'or"
+      ],
+      "reponse": 1,
+      "explication": "Le messager apporte un message à quelqu'un."
+    }
+  ]
+}

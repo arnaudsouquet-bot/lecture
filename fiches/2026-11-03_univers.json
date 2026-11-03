@@ -1,0 +1,189 @@
+{
+  "format": 1,
+  "id": "2026-11-03_univers",
+  "theme": "questions",
+  "titre": "Comment l'Univers est-il né ?",
+  "emoji": "🌌",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "appellent",
+    "éloignent",
+    "agitent",
+    "étaient",
+    "rassemblent",
+    "serrent",
+    "brillent",
+    "savent",
+    "construisent"
+  ],
+  "mots": [
+    {
+      "mot": "savant",
+      "syllabes": [
+        "sa",
+        "vant"
+      ],
+      "emoji": "🧑‍🔬",
+      "definition": "Une personne qui étudie beaucoup et cherche à comprendre le monde.",
+      "exemple": "Le savant regarde les étoiles avec son télescope."
+    },
+    {
+      "mot": "milliard",
+      "syllabes": [
+        "mil",
+        "liard"
+      ],
+      "emoji": "🔢",
+      "definition": "Mille fois un million. C'est un nombre gigantesque !",
+      "exemple": "Il y a des milliards d'étoiles dans le ciel."
+    },
+    {
+      "mot": "atome",
+      "syllabes": [
+        "a",
+        "to",
+        "me"
+      ],
+      "emoji": "⚛️",
+      "definition": "Une toute petite brique, trop petite pour être vue. Tout est fait d'atomes.",
+      "exemple": "L'eau est faite de milliards d'atomes."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Au tout début",
+      "emoji": "🌌",
+      "anim": "zoom",
+      "texte": "Il y a très longtemps, l'Univers était tout petit. Tout ce qu'on voit dans le ciel était serré dans un minuscule espace. Il y faisait incroyablement chaud ! Puis l'Univers s'est mis à grandir très vite. Les [[savant|savants]] appellent ce moment le Big Bang. C'était il y a presque {{14|quatorze}} [[milliard|milliards]] d'années !"
+    },
+    {
+      "titre": "Un ballon qui gonfle",
+      "emoji": "🎈",
+      "anim": "flotte",
+      "texte": "Attention, le Big Bang n'est pas une explosion comme un pétard. C'est plutôt comme un ballon qui gonfle. L'espace lui-même s'étire dans toutes les directions. Et il gonfle encore aujourd'hui ! Les galaxies s'éloignent les unes des autres, comme des points dessinés sur le ballon."
+    },
+    {
+      "titre": "Une soupe brûlante",
+      "emoji": "🔥",
+      "anim": "tourne",
+      "texte": "Juste après le Big Bang, l'Univers est une soupe brûlante. Il fait des milliards de degrés ! Il n'y a pas encore d'étoiles. Il y a seulement de minuscules grains qui s'agitent. Puis l'Univers grandit et refroidit doucement."
+    },
+    {
+      "titre": "Les premiers atomes",
+      "emoji": "⚛️",
+      "anim": "zoom",
+      "texte": "Tout ce qui existe est fait de minuscules briques : les [[atome|atomes]]. Ton corps, l'eau, les arbres : tout est fait d'atomes ! Les premiers atomes sont apparus environ {{380 000|trois cent quatre-vingt mille}} ans après le Big Bang. C'étaient surtout de l'hydrogène et de l'hélium, {{2|deux}} gaz très légers."
+    },
+    {
+      "titre": "Les premières étoiles",
+      "emoji": "⭐",
+      "anim": "rebond",
+      "texte": "Les atomes se rassemblent en énormes nuages de gaz. Leur poids les tire vers le centre, et ils se serrent. Au centre, il fait de plus en plus chaud. Un jour, ça s'allume : une étoile est née ! Les premières étoiles brillent environ {{200|deux cents}} millions d'années après le Big Bang."
+    },
+    {
+      "titre": "Un Univers immense",
+      "emoji": "🔭",
+      "anim": "balance",
+      "texte": "Aujourd'hui, l'Univers est rempli de galaxies. Chacune contient des milliards d'étoiles. La lumière va très vite : {{300 000|trois cent mille}} kilomètres par seconde ! Pourtant, la lumière de certaines galaxies voyage depuis des milliards d'années pour arriver jusqu'à nous."
+    },
+    {
+      "titre": "Encore des mystères",
+      "emoji": "❓",
+      "anim": "flotte",
+      "texte": "Les savants ne savent pas tout sur le Big Bang. Qu'y avait-il avant ? Personne ne le sait encore ! Pour chercher, ils construisent des télescopes géants. Le télescope James Webb voit des galaxies très lointaines. Leur lumière est partie il y a plus de {{13|treize}} milliards d'années ! Un jour, toi aussi, tu chercheras peut-être."
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Les premiers atomes sont apparus 380 000 ans après le Big Bang. Combien de milliers d'années manque-t-il pour arriver à 400 000 ?",
+      "aide": "400 − 380 = ?",
+      "choix": [
+        "20",
+        "120",
+        "80"
+      ],
+      "reponse": 0,
+      "explication": "400 moins 380, ça fait 20 : il manque 20 000 ans."
+    },
+    {
+      "type": "calcul",
+      "question": "La lumière parcourt 300 000 km en une seconde. Combien de milliers de kilomètres en deux secondes ?",
+      "aide": "300 + 300 = ?",
+      "choix": [
+        "302",
+        "900",
+        "600"
+      ],
+      "reponse": 2,
+      "explication": "300 plus 300, ça fait 600 : 600 000 km en deux secondes !"
+    },
+    {
+      "type": "calcul",
+      "question": "L'Univers a presque 14 milliards d'années. Combien ferait le double ?",
+      "aide": "14 + 14 = ?",
+      "choix": [
+        "24",
+        "28",
+        "41"
+      ],
+      "reponse": 1,
+      "explication": "14 plus 14, ça fait 28."
+    },
+    {
+      "type": "comprehension",
+      "question": "À quoi ressemble le Big Bang ?",
+      "choix": [
+        "À un ballon qui gonfle",
+        "À un pétard qui explose",
+        "À un gâteau qui cuit"
+      ],
+      "reponse": 0,
+      "explication": "L'espace s'étire dans toutes les directions, comme un ballon qui gonfle."
+    },
+    {
+      "type": "comprehension",
+      "question": "Quels sont les premiers atomes apparus ?",
+      "choix": [
+        "Le fer et l'or",
+        "L'hydrogène et l'hélium",
+        "L'eau et le sel"
+      ],
+      "reponse": 1,
+      "explication": "Ce sont surtout l'hydrogène et l'hélium, les gaz les plus légers."
+    },
+    {
+      "type": "comprehension",
+      "question": "Comment naît une étoile ?",
+      "choix": [
+        "Un nuage de gaz se serre et chauffe jusqu'à s'allumer",
+        "Une planète prend feu",
+        "La Lune se casse en morceaux"
+      ],
+      "reponse": 0,
+      "explication": "Le nuage se serre, chauffe au centre, puis l'étoile s'allume."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que savent les savants sur ce qu'il y avait avant le Big Bang ?",
+      "choix": [
+        "Il y avait une autre Terre",
+        "Il y avait des dinosaures",
+        "Personne ne le sait encore"
+      ],
+      "reponse": 2,
+      "explication": "C'est encore un grand mystère !"
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « atome » ?",
+      "choix": [
+        "Une grosse étoile",
+        "Une minuscule brique dont tout est fait",
+        "Un télescope géant"
+      ],
+      "reponse": 1,
+      "explication": "Les atomes sont de toutes petites briques : tout est fait d'atomes."
+    }
+  ]
+}

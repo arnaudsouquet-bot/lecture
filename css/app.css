@@ -390,6 +390,13 @@ button { font-family: inherit; color: inherit; -webkit-user-select: none; user-s
 .suite-nb span, .suite-emo span { background: #fff; border: 3px solid var(--bord); border-radius: 16px; padding: 8px 18px; }
 .suite-nb .trou, .suite-emo .trou { border-style: dashed; color: var(--violet); }
 .emo-choix { font-size: 54px; }
+.grille-logique { display: inline-grid; gap: 8px; font-size: 44px; }
+.grille-logique span { background: #fff; border: 3px solid var(--bord); border-radius: 14px; width: 74px; height: 74px; display: grid; place-items: center; }
+.grille-logique .trou { border-style: dashed; color: var(--violet); font-weight: bold; }
+.pyramide { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 38px; font-weight: bold; }
+.pyramide .rang { display: flex; gap: 8px; }
+.pyramide span { background: #fff; border: 3px solid var(--bord); border-radius: 12px; min-width: 96px; padding: 8px 12px; text-align: center; }
+.pyramide .trou { border-style: dashed; color: var(--violet); }
 .emo-petit { font-size: 30px; letter-spacing: .05em; }
 .suite-emo .emo-petit { font-size: 30px; }
 

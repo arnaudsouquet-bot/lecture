@@ -1,0 +1,200 @@
+{
+  "format": 1,
+  "id": "2026-11-03_empire-azteque-inca",
+  "theme": "questions",
+  "titre": "Les empires : les Aztèques et les Incas",
+  "emoji": "🦙",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "vivaient",
+    "fondent",
+    "relient",
+    "fabriquent",
+    "cultivent",
+    "préparent",
+    "servent",
+    "vivent",
+    "creusent",
+    "tiennent",
+    "viennent",
+    "construisent",
+    "tendent",
+    "passent",
+    "parcourent",
+    "utilisent",
+    "comptent",
+    "savent",
+    "aident"
+  ],
+  "mots": [
+    {
+      "mot": "terrasse",
+      "syllabes": [
+        "ter",
+        "ras",
+        "se"
+      ],
+      "emoji": "🪜",
+      "definition": "Une bande de terre plate, creusée dans une pente, comme une grande marche.",
+      "exemple": "Sur chaque terrasse, on plante du maïs."
+    },
+    {
+      "mot": "quipu",
+      "syllabes": [
+        "qui",
+        "pu"
+      ],
+      "emoji": "🪢",
+      "definition": "Chez les Incas, des cordelettes à nœuds qui servaient à compter.",
+      "exemple": "Le spécialiste lit les nœuds du quipu."
+    },
+    {
+      "mot": "conquête",
+      "syllabes": [
+        "con",
+        "quê",
+        "te"
+      ],
+      "emoji": "⚔️",
+      "definition": "Quand on prend un pays par la force.",
+      "exemple": "Le roi prépare la conquête d'un pays voisin."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Une ville sur un lac",
+      "emoji": "🦅",
+      "anim": "zoom",
+      "texte": "Les Aztèques vivaient au Mexique, en Amérique. Selon leur légende, un aigle posé sur un cactus leur montre où s'installer. Vers {{1325|mille trois cent vingt-cinq}}, ils fondent Tenochtitlan, sur une île d'un lac. Des routes sur l'eau la relient à la terre. Elle a peut-être {{200 000|deux cent mille}} habitants !"
+    },
+    {
+      "titre": "Des jardins sur l'eau",
+      "emoji": "🌽",
+      "anim": "flotte",
+      "texte": "Sur le lac, les Aztèques fabriquent des petits champs de boue et de plantes. On les appelle des chinampas. Ils y cultivent du maïs, des haricots et des tomates. Avec les graines du cacao, ils préparent une boisson amère : l'ancêtre du chocolat ! Ces graines servent même de monnaie."
+    },
+    {
+      "titre": "Les Incas des montagnes",
+      "emoji": "🏔️",
+      "anim": "rebond",
+      "texte": "En Amérique du Sud vivent les Incas. Leur empire s'étend le long des montagnes des Andes. Il mesure plus de {{4000|quatre mille}} kilomètres de long ! Sur les pentes, les Incas creusent des [[terrasse|terrasses]], comme de grandes marches. Ils y cultivent du maïs et des pommes de terre."
+    },
+    {
+      "titre": "Machu Picchu",
+      "emoji": "⛰️",
+      "anim": "zoom",
+      "texte": "Machu Picchu est une ville inca perchée sur une montagne. Elle se trouve à environ {{2400|deux mille quatre cents}} mètres d'altitude. Elle a été construite il y a presque {{600|six cents}} ans. Ses pierres sont si bien taillées qu'elles tiennent sans ciment ! Aujourd'hui, des milliers de visiteurs viennent l'admirer."
+    },
+    {
+      "titre": "Routes et coureurs",
+      "emoji": "🏃",
+      "anim": "flotte",
+      "texte": "Les Incas construisent environ {{40 000|quarante mille}} kilomètres de routes ! Au-dessus des ravins, ils tendent des ponts de corde. Des coureurs, les chasquis, se passent les messages en relais. Ensemble, ils parcourent environ {{200|deux cents}} kilomètres en un jour !"
+    },
+    {
+      "titre": "Compter avec des nœuds",
+      "emoji": "🪢",
+      "anim": "balance",
+      "texte": "Les Incas n'ont pas d'écriture comme la nôtre. Pour compter, ils utilisent des [[quipu|quipus]]. Ce sont des cordelettes de couleur avec des nœuds. Chaque nœud a un sens, chaque couleur aussi. Les quipus comptent les lamas, les récoltes et les habitants. Seuls des spécialistes savent les lire."
+    },
+    {
+      "titre": "L'arrivée des Espagnols",
+      "emoji": "⛵",
+      "anim": "balance",
+      "texte": "En {{1519|mille cinq cent dix-neuf}}, l'Espagnol Cortés arrive au Mexique avec environ {{500|cinq cents}} soldats. Des peuples ennemis des Aztèques l'aident. Les maladies venues d'Europe font aussi beaucoup de victimes. Tenochtitlan tombe en {{1521|mille cinq cent vingt et un}}. En {{1532|mille cinq cent trente-deux}}, Pizarro arrive chez les Incas avec environ {{170|cent soixante-dix}} hommes. C'est le début de leur [[conquête]]."
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Cortés arrive avec environ 500 soldats. Pizarro arrive chez les Incas avec environ 170 hommes. Combien Cortés en a-t-il de plus ?",
+      "aide": "500 − 100 = 400, puis 400 − 70 = ?",
+      "choix": [
+        "330",
+        "370",
+        "670"
+      ],
+      "reponse": 0,
+      "explication": "500 moins 170, ça fait 330."
+    },
+    {
+      "type": "calcul",
+      "question": "Tenochtitlan tombe en 1521. Pizarro arrive chez les Incas en 1532. Combien d'années plus tard ?",
+      "aide": "1532 − 1521 = ?",
+      "choix": [
+        "21 ans",
+        "11 ans",
+        "13 ans"
+      ],
+      "reponse": 1,
+      "explication": "1532 moins 1521, ça fait 11 ans."
+    },
+    {
+      "type": "calcul",
+      "question": "Les chasquis parcourent environ 200 kilomètres en un jour. Combien en 3 jours ?",
+      "aide": "200 + 200 + 200 = ?",
+      "choix": [
+        "203 km",
+        "400 km",
+        "600 km"
+      ],
+      "reponse": 2,
+      "explication": "3 fois 200, ça fait 600 kilomètres."
+    },
+    {
+      "type": "comprehension",
+      "question": "Selon la légende, quel signe montre aux Aztèques où s'installer ?",
+      "choix": [
+        "Un lama sur une montagne",
+        "Un aigle posé sur un cactus",
+        "Un poisson dans le lac"
+      ],
+      "reponse": 1,
+      "explication": "La légende parle d'un aigle posé sur un cactus."
+    },
+    {
+      "type": "comprehension",
+      "question": "À quoi servent aussi les graines de cacao chez les Aztèques ?",
+      "choix": [
+        "De monnaie",
+        "De jouets",
+        "De bijoux"
+      ],
+      "reponse": 0,
+      "explication": "Les graines de cacao servent même de monnaie."
+    },
+    {
+      "type": "comprehension",
+      "question": "Comment les chasquis transportent-ils les messages ?",
+      "choix": [
+        "À cheval",
+        "En bateau",
+        "En courant, en relais"
+      ],
+      "reponse": 2,
+      "explication": "Les coureurs se passent les messages en relais."
+    },
+    {
+      "type": "comprehension",
+      "question": "Où se trouve Machu Picchu ?",
+      "choix": [
+        "Sur une île au milieu d'un lac",
+        "Sur une montagne",
+        "Dans le désert"
+      ],
+      "reponse": 1,
+      "explication": "C'est une ville perchée sur une montagne, à environ 2400 mètres."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « quipu » ?",
+      "choix": [
+        "Une route de montagne",
+        "Une boisson au cacao",
+        "Des cordelettes à nœuds pour compter"
+      ],
+      "reponse": 2,
+      "explication": "Les Incas comptaient avec les nœuds des quipus."
+    }
+  ]
+}

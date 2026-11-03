@@ -2,6 +2,7 @@
 import { charger } from "./store.js";
 import { chargerArticlesLivres, tousLesArticles, estValide } from "./articles.js";
 import { chargerEnregistrements, mettreHorsLigne } from "./enregistrements.js";
+import { offrirBonusMiseAJour } from "./progres.js";
 import { brancherPanneauAa, session } from "./session.js";
 import { taire } from "./voix.js";
 import { $ } from "./outils.js";
@@ -48,6 +49,7 @@ async function demarrer() {
     $("#app").innerHTML = `<div class="vide">Impossible d'ouvrir les données de l'iPad.<br>${e}</div>`;
     return;
   }
+  await offrirBonusMiseAJour();
   await chargerArticlesLivres();
   await chargerEnregistrements(tousLesArticles().map(a => a.id));
   brancherPanneauAa();

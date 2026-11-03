@@ -1,0 +1,191 @@
+{
+  "format": 1,
+  "id": "2026-11-03_evolution-homme",
+  "theme": "questions",
+  "titre": "Comment l'homme a-t-il évolué ?",
+  "emoji": "🧍",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "trouvent",
+    "appellent",
+    "vivaient",
+    "étaient",
+    "chassaient",
+    "fabriquaient",
+    "enterraient",
+    "peignaient",
+    "gardent",
+    "pensent"
+  ],
+  "mots": [
+    {
+      "mot": "ancêtre",
+      "syllabes": [
+        "an",
+        "cê",
+        "tre"
+      ],
+      "emoji": "👴",
+      "definition": "Quelqu'un de ta famille qui a vécu il y a très longtemps, bien avant toi.",
+      "exemple": "Mon ancêtre vivait dans une ferme, il y a deux cents ans."
+    },
+    {
+      "mot": "squelette",
+      "syllabes": [
+        "sque",
+        "let",
+        "te"
+      ],
+      "emoji": "💀",
+      "definition": "Tous les os du corps, ensemble.",
+      "exemple": "Au musée, on a vu le squelette d'un mammouth."
+    },
+    {
+      "mot": "grotte",
+      "syllabes": [
+        "grot",
+        "te"
+      ],
+      "emoji": "🕳️",
+      "definition": "Un grand trou naturel dans la roche, sous la terre ou dans une montagne.",
+      "exemple": "Il fait frais et sombre dans la grotte."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Une grande famille",
+      "emoji": "🐒",
+      "anim": "balance",
+      "texte": "On entend parfois : « L'homme descend du singe. » En fait, c'est un peu différent ! Les humains et les chimpanzés sont plutôt des cousins. Nous avons un [[ancêtre]] commun, qui vivait il y a plus de {{6|six}} millions d'années. Ensuite, chaque famille a suivi son propre chemin."
+    },
+    {
+      "titre": "Lucy, une star",
+      "emoji": "🦴",
+      "anim": "zoom",
+      "texte": "En {{1974|mille neuf cent soixante-quatorze}}, des savants trouvent un [[squelette]] en Éthiopie, en Afrique. Ils l'appellent Lucy. Elle a vécu il y a {{3 200 000|trois millions deux cent mille}} ans ! Lucy mesurait environ un mètre. Elle marchait debout, mais grimpait aussi aux arbres."
+    },
+    {
+      "titre": "L'homme habile",
+      "emoji": "🪨",
+      "anim": "rebond",
+      "texte": "Il y a environ {{2|deux}} millions d'années vivait Homo habilis. Son nom veut dire « homme habile ». Il cassait des pierres pour fabriquer des outils tranchants. Avec eux, il découpait la viande. Ce sont parmi les plus vieux outils connus !"
+    },
+    {
+      "titre": "Le feu",
+      "emoji": "🔥",
+      "anim": "flotte",
+      "texte": "Ensuite est venu Homo erectus, « l'homme debout ». Il était grand et voyageait loin. Il est même sorti d'Afrique ! Les savants pensent qu'il a appris à utiliser le feu. Le feu donnait de la chaleur et de la lumière. Il permettait aussi de cuire les aliments."
+    },
+    {
+      "titre": "Les Néandertaliens",
+      "emoji": "🧔",
+      "anim": "balance",
+      "texte": "En Europe vivaient les Néandertaliens. Ils étaient costauds et bien adaptés au froid. Ils chassaient, fabriquaient des outils et enterraient parfois leurs morts. Ils ont disparu il y a environ {{40 000|quarante mille}} ans. Beaucoup d'humains gardent encore un petit morceau d'eux dans leurs cellules !"
+    },
+    {
+      "titre": "Homo sapiens, c'est nous !",
+      "emoji": "🌍",
+      "anim": "tourne",
+      "texte": "Notre espèce s'appelle Homo sapiens. Elle est apparue en Afrique il y a environ {{300 000|trois cent mille}} ans. Puis nos ancêtres sont partis explorer le monde. Ils ont marché vers l'Asie, l'Europe et l'Australie. Plus tard, ils sont arrivés jusqu'en Amérique."
+    },
+    {
+      "titre": "Les artistes des grottes",
+      "emoji": "🎨",
+      "anim": "zoom",
+      "texte": "Nos ancêtres étaient aussi des artistes ! Dans la [[grotte]] Chauvet, en France, ils ont peint des lions et des chevaux. Ces dessins ont environ {{36 000|trente-six mille}} ans. Ceux de Lascaux ont environ {{18 000|dix-huit mille}} ans. Ils peignaient avec du charbon et de la terre colorée."
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Les dessins de Chauvet ont environ 36 mille ans, ceux de Lascaux 18 mille ans. Combien de milliers d'années les séparent ?",
+      "aide": "36 − 18 = ?",
+      "choix": [
+        "18",
+        "22",
+        "54"
+      ],
+      "reponse": 0,
+      "explication": "36 moins 18, ça fait 18. Donc environ 18 mille ans."
+    },
+    {
+      "type": "calcul",
+      "question": "Lucy a été trouvée en 1974. Combien d'années sont passées jusqu'en 2026 ?",
+      "aide": "2026 − 1974 = ?",
+      "choix": [
+        "48",
+        "62",
+        "52"
+      ],
+      "reponse": 2,
+      "explication": "De 1974 à 2026, il s'est passé 52 ans."
+    },
+    {
+      "type": "calcul",
+      "question": "Homo sapiens est apparu il y a 300 mille ans. Les Néandertaliens ont disparu il y a 40 mille ans. Combien de milliers d'années entre les deux ?",
+      "aide": "300 − 40 = ?",
+      "choix": [
+        "340",
+        "260",
+        "270"
+      ],
+      "reponse": 1,
+      "explication": "300 moins 40, ça fait 260. Donc 260 mille ans."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que sont les humains et les chimpanzés ?",
+      "choix": [
+        "Des cousins avec un ancêtre commun",
+        "Exactement la même espèce",
+        "Des animaux sans aucun lien"
+      ],
+      "reponse": 0,
+      "explication": "Nous avons un ancêtre commun : nous sommes cousins."
+    },
+    {
+      "type": "comprehension",
+      "question": "Dans quel pays a-t-on trouvé Lucy ?",
+      "choix": [
+        "En France",
+        "En Éthiopie",
+        "En Australie"
+      ],
+      "reponse": 1,
+      "explication": "Lucy a été trouvée en Éthiopie, en Afrique."
+    },
+    {
+      "type": "comprehension",
+      "question": "À quoi servait le feu ?",
+      "choix": [
+        "À fabriquer des cailloux",
+        "À faire pousser les arbres",
+        "À se chauffer, s'éclairer et cuire les aliments"
+      ],
+      "reponse": 2,
+      "explication": "Le feu donnait chaleur et lumière, et permettait de cuire."
+    },
+    {
+      "type": "comprehension",
+      "question": "Sur quel continent notre espèce est-elle apparue ?",
+      "choix": [
+        "En Amérique",
+        "En Europe",
+        "En Afrique"
+      ],
+      "reponse": 2,
+      "explication": "Homo sapiens est apparu en Afrique."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « ancêtre » ?",
+      "choix": [
+        "Quelqu'un de la famille qui a vécu il y a très longtemps",
+        "Un bébé qui vient de naître",
+        "Un outil en pierre"
+      ],
+      "reponse": 0,
+      "explication": "Un ancêtre a vécu bien avant nous."
+    }
+  ]
+}

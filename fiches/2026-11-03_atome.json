@@ -1,0 +1,187 @@
+{
+  "format": 1,
+  "id": "2026-11-03_atome",
+  "theme": "questions",
+  "titre": "C'est quoi, un atome ?",
+  "emoji": "⚛️",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "filent",
+    "forment",
+    "servent",
+    "appellent",
+    "adorent",
+    "assemblent",
+    "bougent"
+  ],
+  "mots": [
+    {
+      "mot": "proton",
+      "syllabes": [
+        "pro",
+        "ton"
+      ],
+      "emoji": "🔴",
+      "definition": "Une toute petite boule dans le noyau de l'atome.",
+      "exemple": "Un atome d'oxygène a huit protons."
+    },
+    {
+      "mot": "noyau",
+      "syllabes": [
+        "no",
+        "yau"
+      ],
+      "emoji": "🎯",
+      "definition": "Le centre d'une chose. Dans un atome, c'est la petite boule du milieu.",
+      "exemple": "Le noyau de l'atome est très petit et très lourd."
+    },
+    {
+      "mot": "électron",
+      "syllabes": [
+        "é",
+        "lec",
+        "tron"
+      ],
+      "emoji": "⚡",
+      "definition": "Un grain très léger qui bouge autour du noyau de l'atome.",
+      "exemple": "Les électrons bougent sans arrêt autour du noyau."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Des briques minuscules",
+      "emoji": "🧱",
+      "anim": "rebond",
+      "texte": "Regarde autour de toi : ta table, l'eau, l'air, ton chat. Tout est fait de petites briques ! Ces briques s'appellent des atomes. Elles sont bien trop petites pour être vues. Même avec une loupe, c'est impossible ! Il faut des appareils très spéciaux."
+    },
+    {
+      "titre": "Petit, tout petit",
+      "emoji": "🔍",
+      "anim": "zoom",
+      "texte": "Un atome est vraiment minuscule. Imagine des atomes posés en ligne, côte à côte. Il en faut plus de {{100 000|cent mille}} pour traverser un cheveu ! Un seul grain de sable contient des milliards de milliards d'atomes. C'est bien plus que tous les grains d'une plage !"
+    },
+    {
+      "titre": "Au centre, le noyau",
+      "emoji": "🎯",
+      "anim": "balance",
+      "texte": "Au centre de l'atome, il y a le [[noyau]]. Il est fait de petites boules collées : les [[proton|protons]] et les neutrons. Si l'atome était grand comme un stade, le noyau serait comme une tête d'épingle ! Pourtant, c'est lui le plus lourd. Le reste de l'atome est presque vide."
+    },
+    {
+      "titre": "Les électrons qui filent",
+      "emoji": "⚡",
+      "anim": "tourne",
+      "texte": "Autour du noyau, d'autres grains bougent sans arrêt : les [[électron|électrons]]. Ils sont bien plus légers que les protons. Ils filent si vite qu'on ne sait pas où ils sont exactement. Ils forment comme un petit nuage autour du noyau. Les électrons servent aussi à faire l'électricité !"
+    },
+    {
+      "titre": "Des atomes différents",
+      "emoji": "🔢",
+      "anim": "flotte",
+      "texte": "Il existe {{118|cent dix-huit}} sortes d'atomes. Ce qui les rend différents, c'est leur nombre de protons. L'hydrogène a seulement {{1|un}} proton. Le carbone en a {{6|six}} et l'oxygène en a {{8|huit}}. L'or, lui, en a {{79|soixante-dix-neuf}} !"
+    },
+    {
+      "titre": "Des atomes qui s'assemblent",
+      "emoji": "💧",
+      "anim": "rebond",
+      "texte": "Les atomes adorent se tenir ensemble. Collés, ils forment des molécules. Une molécule d'eau, c'est {{2|deux}} atomes d'hydrogène et {{1|un}} atome d'oxygène. Avec ces quelques sortes d'atomes, la nature fabrique tout ! Les arbres, les étoiles, et toi aussi."
+    },
+    {
+      "titre": "L'idée de Démocrite",
+      "emoji": "🏛️",
+      "anim": "balance",
+      "texte": "Il y a environ {{2400|deux mille quatre cents}} ans vivait un savant grec, Démocrite. Il se demandait : peut-on couper une pierre sans fin ? Pour lui, on arrive à des grains impossibles à couper. Il les a appelés « atomos ». Ce mot veut dire « qu'on ne peut pas couper ». Quelle idée géniale, sans aucun appareil !"
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "L'or a 79 protons et l'oxygène en a 8. Combien de protons l'or a-t-il de plus ?",
+      "aide": "79 − 8 = ?",
+      "choix": [
+        "71",
+        "87",
+        "61"
+      ],
+      "reponse": 0,
+      "explication": "79 moins 8, ça fait 71."
+    },
+    {
+      "type": "calcul",
+      "question": "Une molécule d'eau a 3 atomes. Combien d'atomes y a-t-il dans 25 molécules d'eau ?",
+      "aide": "25 × 3 = ?",
+      "choix": [
+        "28",
+        "75",
+        "50"
+      ],
+      "reponse": 1,
+      "explication": "25 fois 3, ça fait 75."
+    },
+    {
+      "type": "calcul",
+      "question": "Il existe 118 sortes d'atomes. Sacha en connaît déjà 9. Combien lui en reste-t-il à découvrir ?",
+      "aide": "118 − 9 = ?",
+      "choix": [
+        "107",
+        "127",
+        "109"
+      ],
+      "reponse": 2,
+      "explication": "118 moins 9, ça fait 109."
+    },
+    {
+      "type": "comprehension",
+      "question": "De quoi est fait le noyau de l'atome ?",
+      "choix": [
+        "De sable et d'eau",
+        "De protons et de neutrons",
+        "D'électrons seulement"
+      ],
+      "reponse": 1,
+      "explication": "Le noyau est fait de protons et de neutrons collés."
+    },
+    {
+      "type": "comprehension",
+      "question": "Si l'atome était grand comme un stade, le noyau serait comme…",
+      "choix": [
+        "Une tête d'épingle",
+        "Un ballon de foot",
+        "Une voiture"
+      ],
+      "reponse": 0,
+      "explication": "Le noyau est tout petit : une tête d'épingle dans un stade."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qu'est-ce qui rend les atomes différents les uns des autres ?",
+      "choix": [
+        "Leur couleur",
+        "Leur nombre de protons",
+        "Leur odeur"
+      ],
+      "reponse": 1,
+      "explication": "Chaque sorte d'atome a son propre nombre de protons."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qui a eu, le premier, l'idée des atomes ?",
+      "choix": [
+        "Un roi de France",
+        "Un astronaute",
+        "Démocrite, un savant grec"
+      ],
+      "reponse": 2,
+      "explication": "Démocrite y a pensé il y a environ 2400 ans."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « noyau » dans un atome ?",
+      "choix": [
+        "La petite boule au centre",
+        "Le nuage autour",
+        "Un grain de sable"
+      ],
+      "reponse": 0,
+      "explication": "Le noyau, c'est le centre de l'atome."
+    }
+  ]
+}

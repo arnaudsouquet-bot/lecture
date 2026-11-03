@@ -2,7 +2,7 @@
 // Tout est chargé en mémoire au démarrage ; chaque écriture part aussi dans IndexedDB.
 
 const BASE = "lecture", MAGASIN = "kv";
-export const CLES = ["reglages", "statuts", "importes", "journal", "progression", "versements", "envies", "jeux", "session"];
+export const CLES = ["reglages", "statuts", "importes", "journal", "progression", "versements", "bonus", "envies", "jeux", "session"];
 
 let db = null;
 const memoire = {};

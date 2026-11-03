@@ -1,0 +1,189 @@
+{
+  "format": 1,
+  "id": "2026-11-03_empire-romain",
+  "theme": "questions",
+  "titre": "Les empires : l'Empire romain",
+  "emoji": "🦅",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "chassent",
+    "créent",
+    "réunissent",
+    "attaquent",
+    "relient",
+    "construisent",
+    "descendent",
+    "passent",
+    "entrent"
+  ],
+  "mots": [
+    {
+      "mot": "sénat",
+      "syllabes": [
+        "sé",
+        "nat"
+      ],
+      "emoji": "🏛️",
+      "definition": "Une assemblée de personnes importantes qui discutent et décident des lois.",
+      "exemple": "À Rome, les sénateurs se réunissent au sénat."
+    },
+    {
+      "mot": "latin",
+      "syllabes": [
+        "la",
+        "tin"
+      ],
+      "emoji": "🗣️",
+      "definition": "La langue que parlaient les Romains.",
+      "exemple": "Beaucoup de mots français viennent du latin."
+    },
+    {
+      "mot": "aqueduc",
+      "syllabes": [
+        "a",
+        "que",
+        "duc"
+      ],
+      "emoji": "🌉",
+      "definition": "Un long canal, parfois posé sur un pont, qui amène l'eau jusqu'à une ville.",
+      "exemple": "L'eau coule tout doucement dans l'aqueduc."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "D'une ville à un empire",
+      "emoji": "🏛️",
+      "anim": "balance",
+      "texte": "Au début, Rome n'est qu'une petite ville d'Italie. Selon la légende, elle est fondée en {{753|sept cent cinquante-trois}} avant Jésus-Christ. D'abord, elle a des rois. Vers {{509|cinq cent neuf}} avant Jésus-Christ, les Romains chassent le dernier roi. Ils créent une république. Des hommes riches et âgés se réunissent au [[sénat]] pour décider."
+    },
+    {
+      "titre": "Rome contre Carthage",
+      "emoji": "🐘",
+      "anim": "rebond",
+      "texte": "Peu à peu, Rome conquiert toute l'Italie. Puis elle se bat contre Carthage, une grande ville d'Afrique. Le chef de Carthage, Hannibal, a une idée folle. Il traverse les Alpes avec environ {{37|trente-sept}} éléphants ! Mais Rome finit par gagner."
+    },
+    {
+      "titre": "Jules César",
+      "emoji": "🌿",
+      "anim": "zoom",
+      "texte": "Jules César est un général romain très célèbre. Il conquiert la Gaule, notre pays, en environ {{8|huit}} ans. En {{52|cinquante-deux}} avant Jésus-Christ, le chef gaulois Vercingétorix se rend à Alésia. César devient alors trop puissant pour certains sénateurs. En {{44|quarante-quatre}} avant Jésus-Christ, ils l'attaquent et il meurt."
+    },
+    {
+      "titre": "Le premier empereur",
+      "emoji": "👑",
+      "anim": "tourne",
+      "texte": "Après César, son fils adopté Octave prend le pouvoir. En {{27|vingt-sept}} avant Jésus-Christ, il reçoit le nom d'Auguste. C'est le premier empereur. Le sénat existe toujours, mais c'est lui qui décide. Ensuite, pendant environ {{200|deux cents}} ans, l'empire vit presque en paix. On l'appelle la paix romaine."
+    },
+    {
+      "titre": "Gouverner un pays immense",
+      "emoji": "🗺️",
+      "anim": "flotte",
+      "texte": "L'empire fait le tour de la mer Méditerranée. Il a peut-être {{60 000 000|soixante millions}} d'habitants ! Il est partagé en provinces, chacune avec un gouverneur. Plus de {{80 000|quatre-vingt mille}} kilomètres de routes pavées les relient. Partout, on paie l'impôt et on parle [[latin]]."
+    },
+    {
+      "titre": "De l'eau pour les villes",
+      "emoji": "💧",
+      "anim": "zoom",
+      "texte": "Les Romains construisent des [[aqueduc|aqueducs]] pour amener l'eau propre dans les villes. Ce sont de longs canaux qui descendent tout doucement. Parfois, ils passent sur de grands ponts. En France, le pont du Gard mesure presque {{50|cinquante}} mètres de haut ! La ville de Rome avait {{11|onze}} aqueducs."
+    },
+    {
+      "titre": "La fin de l'empire",
+      "emoji": "🍂",
+      "anim": "balance",
+      "texte": "Avec le temps, l'empire devient difficile à défendre. En {{395|trois cent quatre-vingt-quinze}}, il est coupé en deux. À l'ouest, des peuples venus du nord entrent dans l'empire. En {{476|quatre cent soixante-seize}}, le dernier empereur de l'ouest, un jeune garçon, perd son trône. L'est, lui, continue presque {{1000|mille}} ans. Et le latin a donné le français !"
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "L'empire est coupé en deux en 395. L'empire de l'ouest finit en 476. Combien d'années plus tard ?",
+      "aide": "476 − 400 = 76, puis 76 + 5 = ?",
+      "choix": [
+        "71 ans",
+        "81 ans",
+        "121 ans"
+      ],
+      "reponse": 1,
+      "explication": "476 moins 395, ça fait 81 ans."
+    },
+    {
+      "type": "calcul",
+      "question": "Rome est fondée en 753 avant Jésus-Christ. Les Romains chassent le dernier roi vers 509 avant Jésus-Christ. Combien de temps les rois ont-ils régné ?",
+      "aide": "753 − 500 = 253, puis 253 − 9 = ?",
+      "choix": [
+        "244 ans",
+        "254 ans",
+        "344 ans"
+      ],
+      "reponse": 0,
+      "explication": "Avant Jésus-Christ, on compte à rebours : 753 moins 509, ça fait 244 ans."
+    },
+    {
+      "type": "calcul",
+      "question": "Vercingétorix se rend en 52 avant Jésus-Christ. César meurt en 44 avant Jésus-Christ. Combien d'années entre les deux ?",
+      "aide": "52 − 44 = ?",
+      "choix": [
+        "12 ans",
+        "96 ans",
+        "8 ans"
+      ],
+      "reponse": 2,
+      "explication": "52 moins 44, ça fait 8 ans."
+    },
+    {
+      "type": "comprehension",
+      "question": "Avec quels animaux Hannibal traverse-t-il les Alpes ?",
+      "choix": [
+        "Des chameaux",
+        "Des éléphants",
+        "Des lions"
+      ],
+      "reponse": 1,
+      "explication": "Hannibal traverse les Alpes avec environ 37 éléphants."
+    },
+    {
+      "type": "comprehension",
+      "question": "Où le chef gaulois Vercingétorix se rend-il à César ?",
+      "choix": [
+        "À Alésia",
+        "À Carthage",
+        "À Rome"
+      ],
+      "reponse": 0,
+      "explication": "Vercingétorix se rend à Alésia, en 52 avant Jésus-Christ."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qui est le premier empereur romain ?",
+      "choix": [
+        "Jules César",
+        "Hannibal",
+        "Auguste"
+      ],
+      "reponse": 2,
+      "explication": "Octave reçoit le nom d'Auguste et devient le premier empereur."
+    },
+    {
+      "type": "comprehension",
+      "question": "Quelle langue est née du latin ?",
+      "choix": [
+        "L'anglais",
+        "Le français",
+        "Le chinois"
+      ],
+      "reponse": 1,
+      "explication": "Le latin des Romains a donné le français."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « aqueduc » ?",
+      "choix": [
+        "Une route pavée",
+        "Un chef de province",
+        "Un canal qui amène l'eau dans une ville"
+      ],
+      "reponse": 2,
+      "explication": "L'aqueduc amène l'eau propre jusqu'à la ville."
+    }
+  ]
+}

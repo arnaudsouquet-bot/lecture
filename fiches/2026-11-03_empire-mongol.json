@@ -1,0 +1,189 @@
+{
+  "format": 1,
+  "id": "2026-11-03_empire-mongol",
+  "theme": "questions",
+  "titre": "Les empires : l'Empire mongol",
+  "emoji": "🐎",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "vivent",
+    "déménagent",
+    "habitent",
+    "apprennent",
+    "savent",
+    "conquièrent",
+    "installent",
+    "attendent",
+    "découvrent"
+  ],
+  "mots": [
+    {
+      "mot": "steppe",
+      "syllabes": [
+        "step",
+        "pe"
+      ],
+      "emoji": "🌾",
+      "definition": "Une immense plaine couverte d'herbe, presque sans arbres.",
+      "exemple": "Les chevaux galopent dans la steppe."
+    },
+    {
+      "mot": "yourte",
+      "syllabes": [
+        "your",
+        "te"
+      ],
+      "emoji": "⛺",
+      "definition": "Une grande tente ronde, en bois et en feutre, qu'on peut démonter.",
+      "exemple": "Il fait bien chaud dans la yourte."
+    },
+    {
+      "mot": "cavalier",
+      "syllabes": [
+        "ca",
+        "va",
+        "lier"
+      ],
+      "emoji": "🏇",
+      "definition": "Une personne qui monte à cheval.",
+      "exemple": "Le cavalier tient bien les rênes de son cheval."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Les nomades de la steppe",
+      "emoji": "🌾",
+      "anim": "flotte",
+      "texte": "La Mongolie est un pays d'Asie, au nord de la Chine. On y trouve la [[steppe]], une immense prairie. En hiver, il peut faire moins {{40|quarante}} degrés ! Les Mongols vivent avec leurs troupeaux. Plusieurs fois par an, ils déménagent pour trouver de l'herbe fraîche."
+    },
+    {
+      "titre": "La yourte",
+      "emoji": "⛺",
+      "anim": "rebond",
+      "texte": "Les Mongols habitent dans une [[yourte]]. C'est une grande tente ronde, faite de bois et de feutre de laine. Au centre, un poêle chauffe toute la famille. Une yourte se démonte en moins de {{2|deux}} heures. Puis on la charge sur des chameaux ou des chariots."
+    },
+    {
+      "titre": "Gengis Khan",
+      "emoji": "👑",
+      "anim": "balance",
+      "texte": "Vers {{1162|mille cent soixante-deux}}, un garçon nommé Temüdjin naît dans la steppe. Son enfance est très dure. Mais il devient un chef courageux et rusé. En {{1206|mille deux cent six}}, il réunit toutes les tribus mongoles. On lui donne alors un nouveau nom : Gengis Khan."
+    },
+    {
+      "titre": "Des cavaliers champions",
+      "emoji": "🏇",
+      "anim": "zoom",
+      "texte": "Les enfants mongols apprennent à monter à cheval vers {{3|trois}} ans ! Les soldats de Gengis Khan sont d'excellents [[cavalier|cavaliers]]. Chacun part avec {{3|trois}} à {{5|cinq}} chevaux. Quand un cheval est fatigué, il en prend un autre. Ils savent même tirer à l'arc en galopant !"
+    },
+    {
+      "titre": "Le plus grand empire",
+      "emoji": "🗺️",
+      "anim": "tourne",
+      "texte": "Gengis Khan et sa famille conquièrent de nombreux pays. Ces guerres font beaucoup de malheur. L'empire va de la Corée jusqu'à l'Europe ! C'est le plus grand empire d'un seul morceau de toute l'histoire. Il est plus de {{40|quarante}} fois plus grand que la France !"
+    },
+    {
+      "titre": "Des messagers au galop",
+      "emoji": "📜",
+      "anim": "flotte",
+      "texte": "Pour tenir un si grand empire, il faut des nouvelles rapides. Les Mongols installent des relais tous les {{30|trente}} kilomètres environ. Dans chaque relais, des chevaux frais attendent. Ainsi, un message peut parcourir environ {{200|deux cents}} kilomètres en un jour !"
+    },
+    {
+      "titre": "Kubilaï Khan et Marco Polo",
+      "emoji": "🧭",
+      "anim": "balance",
+      "texte": "Kubilaï Khan est le petit-fils de Gengis Khan. Il devient empereur de Chine. Vers {{1275|mille deux cent soixante-quinze}}, un jeune marchand de Venise arrive chez lui : Marco Polo. Il reste environ {{17|dix-sept}} ans en Asie ! De retour en Italie, il raconte son voyage dans un livre. Les Européens découvrent un monde extraordinaire."
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Temüdjin naît vers 1162. Il devient Gengis Khan en 1206. Quel âge a-t-il environ ?",
+      "aide": "1162 + 40 = 1202, puis 1202 + 4 = 1206. Combien as-tu ajouté ?",
+      "choix": [
+        "34 ans",
+        "54 ans",
+        "44 ans"
+      ],
+      "reponse": 2,
+      "explication": "1206 moins 1162, ça fait 44. Il a environ 44 ans."
+    },
+    {
+      "type": "calcul",
+      "question": "Il y a un relais tous les 30 kilomètres. Quelle distance a parcouru un messager après 4 relais ?",
+      "aide": "30 + 30 + 30 + 30 = ?",
+      "choix": [
+        "120 km",
+        "34 km",
+        "90 km"
+      ],
+      "reponse": 0,
+      "explication": "4 fois 30, ça fait 120 kilomètres."
+    },
+    {
+      "type": "calcul",
+      "question": "Chaque soldat part avec 5 chevaux. Combien de chevaux faut-il pour 6 soldats ?",
+      "aide": "5 + 5 + 5 + 5 + 5 + 5 = ?",
+      "choix": [
+        "11",
+        "30",
+        "25"
+      ],
+      "reponse": 1,
+      "explication": "6 fois 5, ça fait 30 chevaux."
+    },
+    {
+      "type": "comprehension",
+      "question": "Pourquoi les Mongols déménagent-ils plusieurs fois par an ?",
+      "choix": [
+        "Pour fuir la pluie",
+        "Pour trouver de l'herbe fraîche pour leurs troupeaux",
+        "Pour aller à l'école"
+      ],
+      "reponse": 1,
+      "explication": "Leurs troupeaux ont besoin d'herbe fraîche."
+    },
+    {
+      "type": "comprehension",
+      "question": "Avec quoi est faite une yourte ?",
+      "choix": [
+        "Du bois et du feutre",
+        "Des pierres et du ciment",
+        "De la glace"
+      ],
+      "reponse": 0,
+      "explication": "La yourte est faite de bois et de feutre, un tissu de laine."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que fait un soldat mongol quand son cheval est fatigué ?",
+      "choix": [
+        "Il s'arrête pour dormir",
+        "Il continue à pied",
+        "Il prend un autre cheval"
+      ],
+      "reponse": 2,
+      "explication": "Chaque soldat a plusieurs chevaux : il change de cheval."
+    },
+    {
+      "type": "comprehension",
+      "question": "D'où vient Marco Polo ?",
+      "choix": [
+        "De Mongolie",
+        "De Venise, en Italie",
+        "De Chine"
+      ],
+      "reponse": 1,
+      "explication": "Marco Polo est un marchand de Venise."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « steppe » ?",
+      "choix": [
+        "Une immense plaine couverte d'herbe",
+        "Une tente ronde",
+        "Une montagne enneigée"
+      ],
+      "reponse": 0,
+      "explication": "La steppe est une grande plaine d'herbe, presque sans arbres."
+    }
+  ]
+}

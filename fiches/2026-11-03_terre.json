@@ -1,0 +1,196 @@
+{
+  "format": 1,
+  "id": "2026-11-03_terre",
+  "theme": "questions",
+  "titre": "Comment la Terre est-elle née ?",
+  "emoji": "🌍",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "formaient",
+    "collaient",
+    "devenaient",
+    "cognaient",
+    "grossissaient",
+    "avaient",
+    "pensent",
+    "tombaient",
+    "contenaient",
+    "crachaient",
+    "étaient",
+    "vivaient"
+  ],
+  "mots": [
+    {
+      "mot": "poussière",
+      "syllabes": [
+        "pous",
+        "siè",
+        "re"
+      ],
+      "emoji": "🌫️",
+      "definition": "De tout petits grains, si légers qu'ils flottent dans l'air.",
+      "exemple": "Il y a de la poussière sous mon lit."
+    },
+    {
+      "mot": "météorite",
+      "syllabes": [
+        "mé",
+        "té",
+        "o",
+        "ri",
+        "te"
+      ],
+      "emoji": "☄️",
+      "definition": "Une pierre venue de l'espace qui tombe sur une planète.",
+      "exemple": "Au musée, on peut toucher une vraie météorite."
+    },
+    {
+      "mot": "océan",
+      "syllabes": [
+        "o",
+        "cé",
+        "an"
+      ],
+      "emoji": "🌊",
+      "definition": "Une très grande étendue d'eau salée, bien plus grande qu'une mer.",
+      "exemple": "Le bateau traverse l'océan Atlantique."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Un disque autour du Soleil",
+      "emoji": "💿",
+      "anim": "tourne",
+      "texte": "Quand le Soleil est né, il restait du gaz et de la [[poussière]] autour de lui. Ces restes formaient un grand disque plat qui tournait. Dans ce disque, les grains de poussière se collaient entre eux. Ils devenaient des cailloux, puis des rochers."
+    },
+    {
+      "titre": "Boum, boum, boum !",
+      "emoji": "💥",
+      "anim": "rebond",
+      "texte": "Les rochers se cognaient sans arrêt. Ils grossissaient de plus en plus. Certains sont devenus grands comme des montagnes, puis comme des petites planètes. La Terre s'est formée comme ça, choc après choc. Il y a environ {{4|quatre}} milliards et demi d'années, elle était presque terminée !"
+    },
+    {
+      "titre": "Une boule de feu",
+      "emoji": "🔥",
+      "anim": "zoom",
+      "texte": "Les chocs avaient tellement chauffé la jeune Terre qu'elle était fondue. Sa surface était couverte de roche liquide, à plus de {{1000|mille}} degrés ! Le fer, très lourd, coulait vers le centre. C'est pour ça qu'il y a du fer au cœur de la Terre."
+    },
+    {
+      "titre": "Le choc qui a fait la Lune",
+      "emoji": "🌙",
+      "anim": "zoom",
+      "texte": "Les savants pensent qu'une planète, appelée Théia, a percuté la jeune Terre. Théia était à peu près grande comme Mars. Le choc a projeté d'énormes morceaux dans l'espace. Ces morceaux se sont rassemblés pour former la Lune ! Aujourd'hui, elle est à environ {{384 000|trois cent quatre-vingt-quatre mille}} kilomètres."
+    },
+    {
+      "titre": "Des pierres du ciel",
+      "emoji": "☄️",
+      "anim": "rebond",
+      "texte": "Pendant longtemps, beaucoup de [[météorite|météorites]] tombaient sur la Terre. Ce sont des pierres venues de l'espace. Certaines contenaient un peu d'eau, cachée dans leurs roches. Les savants pensent qu'elles ont apporté une partie de l'eau de la Terre."
+    },
+    {
+      "titre": "La naissance des océans",
+      "emoji": "🌊",
+      "anim": "flotte",
+      "texte": "Peu à peu, la Terre a refroidi. Les volcans crachaient beaucoup de vapeur d'eau dans l'air. Cette vapeur a formé d'immenses nuages. Alors, il a plu pendant très, très longtemps ! L'eau a rempli les creux et formé les [[océan|océans]]. Aujourd'hui, l'eau couvre plus des {{2|deux}} tiers de la Terre."
+    },
+    {
+      "titre": "Une planète vivante",
+      "emoji": "🌱",
+      "anim": "balance",
+      "texte": "Les premiers êtres vivants étaient minuscules et vivaient dans l'eau. Ils sont apparus il y a plus de {{3|trois}} milliards d'années. Puis sont venus les plantes, les animaux… et toi ! Depuis sa naissance, la Terre tourne autour du Soleil. Un tour dure {{365|trois cent soixante-cinq}} jours : une année !"
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "La Lune est à environ 384 000 km. Combien de milliers de kilomètres manque-t-il pour arriver à 400 000 ?",
+      "aide": "400 − 384 = ?",
+      "choix": [
+        "26",
+        "16",
+        "84"
+      ],
+      "reponse": 1,
+      "explication": "400 moins 384, ça fait 16 : il manque 16 000 km."
+    },
+    {
+      "type": "calcul",
+      "question": "Un tour du Soleil dure 365 jours. Combien de jours durent deux tours ?",
+      "aide": "365 + 365 = ?",
+      "choix": [
+        "730",
+        "630",
+        "720"
+      ],
+      "reponse": 0,
+      "explication": "365 plus 365, ça fait 730."
+    },
+    {
+      "type": "calcul",
+      "question": "La roche fondue était à plus de 1000 degrés. Un four de cuisine chauffe à 250 degrés. Quelle est la différence ?",
+      "aide": "1000 − 250 = ?",
+      "choix": [
+        "850",
+        "1 250",
+        "750"
+      ],
+      "reponse": 2,
+      "explication": "1000 moins 250, ça fait 750."
+    },
+    {
+      "type": "comprehension",
+      "question": "Comment la Terre a-t-elle grossi ?",
+      "choix": [
+        "Des rochers se sont cognés et collés",
+        "Elle a bu beaucoup d'eau",
+        "Le Soleil l'a gonflée"
+      ],
+      "reponse": 0,
+      "explication": "Les rochers se cognaient et se collaient, choc après choc."
+    },
+    {
+      "type": "comprehension",
+      "question": "D'où vient la Lune, selon les savants ?",
+      "choix": [
+        "Elle est tombée d'une étoile",
+        "D'un choc entre la Terre et Théia",
+        "D'un nuage de pluie"
+      ],
+      "reponse": 1,
+      "explication": "Le choc avec Théia a projeté des morceaux qui ont formé la Lune."
+    },
+    {
+      "type": "comprehension",
+      "question": "Pourquoi y a-t-il du fer au cœur de la Terre ?",
+      "choix": [
+        "Des gens l'ont enterré",
+        "Les météorites l'ont planté",
+        "Il a coulé vers le centre quand la Terre était fondue"
+      ],
+      "reponse": 2,
+      "explication": "Le fer est lourd : il a coulé vers le centre."
+    },
+    {
+      "type": "comprehension",
+      "question": "Comment les océans se sont-ils remplis ?",
+      "choix": [
+        "Il a plu pendant très longtemps",
+        "La neige a fondu en une nuit",
+        "Des fleuves sont venus de la Lune"
+      ],
+      "reponse": 0,
+      "explication": "La vapeur a fait des nuages, puis il a plu très longtemps."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « météorite » ?",
+      "choix": [
+        "Un nuage de pluie",
+        "Une pierre venue de l'espace",
+        "Un volcan qui dort"
+      ],
+      "reponse": 1,
+      "explication": "Une météorite est une pierre de l'espace tombée sur une planète."
+    }
+  ]
+}
