@@ -1,7 +1,7 @@
 // 7 · Récompense : points gagnés, conversion en argent de poche, cagnotte de la semaine.
 import { PLAFOND_EUROS } from "../config.js";
 import { article } from "../articles.js";
-import { cagnotteSemaine, noterLecture } from "../progres.js";
+import { cagnotte, cagnotteSemaine, noterLecture } from "../progres.js";
 import { session, finirSession, aller, nommer } from "../session.js";
 import { dire } from "../voix.js";
 import { PHRASES } from "../phrases.js";
@@ -9,7 +9,7 @@ import { $, esc, euros, compter, confettis, jour, pluriel } from "../outils.js";
 
 export default function recompense(ecran) {
   const s = session(), a = article(s.article);
-  const avant = cagnotteSemaine();
+  const avant = cagnotte();
   const minutes = Math.max(1, Math.round((Date.now() - s.debut) / 60000));
   const entree = { date: jour(), article: s.article, titre: s.titre, points: s.points, bonnes: s.bonnes, total: s.total, minutes, paye: s.paye };
 
@@ -23,8 +23,8 @@ export default function recompense(ecran) {
           <div class="cochon anim-rebond" style="font-size:80px" id="cochon">🐷</div>
           <div style="flex:1">
             <div class="montant" style="font-size:44px" id="cagnotte">${euros(avant)}</div>
-            <div class="jauge"><div id="jauge" style="width:${avant / PLAFOND_EUROS * 100}%"></div></div>
-            <div class="jauge-legende"><span>0 €</span><span>${PLAFOND_EUROS} €</span></div>
+            <div class="jauge"><div id="jauge" style="width:${Math.min(100, cagnotteSemaine() / PLAFOND_EUROS * 100)}%"></div></div>
+            <div class="jauge-legende"><span>cette semaine</span><span>${PLAFOND_EUROS} €</span></div>
           </div>
         </div>
       </div>
@@ -38,14 +38,14 @@ export default function recompense(ecran) {
 
   // la lecture est notée une seule fois, puis la session est close
   noterLecture(entree).then(finirSession).then(() => {
-    const nouvelle = cagnotteSemaine(), gagne = Math.round((nouvelle - avant) * 100) / 100;
+    const nouvelle = cagnotte(), gagne = Math.round((nouvelle - avant) * 100) / 100;
     const txt = $("#euros", ecran);
     if (!s.paye) txt.textContent = "Lecture pour le plaisir : l'argent de poche, c'est une fois par jour.";
-    else if (gagne <= 0 && avant >= PLAFOND_EUROS) txt.textContent = "Ta cagnotte est déjà pleine cette semaine !";
+    else if (gagne <= 0 && cagnotteSemaine() >= PLAFOND_EUROS) txt.textContent = "Ta cagnotte est déjà pleine cette semaine !";
     else compter(txt, 0, gagne, 1200, v => "= " + euros(v) + " pour ta cagnotte");
     setTimeout(() => {
       compter($("#cagnotte", ecran), avant, nouvelle, 1200, euros);
-      $("#jauge", ecran).style.width = (nouvelle / PLAFOND_EUROS * 100) + "%";
+      $("#jauge", ecran).style.width = Math.min(100, cagnotteSemaine() / PLAFOND_EUROS * 100) + "%";
       if (gagne > 0) {
         const c = $("#cochon", ecran).getBoundingClientRect();
         for (let k = 0; k < 5; k++) {

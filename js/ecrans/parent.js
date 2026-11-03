@@ -3,7 +3,7 @@ import { PLAFOND_EUROS, EUROS_PAR_POINT, POINTS_PREMIER_ESSAI, POINTS_DEUXIEME_E
 import { etat as etatJeux, niveauDe, changerNiveau, estDebloque, toutDebloquer } from "../jeux.js";
 import { lire, ecrire } from "../store.js";
 import { tousLesArticles, estValide, valider, verifier, nombreDeMots, dejaLu, texteBrut } from "../articles.js";
-import { cagnotteSemaine, bonusSemaine, verseSemaine, resteAVerser, marquerPaye, motsAppris } from "../progres.js";
+import { cagnotte, cagnotteSemaine, bonusSemaine, marquerPaye, motsAppris } from "../progres.js";
 import { aller, message, ouvrirAa, reglages, changerReglage, prenom, nommer } from "../session.js";
 import { exporter, importerSauvegarde } from "../export.js";
 import { promptClaude } from "../prompt.js";
@@ -56,12 +56,11 @@ function afficherParent(ecran) {
         <h2>🐷 Argent de poche</h2>
         <div class="ligne"><span>Gagné cette semaine</span><b>${euros(cagnotteSemaine(semaine))} / ${PLAFOND_EUROS} €</b></div>
         ${bonusSemaine(semaine) ? `<div class="ligne petit-gris"><span>dont cadeau (hors plafond)</span><span>${euros(bonusSemaine(semaine))}</span></div>` : ""}
-        <div class="ligne"><span>Déjà versé</span><span>${euros(verseSemaine(semaine))}</span></div>
-        <div class="ligne"><span>Reste à verser</span><b>${euros(resteAVerser(semaine))}</b></div>
+        <div class="ligne"><span>Dans la cagnotte (pas encore versé, toutes semaines)</span><b>${euros(cagnotte())}</b></div>
         ${versements.map(v => `<div class="ligne petit-gris"><span>Versé le ${dateCourte(v.date)}</span><span>${euros(v.montant)}</span></div>`).join("")}
-        <div class="actions"><button class="mini plein" id="payer" ${resteAVerser(semaine) ? "" : "disabled"}>Marquer ${euros(resteAVerser(semaine))} comme payé</button></div>
+        <div class="actions"><button class="mini plein" id="payer" ${cagnotte() ? "" : "disabled"}>Marquer ${euros(cagnotte())} comme payé</button></div>
         <p class="petit-gris">Règle : ${POINTS_PREMIER_ESSAI} points par bonne réponse du 1er coup, ${POINTS_DEUXIEME_ESSAI} au 2ᵉ ;
-          1 point = ${euros(EUROS_PAR_POINT)} ; maximum ${PLAFOND_EUROS} € par semaine ; seul le 1er article du jour rapporte. Modifiable dans <code>js/config.js</code>.</p>
+          1 point = ${euros(EUROS_PAR_POINT)} ; maximum ${PLAFOND_EUROS} € gagnés par semaine (ce qui n'est pas versé reste dans la cagnotte) ; seul le 1er article du jour rapporte. Modifiable dans <code>js/config.js</code>.</p>
       </div>
 
       <div class="carte">
@@ -138,6 +137,7 @@ function afficherParent(ecran) {
       <div class="carte">
         <h2>💾 Sauvegarde</h2>
         <p class="petit-gris" style="margin-top:0">Les données restent sur cet iPad. Exportez-les régulièrement (iOS peut effacer les données d'un site peu utilisé).</p>
+        <p class="petit-gris" id="version">${articles.length} articles chargés</p>
         <div class="actions">
           <button class="mini plein" id="exporter">Exporter les données</button>
           <label class="mini">Importer une sauvegarde<input type="file" id="fichier-sauvegarde" accept=".json,application/json" hidden></label>
@@ -148,6 +148,8 @@ function afficherParent(ecran) {
     <div class="voile" id="voile-apercu"><div class="carte aa apercu" id="apercu" style="width:900px"></div></div>`;
 
   const recharger = () => afficherParent(ecran);
+  // version installée sur cet iPad (nom du cache du service worker), pour vérifier qu'une mise à jour est arrivée
+  if (self.caches) caches.keys().then(cles => { const v = cles.find(c => /^lecture-v\d+$/.test(c)); if (v) $("#version", ecran).textContent += ` · version ${v.replace("lecture-", "")}`; });
   $("#retour", ecran).onclick = () => aller("accueil");
   $("#payer", ecran).onclick = async () => { await marquerPaye(semaine); message("Versement noté ✔"); recharger(); };
   const toutValider = $("#tout-valider", ecran);

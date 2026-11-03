@@ -27,7 +27,7 @@ function quiz(ecran, cle) {
     ecran.innerHTML = `
       <div class="entete">
         <h1>${cle === "nombres" ? "🔢 Défi des nombres" : "🧠 As-tu bien compris ?"}</h1>
-        <div class="droite"><div class="points-etapes">${etapes(liste.length, i)}</div><span class="points-coin" id="pts">⭐ ${session().points}</span></div>
+        <div class="droite"><div class="points-etapes">${etapes(liste.length, i)}</div><span class="points-coin" id="pts">⭐ ${session().points}</span><button class="bouton clair petit" data-accueil>🏠 Accueil</button></div>
       </div>
       <div class="quiz">
         <div class="carte question lisible"><button class="hp" id="dire-q" aria-label="Écouter la question">🔊</button><span>${esc(q.question)}</span></div>

@@ -18,6 +18,7 @@ export default function lecture(ecran) {
         <div class="points-etapes" id="etapes"></div>
         <span class="puce" id="num"></span>
         <button class="hp" id="aa" style="font-weight:bold;font-size:26px" aria-label="Mes réglages de lecture">Aa</button>
+        <button class="bouton clair petit" data-accueil>🏠 Accueil</button>
       </div>
     </div>
     <div class="lecture">

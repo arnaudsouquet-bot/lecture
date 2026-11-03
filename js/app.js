@@ -3,7 +3,7 @@ import { charger } from "./store.js";
 import { chargerArticlesLivres, tousLesArticles, estValide } from "./articles.js";
 import { chargerEnregistrements, mettreHorsLigne } from "./enregistrements.js";
 import { offrirBonusMiseAJour } from "./progres.js";
-import { brancherPanneauAa, session } from "./session.js";
+import { brancherPanneauAa, session, aller } from "./session.js";
 import { taire } from "./voix.js";
 import { $ } from "./outils.js";
 import accueil from "./ecrans/accueil.js";
@@ -54,6 +54,8 @@ async function demarrer() {
   await chargerEnregistrements(tousLesArticles().map(a => a.id));
   brancherPanneauAa();
   window.addEventListener("hashchange", afficher);
+  // bouton 🏠 des écrans de lecture : l'article en cours est gardé (« Continue ta lecture »)
+  document.addEventListener("click", e => { if (e.target.closest("[data-accueil]")) aller("accueil"); });
   afficher();
   if ("serviceWorker" in navigator) {
     try {

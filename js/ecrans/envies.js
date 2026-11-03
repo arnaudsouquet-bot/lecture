@@ -1,8 +1,8 @@
 // 2 · Mes envies : l'enfant choisit un thème, puis un article de ce thème ; ou dit qu'il a envie d'autre chose (questionnaire).
 import { THEMES } from "../config.js";
-import { articlesDisponibles, dejaLu } from "../articles.js";
+import { articlesDisponibles, dejaLu, erreurArticles } from "../articles.js";
 import { articlePayeAujourdhui } from "../progres.js";
-import { aller, majSession } from "../session.js";
+import { aller, majSession, session } from "../session.js";
 import { dire } from "../voix.js";
 import { PHRASES, remplir } from "../phrases.js";
 import { $, $$, esc } from "../outils.js";
@@ -25,7 +25,9 @@ export default function envies(ecran) {
       <span class="emo ${dispo.length ? "anim-flotte" : ""}">${t.emoji}</span>
       <span class="nom">${t.nom}</span><span class="sous">${sous}</span></button>`;
   }).join("");
-  const aucun = !articlesDisponibles().length;
+  const aucun = !articlesDisponibles().length, s = session();
+  // l'article commencé est proposé en premier ; il peut aussi en choisir un autre
+  const enCours = s && ["lecture", "mots", "nombres", "questions", "recompense"].includes(s.etape) ? s : null;
 
   ecran.innerHTML = `
     <div class="entete">
@@ -33,8 +35,10 @@ export default function envies(ecran) {
       <h1>Qu'est-ce qui te fait envie aujourd'hui ?</h1>
       <div class="droite"><button class="bouton clair petit" id="retour">◀ Accueil</button></div>
     </div>
-    ${aucun ? `<p class="vide" style="padding:0 0 20px">Pas encore d'article prêt. Demande à tes parents d'en valider !</p>` : ""}
+    ${erreurArticles ? `<p class="vide" style="padding:0 0 20px">Les articles n'ont pas pu être chargés. Ferme l'app, vérifie qu'il y a Internet, et rouvre-la.</p>`
+      : aucun ? `<p class="vide" style="padding:0 0 20px">Pas encore d'article prêt. Demande à tes parents d'en valider !</p>` : ""}
     <div class="tuiles">
+      ${enCours ? `<button class="tuile dispo" id="continuer"><span class="emo anim-rebond">▶️</span><span class="nom">${esc(enCours.titre)}</span><span class="sous">Continuer ma lecture</span></button>` : ""}
       ${tuiles}
       <button class="tuile idee" id="idee"><span class="emo">💡</span><span class="nom">J'ai envie d'autre chose</span><span class="sous">Dis-nous ce que tu aimes</span></button>
     </div>`;
@@ -42,6 +46,7 @@ export default function envies(ecran) {
   $("#dire-titre", ecran).onclick = e => dire(PHRASES.envie, { bouton: e.currentTarget });
   $("#retour", ecran).onclick = () => aller("accueil");
   $("#idee", ecran).onclick = () => { dire(PHRASES.autreChose); aller("questionnaire"); };
+  if (enCours) $("#continuer", ecran).onclick = () => aller(enCours.etape);
   $$("[data-theme]", ecran).forEach(b => b.onclick = () => {
     const t = THEMES.find(x => x.cle === b.dataset.theme);
     if (!articlesDisponibles(t.cle).length) return dire(remplir(PHRASES.pasEncore, t.nom));

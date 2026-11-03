@@ -26,7 +26,7 @@ export default function mots(ecran) {
     ecran.innerHTML = `
       <div class="entete">
         <h1>${m.rev ? "Tu te souviens ? 🧠" : `Mot ${i + 1} sur ${nouveaux}`}</h1>
-        <div class="droite"><div class="points-etapes">${etapes(cartes.length, i)}</div></div>
+        <div class="droite"><div class="points-etapes">${etapes(cartes.length, i)}</div><button class="bouton clair petit" data-accueil>🏠 Accueil</button></div>
       </div>
       <div class="carte mot-carte">
         <div class="mot-image"><span class="anim-rebond" style="display:inline-block">${m.emoji || "📘"}</span></div>

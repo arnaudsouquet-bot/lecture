@@ -5,6 +5,7 @@ import { THEMES, ANIMATIONS, ANCIENS_THEMES } from "./config.js";
 import { esc, jour } from "./outils.js";
 
 let livres = [];
+export let erreurArticles = ""; // affichée si la liste des articles n'a pas pu être lue
 
 export async function chargerArticlesLivres() {
   try {
@@ -14,7 +15,8 @@ export async function chargerArticlesLivres() {
       catch (e) { console.error("Fiche illisible", f, e); return null; }
     }));
     livres = fiches.filter(Boolean);
-  } catch (e) { console.error("fiches/index.json illisible", e); }
+    erreurArticles = livres.length ? "" : "aucun article lisible";
+  } catch (e) { console.error("fiches/index.json illisible", e); erreurArticles = String(e); }
 }
 
 export function tousLesArticles() {

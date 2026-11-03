@@ -1,6 +1,6 @@
 // Accueil : bonjour, cagnotte de la semaine, étoiles, et les trois entrées Lecture · Mémoire · Mathématique.
 import { PLAFOND_EUROS } from "../config.js";
-import { cagnotteSemaine, serie, luAujourdhui, motsAReviser } from "../progres.js";
+import { cagnotte as maCagnotte, cagnotteSemaine, serie, luAujourdhui, motsAReviser } from "../progres.js";
 import { etat, badgesGagnes, prochainJeu } from "../jeux.js";
 import { session, aller, nommer } from "../session.js";
 import { $, esc, euros, compter, dateLongue, pluriel } from "../outils.js";
@@ -8,7 +8,7 @@ import { $, esc, euros, compter, dateLongue, pluriel } from "../outils.js";
 const ETAPES_LECTURE = ["lecture", "mots", "nombres", "questions", "recompense"];
 
 export default function accueil(ecran) {
-  const cagnotte = cagnotteSemaine(), s = session(), jours = serie();
+  const cagnotte = maCagnotte(), semaine = cagnotteSemaine(), s = session(), jours = serie();
   const enCours = s && ETAPES_LECTURE.includes(s.etape);
   const etatLecture = enCours ? "Continue ta lecture" : luAujourdhui() ? "✅ Lu aujourd'hui" : "Ton article t'attend";
   const aRevoir = motsAReviser([], Infinity).length;
@@ -27,9 +27,9 @@ export default function accueil(ecran) {
     <div class="bandeau">
       <div class="carte bandeau-cagnotte">
         <span style="font-size:48px">🐷</span>
-        <div><div class="leg">Cagnotte de la semaine</div><div class="montant-mini" id="montant">0,00 €</div></div>
-        <div class="jauge"><div id="jauge"></div></div>
-        <span class="leg">${PLAFOND_EUROS} €</span>
+        <div><div class="leg">Ma cagnotte</div><div class="montant-mini" id="montant">0,00 €</div></div>
+        <div class="jauge" title="Gagné cette semaine"><div id="jauge"></div></div>
+        <span class="leg">${PLAFOND_EUROS} € / semaine</span>
       </div>
       <div class="carte bandeau-etoiles">
         <span style="font-size:44px">⭐</span>
@@ -53,11 +53,11 @@ export default function accueil(ecran) {
     </div>
     <button class="engrenage" id="engrenage" aria-label="Espace parent (3 appuis rapides)">⚙️</button>`;
 
-  $("#lecture", ecran).onclick = () => aller(enCours ? s.etape : "envies");
+  $("#lecture", ecran).onclick = () => aller("envies");
   $("#memoire", ecran).onclick = () => aller("memoire");
   $("#maths", ecran).onclick = () => aller("maths");
   compter($("#montant", ecran), 0, cagnotte, 1400, euros);
-  requestAnimationFrame(() => requestAnimationFrame(() => { $("#jauge", ecran).style.width = Math.min(100, cagnotte / PLAFOND_EUROS * 100) + "%"; }));
+  requestAnimationFrame(() => requestAnimationFrame(() => { $("#jauge", ecran).style.width = Math.min(100, semaine / PLAFOND_EUROS * 100) + "%"; }));
 
   // espace parent : 3 appuis rapides sur ⚙️, ou un appui long d'une seconde
   // (sur iPad, l'appui long peut être interrompu par le système : les 3 appuis marchent toujours)

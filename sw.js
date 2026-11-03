@@ -1,6 +1,6 @@
 // Service worker : garde l'app et les articles sur l'iPad pour qu'elle marche sans Internet.
 // Changer VERSION à chaque mise à jour de l'app : l'iPad la télécharge au lancement suivant (avec Internet).
-const VERSION = "lecture-v14";
+const VERSION = "lecture-v16";
 // les enregistrements audio ont des noms uniques (calculés d'après leur contenu) : leur cache survit aux mises à jour
 const AUDIO = "lecture-audio";
 
@@ -19,8 +19,13 @@ const FICHIERS = [
 self.addEventListener("install", e => {
   e.waitUntil((async () => {
     const cache = await caches.open(VERSION);
-    // « reload » : toujours la version du serveur, jamais une copie du cache du navigateur
-    const recharger = urls => cache.addAll(urls.map(u => new Request(u, { cache: "reload" })));
+    // « ?v= » et « reload » : toujours la version du serveur, jamais une copie gardée en route
+    // (cache du navigateur ou serveurs relais de GitHub) ; rangée sous son adresse normale
+    const recharger = urls => Promise.all(urls.map(async u => {
+      const r = await fetch(new Request(`${u}${u.includes("?") ? "&" : "?"}v=${VERSION}`, { cache: "reload" }));
+      if (!r.ok) throw new Error(`${u} : ${r.status}`);
+      await cache.put(u, r);
+    }));
     await recharger(FICHIERS);
     // les articles listés dans fiches/index.json
     const index = await (await cache.match("fiches/index.json")).json();
@@ -41,8 +46,8 @@ self.addEventListener("fetch", e => {
   if (e.request.method !== "GET" || url.origin !== location.origin) return;
   const audio = url.pathname.includes("/fiches/audio/");
 
-  // listes d'enregistrements : d'abord le réseau (pour voir les nouveaux), le cache si hors ligne
-  if (audio && url.pathname.endsWith("/index.json")) {
+  // listes des articles et des enregistrements : d'abord le réseau (pour voir les nouveaux), le cache si hors ligne
+  if (url.pathname.endsWith("/index.json")) {
     e.respondWith((async () => {
       const cache = await caches.open(VERSION);
       try {
