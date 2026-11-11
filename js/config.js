@@ -97,7 +97,14 @@ export const JEUX = [
   { id: "formes", section: "maths", titre: "Les formes", emoji: "🔷", etoiles: 70, niveaux: 4,
     desc: "Reconnaître les formes, compter leurs côtés et leurs coins." },
   { id: "logique", section: "maths", titre: "Logique", emoji: "🧠", etoiles: 120, niveaux: 6,
-    desc: "Suites, intrus, grilles et pyramides de nombres." }
+    desc: "Suites, intrus, grilles et pyramides de nombres." },
+  // [Arnaud 2026-11-11] section Apprendre : infinitifs, divisions, alphabet ; ouverts tout de suite
+  { id: "infinitifs", section: "apprendre", titre: "Chasse aux infinitifs", emoji: "🎯", etoiles: 0, niveaux: 5,
+    desc: "Éclate les bulles des verbes et retrouve leur infinitif." },
+  { id: "partages", section: "apprendre", titre: "Atelier des partages", emoji: "🍕", etoiles: 0, niveaux: 5,
+    desc: "Partage entre les amis pour comprendre les divisions." },
+  { id: "alphabet", section: "apprendre", titre: "Train de l'alphabet", emoji: "🚂", etoiles: 0, niveaux: 5,
+    desc: "Les lettres, leur ordre, et ranger les mots." }
 ];
 
 // Calcul mental : série de 10 calculs ; niveaux (HYPOTHÈSE)
@@ -150,6 +157,86 @@ export const FORMES = [
   ["losange", "4"], ["pentagone", "5"], ["hexagone", "6"], ["ovale", "0"]
 ];
 
+/* ---------- Apprendre [Arnaud 2026-11-11] ---------- */
+// Les mots entre crochets ["mot", "…"] sont enregistrés avec la voix naturelle (outils/voix.py).
+// Ce qu'on demande à chaque niveau est décrit dans js/ecrans/apprendre.js (HYPOTHÈSE).
+
+// Chasse aux infinitifs : verbes en -er (leurs formes en -é et -e sont enregistrées aussi), autres verbes,
+// mots qui ne sont pas des verbes, et pièges qui finissent comme un infinitif
+export const VERBES_ER = [
+  ["manger", "🍽️"], ["jouer", "⚽"], ["chanter", "🎤"], ["danser", "💃"], ["sauter", "🦘"], ["nager", "🏊"],
+  ["dessiner", "🎨"], ["regarder", "👀"], ["marcher", "🚶"], ["parler", "🗣️"], ["cuisiner", "🍳"], ["grimper", "🧗"]
+];
+export const VERBES_AUTRES = [
+  ["finir", "🏁"], ["dormir", "😴"], ["courir", "🏃"], ["lire", "📖"], ["écrire", "✏️"], ["prendre", "✋"],
+  ["voir", "🔭"], ["boire", "🥤"], ["rire", "😂"], ["partir", "🧳"], ["grandir", "🌱"], ["vendre", "🏷️"],
+  ["être", "🙂"], ["avoir", "🎒"], ["aller", "➡️"], ["faire", "🛠️"], ["pouvoir", "💪"], ["savoir", "🧠"],
+  ["venir", "👋"], ["mettre", "🧦"], ["vouloir", "🙏"]
+];
+export const PAS_VERBES = [
+  ["maison", "🏠"], ["chat", "🐱"], ["vélo", "🚲"], ["joli", "🌸"], ["soleil", "☀️"], ["gâteau", "🎂"],
+  ["rapide", "💨"], ["ballon", "🎈"], ["chien", "🐶"], ["grand", "🦒"], ["table", "🪑"], ["fleur", "🌼"]
+];
+export const PIEGES_VERBES = [
+  ["hiver", "❄️"], ["rocher", "🪨"], ["cahier", "📓"], ["soir", "🌙"], ["miroir", "🪞"], ["plaisir", "😊"],
+  ["panier", "🧺"], ["noir", "⚫"], ["papier", "📄"], ["fermier", "👨‍🌾"]
+];
+// [forme conjuguée, infinitif] : verbes en -er, puis en -ir, -re, -oir, puis les plus difficiles
+export const CONJUGUES_ER = [
+  ["il mange", "manger"], ["tu joues", "jouer"], ["nous chantons", "chanter"], ["elle danse", "danser"],
+  ["vous sautez", "sauter"], ["je dessine", "dessiner"], ["ils nagent", "nager"], ["tu regardes", "regarder"]
+];
+export const CONJUGUES = [
+  ["elle finit", "finir"], ["je dors", "dormir"], ["ils courent", "courir"], ["vous lisez", "lire"],
+  ["il prend", "prendre"], ["je bois", "boire"], ["tu vois", "voir"], ["elle écrit", "écrire"],
+  ["nous grandissons", "grandir"], ["il part", "partir"], ["tu ris", "rire"], ["ils vendent", "vendre"]
+];
+export const CONJUGUES_DIFFICILES = [
+  ["nous allons", "aller"], ["je vais", "aller"], ["ils sont", "être"], ["vous êtes", "être"], ["tu as", "avoir"],
+  ["elles ont", "avoir"], ["il fait", "faire"], ["vous faites", "faire"], ["il peut", "pouvoir"], ["je sais", "savoir"],
+  ["ils viennent", "venir"], ["il met", "mettre"], ["nous voulons", "vouloir"]
+];
+// phrases à compléter : -er, -é ou -e (le mot à trouver est dans la phrase)
+export const PHRASES_A_TROU = [
+  ["Je vais manger une pomme.", "manger"], ["J'ai mangé une pomme.", "mangé"], ["Il mange une pomme.", "mange"],
+  ["Tu veux jouer au ballon ?", "jouer"], ["Nous avons joué au ballon.", "joué"], ["Elle aime chanter.", "chanter"],
+  ["Hier, j'ai chanté.", "chanté"], ["Il faut sauter très haut.", "sauter"], ["Le chat a sauté sur le lit.", "sauté"],
+  ["Je vais nager dans la mer.", "nager"], ["Elle a nagé longtemps.", "nagé"], ["Tu peux dessiner un volcan.", "dessiner"],
+  ["Mon frère a dessiné une fusée.", "dessiné"], ["On va danser ce soir.", "danser"], ["Ils ont dansé toute la nuit.", "dansé"],
+  ["Je regarde les étoiles.", "regarde"], ["Il faut regarder à gauche.", "regarder"], ["Le bébé marche tout seul.", "marche"]
+];
+
+// Atelier des partages : amis et objets à partager ; nombre d'amis et part de chacun par niveau (HYPOTHÈSE)
+export const AMIS = ["🐻", "🐰", "🦊", "🐸", "🐼", "🐯"];
+export const A_PARTAGER = ["🍬", "🍓", "🍪", "🌰", "🍒", "🧁"];
+export const PARTAGES_PAR_NIVEAU = [
+  { amis: [2, 3], parts: [2, 4] },
+  { amis: [2, 5], parts: [2, 6] },
+  { amis: [2, 10], parts: [2, 10] },
+  { amis: [3, 5], parts: [2, 4], reste: true },
+  { amis: [2, 9], parts: [2, 9], reste: true }
+];
+// petits problèmes : « Il y a » + nombre + texte (le nombre du texte est le diviseur)
+export const PROBLEMES_PARTAGE = [
+  ["roues. Une voiture a 4 roues. Combien de voitures ?", "🚗"],
+  ["pattes. Un chat a 4 pattes. Combien de chats ?", "🐱"],
+  ["pattes. Une araignée a 8 pattes. Combien d'araignées ?", "🕷️"],
+  ["œufs. Une boîte contient 6 œufs. Combien de boîtes ?", "🥚"],
+  ["élèves. On fait des équipes de 5. Combien d'équipes ?", "🧒"],
+  ["jours. Une semaine a 7 jours. Combien de semaines ?", "📅"],
+  ["chaussettes. Une paire, c'est 2 chaussettes. Combien de paires ?", "🧦"],
+  ["bonbons, à partager entre 3 amis. Combien pour chacun ?", "🍬"]
+];
+
+// Train de l'alphabet : [nom de la lettre dit à voix haute, lettre]
+export const LETTRES = [
+  ["a", "A"], ["bé", "B"], ["cé", "C"], ["dé", "D"], ["e", "E"], ["effe", "F"], ["gé", "G"], ["ache", "H"], ["i", "I"],
+  ["ji", "J"], ["ka", "K"], ["elle", "L"], ["emme", "M"], ["enne", "N"], ["o", "O"], ["pé", "P"], ["ku", "Q"], ["erre", "R"],
+  ["esse", "S"], ["té", "T"], ["u", "U"], ["vé", "V"], ["double vé", "W"], ["ixe", "X"], ["i grec", "Y"], ["zède", "Z"]
+];
+// lettres qui se ressemblent (en minuscules), proposées ensemble à partir du niveau 2
+export const LETTRES_JUMELLES = [["b", "d", "p", "q"], ["m", "n", "u", "h"], ["f", "t", "l", "i"], ["a", "o", "e", "c"]];
+
 // HYPOTHÈSE : badges
 export const BADGES = [
   { id: "lecteur", emoji: "📚", titre: "Premier article", desc: "Lire un premier article" },
@@ -157,7 +244,8 @@ export const BADGES = [
   { id: "elephant", emoji: "🐘", titre: "Mémoire d'éléphant", desc: "Gagner 5 jeux de paires" },
   { id: "hibou", emoji: "🦉", titre: "Hibou savant", desc: "Réviser 50 mots" },
   { id: "fusee", emoji: "🚀", titre: "Fusée du calcul", desc: "Atteindre le niveau 6 de calcul" },
-  { id: "champion", emoji: "🏆", titre: "Champion", desc: "Lire 7 jours de suite" }
+  { id: "champion", emoji: "🏆", titre: "Champion", desc: "Lire 7 jours de suite" },
+  { id: "savant", emoji: "🎓", titre: "Tête bien pleine", desc: "Finir 10 séries dans Apprendre" }
 ];
 
 export const ANIMATIONS =["flotte", "rebond", "tourne", "zoom", "balance", "aucune"];

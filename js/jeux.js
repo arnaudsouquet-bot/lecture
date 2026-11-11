@@ -73,6 +73,7 @@ function merite(id, e) {
     case "hibou": return (c.motsRevises || 0) >= 50;
     case "fusee": return (e.niveaux.calcul || 1) >= 6;
     case "champion": return serie() >= 7;
+    case "savant": return (c.seriesApprendre || 0) >= 10;
     default: return false;
   }
 }

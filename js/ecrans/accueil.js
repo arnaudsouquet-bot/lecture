@@ -1,4 +1,4 @@
-// Accueil : bonjour, cagnotte de la semaine, étoiles, et les trois entrées Lecture · Mémoire · Mathématique.
+// Accueil : bonjour, cagnotte, étoiles, et les quatre entrées Lecture · Mémoire · Mathématique · Apprendre.
 import { PLAFOND_EUROS } from "../config.js";
 import { cagnotte as maCagnotte, cagnotteSemaine, serie, luAujourdhui, motsAReviser } from "../progres.js";
 import { etat, badgesGagnes, prochainJeu } from "../jeux.js";
@@ -37,7 +37,7 @@ export default function accueil(ecran) {
         <div class="badges-mini" title="Mes badges">${badges}</div>
       </div>
     </div>
-    <div class="trois">
+    <div class="trois quatre">
       <button class="grande lecture" id="lecture">
         <span class="emo anim-rebond">📖</span><span class="nom">Lecture</span>
         <span class="etat">${etatLecture}</span><span class="gain">🐷 argent de poche</span>
@@ -50,12 +50,17 @@ export default function accueil(ecran) {
         <span class="emo">🔢</span><span class="nom">Mathématique</span>
         <span class="etat">${prochain("maths", "Tous les jeux sont ouverts")}</span><span class="gain">⭐ étoiles</span>
       </button>
+      <button class="grande apprendre" id="apprendre">
+        <span class="emo">🎓</span><span class="nom">Apprendre</span>
+        <span class="etat">Verbes · partages · ABC</span><span class="gain">⭐ étoiles</span>
+      </button>
     </div>
     <button class="engrenage" id="engrenage" aria-label="Espace parent (3 appuis rapides)">⚙️</button>`;
 
   $("#lecture", ecran).onclick = () => aller("envies");
   $("#memoire", ecran).onclick = () => aller("memoire");
   $("#maths", ecran).onclick = () => aller("maths");
+  $("#apprendre", ecran).onclick = () => aller("apprendre");
   compter($("#montant", ecran), 0, cagnotte, 1400, euros);
   requestAnimationFrame(() => requestAnimationFrame(() => { $("#jauge", ecran).style.width = Math.min(100, semaine / PLAFOND_EUROS * 100) + "%"; }));
 

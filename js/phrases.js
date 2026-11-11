@@ -73,7 +73,30 @@ export const PHRASES = {
   logiqueSuite: "Qu'est-ce qui vient ensuite ?",
   logiqueIntrus: "Lequel n'est pas comme les autres ?",
   logiqueGrille: "Chaque image est une seule fois sur chaque ligne et dans chaque colonne. Laquelle manque ?",
-  logiquePyramide: "Chaque brique est la somme des deux briques du dessous. Quel nombre manque ?"
+  logiquePyramide: "Chaque brique est la somme des deux briques du dessous. Quel nombre manque ?",
+  apprendreTitre: "Apprendre. Choisis un jeu.",
+  bullesConsigne: "Éclate les bulles des verbes à l'infinitif !",
+  astuceJeVais: "Astuce : on peut dire « je vais » devant un verbe à l'infinitif.",
+  pasUnVerbe: "Ce n'est pas un verbe à l'infinitif.",
+  quelEstVerbe: "Lequel est un verbe à l'infinitif ?",
+  quelInfinitif: "Quel est l'infinitif de ce verbe ?",
+  phraseTrou: "Quel mot complète la phrase ?",
+  astuceMordre: "Astuce : remplace par « mordre ». Je vais mordre : on écrit -er. J'ai mordu : on écrit -é.",
+  partageConsigne: "Touche les objets un par un pour les donner aux amis.",
+  partageChacun: "Combien chaque ami en a-t-il ?",
+  partageReste: "Il n'y en a plus assez pour tout le monde. C'est le reste !",
+  partageChacunReste: "Combien chacun en a-t-il, et combien en reste-t-il ?",
+  divisionCombien: "Combien de paquets ?",
+  divisionReste: "Combien de paquets, et combien en reste-t-il ?",
+  reste: "reste",
+  ilYA: "Il y a",
+  lettreTouche: "Écoute bien et touche la lettre :",
+  lettreManque: "Quelle lettre manque dans le train ?",
+  lettreApres: "Quelle lettre vient juste après",
+  lettreAvant: "Quelle lettre vient juste avant",
+  rangerLettres: "Range les lettres dans l'ordre de l'alphabet.",
+  rangerMots: "Range les mots dans l'ordre de l'alphabet.",
+  tchou: "Tchou tchou !"
 };
 
 export const remplir = (phrase, nom) => phrase.replace("{nom}", nom);

@@ -1,4 +1,4 @@
-// Ce que partagent les jeux de Mémoire et de Mathématique : en-tête, étoiles, fin de partie, choix du jeu, séries de questions.
+// Ce que partagent les jeux de Mémoire, de Mathématique et d'Apprendre : en-tête, étoiles, fin de partie, choix du jeu, séries de questions.
 import { JEUX, ETOILES_PAR_REPONSE } from "../config.js";
 import { etat, terminer, estDebloque, niveauDe, prochainJeu, jeu } from "../jeux.js";
 import { aller } from "../session.js";
@@ -8,7 +8,8 @@ import { PHRASES } from "../phrases.js";
 import { $, $$, esc, etapes } from "../outils.js";
 
 const SECTIONS = { memoire: { titre: "🧠 Mémoire", parole: PHRASES.memoireTitre, retour: "◀ Mémoire" },
-                   maths: { titre: "🔢 Mathématique", parole: PHRASES.mathsTitre, retour: "◀ Mathématique" } };
+                   maths: { titre: "🔢 Mathématique", parole: PHRASES.mathsTitre, retour: "◀ Mathématique" },
+                   apprendre: { titre: "🎓 Apprendre", parole: PHRASES.apprendreTitre, retour: "◀ Apprendre" } };
 
 // en-tête d'un jeu : titre, éléments à droite, étoiles, bouton retour vers la section
 export function entete(id, droite = "") {
@@ -52,11 +53,11 @@ export function parolesNombre(n) {
 }
 export const direNombre = (n, options) => direSuite(parolesNombre(n).map(texte => ({ texte })), options);
 
-/* ---------- choix du jeu (Mémoire, Mathématique) ---------- */
+/* ---------- choix du jeu (Mémoire, Mathématique, Apprendre) ---------- */
 
 export function hub(ecran, section, badges = {}) {
   const s = SECTIONS[section], e = etat(), suivant = prochainJeu(section);
-  ecran.classList.add(section === "memoire" ? "hub-memoire" : "hub-maths");
+  ecran.classList.add("hub-" + section);
   ecran.innerHTML = `
     <div class="entete">
       <button class="hp" id="dire-titre" aria-label="Écouter">🔊</button>

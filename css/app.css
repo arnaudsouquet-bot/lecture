@@ -410,3 +410,58 @@ button { font-family: inherit; color: inherit; -webkit-user-select: none; user-s
   .pad { width: 140px; height: 140px; }
   .objet { width: 84px; height: 84px; font-size: 50px; }
 }
+
+/* ---------- Apprendre : accueil, bulles, partages, train ---------- */
+.trois.quatre { grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.quatre .grande .emo { font-size: 84px; }
+.quatre .grande .nom { font-size: 27px; letter-spacing: .03em; }
+.quatre .grande .etat { font-size: 17px; }
+.grande.apprendre { border-color: #9cc3e6; } .grande.apprendre .etat { background: #e1eefa; color: #2a6aa8; }
+.hub-apprendre .activite { border-color: #9cc3e6; }
+@media (max-width: 900px) { .trois.quatre { grid-template-columns: repeat(2, 1fr); } }
+.astuce-jeu { font-size: 21px; text-align: center; color: #2a6aa8; background: #e1eefa; border-radius: 16px; padding: 10px 16px; margin: 12px auto 0; max-width: 820px; line-height: 1.5; }
+
+.bulles-jeu { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 18px 6px; }
+.bulle-mot { width: 168px; height: 168px; border-radius: 50%; border: 3px solid #9cc3e6; cursor: pointer;
+  background: radial-gradient(circle at 32% 28%, #fff 0, #fff 18%, #dcebfa 70%, #c6ddf5 100%);
+  box-shadow: inset -8px -10px 20px rgba(42,106,168,.15), 0 6px 14px rgba(42,106,168,.12);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  font-size: 25px; font-weight: bold; letter-spacing: .04em; animation: flotte 3s ease-in-out infinite; }
+.bulle-mot .emo { font-size: 40px; }
+.bulle-mot.faux { animation: secoue .5s; border-color: var(--brique); background: #f6e1db; }
+.bulle-mot.eclate { animation: eclate .45s forwards; pointer-events: none; }
+@keyframes eclate { 40% { transform: scale(1.35); opacity: .9; } to { transform: scale(0); opacity: 0; } }
+
+.verbe-conj, .phrase-trou { font-size: 44px; font-weight: bold; letter-spacing: .06em; background: #fff; border: 3px solid var(--bord); border-radius: 20px; padding: 14px 30px; }
+.phrase-trou { font-size: 36px; font-weight: normal; line-height: 1.5; }
+
+.partage-titre { text-align: center; font-size: 32px; margin: 10px 0 4px; }
+.assiettes { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin: 12px 0; }
+.assiette { position: relative; width: 150px; min-height: 150px; background: #fff; border: 3px solid var(--bord); border-radius: 30px; padding: 8px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.assiette .ami { font-size: 50px; line-height: 1.1; }
+.assiette .dans { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px; }
+.assiette .dans .objet-partage { font-size: 26px; pointer-events: none; }
+.assiette .compte { position: absolute; top: -12px; right: -12px; min-width: 44px; height: 44px; padding: 0 8px; border-radius: 22px; background: var(--violet); color: #fff; font-size: 24px; font-weight: bold; display: grid; place-items: center; }
+.reste-boite { border-style: dashed; border-color: #f0c08f; background: #fff7e8; }
+.reste-boite .compte { background: #b85e0c; font-size: 16px; }
+.tas { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; background: #fff7e8; border: 3px dashed #f0c08f; border-radius: 22px; padding: 12px; max-width: 900px; margin: 0 auto; }
+.objet-partage { font-size: 42px; background: none; border: none; cursor: pointer; padding: 2px; line-height: 1.1; }
+.ecriture-division { font-size: 50px; font-weight: bold; text-align: center; color: var(--violet); margin-top: 14px; animation: pop .5s; letter-spacing: .05em; }
+.operation-petite { font-size: 64px; font-weight: bold; letter-spacing: .06em; }
+.paquets { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 12px; }
+.paquets span { background: #fff; border: 2px solid var(--bord); border-radius: 12px; padding: 4px 8px; font-size: 22px; }
+.paquets .reste { border-style: dashed; border-color: #f0c08f; }
+
+.train { display: flex; align-items: flex-end; justify-content: center; flex-wrap: wrap; gap: 6px; animation: arrive 1s cubic-bezier(.2,.9,.3,1.1); }
+.train.part { transition: transform 1.3s ease-in; transform: translateX(-120vw); }
+@keyframes arrive { from { transform: translateX(100vw); } }
+.train .loco { font-size: 92px; line-height: 1; margin-bottom: 14px; }
+.wagon { position: relative; min-width: 96px; height: 96px; padding: 0 8px; border-radius: 14px 14px 8px 8px; background: #e1eefa; border: 3px solid #2a6aa8; display: grid; place-items: center; font-size: 52px; font-weight: bold; margin-bottom: 18px; }
+.wagon::after { content: "● ●"; position: absolute; bottom: -24px; left: 0; right: 0; text-align: center; font-size: 22px; color: #555; letter-spacing: .4em; }
+.wagon.trou { border-style: dashed; color: var(--violet); background: #fff; }
+.wagon.juste { background: var(--vert-clair); border-color: var(--vert); animation: pop .5s; }
+.wagon.mot, .etiquette-nb.mot { font-size: 26px; min-width: 150px; letter-spacing: .04em; }
+.wagon.mot { display: flex; align-items: center; justify-content: center; gap: 4px; white-space: nowrap; }
+.initiale { color: var(--violet); font-size: 1.25em; }
+.lettre-choix { font-size: 66px; line-height: 1; }
+@media (prefers-reduced-motion: reduce) { .bulle-mot, .train { animation: none; } }
