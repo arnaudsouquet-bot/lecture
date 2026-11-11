@@ -49,6 +49,15 @@ export async function finDeSerie(id, reussite) {
   return { jeu: id, avant, apres, max: j.niveaux };
 }
 
+// [Arnaud 2026-11-11] Apprendre passe de 5 à 10 niveaux : le niveau n devient 2n − 1 (une seule fois)
+export async function passerApprendreA10() {
+  const e = etat();
+  if (e.apprendre10) return;
+  const niveaux = { ...e.niveaux };
+  for (const id of ["infinitifs", "partages", "alphabet"]) if (niveaux[id]) niveaux[id] = Math.min(10, 2 * niveaux[id] - 1);
+  await enregistrer({ niveaux, apprendre10: true });
+}
+
 /* ---------- jeux débloqués par les étoiles ---------- */
 
 export const estDebloque = (id, etoiles = etat().etoiles) => etat().toutDebloque || jeu(id).etoiles <= etoiles;

@@ -1,6 +1,6 @@
 // Apprendre : chasse aux infinitifs, atelier des partages (divisions), train de l'alphabet.
 // [Arnaud 2026-11-11] « quelque chose de dynamique et amusant ». Des étoiles, pas d'argent de poche.
-// Chaque jeu a 5 niveaux, qui suivent la réussite ; ce qu'on demande à chaque niveau est une HYPOTHÈSE.
+// Chaque jeu a 10 niveaux, qui suivent la réussite ; ce qu'on demande à chaque niveau est une HYPOTHÈSE.
 import {
   ETOILES_PAR_REPONSE, QUESTIONS_PAR_SERIE, IMAGES_MEMOIRE, VERBES_ER, VERBES_AUTRES, PAS_VERBES, PIEGES_VERBES,
   CONJUGUES_ER, CONJUGUES, CONJUGUES_DIFFICILES, PHRASES_A_TROU, AMIS, A_PARTAGER, PARTAGES_PAR_NIVEAU,
@@ -25,7 +25,8 @@ export function apprendre(ecran) {
 
 /* ---------- ce que partagent les trois jeux ---------- */
 
-// une série de manches ; chaque manche dessine sa zone puis appelle m.fini(duPremierCoup, paroles, montrer)
+// une série de manches ; chaque manche dessine sa zone puis appelle m.fini(score, paroles, montrer)
+// score : 1 du premier coup, ½ au deuxième essai (ou avec une seule erreur), 0 sinon
 function partie(ecran, id, manche) {
   const niv = niveauDe(id), n = QUESTIONS_PAR_SERIE;
   let i = 0, etoiles = 0, reussies = 0;
@@ -41,12 +42,13 @@ function partie(ecran, id, manche) {
       zone: $("#zone", ecran), niv, k: i,
       message(texte, sorte = "") { msg.className = "message-jeu " + sorte; msg.textContent = texte; },
       // paroles : ce qui est dit à la fin ; montrer : la bonne réponse est affichée en vert
-      fini(ok, paroles, montrer = !ok) {
+      fini(score, paroles, montrer = !score) {
         if (fait) return;
         fait = true;
-        if (ok) { reussies++; etoiles += ETOILES_PAR_REPONSE; etoile(ecran, etoiles); m.message(`Bravo ! +${ETOILES_PAR_REPONSE} ⭐`, "ok"); }
+        reussies += score;
+        if (score) { etoiles += ETOILES_PAR_REPONSE; etoile(ecran, etoiles); m.message(`${score === 1 ? "Bravo" : "Bien"} ! +${ETOILES_PAR_REPONSE} ⭐`, "ok"); }
         else m.message(montrer ? "La bonne réponse est en vert." : "C'est fait ! 👍", montrer ? "non" : "");
-        parler(paroles || [ok ? PHRASES.bravo : PHRASES.bonneReponse]);
+        parler(paroles || [score ? PHRASES.bravo : PHRASES.bonneReponse]);
         $("#suiv", ecran).style.visibility = "visible";
       }
     };
@@ -88,14 +90,14 @@ function aChoix(m, q, ou = m.zone) {
     if (k === q.reponse) {
       fini = true; b.classList.add("juste");
       if (q.juste) q.juste();
-      m.fini(essais === 1, q.apres);
+      m.fini(essais === 1 ? 1 : 0.5, q.apres);
     } else if (essais < 2) {
       b.classList.add("faux"); m.message("Presque ! Essaie encore 💪", "non"); dire(PHRASES.presque);
     } else {
       fini = true; b.classList.add("faux");
       $(`[data-k="${q.reponse}"]`, ou).classList.add("juste");
       if (q.juste) q.juste();
-      m.fini(false, q.echec);
+      m.fini(0, q.echec);
     }
   });
 }
@@ -107,8 +109,9 @@ function nombresAutour(juste, combien = 4) {
 }
 
 /* ---------- chasse aux infinitifs ---------- */
-// niveau 1 : bulles et « lequel est un verbe ? » ; 2 : pièges en -er / -ir et « il mange → manger » ;
-// 3 : verbes en -ir, -re, -oir ; 4 : être, avoir, aller, faire… ; 5 : -er, -é ou -e dans une phrase
+// 1 : bulles, verbes en -er ; 2 : « lequel est un verbe ? » ; 3 : bulles, verbes en -ir, -re, -oir ; 4 : bulles avec pièges ;
+// 5 : il mange → manger ; 6 : elle finit → finir ; 7 : être et avoir ; 8 : aller, faire, venir… ;
+// 9 : -er ou -é dans une phrase ; 10 : -er, -é ou -e
 
 const infinitifsDe = liste => sansDoublons(liste.map(x => x[1]));
 const radical = mot => mot.replace(/(er|é|e)$/, "");
@@ -129,7 +132,7 @@ function bulles(m, verbes, autres) {
     if (x.verbe) {
       b.classList.add("eclate"); restants--;
       if (restants) dire(x.mot);
-      else { confettis(m.zone, 40); m.fini(erreurs === 0, [x.mot, PHRASES.bravo], false); }
+      else { confettis(m.zone, 40); m.fini(erreurs === 0 ? 1 : erreurs === 1 ? 0.5 : 0, [x.mot, PHRASES.bravo], false); }
     } else {
       erreurs++;
       b.classList.remove("faux"); void b.offsetWidth; b.classList.add("faux");
@@ -152,8 +155,8 @@ function quelVerbe(m, verbe, autres) {
 }
 
 // « il mange » → manger
-function infinitifDe(m, [forme, inf], faux) {
-  const choix = melanger([inf, ...melanger(faux.filter(x => x !== inf)).slice(0, m.niv >= 3 ? 3 : 2)]);
+function infinitifDe(m, [forme, inf], faux, nbFaux = 3) {
+  const choix = melanger([inf, ...melanger(sansDoublons(faux).filter(x => x !== inf)).slice(0, nbFaux)]);
   aChoix(m, {
     question: PHRASES.quelInfinitif, dire: [PHRASES.quelInfinitif, forme],
     grandHTML: `<div class="verbe-conj lisible">${esc(forme)}</div>`,
@@ -163,8 +166,8 @@ function infinitifDe(m, [forme, inf], faux) {
 }
 
 // « Je vais ____ une pomme. » : manger, mangé ou mange ?
-function phraseATrou(m, [phrase, mot]) {
-  const r = radical(mot), choix = melanger([r + "er", r + "é", r + "e"]);
+function phraseATrou(m, [phrase, mot], formes = ["er", "é", "e"]) {
+  const r = radical(mot), choix = melanger(formes.map(f => r + f));
   const trou = phrase.split(" ").map(x => x.replace(/[.,!?]$/, "") === mot ? x.replace(mot, "____") : x).join(" ");
   aChoix(m, {
     question: PHRASES.phraseTrou, dire: [PHRASES.phraseTrou, phrase], aide: PHRASES.astuceMordre,
@@ -176,26 +179,33 @@ function phraseATrou(m, [phrase, mot]) {
 }
 
 export function infinitifs(ecran) {
-  const tous = [...VERBES_ER, ...VERBES_AUTRES];
+  const simples = VERBES_AUTRES.slice(0, 12), tous = [...VERBES_ER, ...simples];
+  const etreAvoir = CONJUGUES_DIFFICILES.filter(c => c[1] === "être" || c[1] === "avoir");
+  const autresDifficiles = CONJUGUES_DIFFICILES.filter(c => !etreAvoir.includes(c));
   const difficiles = infinitifsDe(CONJUGUES_DIFFICILES), reguliers = [...infinitifsDe(CONJUGUES), ...infinitifsDe(CONJUGUES_ER)];
+  const enErOuE = PHRASES_A_TROU.filter(p => /(er|é)$/.test(p[1]));
   const prendre = (liste, n) => melanger(liste).slice(0, n);
   partie(ecran, "infinitifs", m => {
     const { niv, k } = m;
-    if (niv === 1) return k % 2 ? quelVerbe(m, auHasard(VERBES_ER), prendre(PAS_VERBES, 2)) : bulles(m, prendre(VERBES_ER, 3), prendre(PAS_VERBES, 5));
-    if (niv === 2) {
-      if (k % 2 === 0) return bulles(m, prendre(VERBES_ER, 4), [...prendre(PAS_VERBES, 2), ...prendre(PIEGES_VERBES, 2)]);
-      const c = auHasard(CONJUGUES_ER);
-      return infinitifDe(m, c, [radical(c[1]) + "é", ...infinitifsDe(CONJUGUES_ER)]);
+    switch (niv) {
+      case 1: return bulles(m, prendre(VERBES_ER, 3), prendre(PAS_VERBES, 5));
+      case 2: return k % 2 ? bulles(m, prendre(VERBES_ER, 3), prendre(PAS_VERBES, 5)) : quelVerbe(m, auHasard(VERBES_ER), prendre(PAS_VERBES, 2));
+      case 3: return k % 2 ? quelVerbe(m, auHasard(simples), prendre(PAS_VERBES, 2)) : bulles(m, [...prendre(simples, 3), ...prendre(VERBES_ER, 1)], prendre(PAS_VERBES, 4));
+      case 4: return k % 2 ? quelVerbe(m, auHasard(tous), prendre(PIEGES_VERBES, 2)) : bulles(m, prendre(tous, 4), [...prendre(PAS_VERBES, 1), ...prendre(PIEGES_VERBES, 3)]);
+      case 5: { const c = auHasard(CONJUGUES_ER); return infinitifDe(m, c, [radical(c[1]) + "é", ...infinitifsDe(CONJUGUES_ER)], 2); }
+      case 6: return infinitifDe(m, auHasard(CONJUGUES), reguliers);
+      case 7: return infinitifDe(m, auHasard(etreAvoir), ["être", "avoir", "aller", "faire"]);
+      case 8: return k % 4 === 3 ? infinitifDe(m, auHasard(etreAvoir), difficiles) : infinitifDe(m, auHasard(autresDifficiles), difficiles);
+      case 9: return phraseATrou(m, auHasard(enErOuE), ["er", "é"]);
+      default: return k % 3 === 2 ? infinitifDe(m, auHasard([...CONJUGUES_DIFFICILES, ...CONJUGUES]), [...difficiles, ...reguliers]) : phraseATrou(m, auHasard(PHRASES_A_TROU));
     }
-    if (niv === 3) return k % 2 ? infinitifDe(m, auHasard(CONJUGUES), reguliers) : bulles(m, prendre(tous, 4), [...prendre(PAS_VERBES, 1), ...prendre(PIEGES_VERBES, 3)]);
-    if (niv === 4) return k % 3 === 2 ? bulles(m, prendre(VERBES_AUTRES, 4), [...prendre(PAS_VERBES, 1), ...prendre(PIEGES_VERBES, 3)]) : infinitifDe(m, auHasard(CONJUGUES_DIFFICILES), difficiles);
-    return k % 2 ? infinitifDe(m, auHasard([...CONJUGUES_DIFFICILES, ...CONJUGUES]), [...difficiles, ...reguliers]) : phraseATrou(m, auHasard(PHRASES_A_TROU));
   });
 }
 
 /* ---------- atelier des partages ---------- */
-// niveaux 1 et 2 : on partage soi-même, objet par objet ; 3 : divisions des tables (on peut voir les paquets) ;
-// 4 : partages avec un reste ; 5 : petits problèmes et divisions avec reste
+// 1 à 3 : on partage soi-même, objet par objet (2 amis, 3 amis, jusqu'à 5) ; 4 à 7 : divisions des tables
+// (2, 5, 10 ; 3, 4 ; 6 à 9 ; toutes), on peut voir les paquets ; 8 : partager avec un reste ;
+// 9 : divisions avec reste ; 10 : petits problèmes et divisions avec reste
 
 // l'objet s'envole jusqu'à sa nouvelle place
 function voler(el, cible) {
@@ -285,18 +295,19 @@ function probleme(m) {
 
 export function partages(ecran) {
   partie(ecran, "partages", m => {
-    const { niv, k } = m, p = PARTAGES_PAR_NIVEAU[niv - 1];
-    const d = hasard(...p.amis), q = hasard(...p.parts), r = p.reste ? hasard(1, d - 1) : 0;
-    if (niv <= 2) return distribuer(m, d, q);
-    if (niv === 3) return k % 3 === 0 ? distribuer(m, Math.min(d, 5), Math.min(q, 6)) : division(m, d, q);
-    if (niv === 4) return k % 2 === 0 ? distribuer(m, d, q, r) : division(m, d, q, r);
+    const { k } = m, p = PARTAGES_PAR_NIVEAU[m.niv - 1];
+    const d = p.amis ? hasard(...p.amis) : auHasard(p.tables), q = hasard(...p.parts), r = p.reste ? hasard(1, d - 1) : 0;
+    if (p.sorte === "partager") return distribuer(m, d, q, r);
+    // la première manche des divisions se fait encore avec les assiettes
+    if (p.sorte === "diviser") return k === 0 && d <= 5 ? distribuer(m, d, Math.min(q, 5), r && Math.min(r, d - 1)) : division(m, d, q, r);
     return k % 2 === 0 ? probleme(m) : division(m, d, q, r);
   });
 }
 
 /* ---------- train de l'alphabet ---------- */
-// niveau 1 : écouter une lettre ; 2 : lettres qui se ressemblent (b d p q…) ; 3 : avant, après, le wagon qui manque ;
-// 4 : ranger des lettres ; 5 : ranger des mots dans l'ordre de l'alphabet
+// 1 : écouter une lettre de A à M (3 choix) ; 2 : de A à Z (4 choix) ; 3 : lettres qui se ressemblent (b d p q…) ;
+// 4 : le wagon qui manque ; 5 : la lettre juste après ; 6 : juste avant ou après ; 7 : en minuscules ;
+// 8 : ranger 3 lettres ; 9 : ranger 5 lettres ; 10 : ranger des mots dans l'ordre de l'alphabet
 
 const nomLettre = l => LETTRES.find(x => x[1] === l.toUpperCase())[0];
 const lettre = (i, min) => (min ? LETTRES[i][1].toLowerCase() : LETTRES[i][1]);
@@ -305,10 +316,10 @@ const train = wagons => `<div class="train"><span class="loco">🚂</span>${wago
 const partir = m => { const t = $(".train", m.zone); if (t) setTimeout(() => t.classList.add("part"), 500); };
 
 // « Écoute bien et touche la lettre : bé »
-function ecouteLettre(m, min) {
+function ecouteLettre(m, min, combien = 4, jusqua = LETTRES.length) {
   let choix;
   if (min) choix = melanger(auHasard(LETTRES_JUMELLES));
-  else choix = melanger(LETTRES).slice(0, 4).map(x => x[1]);
+  else choix = melanger(LETTRES.slice(0, jusqua)).slice(0, combien).map(x => x[1]);
   const juste = auHasard(choix);
   aChoix(m, {
     question: PHRASES.lettreTouche, dire: [PHRASES.lettreTouche, nomLettre(juste)], lettres: true,
@@ -332,8 +343,8 @@ function wagonQuiManque(m, min) {
 }
 
 // « Quelle lettre vient juste après M ? »
-function avantApres(m, min) {
-  const apres = Math.random() < 0.6, i = apres ? hasard(0, LETTRES.length - 2) : hasard(1, LETTRES.length - 1);
+function avantApres(m, min, toujoursApres = false) {
+  const apres = toujoursApres || Math.random() < 0.5, i = apres ? hasard(0, LETTRES.length - 2) : hasard(1, LETTRES.length - 1);
   const l = lettre(i, min), j = apres ? i + 1 : i - 1, juste = lettre(j, min);
   const pieges = [apres ? i - 1 : i + 1, j + (apres ? 1 : -1), i].filter(x => x >= 0 && x < LETTRES.length && x !== j);
   const choix = melanger([juste, ...sansDoublons(pieges.map(x => lettre(x, min)))].slice(0, 4));
@@ -365,7 +376,7 @@ function rangerTrain(m, elements, paroleConsigne) {
       w.className = `wagon juste ${mots ? "mot" : ""}`; w.innerHTML = e.html;
       b.disabled = true; attendu++;
       if (attendu < ordre.length) dire(e.dit);
-      else { partir(m); m.fini(erreurs === 0, [e.dit, PHRASES.tchou], false); }
+      else { partir(m); m.fini(erreurs === 0 ? 1 : erreurs === 1 ? 0.5 : 0, [e.dit, PHRASES.tchou], false); }
     } else {
       erreurs++;
       b.classList.remove("faux"); void b.offsetWidth; b.classList.add("faux");
@@ -390,10 +401,17 @@ function rangerMots(m, combien) {
 export function alphabet(ecran) {
   partie(ecran, "alphabet", m => {
     const { niv, k } = m;
-    if (niv === 1) return k % 3 === 2 ? wagonQuiManque(m, false) : ecouteLettre(m, false);
-    if (niv === 2) return k % 2 ? wagonQuiManque(m, false) : ecouteLettre(m, true);
-    if (niv === 3) return k % 2 ? wagonQuiManque(m, true) : avantApres(m, false);
-    if (niv === 4) return k % 2 ? avantApres(m, true) : rangerLettres(m, 4, false);
-    return k % 2 ? rangerLettres(m, 5, true) : rangerMots(m, 4);
+    switch (niv) {
+      case 1: return ecouteLettre(m, false, 3, 13);
+      case 2: return ecouteLettre(m, false, 4);
+      case 3: return k % 2 ? ecouteLettre(m, false) : ecouteLettre(m, true);
+      case 4: return wagonQuiManque(m, false);
+      case 5: return k % 3 === 2 ? wagonQuiManque(m, false) : avantApres(m, false, true);
+      case 6: return avantApres(m, false);
+      case 7: return k % 2 ? wagonQuiManque(m, true) : avantApres(m, true);
+      case 8: return rangerLettres(m, 3, false);
+      case 9: return k % 2 ? rangerLettres(m, 5, true) : rangerLettres(m, 4, false);
+      default: return k % 2 ? rangerLettres(m, 5, true) : rangerMots(m, 4);
+    }
   });
 }

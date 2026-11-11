@@ -3,6 +3,7 @@ import { charger } from "./store.js";
 import { chargerArticlesLivres, tousLesArticles, estValide } from "./articles.js";
 import { chargerEnregistrements, mettreHorsLigne } from "./enregistrements.js";
 import { offrirBonusMiseAJour } from "./progres.js";
+import { passerApprendreA10 } from "./jeux.js";
 import { brancherPanneauAa, session, aller } from "./session.js";
 import { taire } from "./voix.js";
 import { $ } from "./outils.js";
@@ -52,6 +53,7 @@ async function demarrer() {
     return;
   }
   await offrirBonusMiseAJour();
+  await passerApprendreA10();
   await chargerArticlesLivres();
   await chargerEnregistrements(tousLesArticles().map(a => a.id));
   brancherPanneauAa();

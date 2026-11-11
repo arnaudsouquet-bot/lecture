@@ -98,12 +98,13 @@ export const JEUX = [
     desc: "Reconnaître les formes, compter leurs côtés et leurs coins." },
   { id: "logique", section: "maths", titre: "Logique", emoji: "🧠", etoiles: 120, niveaux: 6,
     desc: "Suites, intrus, grilles et pyramides de nombres." },
-  // [Arnaud 2026-11-11] section Apprendre : infinitifs, divisions, alphabet ; ouverts tout de suite
-  { id: "infinitifs", section: "apprendre", titre: "Chasse aux infinitifs", emoji: "🎯", etoiles: 0, niveaux: 5,
+  // [Arnaud 2026-11-11] section Apprendre : infinitifs, divisions, alphabet ; ouverts tout de suite.
+  // [Arnaud 2026-11-11] « au moins 10 niveaux » ; on passe au niveau suivant à 75 % (2e essai = ½)
+  { id: "infinitifs", section: "apprendre", titre: "Chasse aux infinitifs", emoji: "🎯", etoiles: 0, niveaux: 10, regles: { monte: 0.75 },
     desc: "Éclate les bulles des verbes et retrouve leur infinitif." },
-  { id: "partages", section: "apprendre", titre: "Atelier des partages", emoji: "🍕", etoiles: 0, niveaux: 5,
+  { id: "partages", section: "apprendre", titre: "Atelier des partages", emoji: "🍕", etoiles: 0, niveaux: 10, regles: { monte: 0.75 },
     desc: "Partage entre les amis pour comprendre les divisions." },
-  { id: "alphabet", section: "apprendre", titre: "Train de l'alphabet", emoji: "🚂", etoiles: 0, niveaux: 5,
+  { id: "alphabet", section: "apprendre", titre: "Train de l'alphabet", emoji: "🚂", etoiles: 0, niveaux: 10, regles: { monte: 0.75 },
     desc: "Les lettres, leur ordre, et ranger les mots." }
 ];
 
@@ -206,15 +207,23 @@ export const PHRASES_A_TROU = [
   ["Je regarde les étoiles.", "regarde"], ["Il faut regarder à gauche.", "regarder"], ["Le bébé marche tout seul.", "marche"]
 ];
 
-// Atelier des partages : amis et objets à partager ; nombre d'amis et part de chacun par niveau (HYPOTHÈSE)
+// Atelier des partages : amis et objets à partager ; 10 niveaux (HYPOTHÈSE).
+// « partager » : on distribue soi-même (nombre d'amis, part de chacun) ; « diviser » : divisions des tables ;
+// « problemes » : petits problèmes et divisions avec reste
 export const AMIS = ["🐻", "🐰", "🦊", "🐸", "🐼", "🐯"];
 export const A_PARTAGER = ["🍬", "🍓", "🍪", "🌰", "🍒", "🧁"];
+const TABLES_PARTAGE = [2, 3, 4, 5, 6, 7, 8, 9];
 export const PARTAGES_PAR_NIVEAU = [
-  { amis: [2, 3], parts: [2, 4] },
-  { amis: [2, 5], parts: [2, 6] },
-  { amis: [2, 10], parts: [2, 10] },
-  { amis: [3, 5], parts: [2, 4], reste: true },
-  { amis: [2, 9], parts: [2, 9], reste: true }
+  { sorte: "partager", amis: [2, 2], parts: [2, 5] },
+  { sorte: "partager", amis: [3, 3], parts: [2, 5] },
+  { sorte: "partager", amis: [2, 5], parts: [2, 6] },
+  { sorte: "diviser", tables: [2, 5, 10], parts: [2, 10] },
+  { sorte: "diviser", tables: [3, 4], parts: [2, 10] },
+  { sorte: "diviser", tables: [6, 7, 8, 9], parts: [2, 10] },
+  { sorte: "diviser", tables: [...TABLES_PARTAGE, 10], parts: [2, 10] },
+  { sorte: "partager", amis: [3, 5], parts: [2, 4], reste: true },
+  { sorte: "diviser", tables: TABLES_PARTAGE, parts: [2, 9], reste: true },
+  { sorte: "problemes", tables: TABLES_PARTAGE, parts: [2, 9], reste: true }
 ];
 // petits problèmes : « Il y a » + nombre + texte (le nombre du texte est le diviseur)
 export const PROBLEMES_PARTAGE = [

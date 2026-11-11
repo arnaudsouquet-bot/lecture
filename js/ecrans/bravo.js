@@ -6,6 +6,8 @@ import { direSuite } from "../voix.js";
 import { PHRASES } from "../phrases.js";
 import { $, esc, compter, confettis } from "../outils.js";
 
+const SECTIONS = { memoire: "🧠 Mémoire", maths: "🔢 Mathématique", apprendre: "🎓 Apprendre" };
+
 export default function bravo(ecran) {
   const r = dernierResultat();
   if (!r) { aller("accueil"); return; }
@@ -29,7 +31,8 @@ export default function bravo(ecran) {
       <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
         <button class="bouton clair" id="accueil">🏠 Accueil</button>
         ${r.debloques[0] ? `<button class="bouton" id="nouveau">${r.debloques[0].emoji} Essayer le nouveau jeu</button>` : ""}
-        <button class="bouton vert" id="encore">${r.retour === "memoire" ? "🧠 Mémoire" : "🔢 Mathématique"}</button>
+        <button class="bouton clair" id="encore">${SECTIONS[r.retour] || "◀ Retour"}</button>
+        ${n ? `<button class="bouton vert" id="rejouer">▶ ${n.apres > n.avant ? "Niveau suivant" : "Rejouer"}</button>` : ""}
       </div>
     </div>`;
   compter($("#n", ecran), 0, r.etoiles, 1000, v => Math.round(v));
@@ -42,5 +45,6 @@ export default function bravo(ecran) {
   direSuite(parole.map(texte => ({ texte })));
   $("#accueil", ecran).onclick = () => aller("accueil");
   $("#encore", ecran).onclick = () => aller(r.retour);
+  if (n) $("#rejouer", ecran).onclick = () => aller(n.jeu);
   if (r.debloques[0]) $("#nouveau", ecran).onclick = () => aller(r.debloques[0].id);
 }
