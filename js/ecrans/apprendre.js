@@ -1,10 +1,10 @@
-// Apprendre : chasse aux infinitifs, atelier des partages (divisions), train de l'alphabet.
+// Apprendre : chasse aux infinitifs, atelier des partages (divisions), train de l'alphabet, grenouille des tables.
 // [Arnaud 2026-11-11] « quelque chose de dynamique et amusant ». Des étoiles, pas d'argent de poche.
 // Chaque jeu a 10 niveaux, qui suivent la réussite ; ce qu'on demande à chaque niveau est une HYPOTHÈSE.
 import {
   ETOILES_PAR_REPONSE, QUESTIONS_PAR_SERIE, IMAGES_MEMOIRE, VERBES_ER, VERBES_AUTRES, PAS_VERBES, PIEGES_VERBES,
   CONJUGUES_ER, CONJUGUES, CONJUGUES_DIFFICILES, PHRASES_A_TROU, AMIS, A_PARTAGER, PARTAGES_PAR_NIVEAU,
-  PROBLEMES_PARTAGE, LETTRES, LETTRES_JUMELLES
+  PROBLEMES_PARTAGE, LETTRES, LETTRES_JUMELLES, TABLES_PAR_NIVEAU
 } from "../config.js";
 import { compter, niveauDe, finDeSerie } from "../jeux.js";
 import { dire, direSuite } from "../voix.js";
@@ -23,7 +23,7 @@ export function apprendre(ecran) {
   hub(ecran, "apprendre");
 }
 
-/* ---------- ce que partagent les trois jeux ---------- */
+/* ---------- ce que partagent les jeux ---------- */
 
 // une série de manches ; chaque manche dessine sa zone puis appelle m.fini(score, paroles, montrer)
 // score : 1 du premier coup, ½ au deuxième essai (ou avec une seule erreur), 0 sinon
@@ -413,5 +413,98 @@ export function alphabet(ecran) {
       case 9: return k % 2 ? rangerLettres(m, 5, true) : rangerLettres(m, 4, false);
       default: return k % 2 ? rangerLettres(m, 5, true) : rangerMots(m, 4);
     }
+  });
+}
+
+/* ---------- la grenouille des tables ---------- */
+// 1 : table de 2 ; 2 : de 5 ; 3 : de 3 ; 4 : de 4 ; 5 : de 2 à 5 ; 6 à 9 : tables de 6, 7, 8, 9 ; 10 : toutes, et le nombre qui manque.
+// Dans un niveau : on voit d'abord les paquets, puis la grenouille saute, puis on calcule.
+
+const ecritureFois = (a, t) => `${a} × ${t} = ${a * t}`;
+const direFois = (a, t) => [...N(a), PHRASES.fois, ...N(t), PHRASES.egale, ...N(a * t)];
+// des erreurs qu'on fait vraiment : un paquet de plus ou de moins, un de plus ou de moins
+function produitsAutour(a, t) {
+  const p = a * t, faux = sansDoublons([p + t, p - t, p + 1, p - 1, p + 2]).filter(x => x > 0 && x !== p);
+  return melanger([p, ...melanger(faux).slice(0, 3)]);
+}
+
+// a assiettes de t objets ; toucher une assiette dit le compte (4, 8, 12…)
+function paquetsFois(m, a, t) {
+  const objet = auHasard(A_PARTAGER), choix = produitsAutour(a, t);
+  aChoix(m, {
+    question: PHRASES.tablesEnTout, dire: [PHRASES.tablesEnTout, PHRASES.tablesCompter], lettres: true,
+    grandHTML: `<div class="table-paquets"><div class="partage-titre"><b>${a}</b> assiettes de <b>${t}</b> ${objet}</div>
+      <div class="assiettes">${Array.from({ length: a }, () => `<button class="assiette compter"><div class="dans">${`<span class="objet-partage">${objet}</span>`.repeat(t)}</div><span class="compte" style="visibility:hidden">0</span></button>`).join("")}</div></div>`,
+    aide: PHRASES.tablesCompter,
+    choix: choix.map(String), reponse: choix.indexOf(a * t),
+    apres: [PHRASES.bravo, ...direFois(a, t)], echec: direFois(a, t),
+    juste: () => m.zone.insertAdjacentHTML("beforeend", `<div class="ecriture-division">${ecritureFois(a, t)}</div>`)
+  });
+  let comptees = 0;
+  $$(".assiette.compter", m.zone).forEach(b => b.onclick = () => {
+    if (b.classList.contains("vue")) return;
+    comptees++;
+    b.classList.add("vue");
+    const c = $(".compte", b);
+    c.textContent = comptees * t; c.style.visibility = "";
+    c.classList.remove("pop"); void c.offsetWidth; c.classList.add("pop");
+    parler(N(comptees * t));
+  });
+}
+
+// la grenouille a déjà fait a − 1 sauts de t ; où arrive-t-elle ?
+function grenouille(m, a, t) {
+  const choix = produitsAutour(a, t);
+  aChoix(m, {
+    question: `${PHRASES.grenouilleSauts} ${t}. ${PHRASES.grenouilleOu}`, dire: [PHRASES.grenouilleSauts, ...N(t), PHRASES.grenouilleOu], lettres: true,
+    grandHTML: `<div class="mare">${Array.from({ length: a }, (_, k) => `<span class="nenuphar">${k * t}${k === a - 1 ? '<span class="grenouille">🐸</span>' : ""}</span>`).join("")}<span class="nenuphar trou">?</span></div>`,
+    choix: choix.map(String), reponse: choix.indexOf(a * t),
+    apres: [PHRASES.bravo, ...direFois(a, t)], echec: direFois(a, t),
+    juste: () => {
+      const n = $(".nenuphar.trou", m.zone);
+      n.className = "nenuphar juste"; n.textContent = a * t;
+      voler($(".grenouille", m.zone), n);
+      m.zone.insertAdjacentHTML("beforeend", `<div class="ecriture-division">${ecritureFois(a, t)}</div>`);
+    }
+  });
+}
+
+// « 3 × 4 = ? », avec un bouton pour voir les paquets
+function calculFois(m, a, t) {
+  const choix = produitsAutour(a, t), objet = auHasard(A_PARTAGER);
+  aChoix(m, {
+    question: PHRASES.tablesCalcul, dire: [...N(a), PHRASES.fois, ...N(t), PHRASES.egaleCombien], lettres: true,
+    grandHTML: `<div class="operation-petite">${a} × ${t} = ?</div>`,
+    choix: choix.map(String), reponse: choix.indexOf(a * t),
+    apres: [PHRASES.bravo, ...direFois(a, t)], echec: direFois(a, t)
+  });
+  m.zone.insertAdjacentHTML("beforeend", `<div style="text-align:center;margin-top:14px"><button class="bouton clair petit" id="voir">🔍 Voir les paquets</button></div>
+    <div class="paquets" style="display:none">${Array.from({ length: a }, () => `<span>${objet.repeat(t)}</span>`).join("")}</div>`);
+  $("#voir", m.zone).onclick = ev => { ev.currentTarget.remove(); $(".paquets", m.zone).style.display = ""; };
+}
+
+// « 7 × ? = 56 »
+function nombreQuiManque(m, a, t) {
+  const choix = nombresAutour(a).filter(x => x > 0);
+  aChoix(m, {
+    question: PHRASES.tablesManque, dire: [...N(t), PHRASES.fois, PHRASES.quelNombre, PHRASES.egale, ...N(a * t)], lettres: true,
+    grandHTML: `<div class="operation-petite">${t} × ? = ${a * t}</div>`,
+    choix: choix.map(String), reponse: choix.indexOf(a),
+    apres: [PHRASES.bravo, ...direFois(t, a)], echec: direFois(t, a)
+  });
+}
+
+export function tables(ecran) {
+  const vus = new Set();
+  partie(ecran, "tables", m => {
+    const { niv, k } = m, liste = TABLES_PAR_NIVEAU[niv - 1], t = auHasard(liste);
+    // pas deux fois le même calcul dans une série
+    let a;
+    do a = hasard(k < 2 ? 2 : 1, k < 2 ? 5 : 10); while (vus.has(`${a}x${t}`) && vus.size < 40);
+    vus.add(`${a}x${t}`);
+    if (niv === 10) return k % 2 ? nombreQuiManque(m, Math.max(a, 2), t) : calculFois(m, a, t);
+    if (k < (liste.length > 1 ? 1 : 2)) return paquetsFois(m, a, t);
+    if (k < 4) return grenouille(m, Math.max(a, 2), t);
+    return calculFois(m, a, t);
   });
 }

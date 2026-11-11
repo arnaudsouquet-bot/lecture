@@ -52,7 +52,7 @@ export default function accueil(ecran) {
       </button>
       <button class="grande apprendre" id="apprendre">
         <span class="emo">🎓</span><span class="nom">Apprendre</span>
-        <span class="etat">Verbes · partages · ABC</span><span class="gain">⭐ étoiles</span>
+        <span class="etat">Verbes · tables · ABC</span><span class="gain">⭐ étoiles</span>
       </button>
     </div>
     <button class="engrenage" id="engrenage" aria-label="Espace parent (3 appuis rapides)">⚙️</button>`;

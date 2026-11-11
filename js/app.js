@@ -17,14 +17,14 @@ import recompense from "./ecrans/recompense.js";
 import parent from "./ecrans/parent.js";
 import { memoire, reviserMots, paires, definitions, retiens, ecoute, change, simon } from "./ecrans/memoire.js";
 import { maths, calcul, problemes, lireNombres, ranger, formes, logique } from "./ecrans/maths.js";
-import { apprendre, infinitifs, partages, alphabet } from "./ecrans/apprendre.js";
+import { apprendre, infinitifs, partages, alphabet, tables } from "./ecrans/apprendre.js";
 import bravo from "./ecrans/bravo.js";
 
 const ECRANS = {
   accueil, envies, articles: articlesDuTheme, questionnaire, lecture, mots, nombres, questions, recompense, parent,
   memoire, reviser: reviserMots, paires, definitions, retiens, ecoute, change, simon,
   maths, calcul, problemes, "lire-nombres": lireNombres, ranger, formes, logique,
-  apprendre, infinitifs, partages, alphabet, bravo
+  apprendre, infinitifs, partages, alphabet, tables, bravo
 };
 // écrans qui demandent une lecture en cours
 const AVEC_SESSION = ["lecture", "mots", "nombres", "questions", "recompense"];

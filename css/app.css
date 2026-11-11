@@ -465,3 +465,13 @@ button { font-family: inherit; color: inherit; -webkit-user-select: none; user-s
 .initiale { color: var(--violet); font-size: 1.25em; }
 .lettre-choix { font-size: 66px; line-height: 1; }
 @media (prefers-reduced-motion: reduce) { .bulle-mot, .train { animation: none; } }
+
+/* ---------- grenouille des tables ---------- */
+.table-paquets { width: 100%; }
+.assiette.compter { cursor: pointer; font: inherit; }
+.assiette.compter.vue { border-color: var(--violet); }
+.mare { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: flex-end; padding: 10px; background: #e3f3ea; border-radius: 24px; }
+.nenuphar { position: relative; width: 84px; height: 84px; border-radius: 50%; background: #9fd6a9; border: 3px solid #4f9a5c; display: grid; place-items: center; font-size: 30px; font-weight: bold; margin-top: 44px; }
+.nenuphar.trou { background: #fff; border-style: dashed; color: var(--violet); }
+.nenuphar.juste { background: var(--vert-clair); border-color: var(--vert); animation: pop .5s; }
+.grenouille { position: absolute; top: -46px; left: 50%; margin-left: -24px; font-size: 48px; line-height: 1; pointer-events: none; }

@@ -96,7 +96,13 @@ export const PHRASES = {
   lettreAvant: "Quelle lettre vient juste avant",
   rangerLettres: "Range les lettres dans l'ordre de l'alphabet.",
   rangerMots: "Range les mots dans l'ordre de l'alphabet.",
-  tchou: "Tchou tchou !"
+  tchou: "Tchou tchou !",
+  tablesEnTout: "Combien y en a-t-il en tout ?",
+  tablesCompter: "Touche les assiettes pour compter.",
+  grenouilleSauts: "La grenouille fait des sauts de",
+  grenouilleOu: "Où va-t-elle arriver ?",
+  tablesCalcul: "Trouve le résultat.",
+  tablesManque: "Trouve le nombre qui manque."
 };
 
 export const remplir = (phrase, nom) => phrase.replace("{nom}", nom);

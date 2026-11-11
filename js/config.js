@@ -105,7 +105,10 @@ export const JEUX = [
   { id: "partages", section: "apprendre", titre: "Atelier des partages", emoji: "🍕", etoiles: 0, niveaux: 10, regles: { monte: 0.75 },
     desc: "Partage entre les amis pour comprendre les divisions." },
   { id: "alphabet", section: "apprendre", titre: "Train de l'alphabet", emoji: "🚂", etoiles: 0, niveaux: 10, regles: { monte: 0.75 },
-    desc: "Les lettres, leur ordre, et ranger les mots." }
+    desc: "Les lettres, leur ordre, et ranger les mots." },
+  // [Arnaud 2026-11-11] « un module pour apprendre les tables de multiplication de 2 à 9 »
+  { id: "tables", section: "apprendre", titre: "La grenouille des tables", emoji: "🐸", etoiles: 0, niveaux: 10, regles: { monte: 0.75 },
+    desc: "Les tables de 2 à 9 : les paquets, les sauts, puis le calcul." }
 ];
 
 // Calcul mental : série de 10 calculs ; niveaux (HYPOTHÈSE)
@@ -236,6 +239,10 @@ export const PROBLEMES_PARTAGE = [
   ["chaussettes. Une paire, c'est 2 chaussettes. Combien de paires ?", "🧦"],
   ["bonbons, à partager entre 3 amis. Combien pour chacun ?", "🍬"]
 ];
+
+// La grenouille des tables : la ou les tables de chaque niveau (HYPOTHÈSE) ; au niveau 10, toutes les tables
+// et le nombre qui manque. On multiplie par 1 à 10.
+export const TABLES_PAR_NIVEAU = [[2], [5], [3], [4], [2, 3, 4, 5], [6], [7], [8], [9], [2, 3, 4, 5, 6, 7, 8, 9]];
 
 // Train de l'alphabet : [nom de la lettre dit à voix haute, lettre]
 export const LETTRES = [
