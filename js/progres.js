@@ -20,11 +20,11 @@ export function cagnotte() {
 }
 export const bonusSemaine = (debut = lundi()) => lire("bonus", []).filter(b => b.semaine === debut).reduce((n, b) => n + b.montant, 0);
 
-// cadeau de la mise à jour, offert une seule fois (la cagnotte déjà gagnée reste telle quelle)
+// cadeaux uniques, chacun offert une seule fois (la cagnotte déjà gagnée reste telle quelle)
 export function offrirBonusMiseAJour() {
-  const bonus = lire("bonus", []);
-  if (bonus.some(b => b.id === BONUS_MISE_A_JOUR.id)) return;
-  return ecrire("bonus", [...bonus, { ...BONUS_MISE_A_JOUR, semaine: lundi(), date: jour() }]);
+  const bonus = lire("bonus", []), nouveaux = BONUS_MISE_A_JOUR.filter(c => !bonus.some(b => b.id === c.id));
+  if (!nouveaux.length) return;
+  return ecrire("bonus", [...bonus, ...nouveaux.map(c => ({ ...c, semaine: lundi(), date: jour() }))]);
 }
 // le parent verse tout ce qui est dans la cagnotte
 export function marquerPaye() {

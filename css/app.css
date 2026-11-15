@@ -475,3 +475,26 @@ button { font-family: inherit; color: inherit; -webkit-user-select: none; user-s
 .nenuphar.trou { background: #fff; border-style: dashed; color: var(--violet); }
 .nenuphar.juste { background: var(--vert-clair); border-color: var(--vert); animation: pop .5s; }
 .grenouille { position: absolute; top: -46px; left: 50%; margin-left: -24px; font-size: 48px; line-height: 1; pointer-events: none; }
+
+/* ---------- atelier des mesures ---------- */
+.grand-emoji { font-size: 96px; line-height: 1; }
+.unite-choix { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.unite-choix b { font-size: 40px; }
+.unite-choix small { font-size: 18px; font-weight: normal; color: #666; }
+.regle-jeu { width: 100%; max-width: 900px; padding: 0 24px; }
+.ruban-ligne { position: relative; height: 40px; }
+.ruban { position: absolute; top: 6px; height: 30px; border-radius: 6px; box-shadow: 0 3px 6px rgba(0,0,0,.15); }
+.regle { position: relative; height: 70px; background: #fff3c4; border: 3px solid #d9b44a; border-radius: 8px; }
+.trait { position: absolute; top: 0; width: 0; height: 26px; border-left: 3px solid #6b5a1e; }
+.trait b { position: absolute; top: 30px; left: -14px; width: 28px; text-align: center; font-size: 22px; color: #6b5a1e; }
+.balance { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 620px; }
+.fleau { display: flex; justify-content: space-between; width: 100%; border-bottom: 8px solid #8d6e63; border-radius: 4px; transform: rotate(-8deg); transition: transform 1s cubic-bezier(.3,1.6,.5,1); }
+.fleau.droit { transform: none; }
+.plateau { flex: none; white-space: nowrap; min-width: 150px; text-align: center; font-size: 34px; font-weight: bold; background: #fff; border: 3px solid var(--bord); border-radius: 16px 16px 40px 40px; padding: 10px 14px; margin-bottom: 4px; }
+.balance .pied { font-size: 60px; color: #8d6e63; line-height: 1; }
+.bouteille-jeu { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; justify-content: center; }
+.bouteille { position: relative; width: 90px; height: 170px; border: 5px solid #64b5f6; border-top-width: 14px; border-radius: 22px 22px 18px 18px; overflow: hidden; background: #fff; }
+.bouteille .liquide { position: absolute; bottom: 0; left: 0; right: 0; height: 15%; background: #90caf9; transition: height 1.4s ease-out; }
+.bouteille.pleine .liquide { height: 92%; }
+.sablier { font-size: 110px; line-height: 1; display: inline-block; transition: transform 1s; }
+.sablier.tourne { transform: rotate(180deg); }

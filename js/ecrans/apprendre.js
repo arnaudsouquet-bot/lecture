@@ -1,10 +1,12 @@
-// Apprendre : chasse aux infinitifs, atelier des partages (divisions), train de l'alphabet, grenouille des tables.
+// Apprendre : chasse aux infinitifs, atelier des partages (divisions), train de l'alphabet, grenouille des tables,
+// atelier des mesures.
 // [Arnaud 2026-11-11] « quelque chose de dynamique et amusant ». Des étoiles, pas d'argent de poche.
 // Chaque jeu a 10 niveaux, qui suivent la réussite ; ce qu'on demande à chaque niveau est une HYPOTHÈSE.
 import {
   ETOILES_PAR_REPONSE, QUESTIONS_PAR_SERIE, IMAGES_MEMOIRE, VERBES_ER, VERBES_AUTRES, PAS_VERBES, PIEGES_VERBES,
   CONJUGUES_ER, CONJUGUES, CONJUGUES_DIFFICILES, PHRASES_A_TROU, AMIS, A_PARTAGER, PARTAGES_PAR_NIVEAU,
-  PROBLEMES_PARTAGE, LETTRES, LETTRES_JUMELLES, TABLES_PAR_NIVEAU
+  PROBLEMES_PARTAGE, LETTRES, LETTRES_JUMELLES, TABLES_PAR_NIVEAU, UNITES, UNE_UNITE, GRANDEURS, A_MESURER,
+  MESURES_DU_QUOTIDIEN, CONVERSIONS, PROBLEMES_MESURE
 } from "../config.js";
 import { compter, niveauDe, finDeSerie } from "../jeux.js";
 import { dire, direSuite } from "../voix.js";
@@ -506,5 +508,157 @@ export function tables(ecran) {
     if (k < (liste.length > 1 ? 1 : 2)) return paquetsFois(m, a, t);
     if (k < 4) return grenouille(m, Math.max(a, 2), t);
     return calculFois(m, a, t);
+  });
+}
+
+/* ---------- l'atelier des mesures ---------- */
+// 1 : quelle unité ? ; 2 : quel outil ? ; 3 : mesurer avec la règle ; 4 : quelle mesure a du sens ? ;
+// 5 : longueurs (m, cm, km) ; 6 : masses (kg, g), avec la balance ; 7 : contenances (L, cL, mL), avec la bouteille ;
+// 8 : durées (h, min, s) ; 9 : comparer deux mesures ; 10 : petits problèmes, et un peu de tout
+
+const nomUnite = u => UNITES.find(x => x[1] === u)[0];
+const grandeurDe = u => Object.keys(GRANDEURS).find(g => GRANDEURS[g].unites.includes(u));
+const milliers = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+// « 2 500 g », « 1 m 30 cm », « 4 » → ce qu'on dit
+function direMesure(texte) {
+  const mots = [], morceaux = texte.replace(/(\d) (?=\d{3}\b)/g, "$1").split(" ");
+  for (let i = 0; i < morceaux.length; i++) {
+    const n = +morceaux[i], u = morceaux[i + 1];
+    if (u && UNITES.some(x => x[1] === u)) { mots.push(...(n === 1 ? [UNE_UNITE.find(x => x[1] === u)[0]] : [...N(n), nomUnite(u)])); i++; }
+    else mots.push(...N(n));
+  }
+  return mots;
+}
+const uniteHTML = u => `<span class="unite-choix"><b>${u}</b><small>${esc(nomUnite(u))}</small></span>`;
+
+// « Quelle unité pour mesurer la longueur d'un crayon ? »
+function quelleUnite(m) {
+  const [quoi, info] = auHasard(A_MESURER), [u, emo] = info.split("|"), g = grandeurDe(u);
+  const autres = Object.keys(GRANDEURS).filter(x => x !== g).map(x => auHasard(GRANDEURS[x].unites));
+  const choix = melanger([u, ...autres]);
+  aChoix(m, {
+    question: `${PHRASES.mesureUnite} ${quoi} ?`, dire: [PHRASES.mesureUnite, quoi], lettres: true,
+    grandHTML: `<div class="grand-emoji">${emo}</div>`,
+    choix, choixHTML: choix.map(uniteHTML), reponse: choix.indexOf(u), direChoix: k => [nomUnite(choix[k])],
+    apres: [PHRASES.bravo, nomUnite(u)], echec: [PHRASES.bonneReponse, nomUnite(u)]
+  });
+}
+
+// « Quel outil pour mesurer la masse d'un chien ? »
+function quelOutil(m) {
+  const [quoi, info] = auHasard(A_MESURER), [u, emo] = info.split("|"), g = grandeurDe(u);
+  const choix = melanger(Object.keys(GRANDEURS)), outil = x => GRANDEURS[x].outil;
+  aChoix(m, {
+    question: `${PHRASES.mesureOutil} ${quoi} ?`, dire: [PHRASES.mesureOutil, quoi], lettres: true,
+    grandHTML: `<div class="grand-emoji">${emo}</div>`,
+    choix: choix.map(x => outil(x)[0]), choixHTML: choix.map(x => `<span class="emo-petit">${outil(x)[1]}</span> <span class="txt">${esc(outil(x)[0])}</span>`),
+    reponse: choix.indexOf(g), direChoix: k => [outil(choix[k])[0]],
+    apres: [PHRASES.bravo, outil(g)[0]], echec: [PHRASES.bonneReponse, outil(g)[0]]
+  });
+  $$(".choix .txt", m.zone).forEach(el => decorer(el));
+}
+
+// un ruban posé sur une règle de 15 cm ; à partir de la 5e manche, il ne commence plus à zéro
+function regle(m) {
+  const debut = m.k >= 4 ? hasard(1, 5) : 0, long = hasard(2, 15 - debut), fin = debut + long, couleur = auHasard(["#e57373", "#64b5f6", "#81c784", "#ffb74d", "#ba68c8"]);
+  const choix = sansDoublons([long, fin, long + 1, long - 1].filter(x => x > 0)).slice(0, 3);
+  const tous = melanger(choix.includes(long) ? choix : [long, ...choix.slice(0, 2)]);
+  const pos = x => `${(x / 15) * 100}%`;
+  aChoix(m, {
+    question: PHRASES.regleCombien, dire: debut ? [PHRASES.regleCombien, PHRASES.regleZero] : [PHRASES.regleCombien], lettres: true,
+    aide: debut ? PHRASES.regleZero : "",
+    grandHTML: `<div class="regle-jeu"><div class="ruban-ligne"><span class="ruban" style="left:${pos(debut)};width:${pos(long)};background:${couleur}"></span></div>
+      <div class="regle">${Array.from({ length: 16 }, (_, i) => `<span class="trait" style="left:${pos(i)}"><b>${i}</b></span>`).join("")}</div></div>`,
+    choix: tous.map(x => `${x} cm`), reponse: tous.indexOf(long),
+    apres: [PHRASES.bravo, ...direMesure(`${long} cm`)], echec: [PHRASES.bonneReponse, ...direMesure(`${long} cm`)]
+  });
+}
+
+// « Une baguette de pain mesure… 70 cm, 70 m ou 70 km ? »
+function aDuSens(m) {
+  const [debut, info] = auHasard(MESURES_DU_QUOTIDIEN), [mesure, emo] = info.split("|"), [n, u] = mesure.split(" ");
+  const choix = melanger(GRANDEURS[grandeurDe(u)].unites.map(x => `${n} ${x}`));
+  aChoix(m, {
+    question: PHRASES.mesureSens, dire: [PHRASES.mesureSens, debut], lettres: true,
+    grandHTML: `<div class="phrase-trou lisible"><span class="emo-petit">${emo}</span> ${esc(debut)} … ?</div>`,
+    choix, reponse: choix.indexOf(mesure), direChoix: k => direMesure(choix[k]),
+    apres: [PHRASES.bravo, debut, ...direMesure(mesure)], echec: [PHRASES.bonneReponse, debut, ...direMesure(mesure)]
+  });
+  decorer($(".phrase-trou", m.zone));
+}
+
+// « 3 m = ? cm » ou « 300 cm = ? m » ; les mauvaises réponses n'ont pas le bon nombre de zéros
+// decor : "balance", "bouteille", "sablier" ou rien ; mixte : « 1 h 30 min = ? min »
+function convertir(m, [grande, petite, f], versPetite = true, decor = "", mixte = false) {
+  const a = hasard(1, f === 60 ? 3 : 9), b = mixte ? (f === 60 ? auHasard([15, 30, 45]) : hasard(1, 9) * f / 10) : 0;
+  const valeur = a * f + b, gauche = versPetite ? `${a} ${grande}${b ? ` ${b} ${petite}` : ""}` : `${milliers(valeur - b)} ${petite}`;
+  const juste = versPetite ? valeur : a, unite = versPetite ? petite : grande;
+  const faux = versPetite ? [juste / 10, juste * 10, a * 100, a * 10, a * 1000, juste + 10, a * f]
+    : [a * 10, a * 100, a * 1000, a * f];
+  const choix = melanger([juste, ...melanger(sansDoublons(faux).filter(x => Number.isInteger(x) && x > 0 && x !== juste)).slice(0, 3)]);
+  const dessins = {
+    balance: `<div class="balance"><div class="fleau"><span class="plateau">${esc(gauche)}</span><span class="plateau">? ${unite}</span></div><div class="pied">▲</div></div>`,
+    bouteille: `<div class="bouteille-jeu"><div class="bouteille"><div class="liquide"></div></div><span class="operation-petite">${esc(gauche)} = ? ${unite}</span></div>`,
+    sablier: `<div class="bouteille-jeu"><span class="sablier">⏳</span><span class="operation-petite">${esc(gauche)} = ? ${unite}</span></div>`
+  };
+  const resultat = `${gauche} = ${milliers(juste)} ${unite}`;
+  aChoix(m, {
+    question: PHRASES.mesureManque, dire: [...direMesure(gauche), PHRASES.caFait, nomUnite(unite)], lettres: true,
+    grandHTML: dessins[decor] || `<div class="operation-petite">${esc(gauche)} = ? ${unite}</div>`,
+    aide: m.k < 3 ? `1 ${grande} = ${milliers(f)} ${petite}` : "", // l'astuce aide au début de la série, ensuite on s'en souvient
+    choix: choix.map(x => `${milliers(x)} ${unite}`), reponse: choix.indexOf(juste),
+    apres: [PHRASES.bravo, ...direMesure(gauche), PHRASES.egale, ...direMesure(`${juste} ${unite}`), ...(decor === "balance" ? [PHRASES.equilibre] : decor === "bouteille" ? [PHRASES.bouteillePleine] : [])],
+    echec: [PHRASES.bonneReponse, ...direMesure(`${juste} ${unite}`)],
+    juste: () => {
+      const z = m.zone;
+      if (decor === "balance") { $(".fleau", z).classList.add("droit"); $$(".plateau", z)[1].textContent = `${milliers(juste)} ${unite}`; }
+      else if (decor === "bouteille") $(".bouteille", z).classList.add("pleine");
+      else if (decor === "sablier") $(".sablier", z).classList.add("tourne");
+      z.insertAdjacentHTML("beforeend", `<div class="ecriture-division">${esc(resultat)}</div>`);
+    }
+  });
+}
+
+// « Lequel est le plus long ? 1 m 20 cm ou 90 cm ? »
+function comparer(m) {
+  const g = auHasard(Object.keys(CONVERSIONS)), [grande, petite, f] = auHasard(CONVERSIONS[g]);
+  const a = hasard(1, f === 60 ? 2 : 4), b = Math.random() < 0.5 ? (f === 60 ? auHasard([15, 30, 45]) : hasard(1, 9) * f / 10) : 0;
+  const valeur = a * f + b, pas = f === 60 ? 15 : f / 5, d = auHasard([-1, 0, 1]), autre = Math.max(pas, valeur + d * pas);
+  const cotes = [`${a} ${grande}${b ? ` ${b} ${petite}` : ""}`, `${milliers(autre)} ${petite}`];
+  const ordre = Math.random() < 0.5 ? [0, 1] : [1, 0], choix = [...ordre.map(i => cotes[i]), PHRASES.pareil];
+  const plus = valeur === autre ? PHRASES.pareil : cotes[valeur > autre ? 0 : 1];
+  const question = { longueur: PHRASES.plusLong, masse: PHRASES.plusLourd, contenance: PHRASES.plusDeLiquide, duree: PHRASES.plusLongtemps }[g];
+  aChoix(m, {
+    question, lettres: true, aide: `1 ${grande} = ${milliers(f)} ${petite}`,
+    choix, reponse: choix.indexOf(plus), direChoix: k => k === 2 ? [PHRASES.pareil] : direMesure(choix[k]),
+    apres: [PHRASES.bravo, ...(plus === PHRASES.pareil ? [PHRASES.pareil] : direMesure(plus))],
+    echec: [PHRASES.bonneReponse, ...(plus === PHRASES.pareil ? [PHRASES.pareil] : direMesure(plus))]
+  });
+}
+
+function problemeMesure(m) {
+  const [texte, info] = auHasard(PROBLEMES_MESURE), [juste, ...faux] = info.split("|"), choix = melanger([juste, ...faux]);
+  aChoix(m, {
+    question: texte, lettres: true, choix, reponse: choix.indexOf(juste),
+    apres: [PHRASES.bravo, ...direMesure(juste)], echec: [PHRASES.bonneReponse, ...direMesure(juste)]
+  });
+}
+
+export function mesures(ecran) {
+  const C = CONVERSIONS;
+  partie(ecran, "mesures", m => {
+    const { niv, k } = m;
+    switch (niv) {
+      case 1: return quelleUnite(m);
+      case 2: return k % 3 === 2 ? quelleUnite(m) : quelOutil(m);
+      case 3: return regle(m);
+      case 4: return aDuSens(m);
+      case 5: return convertir(m, auHasard(C.longueur), k % 3 !== 2, "", k >= 6);
+      case 6: return convertir(m, C.masse[0], k % 3 !== 2, "balance", k >= 6);
+      case 7: return convertir(m, auHasard(C.contenance), k % 3 !== 2, "bouteille");
+      case 8: return convertir(m, auHasard(C.duree), k % 3 !== 2, "sablier", k >= 5 && k % 3 !== 2);
+      case 9: return comparer(m);
+      default: return [problemeMesure, problemeMesure, comparer, m => convertir(m, auHasard(Object.values(C).flat()), Math.random() < 0.6)][k % 4](m);
+    }
   });
 }

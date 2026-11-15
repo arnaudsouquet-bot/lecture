@@ -7,8 +7,12 @@ export const POINTS_PREMIER_ESSAI = 2;     // bonne réponse du 1er coup
 export const POINTS_DEUXIEME_ESSAI = 1;    // bonne réponse au 2e essai
 export const ESSAIS_PAR_QUESTION = 2;      // ensuite la réponse est montrée et expliquée
 export const UN_SEUL_ARTICLE_PAYE_PAR_JOUR = true; // les articles suivants se lisent pour le plaisir
-// [Arnaud 2026-11-03] cadeau unique de la mise à jour : 1 € ajouté une seule fois à la cagnotte de la semaine, en plus du plafond
-export const BONUS_MISE_A_JOUR = { id: "maj-2026-11", montant: 1, motif: "Cadeau de la mise à jour" };
+// cadeaux uniques : chacun est ajouté une seule fois à la cagnotte de la semaine, en plus du plafond
+// [Arnaud 2026-11-03] 1 € de la mise à jour ; [Arnaud 2026-11-15] « ajoute aussi 6,3 euros dans la cagnotte »
+export const BONUS_MISE_A_JOUR = [
+  { id: "maj-2026-11", montant: 1, motif: "Cadeau de la mise à jour" },
+  { id: "cadeau-2026-11-15", montant: 6.3, motif: "Cadeau des parents" }
+];
 
 // Répétition espacée (boîtes de Leitner) : jours avant la prochaine révision, par boîte
 export const INTERVALLES_JOURS = [1, 2, 4, 7, 14]; // HYPOTHÈSE
@@ -108,7 +112,10 @@ export const JEUX = [
     desc: "Les lettres, leur ordre, et ranger les mots." },
   // [Arnaud 2026-11-11] « un module pour apprendre les tables de multiplication de 2 à 9 »
   { id: "tables", section: "apprendre", titre: "La grenouille des tables", emoji: "🐸", etoiles: 0, niveaux: 10, regles: { monte: 0.75 },
-    desc: "Les tables de 2 à 9 : les paquets, les sauts, puis le calcul." }
+    desc: "Les tables de 2 à 9 : les paquets, les sauts, puis le calcul." },
+  // [Arnaud 2026-11-15] « ajoute un module complémentaire : les grandeurs de mesure et les unités »
+  { id: "mesures", section: "apprendre", titre: "L'atelier des mesures", emoji: "📏", etoiles: 0, niveaux: 10, regles: { monte: 0.75 },
+    desc: "Longueurs, masses, contenances et durées : les unités et les outils." }
 ];
 
 // Calcul mental : série de 10 calculs ; niveaux (HYPOTHÈSE)
@@ -243,6 +250,62 @@ export const PROBLEMES_PARTAGE = [
 // La grenouille des tables : la ou les tables de chaque niveau (HYPOTHÈSE) ; au niveau 10, toutes les tables
 // et le nombre qui manque. On multiplie par 1 à 10.
 export const TABLES_PAR_NIVEAU = [[2], [5], [3], [4], [2, 3, 4, 5], [6], [7], [8], [9], [2, 3, 4, 5, 6, 7, 8, 9]];
+
+// L'atelier des mesures : 10 niveaux (HYPOTHÈSE), décrits dans js/ecrans/apprendre.js.
+// Unités : [nom dit à voix haute, symbole] ; pour 1, on dit « un mètre », « une heure »…
+export const UNITES = [
+  ["millimètres", "mm"], ["centimètres", "cm"], ["mètres", "m"], ["kilomètres", "km"], ["grammes", "g"], ["kilogrammes", "kg"],
+  ["millilitres", "mL"], ["centilitres", "cL"], ["litres", "L"], ["secondes", "s"], ["minutes", "min"], ["heures", "h"]
+];
+export const UNE_UNITE = [
+  ["un millimètre", "mm"], ["un centimètre", "cm"], ["un mètre", "m"], ["un kilomètre", "km"], ["un gramme", "g"], ["un kilogramme", "kg"],
+  ["un millilitre", "mL"], ["un centilitre", "cL"], ["un litre", "L"], ["une seconde", "s"], ["une minute", "min"], ["une heure", "h"]
+];
+// la grandeur de chaque unité, et l'outil qui la mesure : [outil, emoji]
+export const GRANDEURS = {
+  longueur: { unites: ["cm", "m", "km"], outil: ["la règle", "📏"] },
+  masse: { unites: ["g", "kg"], outil: ["la balance", "⚖️"] },
+  contenance: { unites: ["mL", "cL", "L"], outil: ["le verre doseur", "🥛"] },
+  duree: { unites: ["s", "min", "h"], outil: ["la montre", "⌚"] }
+};
+// [ce qu'on mesure, "unité|emoji"]
+export const A_MESURER = [
+  ["la longueur d'un crayon", "cm|✏️"], ["la largeur d'un livre", "cm|📕"], ["la hauteur d'un arbre", "m|🌳"],
+  ["la longueur de la piscine", "m|🏊"], ["le chemin jusqu'à la ville voisine", "km|🏙️"], ["la longueur d'une course à vélo", "km|🚴"],
+  ["la masse d'une pomme", "g|🍎"], ["la masse d'une lettre", "g|✉️"], ["la masse d'un chien", "kg|🐶"], ["la masse d'un sac de pommes de terre", "kg|🥔"],
+  ["l'eau d'une cuillère de sirop", "mL|🥄"], ["l'eau d'un verre", "cL|🥤"], ["l'eau du bain", "L|🛁"], ["le lait d'une grande bouteille", "L|🥛"],
+  ["le temps pour taper dans les mains", "s|👏"], ["la durée de la récréation", "min|⏰"], ["la durée d'une nuit", "h|🌙"], ["la durée d'un film", "h|🎬"]
+];
+// est-ce que ça a du sens ? [début de la phrase, "nombre unité|emoji"]
+export const MESURES_DU_QUOTIDIEN = [
+  ["Une baguette de pain mesure", "70 cm|🥖"], ["Un crayon mesure", "15 cm|✏️"], ["La porte de la classe mesure", "2 m|🚪"],
+  ["Un bus mesure", "12 m|🚌"], ["La route jusqu'à la ville voisine mesure", "8 km|🛣️"], ["Une pomme pèse", "150 g|🍎"],
+  ["Un chat pèse", "4 kg|🐱"], ["Un papa pèse", "80 kg|🧔"], ["Une bouteille d'eau contient", "1 L|🍶"], ["Un verre contient", "20 cL|🥤"],
+  ["Une cuillère contient", "5 mL|🥄"], ["Un seau contient", "10 L|🪣"], ["La récréation dure", "15 min|⏰"], ["Une nuit dure", "10 h|🌙"],
+  ["Se brosser les dents dure", "2 min|🪥"], ["Un éternuement dure", "1 s|🤧"]
+];
+// conversions : [grande unité, petite unité, combien de petites dans une grande]
+export const CONVERSIONS = {
+  longueur: [["m", "cm", 100], ["km", "m", 1000]],
+  masse: [["kg", "g", 1000]],
+  contenance: [["L", "cL", 100], ["L", "mL", 1000]],
+  duree: [["h", "min", 60], ["min", "s", 60]]
+};
+// petits problèmes : [énoncé, "bonne réponse|fausse|fausse|fausse"]
+export const PROBLEMES_MESURE = [
+  ["Une ficelle mesure 1 mètre. On en coupe 30 centimètres. Combien en reste-t-il ?", "70 cm|130 cm|60 cm|7 cm"],
+  ["Un sac pèse 2 kilos et un autre pèse 500 grammes. Combien pèsent les deux ensemble ?", "2 500 g|502 g|2 050 g|7 kg"],
+  ["Le film commence à 14 heures et dure 2 heures. À quelle heure finit-il ?", "16 h|12 h|15 h|18 h"],
+  ["Une bouteille contient 1 litre. On remplit des verres de 25 centilitres. Combien de verres ?", "4|25|10|2"],
+  ["La récréation dure 15 minutes. Il y en a 2 par jour. Combien de minutes en tout ?", "30 min|17 min|90 min|15 min"],
+  ["Une course fait 3 kilomètres. Combien de mètres ?", "3 000 m|300 m|30 m|3 m"],
+  ["Une pomme pèse 100 grammes. Combien pèsent 10 pommes ?", "1 kg|100 g|10 kg|110 g"],
+  ["Tom mesure 1 mètre 30. Sa sœur mesure 1 mètre 10. Combien Tom a-t-il de plus ?", "20 cm|40 cm|1 m|2 m"],
+  ["On joue une heure, puis on lit 30 minutes. Combien de minutes en tout ?", "90 min|130 min|31 min|60 min"],
+  ["Un seau contient 10 litres. On en verse 3 litres. Combien en reste-t-il ?", "7 L|13 L|3 L|70 L"],
+  ["Un gâteau cuit 45 minutes. Il est au four depuis 30 minutes. Combien de minutes encore ?", "15 min|75 min|30 min|60 min"],
+  ["Un chat pèse 4 kilos. Le chien pèse 3 fois plus. Combien pèse le chien ?", "12 kg|7 kg|43 kg|1 kg"]
+];
 
 // Train de l'alphabet : [nom de la lettre dit à voix haute, lettre]
 export const LETTRES = [

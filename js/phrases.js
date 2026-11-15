@@ -102,7 +102,21 @@ export const PHRASES = {
   grenouilleSauts: "La grenouille fait des sauts de",
   grenouilleOu: "Où va-t-elle arriver ?",
   tablesCalcul: "Trouve le résultat.",
-  tablesManque: "Trouve le nombre qui manque."
+  tablesManque: "Trouve le nombre qui manque.",
+  mesureUnite: "Quelle unité pour mesurer",
+  mesureOutil: "Quel outil pour mesurer",
+  regleCombien: "Combien de centimètres mesure le ruban ?",
+  regleZero: "Attention : le ruban ne commence pas à zéro !",
+  mesureSens: "Quelle mesure est la bonne ?",
+  mesureManque: "Trouve la mesure qui manque.",
+  caFait: "ça fait combien de",
+  plusLong: "Lequel est le plus long ?",
+  plusLourd: "Lequel est le plus lourd ?",
+  plusDeLiquide: "Où y a-t-il le plus de liquide ?",
+  plusLongtemps: "Lequel dure le plus longtemps ?",
+  pareil: "C'est pareil",
+  equilibre: "La balance est en équilibre !",
+  bouteillePleine: "La bouteille est pleine !"
 };
 
 export const remplir = (phrase, nom) => phrase.replace("{nom}", nom);
