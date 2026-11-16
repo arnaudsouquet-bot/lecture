@@ -1,5 +1,6 @@
 // 3 · Lecture : l'article page par page, avec les aides dyslexie.
 import { article, pageHTML } from "../articles.js";
+import { echiquierHTML } from "../echiquier.js";
 import { session, majSession, aller, ouvrirAa, reglages, quandReglagesChangent } from "../session.js";
 import { decorer, decouperMots } from "../dyslexie.js";
 import { dire, direSuite, taire } from "../voix.js";
@@ -46,8 +47,13 @@ export default function lecture(ecran) {
     taire();
     bulle.classList.remove("visible");
     const p = a.pages[page], n = a.pages.length;
-    $("#illu", ecran).textContent = p.emoji || "📖";
-    $("#illu", ecran).className = p.anim && p.anim !== "aucune" ? "anim-" + p.anim : "";
+    const plateau = echiquierHTML(p.echiquier);
+    $(".lecture", ecran).classList.toggle("avec-echiquier", !!plateau);
+    if (plateau) { $("#illu", ecran).innerHTML = plateau; $("#illu", ecran).className = ""; }
+    else {
+      $("#illu", ecran).textContent = p.emoji || "📖";
+      $("#illu", ecran).className = p.anim && p.anim !== "aucune" ? "anim-" + p.anim : "";
+    }
     texte.innerHTML = `${p.titre ? `<h2 class="titre-page">${esc(p.titre)}</h2>\n` : ""}<div>${pageHTML(p.texte)}</div>`;
     ({ mots, nbPhrases } = decouperMots(texte));
     decorer(texte, verbesEnt);

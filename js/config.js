@@ -60,7 +60,11 @@ export const THEMES = [
     ["Les villes du futur", "🏙️"], ["Les métiers du futur", "👩‍🔬"], ["L'énergie de demain", "☀️"]] },
   { cle: "inventions", nom: "Les inventions", emoji: "🛠️", sujets: [
     ["La roue", "⚙️"], ["L'avion", "✈️"], ["Le téléphone", "📱"],
-    ["L'ordinateur", "💻"], ["Le train", "🚂"], ["Les inventions d'enfants", "🧒"]] }
+    ["L'ordinateur", "💻"], ["Le train", "🚂"], ["Les inventions d'enfants", "🧒"]] },
+  // [Arnaud 2026-11-16] « une nouvelle section de lecture sur les échecs : comment battre un niveau de 450, puis 500, etc. »
+  { cle: "echecs", nom: "Les échecs", emoji: "♟️", sujets: [
+    ["Battre un joueur de 450", "🛡️"], ["Battre un joueur de 500", "👀"], ["Battre un joueur de 550", "🏁"],
+    ["Battre un joueur de 600", "🍴"], ["Battre un joueur de 650", "📌"], ["Battre un joueur de 700", "👑"]] }
 ];
 // anciens noms de thèmes, pour les articles déjà importés
 export const ANCIENS_THEMES = { univers: "espace", machines: "inventions" };

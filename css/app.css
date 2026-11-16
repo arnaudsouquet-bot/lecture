@@ -498,3 +498,13 @@ button { font-family: inherit; color: inherit; -webkit-user-select: none; user-s
 .bouteille.pleine .liquide { height: 92%; }
 .sablier { font-size: 110px; line-height: 1; display: inline-block; transition: transform 1s; }
 .sablier.tourne { transform: rotate(180deg); }
+
+/* ---------- échiquier des articles sur les échecs ---------- */
+.lecture.avec-echiquier { grid-template-columns: 380px 1fr; }
+.avec-echiquier .illu { width: 370px; height: auto; border-radius: 16px; background: none; font-size: inherit; }
+.echiquier { width: 100%; height: auto; display: block; font-family: "Apple Symbols", "Segoe UI Symbol", "DejaVu Sans", serif; }
+@media (max-width: 900px) {
+  .lecture.avec-echiquier { grid-template-columns: 1fr; }
+  .avec-echiquier .illu { width: min(340px, 80vw); margin: 0 auto; }
+  .avec-echiquier .texte-page { max-height: calc(100dvh - 600px); }
+}
