@@ -64,7 +64,10 @@ export const THEMES = [
   // [Arnaud 2026-11-16] « une nouvelle section de lecture sur les échecs : comment battre un niveau de 450, puis 500, etc. »
   { cle: "echecs", nom: "Les échecs", emoji: "♟️", sujets: [
     ["Battre un joueur de 450", "🛡️"], ["Battre un joueur de 500", "👀"], ["Battre un joueur de 550", "🏁"],
-    ["Battre un joueur de 600", "🍴"], ["Battre un joueur de 650", "📌"], ["Battre un joueur de 700", "👑"]] }
+    ["Battre un joueur de 600", "🍴"], ["Battre un joueur de 650", "📌"], ["Battre un joueur de 700", "👑"]] },
+  // [Arnaud 2026-11-22] feuilleton du monde des ninjas, chapitres de 7 pages au plus ; chaque chapitre annonce un duel du Dojo
+  { cle: "ninja", nom: "La Voie du Ninja", emoji: "🥷", sujets: [
+    ["Le dojo de Maître Kazé", "🏯"], ["Le singe farceur", "🐒"], ["La forêt de bambous", "🎋"]] }
 ];
 // anciens noms de thèmes, pour les articles déjà importés
 export const ANCIENS_THEMES = { univers: "espace", machines: "inventions" };
@@ -309,6 +312,20 @@ export const PROBLEMES_MESURE = [
   ["Un seau contient 10 litres. On en verse 3 litres. Combien en reste-t-il ?", "7 L|13 L|3 L|70 L"],
   ["Un gâteau cuit 45 minutes. Il est au four depuis 30 minutes. Combien de minutes encore ?", "15 min|75 min|30 min|60 min"],
   ["Un chat pèse 4 kilos. Le chien pèse 3 fois plus. Combien pèse le chien ?", "12 kg|7 kg|43 kg|1 kg"]
+];
+
+// Le Dojo [Arnaud 2026-11-22] : duels au sabre des tables de multiplication, ceintures.
+// HYPOTHÈSE : points de vie de l'adversaire, combo, part de révision. Décidé : maîtrisé après 3 réussites sur des jours différents.
+export const DOJO = { pvAdversaire: 8, combo: 3, reussitesPourMaitriser: 3, partRevision: 0.2 };
+// HYPOTHÈSE : ordre des tables et adversaires ; nom : [dit à voix haute, couleur], adversaire : [nom, emoji]
+export const CEINTURES = [
+  { nom: ["la ceinture blanche", "#fbfbf7"], tables: [2], adversaire: ["le mannequin de bois", "🪵"] },
+  { nom: ["la ceinture jaune", "#f7d532"], tables: [5], adversaire: ["le singe farceur", "🐒"] },
+  { nom: ["la ceinture orange", "#f29b38"], tables: [3], adversaire: ["le renard des bambous", "🦊"] },
+  { nom: ["la ceinture verte", "#4caf50"], tables: [4], adversaire: ["le serpent de jade", "🐍"] },
+  { nom: ["la ceinture bleue", "#2f7fd8"], tables: [6], adversaire: ["le ninja de l'Ombre", "🥷"] },
+  { nom: ["la ceinture marron", "#8d5a3b"], tables: [7], adversaire: ["le gardien de pierre du pont", "🗿"] },
+  { nom: ["la ceinture noire", "#222222"], tables: [8, 9], adversaire: ["le dragon de la montagne", "🐉"] }
 ];
 
 // Train de l'alphabet : [nom de la lettre dit à voix haute, lettre]

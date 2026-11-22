@@ -1,7 +1,8 @@
-// Accueil : bonjour, cagnotte, étoiles, et les quatre entrées Lecture · Mémoire · Mathématique · Apprendre.
+// Accueil : bonjour, cagnotte, étoiles, les quatre entrées Lecture · Mémoire · Mathématique · Apprendre, et le Dojo.
 import { PLAFOND_EUROS } from "../config.js";
 import { cagnotte as maCagnotte, cagnotteSemaine, serie, luAujourdhui, motsAReviser } from "../progres.js";
 import { etat, badgesGagnes, prochainJeu } from "../jeux.js";
+import { objectif } from "../dojo.js";
 import { session, aller, nommer } from "../session.js";
 import { $, esc, euros, compter, dateLongue, pluriel } from "../outils.js";
 
@@ -55,12 +56,18 @@ export default function accueil(ecran) {
         <span class="etat">Tables · mesures · ABC</span><span class="gain">⭐ étoiles</span>
       </button>
     </div>
+    <button class="dojo-tuile" id="dojo">
+      <span class="emo anim-balance">🥷</span>
+      <span><span class="nom">Le Dojo</span><span class="etat">⚔️ Duel contre ${esc(objectif().adversaire[0])}</span></span>
+      <span class="gain">⭐ étoiles · ceintures</span>
+    </button>
     <button class="engrenage" id="engrenage" aria-label="Espace parent (3 appuis rapides)">⚙️</button>`;
 
   $("#lecture", ecran).onclick = () => aller("envies");
   $("#memoire", ecran).onclick = () => aller("memoire");
   $("#maths", ecran).onclick = () => aller("maths");
   $("#apprendre", ecran).onclick = () => aller("apprendre");
+  $("#dojo", ecran).onclick = () => aller("dojo");
   compter($("#montant", ecran), 0, cagnotte, 1400, euros);
   requestAnimationFrame(() => requestAnimationFrame(() => { $("#jauge", ecran).style.width = Math.min(100, semaine / PLAFOND_EUROS * 100) + "%"; }));
 

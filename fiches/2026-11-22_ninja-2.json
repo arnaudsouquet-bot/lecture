@@ -1,0 +1,137 @@
+{
+  "format": 1,
+  "id": "2026-11-22_ninja-2",
+  "theme": "ninja",
+  "titre": "Chapitre 2 : Le singe farceur",
+  "emoji": "🐒",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [],
+  "mots": [
+    {
+      "mot": "indice",
+      "syllabes": ["in", "di", "ce"],
+      "emoji": "🔍",
+      "definition": "Une petite chose qui aide à trouver la solution d'un mystère.",
+      "exemple": "Le détective a trouvé un indice : une trace de boue."
+    },
+    {
+      "mot": "farceur",
+      "syllabes": ["far", "ceur"],
+      "emoji": "🤪",
+      "definition": "Quelqu'un qui aime faire des blagues et jouer des tours.",
+      "exemple": "Mon frère farceur a caché mes chaussons dans le frigo."
+    },
+    {
+      "mot": "temple",
+      "syllabes": ["tem", "ple"],
+      "emoji": "⛩️",
+      "definition": "Un grand bâtiment où l'on vient prier ou méditer.",
+      "exemple": "Au Japon, on monte souvent de longues marches pour arriver au temple."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "L'enquête commence",
+      "emoji": "🔍",
+      "anim": "zoom",
+      "texte": "Au lever du soleil, Maître Kazé te tend une loupe. — Un ninja observe tout, dit-il. Tu fouilles le dojo. Sur le toit, tu comptes {{4|quatre}} tuiles cassées. Le ninja de l'Ombre est passé par là ! Tu cherches un [[indice]]."
+    },
+    {
+      "titre": "Une plume noire",
+      "emoji": "🪶",
+      "anim": "flotte",
+      "texte": "Près de la fenêtre, tu trouves une plume noire, longue et douce. — Une plume ? dit le maître. Notre voleur aime peut-être les oiseaux… ou les déguisements. Il caresse sa barbe. — Garde-la bien. Un jour, elle nous servira."
+    },
+    {
+      "titre": "Où est mon sabre ?",
+      "emoji": "🗡️",
+      "anim": "rebond",
+      "texte": "Tu poses ton sabre de bois pour regarder la plume. Quand tu te retournes, il a disparu ! Sur une branche, un singe le fait tourner. Il porte {{2|deux}} bananes à la ceinture. — Hi hi hi ! Viens le chercher, petit ninja !"
+    },
+    {
+      "titre": "Le singe farceur",
+      "emoji": "🐒",
+      "anim": "balance",
+      "texte": "C'est un singe [[farceur]] ! Il te fait {{3|trois}} grimaces. Puis il file vers le temple, en haut de la colline. Ses pattes vont plus vite que tes pieds. — Patience, dit Maître Kazé. Un ninja gagne par la ruse, pas seulement par la course."
+    },
+    {
+      "titre": "Les marches du temple",
+      "emoji": "⛩️",
+      "anim": "rebond",
+      "texte": "Le [[temple]] a beaucoup de marches. Tu les montes {{5|cinq}} par {{5|cinq}}, en comptant vite : {{5|cinq}}, {{10|dix}}, {{15|quinze}}, {{20|vingt}} ! Le singe, lui, saute une marche à la fois. À {{50|cinquante}}, tu es juste derrière lui ! Il ouvre de grands yeux."
+    },
+    {
+      "titre": "Attrapé !",
+      "emoji": "🙌",
+      "anim": "zoom",
+      "texte": "Hop ! Tu attrapes ton sabre par le bout. Le singe éclate de rire. — Bravo ! Tu comptes plus vite que je ne grimpe ! Il s'assoit sur une marche. — Pour te remercier, je vais te dire un secret. Cette nuit, j'ai vu une ombre passer."
+    },
+    {
+      "titre": "Vers la forêt de bambous",
+      "emoji": "🎋",
+      "anim": "flotte",
+      "texte": "— L'Ombre courait vers la forêt de bambous, dit le singe. Elle tenait un rouleau sous le bras ! Puis, pouf, il disparaît dans un nuage de fumée. Maître Kazé hoche la tête. — Demain, nous irons dans la forêt. Pour la ceinture jaune, bats le singe farceur au Dojo."
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Tu montes les marches du temple 5 par 5. Tu fais 4 grands pas. Combien de marches as-tu montées ?",
+      "aide": "4 × 5 = ?",
+      "choix": ["20", "9", "25"],
+      "reponse": 0,
+      "explication": "4 fois 5, ça fait 20 marches."
+    },
+    {
+      "type": "calcul",
+      "question": "Tu fais 10 grands pas de 5 marches. Combien de marches as-tu montées ?",
+      "aide": "10 × 5 = ?",
+      "choix": ["15", "100", "50"],
+      "reponse": 2,
+      "explication": "10 fois 5, ça fait 50 : tu es juste derrière le singe !"
+    },
+    {
+      "type": "calcul",
+      "question": "Le singe fait 3 grimaces. Chaque grimace dure 5 secondes. Combien de secondes en tout ?",
+      "aide": "3 × 5 = ?",
+      "choix": ["8", "15", "35"],
+      "reponse": 1,
+      "explication": "3 fois 5, ça fait 15 secondes de grimaces."
+    },
+    {
+      "type": "comprehension",
+      "question": "Quel indice trouves-tu près de la fenêtre ?",
+      "choix": ["Une banane", "Une chaussure", "Une plume noire"],
+      "reponse": 2,
+      "explication": "Tu trouves une plume noire, longue et douce."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que vole le singe farceur ?",
+      "choix": ["Ton sabre de bois", "La loupe du maître", "Le Parchemin des Nombres"],
+      "reponse": 0,
+      "explication": "Le singe prend ton sabre de bois et le fait tourner sur sa branche."
+    },
+    {
+      "type": "comprehension",
+      "question": "Comment rattrapes-tu le singe ?",
+      "choix": ["En grimpant à un arbre", "En montant les marches 5 par 5", "En lui lançant une banane"],
+      "reponse": 1,
+      "explication": "Tu montes les marches du temple 5 par 5, en comptant vite."
+    },
+    {
+      "type": "comprehension",
+      "question": "Vers où l'Ombre est-elle partie ?",
+      "choix": ["Vers la mer", "Vers la forêt de bambous", "Vers la ville"],
+      "reponse": 1,
+      "explication": "Le singe a vu l'Ombre courir vers la forêt de bambous."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « farceur » ?",
+      "choix": ["Quelqu'un qui aime faire des blagues", "Quelqu'un qui a très peur", "Quelqu'un qui dort beaucoup"],
+      "reponse": 0,
+      "explication": "Un farceur aime faire des blagues et jouer des tours."
+    }
+  ]
+}

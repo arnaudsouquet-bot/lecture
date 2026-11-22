@@ -18,13 +18,14 @@ import parent from "./ecrans/parent.js";
 import { memoire, reviserMots, paires, definitions, retiens, ecoute, change, simon } from "./ecrans/memoire.js";
 import { maths, calcul, problemes, lireNombres, ranger, formes, logique } from "./ecrans/maths.js";
 import { apprendre, infinitifs, partages, alphabet, tables, mesures } from "./ecrans/apprendre.js";
+import { dojo, duel } from "./ecrans/dojo.js";
 import bravo from "./ecrans/bravo.js";
 
 const ECRANS = {
   accueil, envies, articles: articlesDuTheme, questionnaire, lecture, mots, nombres, questions, recompense, parent,
   memoire, reviser: reviserMots, paires, definitions, retiens, ecoute, change, simon,
   maths, calcul, problemes, "lire-nombres": lireNombres, ranger, formes, logique,
-  apprendre, infinitifs, partages, alphabet, tables, mesures, bravo
+  apprendre, infinitifs, partages, alphabet, tables, mesures, dojo, duel, bravo
 };
 // écrans qui demandent une lecture en cours
 const AVEC_SESSION = ["lecture", "mots", "nombres", "questions", "recompense"];

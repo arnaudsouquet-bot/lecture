@@ -1,0 +1,140 @@
+{
+  "format": 1,
+  "id": "2026-11-22_ninja-1",
+  "theme": "ninja",
+  "titre": "Chapitre 1 : Le dojo de Maître Kazé",
+  "emoji": "🏯",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "tournent",
+    "grincent"
+  ],
+  "mots": [
+    {
+      "mot": "dojo",
+      "syllabes": ["do", "jo"],
+      "emoji": "🏯",
+      "definition": "La salle où l'on apprend les arts de combat, comme le karaté ou l'art des ninjas.",
+      "exemple": "Le samedi, ma cousine va au dojo pour son cours de judo."
+    },
+    {
+      "mot": "sabre",
+      "syllabes": ["sa", "bre"],
+      "emoji": "🗡️",
+      "definition": "Une longue lame un peu courbée. Pour s'entraîner, on prend un sabre en bois.",
+      "exemple": "L'apprenti lève son sabre de bois au-dessus de sa tête."
+    },
+    {
+      "mot": "parchemin",
+      "syllabes": ["par", "che", "min"],
+      "emoji": "📜",
+      "definition": "Un très vieux document qu'on garde roulé, comme un rouleau de papier.",
+      "exemple": "Le pirate déroule un parchemin avec la carte du trésor."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "La Montagne des Brumes",
+      "emoji": "🏔️",
+      "anim": "flotte",
+      "texte": "Tu arrives au pied de la Montagne des Brumes. Un escalier de pierre monte vers un vieux [[dojo]] en bois. Tu montes les marches {{2|deux}} par {{2|deux}}. Ton cœur bat fort. Aujourd'hui, c'est un grand jour : tu deviens apprenti ninja !"
+    },
+    {
+      "titre": "Maître Kazé",
+      "emoji": "👴",
+      "anim": "balance",
+      "texte": "Un vieil homme t'attend devant la porte. Sa barbe blanche touche presque ses genoux. — Bienvenue, petit ninja ! dit Maître Kazé. J'ai {{80|quatre-vingts}} ans, mais mes oreilles sont jeunes. Il rit, puis il devient sérieux. — Ici, on s'entraîne chaque jour."
+    },
+    {
+      "titre": "Le sabre de bois",
+      "emoji": "🗡️",
+      "anim": "rebond",
+      "texte": "Maître Kazé te donne un [[sabre]] de bois. Devant toi se dresse le mannequin de bois. Ses {{2|deux}} bras tournent ! — Frappe en comptant de {{2|deux}} en {{2|deux}}, dit le maître. {{2|Deux}}, {{4|quatre}}, {{6|six}}, {{8|huit}}… Tac, tac, tac !"
+    },
+    {
+      "titre": "Pouf !",
+      "emoji": "💨",
+      "anim": "zoom",
+      "texte": "Tu frappes encore et encore. Après {{10|dix}} coups, pouf ! Le mannequin disparaît dans un nuage de fumée. Tu tousses, puis tu ris. — Pas mal, pour un débutant, dit Maître Kazé. Mais un vrai ninja compte encore plus vite !"
+    },
+    {
+      "titre": "Le trésor du dojo",
+      "emoji": "📜",
+      "anim": "flotte",
+      "texte": "Le soir, vous mangez du riz près du feu. Le maître parle tout bas. — Ce dojo garde un trésor : le [[parchemin|Parchemin]] des Nombres. Celui qui le lit devient rapide comme l'éclair au calcul. Il est caché dans une boîte, sous le toit."
+    },
+    {
+      "titre": "Une ombre sur le toit",
+      "emoji": "🌙",
+      "anim": "balance",
+      "texte": "La nuit, tu n'arrives pas à dormir. Dehors, les bambous grincent. Soudain, tu entends {{3|trois}} petits bruits : tip, tip, tip. Tu sors sans faire de bruit. Sur le toit, une ombre file comme le vent ! Elle saute, et disparaît dans la brume."
+    },
+    {
+      "titre": "Le parchemin a disparu !",
+      "emoji": "😱",
+      "anim": "zoom",
+      "texte": "Maître Kazé allume une lanterne. Il ouvre la boîte sous le toit… Elle est vide ! — Le Parchemin des Nombres a disparu ! dit-il. Le ninja de l'Ombre est passé par ici. Demain, l'enquête commence. Pour gagner ta ceinture blanche, bats le mannequin de bois au Dojo."
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Le mannequin a 2 bras. Tu frappes chaque bras 4 fois. Combien de coups en tout ?",
+      "aide": "4 × 2 = ?",
+      "choix": ["6", "8", "10"],
+      "reponse": 1,
+      "explication": "4 fois 2, ça fait 8 coups de sabre."
+    },
+    {
+      "type": "calcul",
+      "question": "Tu donnes 5 fois 2 coups de sabre. Combien de coups ?",
+      "aide": "5 × 2 = ?",
+      "choix": ["10", "7", "12"],
+      "reponse": 0,
+      "explication": "5 fois 2, ça fait 10 : pouf, le mannequin disparaît !"
+    },
+    {
+      "type": "calcul",
+      "question": "Tu montes les marches 2 par 2. Tu fais 6 grands pas. Combien de marches as-tu montées ?",
+      "aide": "6 × 2 = ?",
+      "choix": ["14", "8", "12"],
+      "reponse": 2,
+      "explication": "6 fois 2, ça fait 12 marches."
+    },
+    {
+      "type": "comprehension",
+      "question": "Où se trouve le dojo de Maître Kazé ?",
+      "choix": ["Au bord de la mer", "Au pied de la Montagne des Brumes", "Dans une grande ville"],
+      "reponse": 1,
+      "explication": "Le dojo est au pied de la Montagne des Brumes."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que se passe-t-il quand tu as battu le mannequin de bois ?",
+      "choix": ["Il disparaît dans un nuage de fumée", "Il se met à danser", "Il tombe en morceaux"],
+      "reponse": 0,
+      "explication": "Pouf ! Le mannequin disparaît dans un nuage de fumée."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que fait le Parchemin des Nombres ?",
+      "choix": ["Il rend invisible", "Il fait voler", "Il rend rapide comme l'éclair au calcul"],
+      "reponse": 2,
+      "explication": "Celui qui le lit devient rapide comme l'éclair au calcul."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que vois-tu sur le toit, la nuit ?",
+      "choix": ["Un chat qui dort", "Une ombre qui file", "Maître Kazé qui danse"],
+      "reponse": 1,
+      "explication": "Une ombre file sur le toit, puis disparaît dans la brume."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « dojo » ?",
+      "choix": ["La salle où l'on apprend les arts de combat", "Un gâteau japonais", "Un oiseau de la montagne"],
+      "reponse": 0,
+      "explication": "Un dojo est la salle où l'on s'entraîne aux arts de combat."
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "format": 1,
+  "id": "2026-11-22_ninja-3",
+  "theme": "ninja",
+  "titre": "Chapitre 3 : La forêt de bambous",
+  "emoji": "🎋",
+  "auteur": "Claude (à relire)",
+  "verbes_ent": [
+    "montent",
+    "apparaissent",
+    "partent",
+    "plongent",
+    "fixent",
+    "brillent"
+  ],
+  "mots": [
+    {
+      "mot": "bambou",
+      "syllabes": ["bam", "bou"],
+      "emoji": "🎋",
+      "definition": "Une grande plante à tige creuse et dure, qui pousse très vite.",
+      "exemple": "Le panda mange des feuilles de bambou."
+    },
+    {
+      "mot": "énigme",
+      "syllabes": ["é", "nig", "me"],
+      "emoji": "❓",
+      "definition": "Une question difficile, comme une devinette, qu'il faut réfléchir pour résoudre.",
+      "exemple": "Papa m'a posé une énigme et j'ai trouvé la réponse !"
+    },
+    {
+      "mot": "bassin",
+      "syllabes": ["bas", "sin"],
+      "emoji": "💧",
+      "definition": "Un creux rempli d'eau, plus petit qu'un lac.",
+      "exemple": "Des poissons rouges nagent dans le bassin du jardin."
+    }
+  ],
+  "pages": [
+    {
+      "titre": "Dans la forêt",
+      "emoji": "🎋",
+      "anim": "flotte",
+      "texte": "La forêt de bambous est immense. Les tiges montent si haut qu'on ne voit plus le ciel. Le vent les fait chanter : chhh, chhh. Maître Kazé marche sans bruit. Tu essaies de faire pareil. Crac ! Tu marches sur une branche. Le maître sourit."
+    },
+    {
+      "titre": "Le renard des bambous",
+      "emoji": "🦊",
+      "anim": "balance",
+      "texte": "Soudain, un renard roux sort de derrière un [[bambou]]. Il a {{3|trois}} taches blanches sur la queue. — Bonjour, voyageurs, dit-il en s'inclinant. Je connais tous les chemins de cette forêt. Mais je ne les donne pas gratuitement… Ses yeux brillent de ruse."
+    },
+    {
+      "titre": "La première énigme",
+      "emoji": "❓",
+      "anim": "zoom",
+      "texte": "— Voici une [[énigme]], dit le renard. J'ai rangé mes bambous en {{4|quatre}} tas de {{3|trois}}. Combien en ai-je ? Tu comptes de {{3|trois}} en {{3|trois}} : {{3|trois}}, {{6|six}}, {{9|neuf}}, {{12|douze}} ! — {{12|Douze}} ! — Hmm, pas mal, grogne le renard."
+    },
+    {
+      "titre": "La deuxième énigme",
+      "emoji": "🍄",
+      "anim": "rebond",
+      "texte": "— Plus difficile, dit le renard. Dans ma cachette, il y a {{5|cinq}} paniers. Chaque panier contient {{3|trois}} champignons. Combien de champignons ? Tu fermes les yeux. Tu respires. — {{15|Quinze}} ! Le renard fait la grimace. Maître Kazé, lui, rit dans sa barbe."
+    },
+    {
+      "titre": "Le chemin secret",
+      "emoji": "🐾",
+      "anim": "flotte",
+      "texte": "— Tu es rusé, petit ninja, dit le renard. Je te montre le chemin. Il gratte la terre avec sa patte. Des traces de pas apparaissent, {{3|trois}} par {{3|trois}}. Ce sont celles de l'Ombre ! Elles partent vers le cœur de la forêt. Pouf, le renard disparaît dans la fumée."
+    },
+    {
+      "titre": "Le bassin",
+      "emoji": "💧",
+      "anim": "balance",
+      "texte": "Vous suivez les traces pendant longtemps. Enfin, vous arrivez au bord d'un [[bassin]] tout rond. L'eau est verte et calme. Des grenouilles plongent : plouf, plouf, plouf. Puis plus rien. Le silence est total. Maître Kazé lève la main. — Attention, chuchote-t-il."
+    },
+    {
+      "titre": "Le serpent de jade",
+      "emoji": "🐍",
+      "anim": "zoom",
+      "texte": "L'eau se met à bouillonner. Un serpent vert se dresse devant toi. Ses écailles brillent comme du jade ! Il siffle et ses yeux jaunes te fixent. Qui est-il ? Et où mène le chemin de l'Ombre ? Pour la ceinture orange, bats le renard des bambous au Dojo."
+    }
+  ],
+  "questions": [
+    {
+      "type": "calcul",
+      "question": "Le renard range ses bambous en 4 tas de 3. Combien de bambous a-t-il ?",
+      "aide": "4 × 3 = ?",
+      "choix": ["7", "12", "15"],
+      "reponse": 1,
+      "explication": "4 fois 3, ça fait 12 bambous."
+    },
+    {
+      "type": "calcul",
+      "question": "Il y a 5 paniers. Chaque panier contient 3 champignons. Combien de champignons en tout ?",
+      "aide": "5 × 3 = ?",
+      "choix": ["15", "8", "18"],
+      "reponse": 0,
+      "explication": "5 fois 3, ça fait 15 champignons."
+    },
+    {
+      "type": "calcul",
+      "question": "Le renard a 3 taches blanches sur la queue. Combien de taches ont 6 renards pareils ?",
+      "aide": "6 × 3 = ?",
+      "choix": ["16", "21", "18"],
+      "reponse": 2,
+      "explication": "6 fois 3, ça fait 18 taches."
+    },
+    {
+      "type": "comprehension",
+      "question": "Que fait le renard avant de montrer le chemin ?",
+      "choix": ["Il chante une chanson", "Il pose des énigmes", "Il mange des champignons"],
+      "reponse": 1,
+      "explication": "Le renard pose des énigmes : il faut les résoudre pour avoir le chemin."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qu'apparaît-il quand le renard gratte la terre ?",
+      "choix": ["Les traces de pas de l'Ombre", "Un trésor", "Le Parchemin des Nombres"],
+      "reponse": 0,
+      "explication": "Des traces de pas apparaissent : ce sont celles de l'Ombre."
+    },
+    {
+      "type": "comprehension",
+      "question": "Où arrivez-vous à la fin du chemin ?",
+      "choix": ["Au sommet de la montagne", "Devant le dojo", "Au bord d'un bassin"],
+      "reponse": 2,
+      "explication": "Vous arrivez au bord d'un bassin tout rond, à l'eau verte."
+    },
+    {
+      "type": "comprehension",
+      "question": "Qui se dresse devant toi, à la fin du chapitre ?",
+      "choix": ["Un singe farceur", "Un serpent de jade", "Un dragon"],
+      "reponse": 1,
+      "explication": "Un serpent vert, aux écailles de jade, sort de l'eau."
+    },
+    {
+      "type": "mot",
+      "question": "Que veut dire le mot « énigme » ?",
+      "choix": ["Un animal de la forêt", "Une sorte de champignon", "Une question difficile, comme une devinette"],
+      "reponse": 2,
+      "explication": "Une énigme est une question difficile qu'il faut réfléchir pour résoudre."
+    }
+  ]
+}

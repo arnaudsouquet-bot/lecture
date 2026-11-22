@@ -116,7 +116,14 @@ export const PHRASES = {
   plusLongtemps: "Lequel dure le plus longtemps ?",
   pareil: "C'est pareil",
   equilibre: "La balance est en équilibre !",
-  bouteillePleine: "La bouteille est pleine !"
+  bouteillePleine: "La bouteille est pleine !",
+  dojoTitre: "Le Dojo. Bats ton adversaire avec les tables, et gagne ta ceinture.",
+  enGarde: "En garde !",
+  coupSpecial: "Coup spécial !",
+  pare: "Paré !",
+  victoire: "Victoire ! Ton adversaire disparaît dans un nuage de fumée.",
+  tuGagnes: "Tu gagnes",
+  revenir: "Reviens demain : un calcul est maîtrisé quand tu le réussis trois jours différents."
 };
 
 export const remplir = (phrase, nom) => phrase.replace("{nom}", nom);
